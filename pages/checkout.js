@@ -172,25 +172,6 @@ const CheckOut = () => {
 
     let userId = 'Роздрібний клієнт'
 
-    // if (user) {
-    //   userId = user.userId
-    //   if (user.phone !== phone) {
-    //     let updatePhone = await fetch(
-    //       `https://api.edetal.store/update_user_phone/${user.email}`,
-    //       {
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //         method: 'PATCH',
-    //         body: JSON.stringify({
-    //           phone: phone,
-    //         }),
-    //       }
-    //     )
-    //     updateUserPhone(phone)
-    //   }
-    // }
-
     const res = await fetch(`https://api.edetal.store/getOrders`, {
       method: 'GET',
     })
@@ -266,31 +247,6 @@ const CheckOut = () => {
       )
       updateUserDetails(city, e.target.value)
     }
-
-    // let updateUserDepartment = await fetch(
-    //   `https://api.edetal.store/update_user_department/${user?.email}`,
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       npDepartment: e.target.value,
-    //     }),
-    //   }
-    // )
-    // let updateUserCity = await fetch(
-    //   `https://api.edetal.store/update_user_city/${user?.email}`,
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     method: 'PATCH',
-    //     body: JSON.stringify({
-    //       npCity: city,
-    //     }),
-    //   }
-    // )
   }
 
   const addOneUnit = (item, e) => {
@@ -519,11 +475,7 @@ const CheckOut = () => {
                     </div>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className={styles.submit_order_btn}
-                  // onClick={onsubmit}
-                >
+                <button type="submit" className={styles.submit_order_btn}>
                   Замовити
                 </button>
               </form>
@@ -536,20 +488,3 @@ const CheckOut = () => {
 }
 
 export default CheckOut
-
-/*
-const request = {
-   "apiKey": "b05e588245c3751c040f8532dee955e5",
-   "modelName": "Address",
-   "calledMethod": "getSettlements",
-   "methodProperties": {
-       "FindByString" : `${}`,
-   }
-}
-
-fetch("https://api.novaposhta.ua/v2.0/json/", {method: "POST",
-      
-            headers: { "Content-Type": "application/json" },
-      
-            body: JSON.stringify(request)}).then((response) => response.json())
-            .then((token) => {console.log(token)})*/

@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Thankyou.module.css'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 const ThankyouOrder = () => {
   const router = useRouter()

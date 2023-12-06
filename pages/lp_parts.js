@@ -2,9 +2,6 @@ import Head from 'next/head'
 import styles from '../styles/Lp_parts.module.css'
 import {
   arrowRight,
-  coffe,
-  list,
-  box3,
   tel,
   checkbox1,
   sighn,
@@ -25,7 +22,7 @@ const Spiner = () => {
   )
 }
 
-const AboutUs = () => {
+const LP_Parts = () => {
   const [article, setArticle] = useState('')
   const [loading, setLoading] = useState(false)
   const [noData, setNoData] = useState(false)
@@ -48,17 +45,7 @@ const AboutUs = () => {
   }
 
   const goToSearchTMProductPage = item => {
-    router.push(
-      `/search/tm_stock_item/${article.replace(/[- /]/g, '')}`
-      // query: {
-      //   item,
-      //   productDescription: {
-      //     fits: [],
-      //     details: null,
-      //     oe: [{ brand: item.brandName, number: item.article }],
-      //   },
-      // },
-    )
+    router.push(`/search/tm_stock_item/${article.replace(/[- /]/g, '')}`)
   }
 
   const searchInTMProductPage = async () => {
@@ -420,19 +407,4 @@ const AboutUs = () => {
   )
 }
 
-export default AboutUs
-
-{
-  /* <span className={styles.description_request}>
-                Знайдемо потрібну запчастину, поки Ви п'єте каву
-              </span>
-              {coffe}
-              <span className={styles.description_request}>
-                Відправимо Вам прорахунок у зручному форматі
-              </span>
-              {list}
-              <span className={styles.description_request}>
-                Отримайте запчастину у відділенні нової пошти
-              </span>
-              {box3} */
-}
+export default LP_Parts

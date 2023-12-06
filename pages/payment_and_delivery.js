@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import styles from '../styles/How_to_order.module.css'
-import SearchByArticle from '@/components/search_by_article/search_by_article'
-import Proposal_to_request_from_main from '@/components/proposal_to_make_request/proposal_to_request'
 
 const PaymentReturns = () => {
   return (
