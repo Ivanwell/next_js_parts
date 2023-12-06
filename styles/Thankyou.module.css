@@ -1,0 +1,53 @@
+.main {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page_content {
+  width: 80%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.img_order {
+  width: 300px;
+}
+
+.link_to_track {
+  margin-top: 20px;
+  background-image: linear-gradient(to bottom, #ff471a, #ff6700);
+  font-size: 24px;
+  color: white;
+  font-weight: 500;
+  box-sizing: content-box;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media all and (max-width: 740px) {
+  .page_content {
+    width: 95%;
+  }
+
+  .page_content h1 {
+    font-size: 22px;
+    padding-bottom: 10px;
+  }
+
+  .page_content h2 {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .img_order {
+    width: 170px;
+  }
+}

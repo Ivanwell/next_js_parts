@@ -1,0 +1,150 @@
+.page_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.page_container_toLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60vh;
+}
+
+.orders_box {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px grey solid;
+  border-radius: 3px;
+  padding: 15px;
+  box-sizing: content-box;
+  margin-top: 15px;
+  background-color: whitesmoke;
+}
+
+.order_box_title {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 20% 20% 35% 25%;
+  color: grey;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.order_box {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 20% 20% 35% 25%;
+  text-align: left;
+  align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.check_btn_cont {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check_details_btn {
+  width: 75%;
+  height: 30px;
+  border: none;
+  background-color: whitesmoke;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.status_cont {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.process_status {
+  color: blue;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.reject_status {
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.complete_status {
+  color: green;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.goToLoginLink {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: green;
+  padding: 10px;
+  box-sizing: content-box;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.title_orders {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.orders_box img {
+  padding-top: 30px;
+  width: 300px;
+  padding-bottom: 30px;
+}
+
+@media all and (max-width: 740px) {
+  .orders_box {
+    width: 90%;
+    border: 2px grey solid;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  .check_details_btn {
+    display: none;
+  }
+
+  .order_box_title {
+    grid-template-columns: 20% 35% 45%;
+    font-size: 13px;
+  }
+
+  .order_box {
+    grid-template-columns: 20% 35% 45%;
+    font-size: 13px;
+  }
+
+  .cont_id_order {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .deivery_oprion {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

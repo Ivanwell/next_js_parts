@@ -1,0 +1,107 @@
+.main {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.title_container {
+  width: 80%;
+  box-sizing: content-box;
+  background-image: linear-gradient(to bottom, #ff471a, #ff6700);
+  border-radius: 5px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.registration_form {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px grey solid;
+  border-radius: 3px;
+  background-color: whitesmoke;
+  padding: 20px 0px 20px 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.name_of_field {
+  font-size: 20px;
+  font-weight: 600;
+  width: 80%;
+}
+
+.register_field {
+  width: 80%;
+  height: 45px;
+  border-radius: 5px;
+  border: 2px solid green;
+  font-size: 18px;
+  text-indent: 10px;
+}
+
+.submit_button {
+  min-width: 40%;
+  border: none;
+  background-color: gray;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  box-sizing: content-box;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error_container {
+  min-width: 80%;
+  background-color: red;
+  opacity: 70%;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  box-sizing: content-box;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+}
+
+.go_to_reg_or_log {
+  font-size: 18px;
+}
+
+.go_to_reg_or_log :hover {
+  text-decoration: underline;
+}
+
+@media all and (max-width: 740px) {
+  .title_container {
+    box-sizing: content-box;
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .registration_form {
+    padding: 20px 0px 20px 0px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

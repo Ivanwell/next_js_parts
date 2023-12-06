@@ -1,0 +1,362 @@
+.page_container {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.cart_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+}
+
+.list_of_products {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 20% 50% 10% 15% 5%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-items: center;
+  background-color: #eee;
+  box-sizing: content-box;
+  padding: 2px;
+}
+
+.list_of_products img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.item_title_descr {
+  width: 100%;
+  text-indent: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+.titles_in_card {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.amount_cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+
+.plus_min_btn {
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.general_sum {
+  display: flex;
+  justify-content: flex-end;
+  color: #0068d7;
+  font-size: 22px;
+  font-weight: 600;
+  border: 2px #0068d7 solid;
+  box-sizing: content-box;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.loading {
+  color: blue;
+}
+
+.container_for_delivery_and_person {
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+
+.container_for_input_and_cities {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.container_for_payment {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.contaiern_for_inputs_row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: #eee 2px solid;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.contaiern_for_input_row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px;
+}
+
+.contaiern_for_input_row label {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.check_boxs_cont {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.check_box_cont {
+  width: auto;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: center;
+  font-size: 18px;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.check_box_cont input {
+  cursor: pointer;
+}
+
+.fetched_cities {
+  top: 150px;
+  left: 5%;
+  width: 90%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: #eee 1px solid;
+  cursor: pointer;
+  z-index: 2;
+  background-color: white;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.fetched_city {
+  border-bottom: #eee 1px solid;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  font-size: 18px;
+  box-sizing: content-box;
+  padding: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fetched_city:hover {
+  width: 100%;
+  background-color: #edffc2;
+}
+
+.new_post_input_city {
+  width: 80%;
+  height: 40px;
+  border: grey solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  text-indent: 10px;
+}
+
+.submit_order_btn {
+  width: 30%;
+  height: 50px;
+  margin-top: 20px;
+  background: linear-gradient(
+    to bottom,
+    #f83b00 0%,
+    #d43200 100%,
+    #7db9e8 100%
+  );
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.lds_facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds_facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #f37c2e;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds_facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds_facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds_facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+@media all and (max-width: 740px) {
+  .cart_container {
+    width: 95%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .list_of_products {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 15% 50% 20% 15%;
+    grid-template-rows: 100%;
+    align-items: center;
+  }
+
+  .list_of_products img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .item_title_descr {
+    font-size: 12px;
+  }
+
+  .general_sum {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .container_for_delivery_and_person {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container_for_input_and_cities {
+    padding: 0px;
+  }
+  .container_for_payment {
+    padding: 0px;
+  }
+
+  .contaiern_for_inputs_row {
+    flex-direction: column;
+    height: auto;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .contaiern_for_input_row {
+    padding: 2px;
+  }
+
+  .fetched_cities {
+    top: 125px;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .fetched_city {
+    width: 97%;
+    font-size: 18px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: content-box;
+    padding: 3px;
+  }
+
+  .check_boxs_cont {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .check_box_cont {
+    font-size: 14px;
+    justify-content: flex-start;
+  }
+
+  .titles_in_card {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .submit_order_btn {
+    width: 80%;
+  }
+}

@@ -1,0 +1,74 @@
+.main_oil_part_container {
+  margin-top: 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.title_oil {
+  width: 75%;
+  background-color: #50661c;
+  color: white;
+  box-sizing: content-box;
+  padding: 15px 0px 15px 0px;
+  text-align: left;
+  text-indent: 20px;
+}
+
+.oil_part_container {
+  padding: 20px;
+  width: 70%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 33.3% 33.4% 33.3%;
+  grid-template-rows: 33.3% 33.4% 33.3%;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+.oil_btn {
+  height: 50px;
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.backgound_oil {
+  width: 150px;
+  left: 0px;
+  position: absolute;
+  z-index: -1;
+}
+
+.backgound_oil_engine {
+  width: 200px;
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  z-index: -1;
+}
+
+@media all and (max-width: 740px) {
+  .oil_part_container {
+    width: 80%;
+  }
+
+  .oil_btn {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .title_oil {
+    width: 90%;
+    font-size: 20px;
+  }
+}

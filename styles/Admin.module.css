@@ -1,0 +1,47 @@
+.main {
+  width: 100%;
+  min-height: 70vh;
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  align-items: center;
+  justify-content: center;
+}
+
+.greenwall {
+  width: 100%;
+  height: 100%;
+  background-color: #edffc2;
+}
+
+.content_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav_buttons_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-direction: row;
+}
+
+.nav_button {
+  width: 200px;
+  height: 45px;
+  margin-top: 20px;
+  border: none;
+  background-color: forestgreen;
+  color: white;
+  border-radius: 3px;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

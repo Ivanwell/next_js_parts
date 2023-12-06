@@ -1,0 +1,136 @@
+.proposal_container {
+  width: 75%;
+  height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #edffc2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.proposal_title {
+  padding: 15px;
+}
+
+.form_box {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 60% 40%;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.box_for_input {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.big_seen {
+  display: block;
+}
+
+.inputField {
+  width: 90%;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 2px solid #50661c;
+  font-size: 16px;
+  text-indent: 10px;
+}
+
+.submit_proposal_btn {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 80%;
+  background-color: #50661c;
+  color: white;
+  font-size: 18px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.viberBtn {
+  display: flex;
+  width: 90px;
+  width: 90px;
+}
+
+.telegramrBtn {
+  display: flex;
+  width: 90px;
+  width: 90px;
+}
+
+.viberSVG {
+  width: 110px;
+  height: 110px;
+}
+
+.telegramSVG {
+  width: 90px;
+  height: 90px;
+}
+
+.contact_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 50%;
+}
+
+@media all and (max-width: 740px) {
+  .proposal_container {
+    width: 100%;
+  }
+
+  .form_box {
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 25% 25% 25%;
+  }
+
+  .big_seen {
+    display: none;
+  }
+
+  .proposal_container h2 {
+    width: 80%;
+  }
+
+  .box_for_input {
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 100%;
+  }
+
+  .inputField {
+    width: 80%;
+    height: 45px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid #50661c;
+    font-size: 18px;
+    text-indent: 8px;
+  }
+
+  .submit_proposal_btn {
+    width: 80%;
+    height: 45px;
+  }
+
+  .contact_box {
+    width: 80%;
+  }
+}

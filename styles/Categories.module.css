@@ -1,0 +1,59 @@
+.main_page {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.page_content {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-bottom: 25px;
+}
+
+.page_content h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.link_to_item {
+  width: 100%;
+  text-align: left;
+  text-indent: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 15px;
+  cursor: pointer;
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link_to_item :first-child {
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media all and (max-width: 600px) {
+  .page_content {
+    width: 95%;
+  }
+  .link_to_item {
+    width: 100%;
+  }
+
+  .link_to_item :first-child {
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

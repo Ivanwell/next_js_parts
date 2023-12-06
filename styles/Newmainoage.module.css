@@ -1,0 +1,390 @@
+.main_container {
+  width: 100%;
+  min-height: 70vh;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container_for_search_and_promo {
+  width: 80%;
+  display: flex;
+  padding: 25px;
+  box-sizing: border-box;
+  height: 100%;
+  gap: 30px;
+}
+
+.search_form {
+  height: 100%;
+  min-height: 300px;
+  min-width: 450px;
+  max-width: 50%;
+  height: auto;
+  border-top: 2px solid #0067d7;
+  border-bottom: 2px solid #0067d7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.container_search_form {
+  width: 95%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.select_car_title {
+  font-size: 16px;
+  color: #353535;
+  font-weight: 600;
+  display: flex;
+  justify-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.select_container {
+  width: 100%;
+  border: #dddee0 solid 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 3px;
+  height: 35px;
+  position: relative;
+  padding-right: 10px;
+}
+
+.container_search_form select {
+  border: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-indent: 40px;
+  cursor: pointer;
+}
+
+.container_search_form select:focus {
+  border: none;
+}
+
+.container_for_brands h2 {
+  background-color: #f37c2e;
+  padding: 7px;
+  box-sizing: content-box;
+  border-radius: 3px;
+  text-indent: 20px;
+}
+
+.number {
+  background-color: #0067d7;
+  height: 35px;
+  width: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: 31px;
+  position: absolute;
+  left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.search_button {
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  background-color: #0067d7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cannot_find_part {
+  width: 95%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cannot_find_part_title {
+  width: 100%;
+  height: 45px;
+  border: 2px #f37c2e solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.cannot_find_part_title:hover {
+  background-color: #f37c2e;
+  color: white;
+}
+
+.promo_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.promo_container img {
+  max-width: 100%;
+}
+
+.container_for_brands {
+  width: 80%;
+  display: flex;
+  padding: 25px;
+  box-sizing: border-box;
+  height: 100%;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.container_for_items_row {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+  row-gap: 20px;
+}
+
+.error_form {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  color: red;
+}
+
+.why_we {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.our_descr {
+  padding-top: 15px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.our_desc1 {
+  width: 30%;
+  height: 50px;
+  border: #132530 1px solid;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.our_desc2 {
+  width: 30%;
+  min-height: 200px;
+  border: #132530 1px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: content-box;
+  gap: 10px;
+}
+
+.our_desc2 img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.our_desc1 svg {
+  position: absolute;
+  top: -20px;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: #ff471a;
+}
+
+@media all and (max-width: 1300px) {
+  .select_container {
+    gap: 8px;
+    height: 30px;
+  }
+  .search_button {
+    height: 30px;
+    font-size: 15px;
+  }
+  .search_form {
+    gap: 5px;
+  }
+
+  .container_for_search_and_promo {
+    width: 90%;
+  }
+  .container_for_brands {
+    width: 90%;
+    gap: 10px;
+  }
+
+  .container_for_items_row {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+
+@media all and (max-width: 1100px) {
+  .select_container {
+    gap: 8px;
+    height: 28px;
+  }
+  .search_button {
+    height: 28px;
+    font-size: 15px;
+  }
+  .search_form {
+    gap: 2px;
+  }
+
+  .container_for_search_and_promo {
+    width: 95%;
+  }
+  .container_for_brands {
+    width: 95%;
+  }
+
+  .container_for_items_row {
+    grid-template-columns: 33.3% 33.3% 33.3%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .promo_container {
+    display: none;
+  }
+
+  .container_for_search_and_promo {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    gap: 30px;
+  }
+
+  .search_form {
+    height: 100%;
+    min-height: 300px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .container_search_form {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .select_container {
+    gap: 8px;
+    height: 35px;
+  }
+
+  .search_button {
+    height: 35px;
+  }
+
+  .cannot_find_part {
+    width: 100%;
+  }
+
+  .cannot_find_part_title {
+    height: 45px;
+    font-size: 14px;
+  }
+
+  .container_for_items_row {
+    grid-template-columns: 50% 50%;
+  }
+
+  .container_for_brands {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .container_for_brands h2 {
+    text-indent: 10px;
+    font-size: 21px;
+    font-weight: 600;
+    padding: 0;
+    background-color: #f37c2e;
+    padding: 7px;
+    box-sizing: content-box;
+    border-radius: 3px;
+  }
+
+  .our_descr {
+    padding-top: 0px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .our_desc1 {
+    width: 90%;
+    margin-top: 30px;
+    height: 55px;
+  }
+
+  .our_desc2 {
+    width: 90%;
+    min-height: 150px;
+    border: #132530 1px solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: content-box;
+    gap: 7px;
+  }
+}
