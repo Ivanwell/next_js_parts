@@ -18,6 +18,8 @@ import {
   electric,
   tiress,
   kuzov,
+  plusCircule,
+  minus,
 } from '@/components/SVGs/SVGs'
 import { useDispatch } from 'react-redux'
 import {
@@ -42,6 +44,14 @@ const NewMainPage = ({ userAgent }) => {
 
   const router = useRouter()
   const [errorForm, setErrorForm] = useState(false)
+  const [opened, setOpened] = useState({
+    first: false,
+    second: false,
+    third: false,
+    forth: false,
+    fifth: false,
+    sixth: false,
+  })
   const dispatch = useDispatch()
 
   const formNewData = useSelector(
@@ -212,7 +222,7 @@ const NewMainPage = ({ userAgent }) => {
           </Link>
         </form>
         <div className={styles.promo_container}>
-          <img src="https://bayrakparts.com/media/promo.jpg" />
+          <img src="https://backend.bayrakparts.com/images/media/%D0%9F%D1%96%D0%B4%D0%B3%D0%BE%D1%82%D1%83%D0%B9%D1%82%D0%B5%20%D1%81%D0%B2%D0%BE%D1%94%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%B4%D0%BE%20%D0%B7%D0%B8%D0%BC%D0%B8%20%D1%80%D0%B0%D0%B7%D0%BE%D0%BC%20%D0%B7%20%D0%BD%D0%B0%D0%BC%D0%B8%20(1).jpg" />
         </div>
       </div>
       <div className={styles.container_for_brands}>
@@ -288,6 +298,110 @@ const NewMainPage = ({ userAgent }) => {
             </div>
           </>
         ) : null}
+        <h2 className={styles.why_we}>Питання - відповідь</h2>
+        <div className={styles.new_container_for_question}>
+          <div className={styles.cont_for_col_questions}>
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, first: !prev.first }))
+              }
+            >
+              До яких марок авто у Вас є запчастини?{' '}
+              {opened.first ? minus : plusCircule}
+            </div>
+            {opened.first ? (
+              <div className={styles.answer_cont}>
+                Ми продаємо запчастини до таких марок : Hyundai, Kia, Toyota,
+                Lexus, Mazda, Nissan, Opel, Volkswagen, Ford, BMW, Honda,
+                General Motors
+              </div>
+            ) : null}
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, second: !prev.second }))
+              }
+            >
+              Чи можна купити у Вас масло та фільтри?
+              {opened.second ? minus : plusCircule}
+            </div>
+            {opened.second ? (
+              <div className={styles.answer_cont}>
+                Так звичайно, у нас представлений великий вибір мастил різних
+                в'язкостей та допусків а також комплекти фільтрів на будь-яку
+                авто.
+              </div>
+            ) : null}
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, third: !prev.third }))
+              }
+            >
+              В мене список запчастин від майстра, можете допомогти?{' '}
+              {opened.third ? minus : plusCircule}
+            </div>
+            {opened.third ? (
+              <div className={styles.answer_cont}>
+                З радістю! Відправте нам список та вінкод Вашого авто, ми
+                підберемо потрібні запчастини та запропонуємо Вам різні
+                варіанти.
+              </div>
+            ) : null}
+          </div>
+          <div className={styles.cont_for_col_questions}>
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, forth: !prev.forth }))
+              }
+            >
+              А що якщо запчастина не підійде, у Вас є повернення?{' '}
+              {opened.forth ? minus : plusCircule}
+            </div>
+            {opened.forth ? (
+              <div className={styles.answer_cont}>
+                Звичайно! Єдине прохання щоб на запчастині не було слідів
+                монтажу. Якщо помилка в підборі з нашого боку - додаткові
+                витрати по доставці ми беремо на себе.
+              </div>
+            ) : null}
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, fifth: !prev.fifth }))
+              }
+            >
+              Які терміни доставки? {opened.fifth ? minus : plusCircule}
+            </div>
+            {opened.fifth ? (
+              <div className={styles.answer_cont}>
+                Якщо запчастина на нашому складі - відправимо в день замовлення.{' '}
+                <br /> Якщо на віддаленому складі - відправимо на наступний
+                день.
+                <br /> Якщо запчастина з-за кордону - від 14 до 45 днів
+                (залежить від країни)
+              </div>
+            ) : null}
+            <div
+              className={styles.cont_for_question}
+              onClick={() =>
+                setOpened(prev => ({ ...prev, sixth: !prev.sixth }))
+              }
+            >
+              Чи даєте гарантію на запчастини?{' '}
+              {opened.sixth ? minus : plusCircule}
+            </div>
+            {opened.sixth ? (
+              <div className={styles.answer_cont}>
+                Так, гарантія надається на усі запчастини. Гарантія дійсна 10000
+                км або 3 місяці. При умові, що є акт виконаних робіт по
+                встановленню запчастини на СТО.
+              </div>
+            ) : null}
+          </div>
+        </div>
         <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
         <div className={styles.our_descr}>
           <div className={styles.our_desc1}>
