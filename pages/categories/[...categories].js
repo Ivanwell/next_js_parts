@@ -44,7 +44,7 @@ const Category = ({ body, body1, userAgent, amount }) => {
 
 export const getServerSideProps = async ({ req, params, query }) => {
   const res = await fetch(
-    `http://backend.bayrakparts.com/get_nodes/${params.categories[0]}`,
+    `https://backend.bayrakparts.com/get_nodes/${params.categories[0]}`,
     {
       method: 'GET',
     }
@@ -68,7 +68,7 @@ export const getServerSideProps = async ({ req, params, query }) => {
       page = `?page=${query.page - 1}`
     }
     const res1 = await fetch(
-      `http://backend.bayrakparts.com/get_products_by_category/${encodeURIComponent(
+      `https://backend.bayrakparts.com/get_products_by_category/${encodeURIComponent(
         data.article1
       )}${page}`,
       {

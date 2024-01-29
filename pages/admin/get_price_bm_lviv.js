@@ -178,7 +178,7 @@ const AddOrderStatus = () => {
     // console.log(body)
     // const filtered = body.filter(item => item.categories.length === 0)
     // console.log(filtered)
-    const res1 = await fetch(`http://backend.bayrakparts.com/get_categories`, {
+    const res1 = await fetch(`https://backend.bayrakparts.com/get_categories`, {
       method: 'GET',
     })
     const body1 = await res1.json()
@@ -459,7 +459,7 @@ const AddOrderStatus = () => {
 
   const getItemm = async () => {
     const res = await fetch(
-      `http://backend.bayrakparts.com/get_item_info/0281006101`,
+      `https://backend.bayrakparts.com/get_item_info/0281006101`,
       {
         method: 'GET',
       }

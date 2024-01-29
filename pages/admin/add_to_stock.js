@@ -55,7 +55,7 @@ const AddToStock = () => {
     e.preventDefault()
     setLoading(true)
     uploadPhoto()
-    let token = await fetch('http://backend.bayrakparts.com/add_stock_item', {
+    let token = await fetch('https://backend.bayrakparts.com/add_stock_item', {
       headers: {
         'Content-Type': 'application/json',
       },

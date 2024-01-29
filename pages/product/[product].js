@@ -909,7 +909,7 @@ export const getServerSideProps = async ({ req, params }) => {
 
   const brand = fullLink[fullLink.length - 2].toUpperCase().replace('.', ' ')
   const res = await fetch(
-    `http://backend.bayrakparts.com/get_item_info/${article}?brand=${encodeURIComponent(
+    `https://backend.bayrakparts.com/get_item_info/${article}?brand=${encodeURIComponent(
       brand
     )}`,
     {

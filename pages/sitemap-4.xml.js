@@ -24,7 +24,7 @@ function SiteMap() {
 
 export async function getServerSideProps({ res }) {
   // We make an API call to gather the URLs for our site
-  const res1 = await fetch(`http://backend.bayrakparts.com/getLinks/80000`, {
+  const res1 = await fetch(`https://backend.bayrakparts.com/getLinks/80000`, {
     method: 'GET',
   })
 
