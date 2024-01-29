@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import styles from '../../../styles/NewItem.module.css'
-import { ShopContext } from '../../../components/contex/contex'
 import Compatibility from '@/components/compatability/compatabikity'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import {
   returning,
   heart,
@@ -22,8 +21,18 @@ import {
 } from '@/components/SVGs/SVGs'
 import { useRouter } from 'next/router'
 import * as ga from '../../../components/lib/gtag'
+import { useUserAgent } from 'next-useragent'
+import { adddToCart } from '@/global_state/features/cart_redux'
+import { useDispatch } from 'react-redux'
 
-const Item = ({ item, productDescription }) => {
+const Item = ({ item, productDescription, userAgent, rating, reviews }) => {
+  let ua
+  if (userAgent.uaString) {
+    ua = useUserAgent(userAgent.uaString)
+  } else {
+    ua = useUserAgent(window.navigator.userAgent)
+  }
+
   let array
   let array1
   let metateg
@@ -58,8 +67,7 @@ const Item = ({ item, productDescription }) => {
       'https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg'
   }
 
-  const { addToCart, isMaximumItems, setOpenAddedToCard } =
-    useContext(ShopContext)
+  const dispatch = useDispatch()
   const router = useRouter()
   const [end, setEnd] = useState(10)
   const [numerPerItem, setNumberPerItem] = useState(1)
@@ -74,16 +82,15 @@ const Item = ({ item, productDescription }) => {
     item.title
   }`
 
+  const linkToPage = `https://bayrakparts.com/search/ut_item/${item.article}`
+
   function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1)
   }
 
-  const addingToCard = () => {
-    let step = 0
-    while (step < numerPerItem) {
-      addToCart(item)
-      step++
-    }
+  const addingToCard = item => {
+    const newItem = { ...item, quantity: numerPerItem }
+    dispatch(adddToCart(newItem))
   }
 
   const addNumberPerItem = number => {
@@ -94,7 +101,6 @@ const Item = ({ item, productDescription }) => {
 
   const check_compatability = e => {
     e.preventDefault()
-    router.push(`/`)
     ga.event({
       action: 'generate_lead',
     })
@@ -110,6 +116,7 @@ const Item = ({ item, productDescription }) => {
         numberPhone
       }`
     )
+    router.push(`/`)
   }
 
   const goTopreviousPage = () => {
@@ -131,6 +138,34 @@ const Item = ({ item, productDescription }) => {
         <meta property="og:description" content={metateg2}></meta>
       </Head>
       <div className={styles.container_item_desctop} typeof="schema:Product">
+        <div rel="schema:offers" className={styles.nodisplay}>
+          <div typeof="schema:Offer">
+            <div property="schema:price" content={item.price}></div>
+            {!item.lvivStock && !item.otherStock ? (
+              <div
+                property="schema:availability"
+                content="http://schema.org/OutOfStock"
+              ></div>
+            ) : (
+              <div
+                property="schema:availability"
+                content="https://schema.org/InStock"
+              ></div>
+            )}
+
+            <div property="schema:priceCurrency" content="UAH"></div>
+            <div
+              property="schema:priceValidUntil"
+              datatype="xsd:date"
+              content="2029-12-31"
+            ></div>
+            <div rel="schema:url" resource={linkToPage}></div>
+            <div
+              property="schema:itemCondition"
+              content="https://schema.org/NewCondition"
+            ></div>
+          </div>
+        </div>
         <div className={styles.container_image}>
           <span className={styles.brand_title}>{item.brandName}</span>
           <img
@@ -203,29 +238,17 @@ const Item = ({ item, productDescription }) => {
             <span className={styles.deliver_cost}> + Вартість доставки</span>
           </div>
           <div className={styles.aviability_cont}>
-            {isMaximumItems.active ? (
-              <div className={styles.cart_full}>
-                {isMaximumItems.aviability ? (
-                  <>Доступно : {isMaximumItems.quantity} шт</>
-                ) : (
-                  <>Товар тільки під замовлення.</>
-                )}
+            {item.lvivStock === '1' ||
+            (item.lvivStock === '-' && item.otherStock === '1') ? (
+              <div className={styles.last_item_cont}>
+                <img src="https://bayrakparts.com/media/hot-icon.svg" />
+                Остання шт на складі
               </div>
             ) : (
-              <>
-                {item.lvivStock === '1' ||
-                (item.lvivStock === '-' && item.otherStock === '1') ? (
-                  <div className={styles.last_item_cont}>
-                    <img src="https://bayrakparts.com/media/hot-icon.svg" />
-                    Остання шт на складі
-                  </div>
-                ) : (
-                  <div className={styles.how_many_available}>
-                    {+item.lvivStock > 0 ? item.lvivStock : item.otherStock} шт
-                    доступно
-                  </div>
-                )}
-              </>
+              <div className={styles.how_many_available}>
+                {+item.lvivStock > 0 ? item.lvivStock : item.otherStock} шт
+                доступно
+              </div>
             )}
           </div>
           <div className={styles.add_remove_items_container}>
@@ -243,7 +266,7 @@ const Item = ({ item, productDescription }) => {
               +
             </button>
           </div>
-          <button className={styles.buy_btn} onClick={() => addingToCard()}>
+          <button className={styles.buy_btn} onClick={() => addingToCard(item)}>
             {newbasket}Купити
           </button>
         </div>
@@ -343,7 +366,35 @@ const Item = ({ item, productDescription }) => {
           </form>
         </div>
       </div>
-      <div className={styles.container_item_mobile}>
+      <div className={styles.container_item_mobile} typeof="schema:Product">
+        <div rel="schema:offers" className={styles.nodisplay}>
+          <div typeof="schema:Offer">
+            <div property="schema:price" content={item.price}></div>
+            {!item.lvivStock && !item.otherStock ? (
+              <div
+                property="schema:availability"
+                content="http://schema.org/OutOfStock"
+              ></div>
+            ) : (
+              <div
+                property="schema:availability"
+                content="https://schema.org/InStock"
+              ></div>
+            )}
+
+            <div property="schema:priceCurrency" content="UAH"></div>
+            <div
+              property="schema:priceValidUntil"
+              datatype="xsd:date"
+              content="2029-12-31"
+            ></div>
+            <div rel="schema:url" resource={linkToPage}></div>
+            <div
+              property="schema:itemCondition"
+              content="https://schema.org/NewCondition"
+            ></div>
+          </div>
+        </div>
         <div className={styles.go_back_cont} onClick={() => goTopreviousPage()}>
           {arrowLeft}
         </div>
@@ -352,16 +403,8 @@ const Item = ({ item, productDescription }) => {
         <img className={styles.image_mobile} src={item.img} alt={item.title} />
         <div className={styles.price_info_cont}>
           <div className={styles.stock_info_cont}>
-            {isMaximumItems.active ? (
-              <div className={styles.cart_full}>
-                {isMaximumItems.aviability ? (
-                  <>Доступно на складі {isMaximumItems.quantity} шт</>
-                ) : (
-                  <>Товар під замовлення</>
-                )}
-              </div>
-            ) : item.lvivStock === '1' ||
-              (item.lvivStock === '-' && item.otherStock === '1') ? (
+            {item.lvivStock === '1' ||
+            (item.lvivStock === '-' && item.otherStock === '1') ? (
               <div className={styles.last_item_cont}>
                 <img src="https://bayrakparts.com/media/hot-icon.svg" />
                 Остання шт на складі
@@ -404,7 +447,7 @@ const Item = ({ item, productDescription }) => {
           </div>
           <button
             className={styles.buy_button_mobile}
-            onClick={() => addingToCard()}
+            onClick={() => addingToCard(item)}
           >
             {newbasket}Купити
           </button>
@@ -549,42 +592,20 @@ const Item = ({ item, productDescription }) => {
   )
 }
 
-export const getServerSideProps = async ({ params, query }) => {
+export const getServerSideProps = async ({ req, params }) => {
   const data = {
     article1: params.ut_item.replace(/[- ]/g, ''),
   }
 
   const res = await fetch(
-    `https://api.edetal.store/partsUTR?article1=${encodeURIComponent(
+    `https://api.bonapart.pro/partsUTR?article1=${encodeURIComponent(
       data.article1
     )}`,
     {
       method: 'GET',
     }
   )
-  const body = await res.json()
-
-  let item
-
-  if (body === null) {
-    item = null
-  } else {
-    item = {
-      title: body.details[0].title,
-      img: body.details[0].images[0]?.fullImagePath || null,
-      price: Math.ceil(body.details[0].yourPrice.amount * 1.15),
-      article: body.details[0].article,
-      brandName: body.details[0].brand.name,
-      lvivStock:
-        body.details[0]?.remains.find(
-          storage => storage.storage.name === 'Львів'
-        )?.remain || 0,
-      otherStock:
-        body.details[0]?.remains.find(
-          storage => storage.storage.name === 'Kиїв Правий'
-        )?.remain || 0,
-    }
-  }
+  const item = await res.json()
 
   const productDescription = {
     fits: [],
@@ -592,10 +613,21 @@ export const getServerSideProps = async ({ params, query }) => {
     oe: [{ brand: item.brandName, number: item.article }],
   }
 
+  const userAgent = req.headers['user-agent']
+
+  function randomNumber(min, max) {
+    return Math.random() * (max - min) + min
+  }
+  const rating = randomNumber(4, 5).toString().slice(0, 3)
+  let reviews = Math.floor(Math.random() * 10) + 1
+
   return {
     props: {
       item,
       productDescription,
+      userAgent,
+      rating,
+      reviews,
     },
   }
 }

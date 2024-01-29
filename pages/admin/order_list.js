@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+'use client'
+
+import { useState } from 'react'
 import styles from '../../styles/Order_list.module.css'
-import { getSession, signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 
 const Order = ({ data }) => {
   const [choosedStatus, setChoosedStatus] = useState(data.status)
@@ -30,7 +30,7 @@ const Order = ({ data }) => {
 
     const finalDate = `${day}.${month}.${year}, ${hour}:${minutes}`
     let token = await fetch(
-      `https://api.edetal.store/updateOrderStatus/${id}`,
+      `https://api.bonapart.pro/updateOrderStatus/${id}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -105,25 +105,6 @@ const Order = ({ data }) => {
 }
 
 const OrderList = ({ orders }) => {
-  const [checking, setChecking] = useState(true)
-
-  // useEffect(() => {
-  //   const checkLog = async () => {
-  //     const session = await getSession()
-
-  //     if (!session) {
-  //       signIn()
-  //     } else {
-  //       setChecking(false)
-  //     }
-  //   }
-  //   checkLog()
-  // }, [])
-
-  // if (checking) {
-  //   return <h2>Завантаження</h2>
-  // }
-
   return (
     <>
       <main className={styles.main}>
@@ -141,7 +122,7 @@ const OrderList = ({ orders }) => {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`https://api.edetal.store/getOrders`, {
+  const res = await fetch(`https://api.bonapart.pro/getOrders`, {
     method: 'GET',
   })
 

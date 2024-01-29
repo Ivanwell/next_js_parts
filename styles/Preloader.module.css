@@ -1,0 +1,18 @@
+.red_back {
+  background-color: rgba(26, 41, 47, 255);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  color: #f37c2e;
+  padding: 15px;
+  box-sizing: content-box;
+  border: 2px solid #f37c2e;
+  box-shadow: rgba(243, 124, 46, 0.5) 0px 2px 8px 0px;
+  font-size: 32px;
+  background-color: rgba(26, 41, 47, 255);
+}

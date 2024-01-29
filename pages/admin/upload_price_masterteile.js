@@ -53,7 +53,7 @@ const AddOrderStatus = () => {
   const sentWholeArticlesToServer = async () => {
     setUpdatingArticles(true)
     const res1 = await fetch(
-      `https://api.edetal.store/delete_articles_msasterteile`,
+      `https://api.bonapart.pro/delete_articles_msasterteile`,
       {
         method: 'GET',
       }
@@ -61,7 +61,7 @@ const AddOrderStatus = () => {
 
     const body1 = await res1.json()
 
-    const res = await fetch(`https://api.edetal.store/get_price_masterteile`, {
+    const res = await fetch(`https://api.bonapart.pro/get_price_masterteile`, {
       method: 'GET',
     })
 
@@ -86,7 +86,7 @@ const AddOrderStatus = () => {
 
   const sentArticlesToServer = async price => {
     let token = await fetch(
-      'https://api.edetal.store/uploadarticlesmasterteile',
+      'https://api.bonapart.pro/uploadarticlesmasterteile',
       {
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const AddOrderStatus = () => {
       day = `0${day}`
     }
     const finalDate = `${day}.${month}.${year}`
-    let token = await fetch('https://api.edetal.store/uploadpricemasterteile', {
+    let token = await fetch('https://api.bonapart.pro/uploadpricemasterteile', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -168,7 +168,7 @@ const AddOrderStatus = () => {
 
     // try {
     //   const response = await fetch(
-    //     'https://api.edetal.store/updatemasterteileprice',
+    //     'https://api.bonapart.pro/updatemasterteileprice',
     //     {
     //       headers: {
     //         'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ const AddOrderStatus = () => {
     //   const json = await response.json()
     // } catch (error) {
     //   console.log('again')
-    //   await fetch('https://api.edetal.store/updatemasterteileprice', {
+    //   await fetch('https://api.bonapart.pro/updatemasterteileprice', {
     //     headers: {
     //       'Content-Type': 'application/json',
     //     },
@@ -296,7 +296,7 @@ const AddOrderStatus = () => {
       day = `0${day}`
     }
     const finalDate = `${day}.${month}.${year}`
-    const res = await fetch(`https://api.edetal.store/get_price_masterteile`, {
+    const res = await fetch(`https://api.bonapart.pro/get_price_masterteile`, {
       method: 'GET',
     })
     const body = await res.json()
@@ -309,7 +309,7 @@ const AddOrderStatus = () => {
 
   const getArrticlesMasterteile = async () => {
     const res = await fetch(
-      `https://api.edetal.store/get_articles_masterteile`,
+      `https://api.bonapart.pro/get_articles_masterteile`,
       {
         method: 'GET',
       }

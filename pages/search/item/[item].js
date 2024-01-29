@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import styles from '../../../styles/NewItem.module.css'
-import { ShopContext } from '../../../components/contex/contex'
 import Compatibility from '@/components/compatability/compatabikity'
 import Link from 'next/link'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import {
   returning,
@@ -27,8 +26,10 @@ import {
 import { useRouter } from 'next/router'
 import * as ga from '../../../components/lib/gtag'
 import { useUserAgent } from 'next-useragent'
+import { adddToCart } from '@/global_state/features/cart_redux'
+import { useDispatch } from 'react-redux'
 
-const Item = ({ item, userAgent }) => {
+const Item = ({ item, userAgent, rating, reviews }) => {
   let ua
   if (userAgent.uaString) {
     ua = useUserAgent(userAgent.uaString)
@@ -44,7 +45,10 @@ const Item = ({ item, userAgent }) => {
     img = item.img.slice(0, 28) + '1920x1920' + item.img.slice(28)
   }
 
-  const { addToCart, isMaximumItems } = useContext(ShopContext)
+  const googleImage = item.img.slice(0, 28) + '320x320' + item.img.slice(28)
+
+  const dispatch = useDispatch()
+
   const router = useRouter()
   const [end, setEnd] = useState(10)
   const [numerPerItem, setNumberPerItem] = useState(1)
@@ -98,7 +102,7 @@ const Item = ({ item, userAgent }) => {
       try {
         setLoadingInformation(true)
         const res1 = await fetch(
-          `https://api.edetal.store/bmpartinfopart?article1=${encodeURIComponent(
+          `https://api.bonapart.pro/bmpartinfopart?article1=${encodeURIComponent(
             data1.article1
           )}`,
           {
@@ -145,12 +149,9 @@ const Item = ({ item, userAgent }) => {
     return s[0].toUpperCase() + s.slice(1)
   }
 
-  const addingToCard = () => {
-    let step = 0
-    while (step < numerPerItem) {
-      addToCart(item)
-      step++
-    }
+  const addingToCard = item => {
+    const newItem = { ...item, quantity: numerPerItem }
+    dispatch(adddToCart(newItem))
   }
 
   const addNumberPerItem = number => {
@@ -192,7 +193,7 @@ const Item = ({ item, userAgent }) => {
       }`
     )
     const res = await fetch(
-      `https://api.edetal.store/get_info_by_vin?vin=${encodeURIComponent(vin)}`,
+      `https://api.bonapart.pro/get_info_by_vin?vin=${encodeURIComponent(vin)}`,
       {
         method: 'GET',
       }
@@ -226,19 +227,6 @@ const Item = ({ item, userAgent }) => {
 
   const linkToPage = `https://bayrakparts.com/search/item/${item.article}`
 
-  const date = new Date()
-  const year = date.getFullYear()
-  let month = date.getMonth() + 1
-  if (month < 10) {
-    month = `0${month}`
-  }
-  let day = date.getDate()
-  if (day < 10) {
-    day = `0${day}`
-  }
-
-  const finalDate = `${year}-${month}-${date}`
-
   return (
     <div className={styles.main_item}>
       <Head>
@@ -246,15 +234,26 @@ const Item = ({ item, userAgent }) => {
           {title1.slice(0, 55) + `... купити , ціна ${item.price} грн`}
         </title>
         <meta name="description" content={metateg} />
-        <meta property="og:type" content="website"></meta>
+        <meta property="og:type" content="product"></meta>
         <meta
           property="og:title"
           content={title.slice(0, 55) + `... купити , ціна ${item.price} грн`}
         ></meta>
+        <meta property="og:image" content={googleImage}></meta>
         <meta property="og:description" content={metateg2}></meta>
+        <meta property="og:url" content={linkToPage}></meta>
       </Head>
       {!ua.isMobile ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
+          <div rel="schema:aggregateRating" className={styles.nodisplay}>
+            <div typeof="schema:AggregateRating">
+              <div
+                property="schema:reviewCount"
+                content={reviews.toString()}
+              ></div>
+              <div property="schema:ratingValue" content={rating}></div>
+            </div>
+          </div>
           <div rel="schema:offers" className={styles.nodisplay}>
             <div typeof="schema:Offer">
               <div property="schema:price" content={item.price}></div>
@@ -274,7 +273,7 @@ const Item = ({ item, userAgent }) => {
               <div
                 property="schema:priceValidUntil"
                 datatype="xsd:date"
-                content={finalDate}
+                content="2029-12-31"
               ></div>
               <div rel="schema:url" resource={linkToPage}></div>
               <div
@@ -294,13 +293,13 @@ const Item = ({ item, userAgent }) => {
             />
           </div>
           <div className={styles.informaton_container}>
-            <div
+            <h1
               className={styles.main_item_title}
               property="schema:name"
               content={item.title}
             >
               {title}
-            </div>
+            </h1>
             <div className={styles.main_item_atcile}>
               Артикул : {item.article}
             </div>
@@ -367,32 +366,21 @@ const Item = ({ item, userAgent }) => {
               <span className={styles.deliver_cost}> + Вартість доставки</span>
             </div>
             <div className={styles.aviability_cont}>
-              {isMaximumItems.active ? (
-                <div className={styles.cart_full}>
-                  {isMaximumItems.aviability ? (
-                    <>Доступно : {isMaximumItems.quantity} шт</>
-                  ) : (
-                    <>Товар тільки під замовлення.</>
-                  )}
+              {item.lvivStock === '1' ||
+              (item.lvivStock === '-' && item.otherStock === '1') ? (
+                <div className={styles.last_item_cont}>
+                  <img
+                    src="https://bayrakparts.com/media/hot-icon.svg"
+                    alt="fire"
+                    loading="lazy"
+                  />
+                  Остання шт на складі
                 </div>
               ) : (
-                <>
-                  {item.lvivStock === '1' ||
-                  (item.lvivStock === '-' && item.otherStock === '1') ? (
-                    <div className={styles.last_item_cont}>
-                      <img
-                        src="https://bayrakparts.com/media/hot-icon.svg"
-                        alt="fire"
-                      />
-                      Остання шт на складі
-                    </div>
-                  ) : (
-                    <div className={styles.how_many_available}>
-                      {+item.lvivStock > 0 ? item.lvivStock : item.otherStock}{' '}
-                      шт доступно
-                    </div>
-                  )}
-                </>
+                <div className={styles.how_many_available}>
+                  {+item.lvivStock > 0 ? item.lvivStock : item.otherStock} шт
+                  доступно
+                </div>
               )}
             </div>
             <div className={styles.add_remove_items_container}>
@@ -410,7 +398,10 @@ const Item = ({ item, userAgent }) => {
                 +
               </button>
             </div>
-            <button className={styles.buy_btn} onClick={() => addingToCard()}>
+            <button
+              className={styles.buy_btn}
+              onClick={() => addingToCard(item)}
+            >
               {newbasket}Купити
             </button>
             <Link href="#form" className={styles.buy_btn_check}>
@@ -510,6 +501,15 @@ const Item = ({ item, userAgent }) => {
       ) : null}
       {ua.isMobile ? (
         <div className={styles.container_item_mobile} typeof="schema:Product">
+          <div rel="schema:aggregateRating" className={styles.nodisplay}>
+            <div typeof="schema:AggregateRating">
+              <div
+                property="schema:reviewCount"
+                content={reviews.toString()}
+              ></div>
+              <div property="schema:ratingValue" content={rating}></div>
+            </div>
+          </div>
           <div rel="schema:offers" className={styles.nodisplay}>
             <div typeof="schema:Offer">
               <div property="schema:price" content={item.price}></div>
@@ -528,7 +528,7 @@ const Item = ({ item, userAgent }) => {
               <div
                 property="schema:priceValidUntil"
                 datatype="xsd:date"
-                content={finalDate}
+                content="2029-12-31"
               ></div>
               <div rel="schema:url" resource={linkToPage}></div>
               <div
@@ -559,22 +559,16 @@ const Item = ({ item, userAgent }) => {
             resource={img}
             loading="lazy"
           />
+
           <div className={styles.price_info_cont}>
             <div className={styles.stock_info_cont}>
-              {isMaximumItems.active ? (
-                <div className={styles.cart_full}>
-                  {isMaximumItems.aviability ? (
-                    <>Доступно на складі {isMaximumItems.quantity} шт</>
-                  ) : (
-                    <>Товар під замовлення</>
-                  )}
-                </div>
-              ) : item.lvivStock === '1' ||
-                (item.lvivStock === '-' && item.otherStock === '1') ? (
+              {item.lvivStock === '1' ||
+              (item.lvivStock === '-' && item.otherStock === '1') ? (
                 <div className={styles.last_item_cont}>
                   <img
                     src="https://bayrakparts.com/media/hot-icon.svg"
                     alt="fire"
+                    loading="lazy"
                   />
                   Остання шт на складі
                 </div>
@@ -618,7 +612,7 @@ const Item = ({ item, userAgent }) => {
             </div>
             <button
               className={styles.buy_button_mobile}
-              onClick={() => addingToCard()}
+              onClick={() => addingToCard(item)}
             >
               {newbasket}Купити
             </button>
@@ -853,64 +847,56 @@ const Item = ({ item, userAgent }) => {
 }
 
 export const getServerSideProps = async ({ req, params, query }) => {
+  const userAgent = req.headers['user-agent']
   const data = {
     article1: params.item.replace(/[- /]/g, ''),
+    brand: query.brand,
   }
 
-  const res = await fetch(
-    `https://api.edetal.store/bmpart?article1=${encodeURIComponent(
-      data.article1
-    )}`,
-    {
-      method: 'GET',
+  function randomNumber(min, max) {
+    return Math.random() * (max - min) + min
+  }
+  const rating = randomNumber(4, 5).toString().slice(0, 3)
+  let reviews = Math.floor(Math.random() * 10) + 1
+
+  if (query.brand) {
+    const res = await fetch(
+      `http://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
+        data.article1
+      )}&brand=${encodeURIComponent(data.brand)}`,
+      {
+        method: 'GET',
+      }
+    )
+    const item = await res.json()
+
+    return {
+      props: {
+        item,
+        userAgent,
+        rating,
+        reviews,
+      },
     }
-  )
-  const body = await res.json()
-  let finaldata
-
-  if (!query.brand) {
-    finaldata = body.products.find(
-      product =>
-        product.article.replace(/[- /]/g, '') ===
-        data.article1.replace(/[- /]/g, '')
-    )
   } else {
-    finaldata = body.products.find(
-      product =>
-        product.article.replace(/[- /]/g, '') ===
-          data.article1.replace(/[- /]/g, '') && product.brand === query.brand
+    const res = await fetch(
+      `http://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
+        data.article1
+      )}`,
+      {
+        method: 'GET',
+      }
     )
-  }
+    const item = await res.json()
 
-  let img =
-    'https://cdn.bm.parts/photos/' +
-    finaldata.default_image.slice(5).replace(/[&\/\\]/g, '/')
-
-  if (img === 'https://cdn.bm.parts/photos/') {
-    img =
-      'https://as2.ftcdn.net/v2/jpg/04/00/24/31/1000_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg'
-  } else {
-    img = img
-  }
-
-  const item = {
-    title: finaldata.name,
-    price: Math.ceil(finaldata.price * 1.15),
-    img: img,
-    article: finaldata.article,
-    brandName: finaldata.brand,
-    lvivStock: finaldata.in_stocks[0]?.quantity,
-    otherStock: finaldata.in_others?.quantity,
-    uuid: finaldata.uuid,
-  }
-
-  const userAgent = req.headers['user-agent']
-
-  return {
-    props: {
-      item,
-      userAgent,
-    },
+    return {
+      props: {
+        item,
+        userAgent,
+        rating,
+        reviews,
+      },
+    }
   }
 }
 

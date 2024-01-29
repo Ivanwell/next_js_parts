@@ -10,11 +10,22 @@ import {
   arrowup,
   arrowDown,
 } from '@/components/SVGs/SVGs'
-import { ShopContext } from '@/components/contex/contex'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import styles from '../../styles/NewSearch.module.css'
+import { adddToCart } from '@/global_state/features/cart_redux'
+import { useUserAgent } from 'next-useragent'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import {
+  setDataForForm,
+  setLoadingData,
+  setBrand,
+  setModel,
+  setCategory,
+  setPart,
+} from '@/global_state/features/cardata_redux'
 
 const NoSearchResult = ({ title }) => {
   return (
@@ -37,16 +48,11 @@ const NoSearchResult = ({ title }) => {
 
 const SearchedItem = ({ product }) => {
   const [numberPerItem, setNumberPerItem] = useState(1)
-  const { addToCart } = useContext(ShopContext)
 
-  const router = useRouter()
-
-  const goToItem = item_article => {
-    router.push(`/search/item/${item_article}`)
-  }
+  const dispatch = useDispatch()
 
   let img =
-    'https://cdn.bm.parts/photos/' +
+    'https://cdn.bm.parts/photos/320x320' +
     product.default_image.slice(5).replace(/[&\/\\]/g, '/')
 
   const item = {
@@ -59,15 +65,14 @@ const SearchedItem = ({ product }) => {
     otherStock: product.in_others.quantity,
   }
 
-  const link = `/search/item/${item.article.replace(/[&\/\\]/g, '')}`
-
-  const addingToCard = () => {
-    let step = 0
-    while (step < numberPerItem) {
-      addToCart(item)
-      step++
-    }
+  const adddingToCard = item => {
+    const newItem = { ...item, quantity: numberPerItem }
+    dispatch(adddToCart(newItem))
   }
+
+  const link = `/search/item/${item.article.replace(/[&\/\\]/g, '')}?brand=${
+    item.brandName
+  }`
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
@@ -86,11 +91,7 @@ const SearchedItem = ({ product }) => {
         <img src={img} />
       </div>
       <div className={styles.main_info_product}>
-        <Link
-          className={styles.top_name_item}
-          href={link}
-          //onClick={() => goToItem(item.article)}
-        >
+        <Link className={styles.top_name_item} href={link}>
           {title}
         </Link>
         <div className={styles.artilce}>Артикул: {item.article}</div>
@@ -159,7 +160,7 @@ const SearchedItem = ({ product }) => {
         ) : (
           <button
             className={styles.byu_btn_search}
-            onClick={() => addingToCard()}
+            onClick={() => adddingToCard(item)}
           >
             {newbasket}Купити
           </button>
@@ -171,7 +172,7 @@ const SearchedItem = ({ product }) => {
 
 const SearchedItemMobile = ({ product }) => {
   const [numberPerItem, setNumberPerItem] = useState(1)
-  const { addToCart } = useContext(ShopContext)
+  const dispatch = useDispatch()
   const router = useRouter()
 
   const goToItem = item_article => {
@@ -179,7 +180,7 @@ const SearchedItemMobile = ({ product }) => {
   }
 
   let img =
-    'https://cdn.bm.parts/photos/' +
+    'https://cdn.bm.parts/photos/320x320' +
     product.default_image.slice(5).replace(/[&\/\\]/g, '/')
 
   const item = {
@@ -192,15 +193,14 @@ const SearchedItemMobile = ({ product }) => {
     otherStock: product.in_others.quantity,
   }
 
-  const link = `/search/item/${item.article.replace(/[&\/\\]/g, '')}`
-
-  const addingToCard = () => {
-    let step = 0
-    while (step < numberPerItem) {
-      addToCart(item)
-      step++
-    }
+  const adddingToCard = item => {
+    const newItem = { ...item, quantity: numberPerItem }
+    dispatch(adddToCart(newItem))
   }
+
+  const link = `/search/item/${item.article.replace(/[&\/\\]/g, '')}?brand=${
+    item.brandName
+  }`
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
@@ -226,11 +226,7 @@ const SearchedItemMobile = ({ product }) => {
           >
             <img src={img} />
           </div>
-          <Link
-            className={styles.main_info}
-            href={link}
-            //onClick={() => goToItem(item.article)}
-          >
+          <Link className={styles.main_info} href={link}>
             {title}{' '}
             {item.lvivStock === '-' && item.otherStock === '-' ? (
               <div className={styles.aviability_cont_out}>
@@ -282,7 +278,7 @@ const SearchedItemMobile = ({ product }) => {
           </div>
           <button
             className={styles.byu_btn_mobile}
-            onClick={() => addingToCard()}
+            onClick={() => adddingToCard(item)}
           >
             {newbasket}
           </button>
@@ -292,31 +288,44 @@ const SearchedItemMobile = ({ product }) => {
   )
 }
 
-const NewSearch = ({ productData }) => {
-  const {
-    selectingBrand,
-    selectingModel,
-    selectingCaregory,
-    selectingPart,
-    fromData,
-    brandSearch,
-    model,
-    category,
-    part,
-    loading,
-    setLoading,
-    setFormData,
-  } = useContext(ShopContext)
+const NewSearch = ({ productData, userAgent }) => {
+  let ua
+  if (userAgent.uaString) {
+    ua = useUserAgent(userAgent.uaString)
+  } else {
+    ua = useUserAgent(window.navigator.userAgent)
+  }
+
+  const dispatch = useDispatch()
+
+  const formNewData = useSelector(
+    state => state.dataSelectscartReducer.value.dataForSelects
+  )
+  const choosenBrand = useSelector(
+    state => state.dataSelectscartReducer.value.brand
+  )
+  const choosenModel = useSelector(
+    state => state.dataSelectscartReducer.value.model
+  )
+  const choosenCategory = useSelector(
+    state => state.dataSelectscartReducer.value.category
+  )
+  const choosenPart = useSelector(
+    state => state.dataSelectscartReducer.value.part
+  )
+  const loadingFromData = useSelector(
+    state => state.dataSelectscartReducer.value.loading
+  )
 
   useEffect(() => {
-    if (!fromData) {
+    if (!formNewData) {
       const abortController = new AbortController()
       const { signal } = abortController
       const apiCall = async () => {
         try {
-          setLoading(true)
+          dispatch(setLoadingData(true))
           const res = await fetch(
-            `https://api.edetal.store/getSearchCatParts`,
+            `https://api.bonapart.pro/getSearchCatParts`,
             {
               method: 'GET',
               signal: signal,
@@ -324,12 +333,12 @@ const NewSearch = ({ productData }) => {
           )
 
           const body = await res.json()
-          setFormData(body[0].partsData)
-          setLoading(false)
+          dispatch(setDataForForm(body[0].partsData))
+          dispatch(setLoadingData(false))
         } catch (error) {
           if (!signal?.aborted) {
             console.error(error)
-            setLoading(false)
+            dispatch(setLoadingData(false))
           }
         }
       }
@@ -347,11 +356,11 @@ const NewSearch = ({ productData }) => {
   const title = router.query.article
   const submitingSearch = e => {
     e.preventDefault()
-    if (!brandSearch || !model || !category || !part) {
+    if (!choosenBrand || !choosenModel || !choosenCategory || !choosenPart) {
       setErrorForm(true)
     } else {
       setErrorForm(false)
-      const article = part + ' ' + brandSearch + ' ' + model
+      const article = choosenPart + ' ' + choosenBrand + ' ' + choosenModel
       router.push(`/search/${article}`)
     }
   }
@@ -362,140 +371,151 @@ const NewSearch = ({ productData }) => {
         <meta name="description" content={title} />
       </Head>
       <div className={styles.search_container}>
-        <div className={styles.search_model_cont}>
-          <form
-            className={styles.search_form}
-            onSubmit={e => submitingSearch(e)}
-          >
-            <div className={styles.container_search_form}>
-              <div className={styles.select_car_title}>
-                {search}Виберіть Ваше авто для пошуку запчастин
-              </div>
-              <div className={styles.select_container}>
-                <span className={styles.number}>1</span>
-                <select
-                  value={brandSearch}
-                  onChange={e => selectingBrand(e.target.value)}
-                >
-                  {!loading ? (
-                    <option selected>Оберіть марку</option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {fromData
-                    ? fromData.brands.map(brand => <option>{brand}</option>)
-                    : null}
-                </select>
-              </div>
-              <div className={styles.select_container}>
-                <span className={styles.number}>2</span>
-                <select
-                  value={model}
-                  onChange={e => selectingModel(e.target.value)}
-                >
-                  {!loading ? (
-                    <option selected>Оберіть модель</option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {brandSearch
-                    ? fromData.models
-                        .find(product => product.brandName === brandSearch)
-                        .Models.map(model1 => (
-                          <option value={model1}>{model1}</option>
+        {!ua.isMobile ? (
+          <div className={styles.search_model_cont}>
+            <form
+              className={styles.search_form}
+              onSubmit={e => submitingSearch(e)}
+            >
+              <div className={styles.container_search_form}>
+                <div className={styles.select_car_title}>
+                  {search}Виберіть Ваше авто для пошуку запчастин
+                </div>
+                <div className={styles.select_container}>
+                  <span className={styles.number}>1</span>
+                  <select
+                    value={choosenBrand}
+                    onChange={e => dispatch(setBrand(e.target.value))}
+                  >
+                    {!loadingFromData ? (
+                      <option selected>Оберіть марку</option>
+                    ) : (
+                      <option selected>Завантаження...</option>
+                    )}
+                    {formNewData
+                      ? formNewData.brands.map(brand => (
+                          <option>{brand}</option>
                         ))
-                    : null}
-                </select>
-              </div>
-              <div className={styles.select_container}>
-                <span className={styles.number}>3</span>
-                <select
-                  value={category}
-                  onChange={e => selectingCaregory(e.target.value)}
-                >
-                  {!loading ? (
-                    <option selected>Оберіть категорію</option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {model
-                    ? fromData.categories.map(categori => (
-                        <option value={categori}>{categori}</option>
-                      ))
-                    : null}
-                </select>
-              </div>
-              <div className={styles.select_container}>
-                <span className={styles.number}>4</span>
-                <select
-                  onChange={e => selectingPart(e.target.value)}
-                  value={part}
-                >
-                  {!loading ? (
-                    <option selected>Оберіть запчастину</option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {category
-                    ? fromData.exactParts
-                        .find(castogory => castogory.catigory === category)
-                        .Models.map(part => (
-                          <option value={part}>{part}</option>
+                      : null}
+                  </select>
+                </div>
+                <div className={styles.select_container}>
+                  <span className={styles.number}>2</span>
+                  <select
+                    value={choosenModel}
+                    onChange={e => dispatch(setModel(e.target.value))}
+                  >
+                    {!loadingFromData ? (
+                      <option selected>Оберіть модель</option>
+                    ) : (
+                      <option selected>Завантаження...</option>
+                    )}
+                    {choosenBrand
+                      ? formNewData.models
+                          .find(product => product.brandName === choosenBrand)
+                          .Models.map(model1 => (
+                            <option value={model1}>{model1}</option>
+                          ))
+                      : null}
+                  </select>
+                </div>
+                <div className={styles.select_container}>
+                  <span className={styles.number}>3</span>
+                  <select
+                    value={choosenCategory}
+                    onChange={e => dispatch(setCategory(e.target.value))}
+                  >
+                    {!loadingFromData ? (
+                      <option selected>Оберіть категорію</option>
+                    ) : (
+                      <option selected>Завантаження...</option>
+                    )}
+                    {choosenModel
+                      ? formNewData.categories.map(categori => (
+                          <option value={categori}>{categori}</option>
                         ))
-                    : null}
-                </select>
+                      : null}
+                  </select>
+                </div>
+                <div className={styles.select_container}>
+                  <span className={styles.number}>4</span>
+                  <select
+                    onChange={e => dispatch(setPart(e.target.value))}
+                    value={choosenPart}
+                  >
+                    {!loadingFromData ? (
+                      <option selected>Оберіть запчастину</option>
+                    ) : (
+                      <option selected>Завантаження...</option>
+                    )}
+                    {choosenCategory
+                      ? formNewData.exactParts
+                          .find(
+                            castogory => castogory.catigory === choosenCategory
+                          )
+                          .Models.map(part => (
+                            <option value={part}>{part}</option>
+                          ))
+                      : null}
+                  </select>
+                </div>
+                <button type="submit" className={styles.search_button}>
+                  Пошук
+                </button>
               </div>
-              <button type="submit" className={styles.search_button}>
-                Пошук
-              </button>
-            </div>
-            {errorForm ? (
-              <div className={styles.error_form}>Заповніть усі дані</div>
-            ) : null}
-            <Link href="/leave_request" className={styles.cannot_find_part}>
-              <span className={styles.cannot_find_part_title}>
-                Не вдається знайти запчастину? Ми допоможемо!
-              </span>
-            </Link>
-          </form>
-        </div>
-        <div className={styles.search_result_cont}>
-          <h1>{title}</h1>
-          {productData.length > 0 ? (
-            <div className={styles.search_results}>
-              {productData.map(product => (
-                <SearchedItem product={product} />
-              ))}
-            </div>
-          ) : (
-            <NoSearchResult title={title} />
-          )}
-        </div>
-        <div className={styles.search_result_cont_mobile}>
-          <div className={styles.go_back_cont}>{arrowLeft}</div>
-          <div className={styles.search_results_mobile}>
+              {errorForm ? (
+                <div className={styles.error_form}>Заповніть усі дані</div>
+              ) : null}
+              <Link href="/leave_request" className={styles.cannot_find_part}>
+                <span className={styles.cannot_find_part_title}>
+                  Не вдається знайти запчастину? Ми допоможемо!
+                </span>
+              </Link>
+            </form>
+          </div>
+        ) : null}
+        {!ua.isMobile ? (
+          <div className={styles.search_result_cont}>
             <h1>{title}</h1>
             {productData.length > 0 ? (
-              productData.map(product => (
-                <SearchedItemMobile product={product} />
-              ))
+              <div className={styles.search_results}>
+                {productData.map(product => (
+                  <SearchedItem product={product} />
+                ))}
+              </div>
             ) : (
               <NoSearchResult title={title} />
             )}
           </div>
-        </div>
+        ) : null}
+        {ua.isMobile ? (
+          <div className={styles.search_result_cont_mobile}>
+            <div className={styles.go_back_cont}>{arrowLeft}</div>
+            <div className={styles.search_results_mobile}>
+              <h1>{title}</h1>
+              {productData.length > 0 ? (
+                productData.map(product => (
+                  <SearchedItemMobile product={product} />
+                ))
+              ) : (
+                <NoSearchResult title={title} />
+              )}
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   )
 }
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({ req, params }) => {
   const data = {
     article1: params.article,
   }
+  const userAgent = req.headers['user-agent']
 
   const res = await fetch(
-    `https://api.edetal.store/bmparts?article1=${encodeURIComponent(
+    `http://api.bonapart.pro/bmparts?article1=${encodeURIComponent(
       data.article1
     )}`,
     {
@@ -509,6 +529,7 @@ export const getServerSideProps = async ({ params }) => {
   return {
     props: {
       productData: array,
+      userAgent,
     },
   }
 }

@@ -1,11 +1,10 @@
 import '../styles/globals.css'
-import Layout from '@/components/layout/layout'
-import { ShopContextProvider } from '@/components/contex/contex'
+import Preloader from '@/components/preloader'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useEffect, useContext } from 'react'
-import { SessionProvider } from 'next-auth/react'
+import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
+import dynamic from 'next/dynamic'
 
 export default function App({
   Component,
@@ -13,6 +12,10 @@ export default function App({
 }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+
+  const DynamicHeader = dynamic(() => import('@/components/layout/layout'), {
+    loading: () => <Preloader />,
+  })
 
   const handleStart = url => {
     setLoading(true)
@@ -58,20 +61,16 @@ export default function App({
     return <></>
   } else
     return (
-      <ShopContextProvider>
-        <SessionProvider session={session}>
-          <Layout>
-            <>
-              {loading === false ? (
-                <Component {...pageProps} />
-              ) : (
-                <h1 className="loading_spinner">
-                  <div class="lds-dual-ring"></div>
-                </h1>
-              )}
-            </>
-          </Layout>
-        </SessionProvider>
-      </ShopContextProvider>
+      <DynamicHeader>
+        <>
+          {loading === false ? (
+            <Component {...pageProps} />
+          ) : (
+            <h1 className="loading_spinner">
+              <div className="lds-dual-ring"></div>
+            </h1>
+          )}
+        </>
+      </DynamicHeader>
     )
 }

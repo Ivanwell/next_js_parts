@@ -1,5 +1,3 @@
-import { Exo } from 'next/font/google'
-
 export const basket = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -463,8 +461,8 @@ export const search = (
 export const returning = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="35"
-    height="35"
+    width="40"
+    height="40"
     fill="currentColor"
     class="bi bi-arrow-repeat"
     viewBox="0 0 16 16"
@@ -474,6 +472,19 @@ export const returning = (
       fill-rule="evenodd"
       d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"
     />
+  </svg>
+)
+
+export const retirning1 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    fill="currentColor"
+    class="bi bi-repeat"
+    viewBox="0 0 16 16"
+  >
+    <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
   </svg>
 )
 
@@ -1016,5 +1027,45 @@ export const info_circule = (
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+  </svg>
+)
+
+export const closeSvg = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-x-circle"
+    viewBox="0 0 16 16"
+  >
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+  </svg>
+)
+
+export const arrowRight1 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-caret-right-fill"
+    viewBox="0 0 16 16"
+  >
+    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+  </svg>
+)
+
+export const fireIgn = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-fire"
+    viewBox="0 0 16 16"
+  >
+    <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15" />
   </svg>
 )

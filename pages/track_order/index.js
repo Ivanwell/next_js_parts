@@ -30,7 +30,7 @@ const Track_Order = () => {
     }
     setLoading(true)
     const res = await fetch(
-      `https://api.edetal.store/findOrder/${orderNumber}`,
+      `https://api.bonapart.pro/findOrder/${orderNumber}`,
       {
         method: 'GET',
       }

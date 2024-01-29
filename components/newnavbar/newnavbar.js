@@ -6,7 +6,7 @@ import {
   garage1,
   heart,
   car,
-  oil,
+  fireIgn,
   newbasket,
   menuBurger,
   search,
@@ -24,477 +24,83 @@ import {
   accecories,
   remni,
   kuzov,
+  closeSvg,
 } from '../SVGs/SVGs'
-import { useContext, useState } from 'react'
-import { ShopContext } from '../contex/contex'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
+import {
+  handleOpenPropToCheck,
+  hideFullImage,
+} from '@/global_state/features/cart_redux'
+import { useDispatch } from 'react-redux'
 
 const NewNavbar = () => {
-  const {
-    itemsNumber,
-    cartItems,
-    cartsItemsObj,
-    openAddedToCard,
-    setOpenAddedToCard,
-  } = useContext(ShopContext)
+  const dispatch = useDispatch()
+  const sumury = useSelector(state => state.cartReducer.value.total)
+  const sumury2 = useSelector(state => state.cartReducer.value.sum)
+  const openedProposal = useSelector(
+    state => state.cartReducer.value.openedCheckoutProposal
+  )
+  const isImageShown = useSelector(
+    state => state.cartReducer.value.imgCont.visibility
+  )
+  const fullImage = useSelector(state => state.cartReducer.value.imgCont.image)
   const [openedSearch, setOpenedSearch] = useState(false)
   const [openedMenuMobile, setOpenedMobileMenu] = useState(false)
   const [article, setArticle] = useState('')
   const [loading, setLoading] = useState(false)
   const [noResults, setNoResults] = useState(false)
-  var total = 0
 
   const router = useRouter()
 
-  var sum = cartItems.reduce(function (accumulator, currentValue) {
-    return (
-      accumulator + currentValue.price * cartsItemsObj[currentValue.article]
-    )
-  }, total)
-
-  const goToStockProductPage = () => {
-    router.push(`/stock/${article.replace(/[- /]/g, '').toUpperCase()}`)
-  }
-
-  const goToSearchProductPage = () => {
-    router.push(`/search/item/${article.replace(/[- /]/g, '')}`)
-  }
-
-  const goToSearchUTProductPage = item => {
-    router.push({
-      pathname: `/search/ut_item/${article.replace(/[- /]/g, '')}`,
-    })
-  }
-
-  const goToSearchTMProductPage = item => {
-    router.push({
-      pathname: `/search/tm_stock_item/${article
-        .replace(/[- /]/g, '')
-        .toUpperCase()}`,
-    })
-  }
-
-  const searchInTMProductPage = async () => {
-    const res = await fetch(
-      `https://technomir.bayrakparts.com/findProductTechnomir/${article
-        .replace(/[- /.]/g, '')
-        .toUpperCase()}`,
-      {
-        method: 'GET',
-      }
-    )
-    const body = await res.json()
-    if (body) {
-      const item = {
-        title: body.title,
-        price: Math.ceil(+body.price * 39 * 1.15),
-        img: body.image,
-        article: body.article,
-        brandName: body.brand,
-        lvivStock: body.amount,
-        otherStock: '-',
-      }
-      return item
-    } else {
-      return null
-    }
-  }
-
-  const goToSearchMasterTeileProductPage = () => {
-    router.push({
-      pathname: `/search/mt_item/${article
-        .replace(/[- /]/g, '')
-        .toUpperCase()}`,
-    })
-  }
-
-  const searchInMasterTeileProductPage = async () => {
-    const res = await fetch(
-      `https://masterteile.bayrakparts.com/findProductMasterteile/${article
-        .replace(/[- /.]/g, '')
-        .toUpperCase()}`,
-      {
-        method: 'GET',
-      }
-    )
-    const body = await res.json()
-    if (body) {
-      const item = {
-        title: body.title,
-        price: body.price,
-        img: body.image,
-        article: body.article,
-        brandName: body.brand,
-        lvivStock: body.amount,
-        otherStock: '-',
-      }
-      return item
-    } else {
-      return null
-    }
-  }
-
-  const searchInUnickTrade = async () => {
-    const data = {
-      article1: article.replace(/[- /]/g, ''),
-    }
-
-    const res = await fetch(
-      `https://api.edetal.store/partsUTR?article1=${encodeURIComponent(
-        data.article1
-      )}`,
-      {
-        method: 'GET',
-      }
-    )
-    const body = await res.json()
-
-    if (!body) {
-      return null
-    }
-    {
-      const stockInLviv = body?.details[0].remains.find(
-        storage => storage.storage.name === 'Львів'
-      )
-
-      const otherStock = body?.details[0].remains.find(
-        storage => storage.storage.name === 'Kиїв Правий'
-      )
-
-      if (stockInLviv === undefined && otherStock === undefined) {
-        return null
-      } else {
-        const item = {
-          title: body.details[0]?.title,
-          img: body.details[0].images[0]?.fullImagePath,
-          price: Math.ceil(body.details[0].yourPrice.amount * 1.12),
-          article: body.details[0].article.replace(/[- /]/g, ''),
-          brandName: body.details[0].brand.name,
-          lvivStock: stockInLviv?.remain,
-          otherStock: otherStock?.remain,
-        }
-
-        return item
-      }
-    }
-  }
-
-  const searchInStock = async () => {
-    const res = await fetch(
-      `https://api.edetal.store/findProduct/${article
-        .replace(/[- /]/g, '')
-        .toUpperCase()}`,
-      {
-        method: 'GET',
-      }
-    )
-
-    const body = await res.json()
-    return body
-  }
-
-  const searchInBMParts = async () => {
-    const res = await fetch(
-      `https://api.edetal.store/bmparts?article1=${encodeURIComponent(
-        article
-      )}`,
-      {
-        method: 'GET',
-      }
-    )
-
-    const body = await res.json()
-    const array = Object.values(body.products)
-    const finaldata = array.find(
-      product =>
-        product.article.replace(/[- ]/g, '') === article.replace(/[- ]/g, '')
-    )
-    return finaldata
-  }
-
-  const searchArticle = async e => {
+  const searchInStock = async e => {
     e.preventDefault()
-    setNoResults(false)
     setLoading(true)
-    const dataFromStock = await searchInStock()
-    if (dataFromStock) {
-      goToStockProductPage()
-      setLoading(false)
-    } else {
-      const dataFromBM = await searchInBMParts()
-      if (dataFromBM) {
-        setLoading(false)
-        goToSearchProductPage(dataFromBM)
-      } else {
-        const dataFromUT = await searchInUnickTrade()
-        if (dataFromUT) {
-          setLoading(false)
-          goToSearchUTProductPage(dataFromUT)
-        } else {
-          const dataFromTM = await searchInTMProductPage()
-          if (dataFromTM) {
-            goToSearchTMProductPage(dataFromTM)
-            setLoading(false)
-          } else {
-            const dataFromMT = await searchInMasterTeileProductPage()
-            if (dataFromMT) {
-              goToSearchMasterTeileProductPage()
-              setLoading(false)
-            } else {
-              setNoResults(true),
-                setLoading(false),
-                setTimeout(() => {
-                  setNoResults(false)
-                }, 7000)
-            }
-          }
-        }
+    const res = await fetch(
+      `http://backend.bayrakparts.com/get_item_info/${article
+        .replace(/[- /]/g, '')
+        .toUpperCase()}`,
+      {
+        method: 'GET',
       }
+    )
+
+    const body = await res.json()
+    if (body) {
+      router.push(`/product/${body.link[0].link}`)
+    } else {
+      setNoResults(true)
     }
+    setLoading(false)
   }
-
-  // const goToStockProductPage = () => {
-  //   router.push(`/stock/${article.replace(/[- /]/g, '').toUpperCase()}`)
-  // }
-
-  // const goToSearchProductPage = () => {
-  //   router.push(`/search/item/${article.replace(/[- /]/g, '')}`)
-  // }
-
-  // const goToSearchUTProductPage = item => {
-  //   router.push({
-  //     pathname: `/search/ut_item/${article.replace(/[- /]/g, '')}`,
-  //     query: item,
-  //   })
-  // }
-
-  // const goToSearchTMProductPage = item => {
-  //   router.push({
-  //     pathname: `/search/tm_stock_item/${article.replace(/[- /]/g, '')}`,
-  //     query: {
-  //       item,
-  //       productDescription: {
-  //         fits: [],
-  //         details: null,
-  //         oe: [{ brand: item.brandName, number: item.article }],
-  //       },
-  //     },
-  //   })
-  // }
-
-  // const searchInTMProductPage = async () => {
-  //   const data = {
-  //     article1: article.replace(/[- /]/g, ''),
-  //   }
-
-  //   const res1 = await fetch(
-  //     `https://api.edetal.store/partsTM1?article1=${encodeURIComponent(
-  //       data.article1
-  //     )}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-  //   const brandID = await res1.json()
-
-  //   if (!brandID) {
-  //     return null
-  //   }
-
-  //   const res2 = await fetch(
-  //     `https://api.edetal.store/partsTM2?article1=${encodeURIComponent(
-  //       data.article1
-  //     )}&brandID1=${brandID?.data[0].brandId}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-  //   const info = await res2.json()
-
-  //   const res3 = await fetch(
-  //     `https://api.edetal.store/partsTM3?article1=${encodeURIComponent(
-  //       data.article1
-  //     )}&brandID1=${brandID.data[0].brandId}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-  //   const price1 = await res3.json()
-
-  //   const min = Math.min.apply(
-  //     Math,
-  //     price1.data[0].rests.map(function (o) {
-  //       return o.deliveryTime
-  //     })
-  //   )
-
-  //   const isLargeNumber = element => element.deliveryTime === min
-  //   const index1 = price1.data[0].rests.findIndex(isLargeNumber)
-
-  //   const dataTM = {
-  //     title: price1.data[0].descriptionUa || price1.data[0].descriptionRus,
-  //     img: info.data?.images[0]?.image,
-  //     price: Math.ceil(price1.data[0].rests[index1].price * 1.12),
-  //     article: price1.data[0].code,
-  //     deliveryTime: price1.data[0].rests[index1].deliveryTime,
-  //     quantity: price1.data[0].rests[index1].quantity,
-  //     brandName: info.data.brand,
-  //     weight: price1.data[0].weight,
-  //     deliveryType: price1.data[0].rests[index1].deliveryType,
-  //   }
-
-  //   return dataTM
-  // }
-
-  // const searchInUnickTrade = async () => {
-  //   const data = {
-  //     article1: article.replace(/[- /]/g, ''),
-  //   }
-
-  //   const res = await fetch(
-  //     `https://api.edetal.store/partsUTR?article1=${encodeURIComponent(
-  //       data.article1
-  //     )}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-  //   const body = await res.json()
-
-  //   if (!body) {
-  //     return null
-  //   }
-  //   {
-  //     const stockInLviv = body?.details[0].remains.find(
-  //       storage => storage.storage.name === 'Львів'
-  //     )
-
-  //     const otherStock = body?.details[0].remains.find(
-  //       storage => storage.storage.name === 'Kиїв Правий'
-  //     )
-
-  //     const preOrder = body?.details[0].remains.find(
-  //       storage => storage.storage.name === 'Під замовлення (2-4 дні)'
-  //     )
-
-  //     let img = body.details[0].images[0]?.fullImagePath
-
-  //     if (!img) {
-  //       img =
-  //         'https://as2.ftcdn.net/v2/jpg/04/00/24/31/1000_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg'
-  //     }
-
-  //     let stock = otherStock?.remain
-  //     if (stock === '') {
-  //       stock = preOrder?.remain
-  //     }
-
-  //     const item = {
-  //       title: body.details[0]?.title,
-  //       img: img,
-  //       price: Math.ceil(body.details[0].yourPrice.amount * 1.12),
-  //       article: body.details[0].article.replace(/[- /]/g, ''),
-  //       brandName: body.details[0].brand.name,
-  //       lvivStock: stockInLviv?.remain,
-  //       otherStock: stock,
-  //       preOrder: preOrder?.remain,
-  //     }
-
-  //     return item
-  //   }
-  // }
-
-  // const searchInStock = async () => {
-  //   const res = await fetch(
-  //     `https://api.edetal.store/findProduct/${article
-  //       .replace(/[- /]/g, '')
-  //       .toUpperCase()}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-
-  //   const body = await res.json()
-  //   return body
-  // }
-
-  // const searchInBMParts = async () => {
-  //   const res = await fetch(
-  //     `https://api.edetal.store/bmparts?article1=${encodeURIComponent(
-  //       article
-  //     )}`,
-  //     {
-  //       method: 'GET',
-  //     }
-  //   )
-
-  //   const body = await res.json()
-  //   const array = Object.values(body.products)
-  //   const finaldata = array.find(
-  //     product =>
-  //       product.article.replace(/[- ]/g, '') === article.replace(/[- ]/g, '')
-  //   )
-  //   return finaldata
-  // }
-
-  // const searchArticle = async e => {
-  //   e.preventDefault()
-  //   setNoResults(false)
-  //   setLoading(true)
-  //   const dataFromStock = await searchInStock()
-  //   setLoading(false)
-  //   if (dataFromStock) {
-  //     goToStockProductPage()
-  //     setLoading(false)
-  //   } else {
-  //     setLoading(true)
-  //     const dataFromBM = await searchInBMParts()
-  //     setLoading(false)
-  //     if (dataFromBM) {
-  //       setLoading(false)
-  //       goToSearchProductPage(dataFromBM)
-  //     } else {
-  //       setLoading(true)
-  //       const dataFromUT = await searchInUnickTrade()
-  //       setLoading(false)
-  //       if (dataFromUT) {
-  //         setLoading(false)
-  //         goToSearchUTProductPage(dataFromUT)
-  //       } else {
-  //         setLoading(true)
-  //         const dataFromTM = await searchInTMProductPage()
-  //         setLoading(false)
-  //         if (dataFromTM) {
-  //           goToSearchTMProductPage(dataFromTM)
-  //           setLoading(false)
-  //         } else {
-  //           setLoading(false)
-  //           setNoResults(true)
-  //           setTimeout(() => {
-  //             setNoResults(false)
-  //           }, 10000)
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 
   return (
-    <div className={styles.whole_header}>
-      {openAddedToCard ? (
+    <header className={styles.whole_header}>
+      {isImageShown ? (
+        <div
+          onClick={() => dispatch(hideFullImage())}
+          className={styles.whole_image_cont}
+        >
+          {' '}
+          {closeSvg}
+          <img src={fullImage} />
+        </div>
+      ) : null}
+      {openedProposal ? (
         <div className={styles.added_to_cart_cont}>
           <div className={styles.choose_to_proceed_or_back}>
             <div>Товар успішно доданий до кошика</div>
             <Link
               href="/checkout"
-              onClick={() => setOpenAddedToCard(false)}
+              onClick={() => dispatch(handleOpenPropToCheck(false))}
               className={styles.btn_checkout_btn}
             >
               Оформити замовлення
             </Link>
             <button
               className={styles.btn_back_btn}
-              onClick={() => setOpenAddedToCard(false)}
+              onClick={() => dispatch(handleOpenPropToCheck(false))}
             >
               Повернутись назад
             </button>
@@ -587,7 +193,7 @@ const NewNavbar = () => {
       <div className={styles.discount_box}>
         ВСТИГНІТЬ ОТРИМАТИ ЗИМОВУ ЗНИЖКУ 20%
       </div>
-      <header className={styles.main_header}>
+      <div className={styles.main_header}>
         <div className={styles.header_top_desctop}>
           <div className={styles.header_logo}>BAYRAKPARTS</div>
           <div className={styles.login}>
@@ -598,7 +204,7 @@ const NewNavbar = () => {
               {heart}
               <div className={styles.number_in_circule_container}>0</div>
             </Link>
-            <Link href="/auth/login">
+            <Link href="/">
               {personWithoutAuth}
               Увійти
             </Link>
@@ -621,8 +227,8 @@ const NewNavbar = () => {
                 {search}
               </div>
               <Link href="/checkout" className={styles.busket_mobile_cont}>
-                {itemsNumber > 0 ? (
-                  <div className={styles.items_in_circule}>{itemsNumber}</div>
+                {sumury > 0 ? (
+                  <div className={styles.items_in_circule}>{sumury}</div>
                 ) : null}
 
                 {smallBuscet}
@@ -639,7 +245,7 @@ const NewNavbar = () => {
             </button>
             <form
               className={styles.search_container_mobile}
-              onSubmit={e => searchArticle(e)}
+              onSubmit={e => searchInStock(e)}
             >
               <input
                 className={styles.search_input_mobile}
@@ -657,7 +263,7 @@ const NewNavbar = () => {
           <div className={styles.select_part}>{car}Автозапчастини</div>
           <form
             className={styles.search_container}
-            onSubmit={e => searchArticle(e)}
+            onSubmit={e => searchInStock(e)}
           >
             <input
               className={styles.search_input}
@@ -672,42 +278,59 @@ const NewNavbar = () => {
             <Link href="/checkout" className={styles.basket_and_numbers}>
               {newbasket}
               <div className={styles.near_basket_items}>
-                <span>{itemsNumber} товарів</span>
+                <span>{sumury} товарів</span>
                 <span className={styles.small_font}># роздріб</span>
               </div>
             </Link>
-            <div className={styles.total_sum}>{sum === 0 ? '0' : sum} грн</div>
+            <div className={styles.total_sum}>
+              {sumury2 === 0 ? '0' : sumury2} грн
+            </div>
           </div>
         </div>
         <div className={styles.header_bottom}>
           <ul className={styles.list_categories}>
             <li className={styles.category}>
-              <Link href="/search/олива">{droplet}Оливи</Link>
+              <Link href="/categories/olyva-zmazka--i-tehnichni">
+                {droplet}Оливи та рідини
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/discs">{discbrake}Гальма</Link>
+              <Link href="/categories/galmivna-systema">{discbrake}Гальма</Link>
             </li>
             <li className={styles.category}>
-              <Link href="/search/фільтр">{oil}Фільтри</Link>
+              <Link href="/categories/systema-zapalyuvannya-rozzharyuvannya">
+                {fireIgn}Запалення
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/amortizator">{hodovaa}Ходова</Link>
+              <Link href="/categories/obigriv-kondytsioner">
+                {hodovaa}Опалення/конд
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/grm">{remni}ГРМ</Link>
+              <Link href="/categories/rulova-systema">
+                {remni}Рульова система
+              </Link>
             </li>
 
             <li className={styles.category}>
-              <Link href="/search/бампер">{accecories}Кузов</Link>
+              <Link href="/categories/kuzov-skladovi">{accecories}Кузов</Link>
             </li>
             <li className={styles.category}>
-              <Link href="/search/датчик abs">{electric}Електрика</Link>
+              <Link href="/categories/systema-vypusku-vpusku-povitrya">
+                {electric}Впуск/випуск
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/search/шина">{tiress}Шини</Link>
+              <Link href="/categories/systemy-pidgotovky-podachi-palyva">
+                {tiress}Подача палива
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/search/домкрат">{kuzov}Аксесуари</Link>
+              <Link href="/categories/aksesuary-zasoby-po-doglyadu-dod.tovary">
+                {kuzov}
+                Аксесуари
+              </Link>
             </li>
           </ul>
         </div>
@@ -717,8 +340,8 @@ const NewNavbar = () => {
             вказаний
           </div>
         ) : null}
-      </header>
-    </div>
+      </div>
+    </header>
   )
 }
 

@@ -1,10 +1,16 @@
 import Head from 'next/head'
-import { useContext, useState, useEffect } from 'react'
-import { ShopContext } from '@/components/contex/contex'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../styles/Checkout.module.css'
 import * as ga from '../components/lib/gtag'
 import { newpost, cuirer, cash, credit } from '@/components/SVGs/SVGs'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import {
+  adddToCart,
+  removeOneItemRe,
+  deleteAllItems,
+} from '@/global_state/features/cart_redux'
 
 const Spiner = () => {
   return (
@@ -20,18 +26,8 @@ const CheckOut = () => {
   const router = useRouter()
   const { asPath } = useRouter()
 
-  const {
-    cartItems,
-    cartsItemsObj,
-    addToCart,
-    removeOneUnit,
-    setCartItems,
-    setItemsNumber,
-    setCartsItemsObj,
-    user,
-    updateUserDetails,
-    updateUserPhone,
-  } = useContext(ShopContext)
+  const sumury1 = useSelector(state => state.cartReducer.value.list)
+  const sumury2 = useSelector(state => state.cartReducer.value.sum)
 
   const [city, setCity] = useState('')
   const [cities, setCities] = useState([])
@@ -45,9 +41,8 @@ const CheckOut = () => {
   const [loading, setLoading] = useState(false)
   const [deliveryType, setDeliveryType] = useState('NewPost')
 
-  const articlesToSend = `Артикули : ${cartItems.map(
-    product =>
-      `${product.article + 'к-сть : ' + cartsItemsObj[product.article]} `
+  const articlesToSend = `Артикули : ${sumury1.map(
+    product => `${product.article + 'к-сть : ' + product.quantity} `
   )}`
 
   useEffect(() => {
@@ -55,7 +50,7 @@ const CheckOut = () => {
       setCities([])
       setChoosenCity('')
       setVisibility(false)
-    } else if (choosenCity.length > 0 || city === user?.npCity) {
+    } else if (choosenCity.length > 0) {
       return
     } else {
       const abortController = new AbortController()
@@ -67,7 +62,7 @@ const CheckOut = () => {
             city1: city,
           }
           const res = await fetch(
-            `https://api.edetal.store/novaposhta?city1=${encodeURIComponent(
+            `http://api.bonapart.pro/novaposhta?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
@@ -108,7 +103,7 @@ const CheckOut = () => {
           }
 
           const res = await fetch(
-            `https://api.edetal.store/novaposhtadepartments?city1=${encodeURIComponent(
+            `http://api.bonapart.pro/novaposhtadepartments?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
@@ -139,16 +134,6 @@ const CheckOut = () => {
     }
   }, [choosenCity])
 
-  useEffect(() => {
-    if (user) {
-      setCity(user.npCity)
-      setDepartment(user.npDepartment)
-      setDepartments([{ Description: user.npDepartment }])
-      setPib(user.name)
-      setPhone(user.phone)
-    }
-  }, [])
-
   const submitOrder = async e => {
     e.preventDefault()
     setLoading(true)
@@ -172,13 +157,13 @@ const CheckOut = () => {
 
     let userId = 'Роздрібний клієнт'
 
-    const res = await fetch(`https://api.edetal.store/getOrders`, {
+    const res = await fetch(`http://api.bonapart.pro/getOrders`, {
       method: 'GET',
     })
 
     const body = await res.json()
     const orderNumber = +body[body.length - 1].order_id + 1
-    let token = await fetch('https://api.edetal.store/create_order_status', {
+    let token = await fetch('http://api.bonapart.pro/create_order_status', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -188,8 +173,8 @@ const CheckOut = () => {
         status: 'Замовлення створене, та ще не обробилось нашою системою',
         lastUpdateTime: finalDate,
         createdTime: finalDate,
-        order_items: cartItems,
-        items_amount: cartsItemsObj,
+        order_items: sumury1,
+        items_amount: sumury1,
         delivery_info: {
           city: city,
           department: department,
@@ -205,17 +190,12 @@ const CheckOut = () => {
         page_location: `https://www.bayrakparts.com${asPath}`,
       },
     })
-    setCartItems([])
-    localStorage.setItem('cartItems', JSON.stringify([]))
-    setItemsNumber(0)
-    localStorage.setItem('itemsNumber', JSON.stringify(0))
-    setCartsItemsObj({})
-    localStorage.setItem('cartItemsObj', JSON.stringify({}))
     fetch(
       `https://api.telegram.org/bot6173056848:AAE0eviFsiQtx0CWxEJyBizEdl_zhaJ0P1w/sendMessage?chat_id=@edetalRequests&text=Нове замовлення ${orderNumber} BayrakParts! ${
         city + ' ' + department + ' ' + pib + ' ' + phone + ' ' + articlesToSend
       }`
     )
+    dispatch(deleteAllItems())
     setLoading(false)
     router.push(
       { pathname: '/thankyou_for_order', query: { orderNumber: orderNumber } },
@@ -231,41 +211,20 @@ const CheckOut = () => {
 
   const chooseDepartment = async e => {
     setDepartment(e.target.value)
-    if (user) {
-      let updateUserDeliveryDetails = await fetch(
-        `https://api.edetal.store/update_user_delivery_details/${user?.email}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          method: 'PATCH',
-          body: JSON.stringify({
-            npCity: city,
-            npDepartment: e.target.value,
-          }),
-        }
-      )
-      updateUserDetails(city, e.target.value)
-    }
   }
 
   const addOneUnit = (item, e) => {
     e.preventDefault()
-    addToCart(item)
+    const newItem = { ...item, quantity: 1 }
+    dispatch(adddToCart(newItem))
   }
 
   const removOneUnit = (item, e) => {
     e.preventDefault()
-    removeOneUnit(item)
+    dispatch(removeOneItemRe(item))
   }
 
-  var total = 0
-
-  var sum = cartItems.reduce(function (accumulator, currentValue) {
-    return (
-      accumulator + currentValue.price * cartsItemsObj[currentValue.article]
-    )
-  }, total)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -279,7 +238,7 @@ const CheckOut = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main onClick={() => setVisibility(false)}>
-        {cartItems.length === 0 ? (
+        {sumury1.length === 0 ? (
           <div className={styles.page_container}>
             <div className={styles.cart_container}>
               <h1>Жодного товару не обрано</h1>
@@ -298,18 +257,18 @@ const CheckOut = () => {
               >
                 <h1>Ваше замовлення</h1>
 
-                {cartItems.map(item => (
+                {sumury1.map(item => (
                   <div className={styles.list_of_products}>
                     <img src={item.img} />
                     <div className={styles.item_title_descr}>{item.title}</div>
                     <span className={styles.amount_cont}>
                       <button
                         className={styles.plus_min_btn}
-                        onClick={e => removOneUnit(item.article, e)}
+                        onClick={e => removOneUnit(item, e)}
                       >
                         -
                       </button>
-                      {cartsItemsObj[item.article]}
+                      {item.quantity}
                       <button
                         className={styles.plus_min_btn}
                         onClick={e => addOneUnit(item, e)}
@@ -317,10 +276,12 @@ const CheckOut = () => {
                         +
                       </button>
                     </span>
-                    {item.price * cartsItemsObj[item.article]} грн
+                    {item.price * item.quantity} грн
                   </div>
                 ))}
-                <div className={styles.general_sum}>До оплати : {sum} грн</div>
+                <div className={styles.general_sum}>
+                  До оплати : {sumury2} грн
+                </div>
                 <div className={styles.container_for_delivery_and_person}>
                   <div className={styles.container_for_input_and_cities}>
                     <h2 className={styles.titles_in_card}>

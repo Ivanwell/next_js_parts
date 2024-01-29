@@ -37,7 +37,7 @@ const Track_Order = productData => {
     }
     setLoading(true)
     const res = await fetch(
-      `https://api.edetal.store/findOrder/${orderNumber}`,
+      `https://api.bonapart.pro/findOrder/${orderNumber}`,
       {
         method: 'GET',
       }
@@ -119,7 +119,7 @@ const Track_Order = productData => {
 
 export const getServerSideProps = async ({ params, query }) => {
   const orderNumber = params.track_order
-  const res = await fetch(`https://api.edetal.store/findOrder/${orderNumber}`, {
+  const res = await fetch(`https://api.bonapart.pro/findOrder/${orderNumber}`, {
     method: 'GET',
   })
 

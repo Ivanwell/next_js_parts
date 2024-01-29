@@ -36,7 +36,7 @@ const AddOrderStatus = () => {
   }
 
   const sentArticlesToServer = async price => {
-    let token = await fetch('https://api.edetal.store/uploadarticlestm', {
+    let token = await fetch('https://api.bonapart.pro/uploadarticlestm', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -47,7 +47,7 @@ const AddOrderStatus = () => {
 
   const sentPriceToServer = async price => {
     let token = await fetch(
-      'https://api.edetal.store/uploadpricemasterteile2',
+      'https://api.bonapart.pro/uploadpricemasterteile2',
       {
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const AddOrderStatus = () => {
   }
 
   const getPricesTechnoMir = async e => {
-    const res = await fetch(`https://api.edetal.store/partsTM4`, {
+    const res = await fetch(`https://api.bonapart.pro/partsTM4`, {
       method: 'GET',
     })
 
@@ -89,7 +89,7 @@ const AddOrderStatus = () => {
 
   const getProductMasterteile = async e => {
     const res = await fetch(
-      `https://api.edetal.store/findProductMasterteile/YMQ503280`,
+      `https://api.bonapart.pro/findProductMasterteile/YMQ503280`,
       {
         method: 'GET',
       }
@@ -100,7 +100,7 @@ const AddOrderStatus = () => {
 
   const getArrticlesMasterteile = async () => {
     const res = await fetch(
-      `https://api.edetal.store/get_articles_masterteile`,
+      `https://api.bonapart.pro/get_articles_masterteile`,
       {
         method: 'GET',
       }
@@ -114,7 +114,7 @@ const AddOrderStatus = () => {
       vin: 'VF77J9HL0AJ879oo 1 '.replace(/[- /]/g, ''),
     }
     const res = await fetch(
-      `https://api.edetal.store/get_info_by_vin?vin=${encodeURIComponent(
+      `https://api.bonapart.pro/get_info_by_vin?vin=${encodeURIComponent(
         data.vin
       )}`,
       {

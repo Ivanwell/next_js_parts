@@ -10,7 +10,7 @@ const AddToStock = () => {
   const [fitsModel, setFitsModel] = useState(null)
   const [fitsEngine, setFitsEngine] = useState(null)
   const [product, setProduct] = useState({
-    name: '',
+    title: '',
     brand: '',
     price: 0,
     amount: '',
@@ -41,42 +41,38 @@ const AddToStock = () => {
     setPhoto(e.target.files[0])
     setProduct({
       ...product,
-      image: `https://api.edetal.store/public/bayrakparts/${e.target.files[0].name}`,
+      image: `https://api.bonapart.pro/public/bayrakparts/${e.target.files[0].name}`,
     })
   }
 
   const uploadPhoto = async () => {
     const data = new FormData()
     data.append('file', photo)
-    axios.post('https://api.edetal.store/upload', data, {})
+    axios.post('https://api.bonapart.pro/upload', data, {})
   }
 
   const sendProductToStock = async e => {
     e.preventDefault()
     setLoading(true)
     uploadPhoto()
-    let token = await fetch('https://api.edetal.store/postProduct', {
+    let token = await fetch('http://backend.bayrakparts.com/add_stock_item', {
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'POST',
       body: JSON.stringify({
-        name: product.name,
-        brand: product.brand,
-        price: product.price,
-        article: product.article,
-        amount: product.amount,
-        image: product.image,
-        fit: [
-          {
-            brand: fitsBrand,
-            models: [{ model: fitsModel, engines: [{ engine: fitsEngine }] }],
-          },
-        ],
+        item: {
+          title: product.title,
+          brand: product.brand,
+          price: product.price,
+          article: product.article,
+          amount: product.amount,
+          image: product.image,
+        },
       }),
     })
     setProduct({
-      name: '',
+      title: '',
       brand: '',
       price: 0,
       amount: '',
@@ -110,13 +106,13 @@ const AddToStock = () => {
           <label className={styles.name_of_field}>Назва продукту</label>
           <textarea
             className={styles.add_options_filed_name}
-            value={product.name}
+            value={product.title}
             name="name"
             required
             onChange={e => {
               setProduct({
                 ...product,
-                name: e.target.value,
+                title: e.target.value,
               })
             }}
           />
@@ -168,7 +164,6 @@ const AddToStock = () => {
           <input
             className={styles.add_options_filed}
             value={fitsBrand}
-            required
             onChange={e => {
               setFitsBrand(e.target.value)
             }}
@@ -177,7 +172,6 @@ const AddToStock = () => {
           <input
             className={styles.add_options_filed}
             value={fitsModel}
-            required
             onChange={e => {
               setFitsModel(e.target.value)
             }}
@@ -186,7 +180,6 @@ const AddToStock = () => {
           <input
             className={styles.add_options_filed}
             value={fitsEngine}
-            required
             onChange={e => {
               setFitsEngine(e.target.value)
             }}

@@ -13,7 +13,7 @@ const Item = productData => {
 
   const updateProductInStock = async e => {
     setLoading(true)
-    let token = await fetch(`https://api.edetal.store/updateProduct/${_id}`, {
+    let token = await fetch(`https://api.bonapart.pro/updateProduct/${_id}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -58,29 +58,9 @@ const Item = productData => {
 }
 
 const ItemsInStock = productData => {
-  const [checking, setChecking] = useState(true)
-
-  useEffect(() => {
-    const checkLog = async () => {
-      const session = await getSession()
-
-      if (!session) {
-        signIn()
-      } else {
-        setChecking(false)
-      }
-    }
-    checkLog()
-  }, [])
-
-  if (checking) {
-    return <h2>Завантаження</h2>
-  }
-
   return (
     <>
       <main className={styles.main}>
-        <div className={styles.greenwall}></div>
         <div className={styles.content_container}>
           <h1>Товари в наявності</h1>
           <div className={styles.items_container}>
@@ -96,14 +76,13 @@ const ItemsInStock = productData => {
             ))}
           </div>
         </div>
-        <div className={styles.greenwall}></div>
       </main>
     </>
   )
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`https://api.edetal.store/getStock`, {
+  const res = await fetch(`https://api.bonapart.pro/getStock`, {
     method: 'GET',
   })
 

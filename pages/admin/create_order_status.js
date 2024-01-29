@@ -31,13 +31,13 @@ const AddOrderStatus = () => {
   const createOrderStatus = async e => {
     e.preventDefault()
     setLoading(true)
-    const res = await fetch(`https://api.edetal.store/getOrders`, {
+    const res = await fetch(`https://api.bonapart.pro/getOrders`, {
       method: 'GET',
     })
 
     const body = await res.json()
     const orderNumber = body[body.length - 1].order_id + 1
-    let token = await fetch('https://api.edetal.store/create_order_status', {
+    let token = await fetch('https://api.bonapart.pro/create_order_status', {
       headers: {
         'Content-Type': 'application/json',
       },

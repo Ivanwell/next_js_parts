@@ -6,6 +6,8 @@ import {
   checkbox1,
   sighn,
   watch,
+  plusCircule,
+  minus,
 } from '@/components/SVGs/SVGs'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -30,6 +32,14 @@ const LP_Parts = () => {
   const [part, setPart] = useState('')
   const [numberPhone, setNumberPhone] = useState('')
   const [vin, setVin] = useState('')
+  const [opened, setOpened] = useState({
+    first: false,
+    second: false,
+    third: false,
+    forth: false,
+    fifth: false,
+    sixth: false,
+  })
   const router = useRouter()
 
   const goToStockProductPage = () => {
@@ -65,7 +75,7 @@ const LP_Parts = () => {
     }
 
     const res2 = await fetch(
-      `https://api.edetal.store/partsTM2?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/partsTM2?article1=${encodeURIComponent(
         data.article1
       )}&brandID1=${brandID?.data[0].brandId}`,
       {
@@ -75,7 +85,7 @@ const LP_Parts = () => {
     const info = await res2.json()
 
     const res3 = await fetch(
-      `https://api.edetal.store/partsTM3?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/partsTM3?article1=${encodeURIComponent(
         data.article1
       )}&brandID1=${brandID.data[0].brandId}`,
       {
@@ -115,7 +125,7 @@ const LP_Parts = () => {
     }
 
     const res = await fetch(
-      `https://api.edetal.store/partsUTR?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/partsUTR?article1=${encodeURIComponent(
         data.article1
       )}`,
       {
@@ -157,7 +167,7 @@ const LP_Parts = () => {
 
   const searchInStock = async () => {
     const res = await fetch(
-      `https://api.edetal.store/findProduct/${article
+      `https://api.bonapart.pro/findProduct/${article
         .replace(/[- /]/g, '')
         .toUpperCase()}`,
       {
@@ -171,7 +181,7 @@ const LP_Parts = () => {
 
   const searchInBMParts = async () => {
     const res = await fetch(
-      `https://api.edetal.store/bmparts?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/bmparts?article1=${encodeURIComponent(
         article
       )}`,
       {
@@ -251,8 +261,233 @@ const LP_Parts = () => {
       </Head>
       <main className={styles.main}>
         <div className={styles.page_content}>
-          <h1>Підберемо запчастини за 20 хвилин!</h1>
-          <div className={styles.how_we_work}>
+          <h1>Автозапчастини до іномарок</h1>
+          {/* <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2> */}
+          <div className={styles.new_request_box}>
+            <div className={styles.why_we_new}>
+              <h2 className={styles.call_to_action_in_form}>
+                Отримайте ціну запчастини вже зараз!{' '}
+              </h2>
+              <span className={styles.request_description}>
+                Пошук запчастин - робота не з простих. Тому ми готові взяти на
+                себе ці турботи
+              </span>
+              <span className={styles.request_description}>
+                Підберемо деталі поки Ви п'єте каву
+              </span>
+            </div>
+            <form
+              className={styles.box_for_inputs}
+              onSubmit={e => makeRequest(e)}
+            >
+              <div className={styles.box}>
+                <input
+                  maxlength="30"
+                  className={styles.input_pass}
+                  id="vin"
+                  placeholder=" "
+                  required
+                  value={vin}
+                  minLength={17}
+                  onChange={e => setVin(e.target.value)}
+                />
+                <label className={styles.label_pass} for="vin">
+                  Вінкод
+                </label>
+              </div>
+              <div className={styles.box}>
+                <input
+                  maxlength="30"
+                  className={styles.input_pass}
+                  id="part"
+                  placeholder=" "
+                  required
+                  minLength={5}
+                  onChange={e => setPart(e.target.value)}
+                  value={part}
+                />
+                <label className={styles.label_pass} for="part">
+                  Запчастина яку шукаєте
+                </label>
+              </div>
+              <div className={styles.box}>
+                <input
+                  maxlength="30"
+                  className={styles.input_pass}
+                  id="tel"
+                  placeholder=" "
+                  required
+                  minLength={10}
+                  onChange={e => setNumberPhone(e.target.value)}
+                  value={numberPhone}
+                />
+                <label className={styles.label_pass} for="tel" type="submit">
+                  Номер телефону
+                </label>
+              </div>
+              <button className={styles.submit_request_button}>
+                Отримати ціну
+              </button>
+            </form>
+          </div>
+          <h2 className={styles.title_mini}>Питання - відповіді</h2>
+          <div className={styles.new_container_for_question}>
+            <div className={styles.cont_for_col_questions}>
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, first: !prev.first }))
+                }
+              >
+                До яких марок авто у Вас є запчастини?{' '}
+                {opened.first ? minus : plusCircule}
+              </div>
+              {opened.first ? (
+                <div className={styles.answer_cont}>
+                  Ми продаємо запчастини до таких марок : Hyundai, Kia, Toyota,
+                  Lexus, Mazda, Nissan, Opel, Volkswagen, Ford, BMW, Honda,
+                  General Motors
+                </div>
+              ) : null}
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, second: !prev.second }))
+                }
+              >
+                Чи можна купити у Вас масло та фільтри?
+                {opened.second ? minus : plusCircule}
+              </div>
+              {opened.second ? (
+                <div className={styles.answer_cont}>
+                  Так звичайно, у нас представлений великий вибір мастил різних
+                  в'язкостей та допусків а також комплекти фільтрів на будь-яку
+                  авто.
+                </div>
+              ) : null}
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, third: !prev.third }))
+                }
+              >
+                В мене список запчастин від майстра, можете допомогти?{' '}
+                {opened.third ? minus : plusCircule}
+              </div>
+              {opened.third ? (
+                <div className={styles.answer_cont}>
+                  З радістю! Відправте нам список та вінкод Вашого авто, ми
+                  підберемо потрібні запчастини та запропонуємо Вам різні
+                  варіанти.
+                </div>
+              ) : null}
+            </div>
+            <div className={styles.cont_for_col_questions}>
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, forth: !prev.forth }))
+                }
+              >
+                А що якщо запчастина не підійде, у Вас є повернення?{' '}
+                {opened.forth ? minus : plusCircule}
+              </div>
+              {opened.forth ? (
+                <div className={styles.answer_cont}>
+                  Звичайно! Єдине прохання щоб на запчастині не було слідів
+                  монтажу. Якщо помилка в підборі з нашого боку - додаткові
+                  витрати по доставці ми беремо на себе.
+                </div>
+              ) : null}
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, fifth: !prev.fifth }))
+                }
+              >
+                Які терміни доставки? {opened.fifth ? minus : plusCircule}
+              </div>
+              {opened.fifth ? (
+                <div className={styles.answer_cont}>
+                  Якщо запчастина на нашому складі - відправимо в день
+                  замовлення. <br /> Якщо на віддаленому складі - відправимо на
+                  наступний день.
+                  <br /> Якщо запчастина з-за кордону - від 14 до 45 днів
+                  (залежить від країни)
+                </div>
+              ) : null}
+              <div
+                className={styles.cont_for_question}
+                onClick={() =>
+                  setOpened(prev => ({ ...prev, sixth: !prev.sixth }))
+                }
+              >
+                Чи даєте гарантію на запчастини?{' '}
+                {opened.sixth ? minus : plusCircule}
+              </div>
+              {opened.sixth ? (
+                <div className={styles.answer_cont}>
+                  Так, гарантія надається на усі запчастини. Гарантія дійсна
+                  10000 км або 3 місяці. При умові, що є акт виконаних робіт по
+                  встановленню запчастини на СТО.
+                </div>
+              ) : null}
+            </div>
+          </div>
+          <h2 className={styles.title_mini}>Наші переваги</h2>
+          <div className={styles.our_descr}>
+            <div className={styles.our_desc1}>
+              {checkbox1}На складі +5000 запчастин
+            </div>
+            <div className={styles.our_desc1}>
+              {watch}
+              Відправка в день замовлення
+            </div>
+            <div className={styles.our_desc1}>
+              {sighn}
+              Без передоплат
+            </div>
+          </div>
+          {/* <div className={styles.cont_for_question_and_img}>
+            <ol className={styles.questions_box}>
+              <li>
+                <h3
+                  onClick={() =>
+                    setOpened(prev => ({ ...prev, first: !prev.first }))
+                  }
+                >
+                  До яких марок авто у Вас є запчастини?
+                </h3>
+                {opened.first ? (
+                  <div>
+                    Ми продаємо запчастини до таких марок : Hyundai, Kia,
+                    Toyota, Lexus, Mazda, Nissan, Opel, Volkswagen, Ford, BMW,
+                    Honda, General Motors
+                  </div>
+                ) : null}
+              </li>
+              <li>
+                <h3>Чи можна купити у вас масло та фільтри?</h3>
+              </li>
+              <li>
+                <h3>
+                  В мене список запчастин з СТО і я не знаю що мені робити?
+                </h3>
+              </li>
+              <li>
+                <h3>А що якщо запчастина не підійде, у Вас є повернення?</h3>
+              </li>
+              <li>
+                <h3>Чи даєте гарантію на запчастини?</h3>
+              </li>
+              <li>
+                <h3>Які терміни доставки?</h3>
+              </li>
+            </ol>
+            <img src="https://bayrakparts.com/media/question-1846784_640.jpg" />
+          </div> */}
+
+          {/* <div className={styles.how_we_work}>
             <h2>Підкажіть що шукаєте</h2>
             <div></div>
             <h2 className={styles.show_in_desctop}>Знаєте номер запчастини?</h2>
@@ -351,23 +586,8 @@ const LP_Parts = () => {
                 </Link>
               </div>
             )}
-          </div>
-          <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
-          <div className={styles.our_descr}>
-            <div className={styles.our_desc1}>
-              {sighn}
-              Ми відповідаємо за правильний підбір запчастин
-            </div>
-            <div className={styles.our_desc1}>
-              {checkbox1}
-              Більше 5 тисяч запчастин до усіх марок
-            </div>
-            <div className={styles.our_desc1}>
-              {watch}
-              Швидко відповідаємо (до 20 хвилин)
-            </div>
-          </div>
-          <h2 className={styles.why_we}>Відгуки наших покупців</h2>
+          </div> */}
+          <h2 className={styles.title_mini}>Покупці про нас</h2>
           <div className={styles.our_descr}>
             <div className={styles.our_desc2}>
               Галина (власниця KIA Venga)

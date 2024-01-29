@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const NewFooter = () => {
   return (
-    <div className={styles.whole_footer}>
+    <footer className={styles.whole_footer}>
       <div className={styles.whole_footer_container}>
         <ul className={styles.column_links}>
           <label className={styles.column_name}>Про компанію</label>
@@ -64,7 +64,7 @@ const NewFooter = () => {
         <div className={styles.footer_row}>{mail}office@bayrakparts.com</div>
         <span>© 2023 Всі права захищено</span>
       </div>
-    </div>
+    </footer>
   )
 }
 

@@ -51,7 +51,7 @@ export const getServerSideProps = async ({ params }) => {
   }
   const orderNumber = params.order_details
 
-  const res = await fetch(`https://api.edetal.store/findOrder/${orderNumber}`, {
+  const res = await fetch(`https://api.bonapart.pro/findOrder/${orderNumber}`, {
     method: 'GET',
   })
   const body = await res.json()

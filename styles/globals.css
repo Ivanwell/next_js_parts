@@ -41,6 +41,16 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+.red_back {
+  background-color: rgba(26, 41, 47, 255);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a4abb5;
+}
+
 .loading_spinner {
   width: 100vw;
   height: 100vh;

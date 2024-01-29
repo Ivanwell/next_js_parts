@@ -1,53 +1,88 @@
 import styles from '@/styles/Newmainoage.module.css'
 import { search } from '@/components/SVGs/SVGs'
-import PopularItem from '@/components/popular_items/popular_item'
 import { useEffect, useState } from 'react'
-import { useContext } from 'react'
-import { ShopContext } from '@/components/contex/contex'
+import CategoryInMain from '@/components/category_in_main/category_in_main'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import { sighn, checkbox1, watch } from '@/components/SVGs/SVGs'
+import {
+  sighn,
+  checkbox1,
+  watch,
+  droplet,
+  discbrake,
+  fireIgn,
+  hodovaa,
+  remni,
+  accecories,
+  electric,
+  tiress,
+  kuzov,
+} from '@/components/SVGs/SVGs'
+import { useDispatch } from 'react-redux'
+import {
+  setDataForForm,
+  setLoadingData,
+  setBrand,
+  setModel,
+  setCategory,
+  setPart,
+} from '@/global_state/features/cardata_redux'
+import { useSelector } from 'react-redux'
+import { useUserAgent } from 'next-useragent'
 
-const NewMainPage = ({ productData }) => {
+const NewMainPage = ({ userAgent }) => {
+  let ua
+
+  if (userAgent.uaString) {
+    ua = useUserAgent(userAgent.uaString)
+  } else {
+    ua = useUserAgent(window.navigator.userAgent)
+  }
+
   const router = useRouter()
   const [errorForm, setErrorForm] = useState(false)
+  const dispatch = useDispatch()
 
-  const {
-    selectingBrand,
-    selectingModel,
-    selectingCaregory,
-    selectingPart,
-    brandSearch,
-    model,
-    category,
-    part,
-    loading,
-    setLoading,
-    fromData,
-    setFormData,
-  } = useContext(ShopContext)
+  const formNewData = useSelector(
+    state => state.dataSelectscartReducer.value.dataForSelects
+  )
+  const choosenBrand = useSelector(
+    state => state.dataSelectscartReducer.value.brand
+  )
+  const choosenModel = useSelector(
+    state => state.dataSelectscartReducer.value.model
+  )
+  const choosenCategory = useSelector(
+    state => state.dataSelectscartReducer.value.category
+  )
+  const choosenPart = useSelector(
+    state => state.dataSelectscartReducer.value.part
+  )
+  const loadingFromData = useSelector(
+    state => state.dataSelectscartReducer.value.loading
+  )
 
   const submitingSearch = e => {
     e.preventDefault()
-    if (!brandSearch || !model || !category || !part) {
+    if (!choosenBrand || !choosenModel || !choosenCategory || !choosenPart) {
       setErrorForm(true)
     } else {
       setErrorForm(false)
-      const article = part + ' ' + brandSearch + ' ' + model
+      const article = choosenPart + ' ' + choosenBrand + ' ' + choosenModel
       router.push(`/search/${article}`)
     }
   }
 
   useEffect(() => {
-    if (!fromData) {
+    if (!formNewData) {
       const abortController = new AbortController()
       const { signal } = abortController
       const apiCall = async () => {
         try {
-          setLoading(true)
+          dispatch(setLoadingData(true))
           const res = await fetch(
-            `https://api.edetal.store/getSearchCatParts`,
+            `https://api.bonapart.pro/getSearchCatParts`,
             {
               method: 'GET',
               signal: signal,
@@ -55,12 +90,12 @@ const NewMainPage = ({ productData }) => {
           )
 
           const body = await res.json()
-          setFormData(body[0].partsData)
-          setLoading(false)
+          dispatch(setDataForForm(body[0].partsData))
+          dispatch(setLoadingData(false))
         } catch (error) {
           if (!signal?.aborted) {
             console.error(error)
-            setLoading(false)
+            dispatch(setLoadingData(false))
           }
         }
       }
@@ -94,33 +129,33 @@ const NewMainPage = ({ productData }) => {
             <div className={styles.select_container}>
               <span className={styles.number}>1</span>
               <select
-                value={brandSearch}
-                onChange={e => selectingBrand(e.target.value)}
+                value={choosenBrand}
+                onChange={e => dispatch(setBrand(e.target.value))}
               >
-                {!loading ? (
+                {!loadingFromData ? (
                   <option selected>Оберіть марку</option>
                 ) : (
                   <option selected>Завантаження...</option>
                 )}
-                {fromData
-                  ? fromData.brands.map(brand => <option>{brand}</option>)
+                {formNewData
+                  ? formNewData.brands.map(brand => <option>{brand}</option>)
                   : null}
               </select>
             </div>
             <div className={styles.select_container}>
               <span className={styles.number}>2</span>
               <select
-                value={model}
-                onChange={e => selectingModel(e.target.value)}
+                value={choosenModel}
+                onChange={e => dispatch(setModel(e.target.value))}
               >
-                {!loading ? (
+                {!loadingFromData ? (
                   <option selected>Оберіть модель</option>
                 ) : (
                   <option selected>Завантаження...</option>
                 )}
-                {brandSearch
-                  ? fromData.models
-                      .find(product => product.brandName === brandSearch)
+                {choosenBrand
+                  ? formNewData.models
+                      .find(product => product.brandName === choosenBrand)
                       .Models.map(model1 => (
                         <option value={model1}>{model1}</option>
                       ))
@@ -130,16 +165,16 @@ const NewMainPage = ({ productData }) => {
             <div className={styles.select_container}>
               <span className={styles.number}>3</span>
               <select
-                value={category}
-                onChange={e => selectingCaregory(e.target.value)}
+                value={choosenCategory}
+                onChange={e => dispatch(setCategory(e.target.value))}
               >
-                {!loading ? (
+                {!loadingFromData ? (
                   <option selected>Оберіть категорію</option>
                 ) : (
                   <option selected>Завантаження...</option>
                 )}
-                {model
-                  ? fromData.categories.map(categori => (
+                {choosenModel
+                  ? formNewData.categories.map(categori => (
                       <option value={categori}>{categori}</option>
                     ))
                   : null}
@@ -148,17 +183,17 @@ const NewMainPage = ({ productData }) => {
             <div className={styles.select_container}>
               <span className={styles.number}>4</span>
               <select
-                onChange={e => selectingPart(e.target.value)}
-                value={part}
+                onChange={e => dispatch(setPart(e.target.value))}
+                value={choosenPart}
               >
-                {!loading ? (
+                {!loadingFromData ? (
                   <option selected>Оберіть запчастину</option>
                 ) : (
                   <option selected>Завантаження...</option>
                 )}
-                {category
-                  ? fromData.exactParts
-                      .find(castogory => castogory.catigory === category)
+                {choosenCategory
+                  ? formNewData.exactParts
+                      .find(castogory => castogory.catigory === choosenCategory)
                       .Models.map(part => <option value={part}>{part}</option>)
                   : null}
               </select>
@@ -181,6 +216,78 @@ const NewMainPage = ({ productData }) => {
         </div>
       </div>
       <div className={styles.container_for_brands}>
+        <h2>Популярні категорії</h2>
+        <CategoryInMain />
+        {ua.isMobile ? (
+          <>
+            <h2>Інші категорії</h2>
+            <div className={styles.category_link_cont}>
+              <Link
+                className={styles.category_link}
+                href="/categories/olyva-zmazka--i-tehnichni"
+              >
+                {droplet}
+                Оливи та рідини
+              </Link>
+              <Link
+                href="/categories/galmivna-systema"
+                className={styles.category_link}
+              >
+                {discbrake}Гальмівна система
+              </Link>
+
+              <Link
+                href="/categories/systema-zapalyuvannya-rozzharyuvannya"
+                className={styles.category_link}
+              >
+                {fireIgn}Запалення/розжарювання
+              </Link>
+
+              <Link
+                href="/categories/obigriv-kondytsioner"
+                className={styles.category_link}
+              >
+                {hodovaa}Опалення/кондиціонування
+              </Link>
+
+              <Link
+                href="/categories/rulova-systema"
+                className={styles.category_link}
+              >
+                {remni}Рульова система
+              </Link>
+
+              <Link
+                href="/categories/kuzov-skladovi"
+                className={styles.category_link}
+              >
+                {accecories}Кузовні елемнти
+              </Link>
+
+              <Link
+                href="/categories/systema-vypusku-vpusku-povitrya"
+                className={styles.category_link}
+              >
+                {electric}Впуск/випуск
+              </Link>
+
+              <Link
+                href="/categories/systemy-pidgotovky-podachi-palyva"
+                className={styles.category_link}
+              >
+                {tiress}Подача палива
+              </Link>
+
+              <Link
+                href="/categories/aksesuary-zasoby-po-doglyadu-dod.tovary"
+                className={styles.category_link}
+              >
+                {kuzov}
+                Аксесуари
+              </Link>
+            </div>
+          </>
+        ) : null}
         <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
         <div className={styles.our_descr}>
           <div className={styles.our_desc1}>
@@ -211,29 +318,17 @@ const NewMainPage = ({ productData }) => {
             <img src="https://static.wixstatic.com/media/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg/v1/fill/w_647,h_367,al_c,lg_1,q_80,enc_auto/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg" />
           </div>
         </div>
-        <h2>ТОП - продажів</h2>
-        <div className={styles.container_for_items_row}>
-          {productData.slice(0, 15).map(product => (
-            <PopularItem productData={product} />
-          ))}
-        </div>
       </div>
     </div>
   )
 }
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`https://api.edetal.store/getStock`, {
-    method: 'GET',
-  })
-
-  const body = await res.json()
-
-  const inStock = body.filter(element => element.amount > 0)
+export const getServerSideProps = async ({ req }) => {
+  const userAgent = req.headers['user-agent']
 
   return {
     props: {
-      productData: inStock,
+      userAgent: userAgent,
     },
   }
 }

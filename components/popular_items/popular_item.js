@@ -23,7 +23,7 @@ const PopularItem = productData => {
   return (
     <Link className={styles.item_im_main} href={link}>
       <div className={styles.item_brand}>{brand}</div>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} loading="lazy" />
       <span className={styles.item_price} type={price}>
         {item.price} ГРН
       </span>
