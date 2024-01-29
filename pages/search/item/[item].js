@@ -861,7 +861,7 @@ export const getServerSideProps = async ({ req, params, query }) => {
 
   if (query.brand) {
     const res = await fetch(
-      `http://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
         data.article1
       )}&brand=${encodeURIComponent(data.brand)}`,
       {
@@ -880,7 +880,7 @@ export const getServerSideProps = async ({ req, params, query }) => {
     }
   } else {
     const res = await fetch(
-      `http://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
+      `https://api.bonapart.pro/bmpart?article1=${encodeURIComponent(
         data.article1
       )}`,
       {

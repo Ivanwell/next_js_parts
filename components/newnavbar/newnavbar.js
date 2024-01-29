@@ -58,7 +58,7 @@ const NewNavbar = () => {
     e.preventDefault()
     setLoading(true)
     const res = await fetch(
-      `http://backend.bayrakparts.com/get_item_info/${article
+      `https://backend.bayrakparts.com/get_item_info/${article
         .replace(/[- /]/g, '')
         .toUpperCase()}`,
       {

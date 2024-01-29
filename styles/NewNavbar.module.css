@@ -206,6 +206,11 @@
   width: 100%;
 }
 
+.search_input:focus {
+  outline: none;
+  border: #0068d7 2px solid;
+}
+
 .search_container button {
   background-color: #0068d7;
   border: none;

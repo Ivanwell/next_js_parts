@@ -515,7 +515,7 @@ export const getServerSideProps = async ({ req, params }) => {
   const userAgent = req.headers['user-agent']
 
   const res = await fetch(
-    `http://api.bonapart.pro/bmparts?article1=${encodeURIComponent(
+    `https://api.bonapart.pro/bmparts?article1=${encodeURIComponent(
       data.article1
     )}`,
     {

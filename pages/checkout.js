@@ -62,7 +62,7 @@ const CheckOut = () => {
             city1: city,
           }
           const res = await fetch(
-            `https://technomir.bayrakparts.com/novaposhta?city1=${encodeURIComponent(
+            `https://api.bonapart.pro/novaposhta?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
@@ -103,7 +103,7 @@ const CheckOut = () => {
           }
 
           const res = await fetch(
-            `https://technomir.bayrakparts.com/novaposhtadepartments?city1=${encodeURIComponent(
+            `https://api.bonapart.pro/novaposhtadepartments?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
@@ -157,13 +157,13 @@ const CheckOut = () => {
 
     let userId = 'Роздрібний клієнт'
 
-    const res = await fetch(`http://api.bonapart.pro/getOrders`, {
+    const res = await fetch(`https://api.bonapart.pro/getOrders`, {
       method: 'GET',
     })
 
     const body = await res.json()
     const orderNumber = +body[body.length - 1].order_id + 1
-    let token = await fetch('http://api.bonapart.pro/create_order_status', {
+    let token = await fetch('https://api.bonapart.pro/create_order_status', {
       headers: {
         'Content-Type': 'application/json',
       },

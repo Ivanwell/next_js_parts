@@ -81,10 +81,13 @@ const NewMainPage = ({ userAgent }) => {
       const apiCall = async () => {
         try {
           dispatch(setLoadingData(true))
-          const res = await fetch(`http://api.bonapart.pro/getSearchCatParts`, {
-            method: 'GET',
-            signal: signal,
-          })
+          const res = await fetch(
+            `https://api.bonapart.pro/getSearchCatParts`,
+            {
+              method: 'GET',
+              signal: signal,
+            }
+          )
 
           const body = await res.json()
           dispatch(setDataForForm(body[0].partsData))
