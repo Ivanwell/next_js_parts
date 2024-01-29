@@ -19,7 +19,7 @@ const Thankyou = () => {
           <h1>Спасибі за Ваше звернення!</h1>
           <img
             className={styles.img_order}
-            src="https://edetal.store/media/pngwing.com (9).png"
+            src="https://bonapart.pro/media/pngwing.com (9).png"
           />
           <h2>Зв'яжемось з Вами найближчим часом</h2>
         </div>

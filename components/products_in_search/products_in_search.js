@@ -178,7 +178,7 @@ const SearchedItem = ({ product }) => {
         {item.lvivStock === '1' ||
         (item.lvivStock === '-' && item.otherStock === '1') ? (
           <div className={styles.last_item_cont}>
-            <img src="https://bayrakparts.com/media/hot-icon.svg" />
+            <img src="https://backend.bayrakparts.com/images/media/hot-icon.svg" />
             Остання шт на складі
           </div>
         ) : (
@@ -300,7 +300,7 @@ const SearchedItemMobile = ({ product }) => {
             {item.lvivStock === '1' ||
             (item.lvivStock === '-' && item.otherStock === '1') ? (
               <div className={styles.last_item_cont}>
-                <img src="https://bayrakparts.com/media/hot-icon.svg" />
+                <img src="https://backend.bayrakparts.com/images/media/hot-icon.svg" />
                 Остання шт на складі
               </div>
             ) : (

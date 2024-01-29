@@ -310,7 +310,7 @@ export const cuirer = (
     width="40"
     height="40"
     color="red"
-    src="https://bayrakparts.com/media/fast-food-delivery-bike-12992.svg"
+    src="https://backend.bayrakparts.com/images/media/fast-food-delivery-bike-12992.svg"
   />
 )
 

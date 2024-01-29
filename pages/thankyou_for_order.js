@@ -26,7 +26,7 @@ const ThankyouOrder = () => {
           <h1>Спасибі! Номер Вашого замовлення {orderNumber}.</h1>
           <img
             className={styles.img_order}
-            src="https://www.bayrakparts.com/media/pngwing.com%20(10).png"
+            src="https://backend.bayrakparts.com/images/media/pngwing.com%20(10).png"
           />
           <h2>Зв'яжемось з Вами найближчим часом</h2>
           <div
