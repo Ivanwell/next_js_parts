@@ -62,7 +62,7 @@ const CheckOut = () => {
             city1: city,
           }
           const res = await fetch(
-            `http://api.bonapart.pro/novaposhta?city1=${encodeURIComponent(
+            `https://technomir.bayrakparts.com/novaposhta?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
@@ -103,7 +103,7 @@ const CheckOut = () => {
           }
 
           const res = await fetch(
-            `http://api.bonapart.pro/novaposhtadepartments?city1=${encodeURIComponent(
+            `https://technomir.bayrakparts.com/novaposhtadepartments?city1=${encodeURIComponent(
               data.city1
             )}`,
             {
