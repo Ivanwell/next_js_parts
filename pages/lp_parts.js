@@ -607,13 +607,13 @@ const LP_Parts = () => {
             <h2 className={styles.why_we}>Одразу пишіть нам</h2>
             <div className={styles.messangers_container_dir}>
               <Link href="https://telegram.me/eDetalStore">
-                <img src="https://edetal.store/media/Telegram_(software)-Logo.wine.svg" />
+                <img src="https://bonapart.pro/media/Telegram_(software)-Logo.wine.svg" />
               </Link>
               <Link href="viber://chat?number=%2B380937289485">
-                <img src="https://edetal.store/media/Viber-Icon-Purple-Logo.wine.svg" />
+                <img src="https://bonapart.pro/media/Viber-Icon-Purple-Logo.wine.svg" />
               </Link>
               <Link href="https://wa.me/380937289485/">
-                <img src="https://edetal.store/media/WhatsApp-Logo.wine.svg" />
+                <img src="https://bonapart.pro/media/WhatsApp-Logo.wine.svg" />
               </Link>
             </div>
             <h2 className={styles.why_we}>Або телефонуйте</h2>

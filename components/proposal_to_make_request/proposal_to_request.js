@@ -15,7 +15,7 @@ const Proposal_to_request_from_main = () => {
     <a className={styles.viberBtn} href="viber://chat?number=%2B380937289485">
       <img
         className={styles.viberSVG}
-        src="https://edetal.store/media/Viber-Icon-Purple-Logo.wine.svg"
+        src="https://bonapart.pro/media/Viber-Icon-Purple-Logo.wine.svg"
         alt="viberSVG"
       />
     </a>
@@ -25,7 +25,7 @@ const Proposal_to_request_from_main = () => {
     <a className={styles.viberBtn} href="https://wa.me/380937289485/">
       <img
         className={styles.viberSVG}
-        src="https://edetal.store/media/WhatsApp-Logo.wine.svg"
+        src="https://bonapart.pro/media/WhatsApp-Logo.wine.svg"
         alt="vwhatsUpSVG"
       />
     </a>
@@ -35,7 +35,7 @@ const Proposal_to_request_from_main = () => {
     <a className={styles.telegramrBtn} href="https://telegram.me/Ivanwell">
       <img
         className={styles.telegramSVG}
-        src="https://edetal.store/media/Telegram_(software)-Logo.wine.svg"
+        src="https://bonapart.pro/media/Telegram_(software)-Logo.wine.svg"
         alt="viberSVG"
       />
     </a>
