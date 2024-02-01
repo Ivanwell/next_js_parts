@@ -5,9 +5,17 @@ const initialState = {
     dataForSelects: null,
     brand: null,
     model: null,
+    engine: null,
     category: null,
     part: null,
     loading: false,
+    globalBrand: null,
+    globalModel: null,
+    globalEngine: null,
+    fullPath: null,
+    bmBrands: null,
+    bmModels: null,
+    bmEngines: null,
   },
 }
 
@@ -55,6 +63,40 @@ export const dataSelects = createSlice({
     setLoadingData: (state, action) => {
       state.value.loading = action.payload
     },
+    setGlobalBrand: (state, action) => {
+      if (action.payload === 'Оберіть марку') {
+        state.value.globalBrand = null
+        state.value.globalModel = null
+      } else {
+        state.value.globalBrand = action.payload
+        state.value.globalModel = null
+      }
+    },
+    setGlobalModel: (state, action) => {
+      if (action.payload === 'Оберіть модель') {
+        state.value.globalModel = null
+      } else {
+        state.value.globalModel = action.payload
+      }
+    },
+    changeLinkPath: (state, action) => {
+      state.value.fullPath = action.payload
+    },
+    setBmBrands: (state, action) => {
+      state.value.bmBrands = action.payload
+    },
+    setBmModels: (state, action) => {
+      state.value.bmModels = action.payload
+    },
+    setBmEngines: (state, action) => {
+      state.value.bmEngines = action.payload
+    },
+    setGlobalEngine: (state, action) => {
+      state.value.engine = action.payload
+    },
+    setEngine: (state, action) => {
+      state.value.engine = action.payload
+    },
   },
 })
 
@@ -65,5 +107,13 @@ export const {
   setCategory,
   setPart,
   setLoadingData,
+  setGlobalBrand,
+  setGlobalModel,
+  changeLinkPath,
+  setBmBrands,
+  setBmModels,
+  setBmEngines,
+  setGlobalEngine,
+  setEngine,
 } = dataSelects.actions
 export default dataSelects.reducer

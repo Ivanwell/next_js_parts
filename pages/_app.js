@@ -3,6 +3,12 @@ import Preloader from '@/components/preloader'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import {
+  setGlobalBrand,
+  setGlobalModel,
+  setGlobalEngine,
+} from '@/global_state/features/cardata_redux'
 import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
 

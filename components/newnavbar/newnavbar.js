@@ -33,7 +33,9 @@ import {
   handleOpenPropToCheck,
   hideFullImage,
 } from '@/global_state/features/cart_redux'
+import LinksHistory from '../link_history/links_history'
 import { useDispatch } from 'react-redux'
+import SelectedCar from '../selected_car/selected_car'
 
 const NewNavbar = () => {
   const dispatch = useDispatch()
@@ -341,6 +343,8 @@ const NewNavbar = () => {
           </div>
         ) : null}
       </div>
+      <SelectedCar />
+      <LinksHistory />
     </header>
   )
 }

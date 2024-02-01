@@ -2,6 +2,7 @@ import styles from '../../styles/NewSearch.module.css'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import Pagination from '../pagination_in_search/pagination'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { adddToCart } from '@/global_state/features/cart_redux'
 import { useUserAgent } from 'next-useragent'
@@ -16,15 +17,15 @@ import {
   arrowDown,
 } from '../SVGs/SVGs'
 
-const NoSearchResult = ({ title }) => {
+const NoSearchResult = () => {
   return (
     <div className={styles.nosearch_container}>
       <div className={styles.no_search_result}>
         <div className={styles.img_container}>
-          <img src="https://www.bayrakparts.com/media/pngegg.png" />
+          <img src="https://backend.bayrakparts.com/images/media/pngegg.png" />
         </div>
         <div className={styles.no_res_description}>
-          <span>Упс... система не знайшла {title}</span>
+          <span>Упс... система не знайшла потрібної запчастини</span>
           <span>
             Проте Ви можете залишити заявку і ми пошукаємо запчастину вручну
           </span>
@@ -36,17 +37,10 @@ const NoSearchResult = ({ title }) => {
 }
 
 const SearchedItem = ({ product }) => {
-  console.log(product)
   const [numberPerItem, setNumberPerItem] = useState(1)
 
   const dispatch = useDispatch()
-
-  // const filteredPrice = product.supliers.filter(
-  //   item => +item.amount > 0 || item.amount === '> 10'
-  // )
-  // const price = filteredPrice.reduce((acc, loc) =>
-  //   +acc.price < +loc.price ? acc : loc
-  // )
+  const router = useRouter()
 
   const filteredPrice = product.supliers.filter(
     item => +item.amount > 0 || item.amount === '> 10'
@@ -88,26 +82,16 @@ const SearchedItem = ({ product }) => {
     otherStock: '-',
   }
 
-  // let img =
-  //   'https://cdn.bm.parts/photos/320x320' +
-  //   product.default_image.slice(5).replace(/[&\/\\]/g, '/')
-
-  // const item = {
-  //   title: product.name,
-  //   price: Math.ceil(product.price * 1.15),
-  //   img: img,
-  //   article: product.article,
-  //   brandName: product.brand,
-  //   lvivStock: product.in_stocks[0].quantity,
-  //   otherStock: product.in_others.quantity,
-  // }
-
   const adddingToCard = item => {
     const newItem = { ...item, quantity: numberPerItem }
     dispatch(adddToCart(newItem))
   }
 
-  const link = `/product/${product.link[0].link}`
+  let link = `/product/${product.link[0]?.link}`
+
+  if (router.query.brand && router.query.model && router.query.engine) {
+    link = `/product/${product.link[0]?.link}?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
+  }
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
@@ -262,7 +246,7 @@ const SearchedItemMobile = ({ product }) => {
     dispatch(adddToCart(newItem))
   }
 
-  const link = `/product/${product.link[0].link}`
+  const link = `/product/${product.link[0]?.link}`
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
@@ -349,7 +333,15 @@ const SearchedItemMobile = ({ product }) => {
   )
 }
 
-const NewSearchByCategory = ({ productData, userAgent, amount }) => {
+const NewSearchByCategory = ({
+  productData,
+  userAgent,
+  amount,
+  brand,
+  model,
+  engine,
+  finalTitle,
+}) => {
   let ua
 
   if (userAgent.uaString) {
@@ -358,18 +350,24 @@ const NewSearchByCategory = ({ productData, userAgent, amount }) => {
     ua = useUserAgent(window.navigator.userAgent)
   }
 
-  const title = `Знайдено ${amount} шт`
+  // let title = `Знайдено ${amount} шт`
+
+  // if (brand && model && engine) {
+  //   title = `Знайдено ${amount} шт для ${brand} ${model} ${engine}`
+  // }
 
   return (
     <div className={styles.whole_search_container}>
       <div className={styles.search_container}>
         {!ua.isMobile ? (
           <div className={styles.search_result_cont}>
-            <h1>{title}</h1>
+            {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
             <div className={styles.search_results}>
-              {productData.map(product => (
-                <SearchedItem product={product} />
-              ))}
+              {productData.length > 0 ? (
+                productData.map(product => <SearchedItem product={product} />)
+              ) : (
+                <NoSearchResult />
+              )}
             </div>
             <Pagination amount={amount} />
           </div>
@@ -377,13 +375,17 @@ const NewSearchByCategory = ({ productData, userAgent, amount }) => {
         {ua.isMobile ? (
           <div className={styles.search_result_cont_mobile}>
             <div className={styles.search_results_mobile}>
-              <h1>{title}</h1>
+              {productData.length > 0 ? (
+                <h1>{finalTitle}</h1>
+              ) : (
+                <h1>Не знайдено</h1>
+              )}
               {productData.length > 0 ? (
                 productData.map(product => (
                   <SearchedItemMobile product={product} />
                 ))
               ) : (
-                <NoSearchResult title={title} />
+                <NoSearchResult />
               )}
             </div>
             <Pagination amount={amount} />

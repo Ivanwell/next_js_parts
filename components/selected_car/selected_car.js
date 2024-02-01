@@ -3,31 +3,7 @@ import Link from 'next/link'
 import { arrowRight1 } from '../SVGs/SVGs'
 import { useSelector } from 'react-redux'
 
-const LinkHistory = ({ data, brand, model, engine }) => {
-  let link = `/categories/${data.eng}`
-
-  if (brand && model) {
-    link = `/categories/${data.eng}?brand=${brand}&model=${model}&engine=${engine}`
-  }
-  function capitalize(s) {
-    return s[0].toUpperCase() + s.slice(1).toLowerCase()
-  }
-  const text = capitalize(data.ukr)
-  return (
-    <Link href={link}>
-      <li>
-        {arrowRight1}
-        <span>{text}</span>
-      </li>
-    </Link>
-  )
-}
-
-const LinksHistory = () => {
-  const fullPath = useSelector(
-    state => state.dataSelectscartReducer.value.fullPath
-  )
-
+const SelectedCar = () => {
   const globalBrand = useSelector(
     state => state.dataSelectscartReducer.value.globalBrand
   )
@@ -41,9 +17,10 @@ const LinksHistory = () => {
   )
   return (
     <>
-      {fullPath ? (
+      {globalBrand || globalModel || globalEngine ? (
         <ul div className={styles.links}>
-          {/* {globalBrand ? (
+          <h3>Обране авто:</h3>
+          {globalBrand ? (
             <Link href={`/?brand=${globalBrand}`}>
               <li>
                 {arrowRight1}
@@ -68,21 +45,11 @@ const LinksHistory = () => {
                 <span>{globalEngine}</span>
               </li>
             </Link>
-          ) : null} */}
-          {fullPath
-            ? fullPath.map(category => (
-                <LinkHistory
-                  data={category}
-                  brand={globalBrand}
-                  model={globalModel}
-                  engine={globalEngine}
-                />
-              ))
-            : null}
+          ) : null}
         </ul>
       ) : null}
     </>
   )
 }
 
-export default LinksHistory
+export default SelectedCar

@@ -29,11 +29,19 @@ import {
   setModel,
   setCategory,
   setPart,
+  changeLinkPath,
+  setGlobalBrand,
+  setGlobalModel,
+  setBmBrands,
+  setBmModels,
+  setBmEngines,
+  setGlobalEngine,
+  setEngine,
 } from '@/global_state/features/cardata_redux'
 import { useSelector } from 'react-redux'
 import { useUserAgent } from 'next-useragent'
 
-const NewMainPage = ({ userAgent }) => {
+const NewMainPage = ({ userAgent, query }) => {
   let ua
 
   if (userAgent.uaString) {
@@ -52,6 +60,10 @@ const NewMainPage = ({ userAgent }) => {
     fifth: false,
     sixth: false,
   })
+  const [brandDirect, setBrandDirect] = useState(null)
+  const [modelDirect, setModelDirect] = useState(null)
+  const [engineDirect, setEngineDirect] = useState(null)
+
   const dispatch = useDispatch()
 
   const formNewData = useSelector(
@@ -73,6 +85,34 @@ const NewMainPage = ({ userAgent }) => {
     state => state.dataSelectscartReducer.value.loading
   )
 
+  const bmBrands = useSelector(
+    state => state.dataSelectscartReducer.value.bmBrands
+  )
+
+  const bmModels = useSelector(
+    state => state.dataSelectscartReducer.value.bmModels
+  )
+
+  const bmEngines = useSelector(
+    state => state.dataSelectscartReducer.value.bmEngines
+  )
+
+  const engine = useSelector(state => state.dataSelectscartReducer.value.engine)
+
+  const globalEngine = useSelector(
+    state => state.dataSelectscartReducer.value.engine
+  )
+
+  const globalBrand = useSelector(
+    state => state.dataSelectscartReducer.value.globalBrand
+  )
+  const globalModel = useSelector(
+    state => state.dataSelectscartReducer.value.globalModel
+  )
+  const fullPath = useSelector(
+    state => state.dataSelectscartReducer.value.fullPath
+  )
+
   const submitingSearch = e => {
     e.preventDefault()
     if (!choosenBrand || !choosenModel || !choosenCategory || !choosenPart) {
@@ -85,14 +125,41 @@ const NewMainPage = ({ userAgent }) => {
   }
 
   useEffect(() => {
-    if (!formNewData) {
+    if (fullPath) {
+      dispatch(changeLinkPath(null))
+    }
+
+    if (router.query.brand && router.query.model && router.query.engine) {
+      dispatch(setGlobalBrand(router.query.brand))
+      dispatch(setGlobalModel(router.query.model))
+      dispatch(setGlobalEngine(router.query.engine))
+      setBrandDirect(router.query.brand)
+      setModelDirect(router.query.model)
+      setEngineDirect(router.query.engine)
+    } else if (router.query.brand && router.query.model) {
+      setBrandDirect(router.query.brand)
+      setModelDirect(router.query.model)
+      setEngineDirect(null)
+      dispatch(setGlobalBrand(null))
+      dispatch(setGlobalEngine(null))
+      dispatch(setGlobalModel(null))
+    } else if (router.query.brand) {
+      setBrandDirect(router.query.brand)
+      setModelDirect(null)
+      setEngineDirect(null)
+      dispatch(setGlobalBrand(null))
+      dispatch(setGlobalEngine(null))
+      dispatch(setGlobalModel(null))
+    }
+
+    if (!bmBrands) {
       const abortController = new AbortController()
       const { signal } = abortController
       const apiCall = async () => {
         try {
           dispatch(setLoadingData(true))
           const res = await fetch(
-            `https://api.bonapart.pro/getSearchCatParts`,
+            `https://backend.bayrakparts.com/getAllCarBrands`,
             {
               method: 'GET',
               signal: signal,
@@ -100,7 +167,7 @@ const NewMainPage = ({ userAgent }) => {
           )
 
           const body = await res.json()
-          dispatch(setDataForForm(body[0].partsData))
+          dispatch(setBmBrands(body))
           dispatch(setLoadingData(false))
         } catch (error) {
           if (!signal?.aborted) {
@@ -118,6 +185,88 @@ const NewMainPage = ({ userAgent }) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (brandDirect) {
+      setEngineDirect(null)
+      if (!router.query.model) {
+        setModelDirect(null)
+      }
+      dispatch(setBmModels(null))
+      const abortController = new AbortController()
+      const { signal } = abortController
+      const apiCall = async () => {
+        try {
+          dispatch(setLoadingData(true))
+          const res = await fetch(
+            `https://backend.bayrakparts.com/getAllCarModelsByBrand/${brandDirect}`,
+            {
+              method: 'GET',
+              signal: signal,
+            }
+          )
+
+          const body = await res.json()
+          dispatch(setBmModels(body))
+          dispatch(setLoadingData(false))
+        } catch (error) {
+          if (!signal?.aborted) {
+            console.error(error)
+            dispatch(setLoadingData(false))
+          }
+        }
+      }
+      apiCall()
+
+      return () => {
+        abortController.abort()
+      }
+    } else {
+    }
+  }, [brandDirect])
+
+  useEffect(() => {
+    if (modelDirect && brandDirect) {
+      setEngineDirect(null)
+      dispatch(setBmEngines(null))
+      const abortController = new AbortController()
+      const { signal } = abortController
+      const apiCall = async () => {
+        try {
+          dispatch(setLoadingData(true))
+          const res = await fetch(
+            `https://backend.bayrakparts.com/getAllEnginesByModel/${brandDirect}?model=${modelDirect}`,
+            {
+              method: 'GET',
+              signal: signal,
+            }
+          )
+
+          const body = await res.json()
+          dispatch(setBmEngines(body))
+          dispatch(setLoadingData(false))
+        } catch (error) {
+          if (!signal?.aborted) {
+            console.error(error)
+            dispatch(setLoadingData(false))
+          }
+        }
+      }
+      apiCall()
+
+      return () => {
+        abortController.abort()
+      }
+    } else {
+    }
+  }, [modelDirect])
+
+  const submitSearch = e => {
+    e.preventDefault()
+    dispatch(setGlobalBrand(brandDirect))
+    dispatch(setGlobalModel(modelDirect))
+    dispatch(setGlobalEngine(engineDirect))
+  }
+
   const arrow = '<'
   const arrowRew = '>'
 
@@ -133,13 +282,14 @@ const NewMainPage = ({ userAgent }) => {
         <meta name="theme-color" content="#f37c2e"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container_for_search_and_promo}>
-        <form className={styles.search_form} onSubmit={e => submitingSearch(e)}>
-          <div className={styles.container_search_form}>
-            <div className={styles.select_car_title}>
-              {search}Виберіть Ваше авто для пошуку запчастин
-            </div>
-            <div className={styles.select_container}>
+      {globalBrand && globalModel && engine ? null : (
+        <div className={styles.container_for_search_and_promo}>
+          <form className={styles.search_form} onSubmit={e => submitSearch(e)}>
+            <div className={styles.container_search_form}>
+              <div className={styles.select_car_title}>
+                {search}Виберіть Ваше авто для пошуку запчастин
+              </div>
+              {/* <div className={styles.select_container}>
               <span className={styles.number}>1</span>
               <select
                 value={choosenBrand}
@@ -154,8 +304,28 @@ const NewMainPage = ({ userAgent }) => {
                   ? formNewData.brands.map(brand => <option>{brand}</option>)
                   : null}
               </select>
-            </div>
-            <div className={styles.select_container}>
+            </div> */}
+              <div className={styles.select_container}>
+                <span className={styles.number}>1</span>
+                <select
+                  value={brandDirect}
+                  onChange={e => setBrandDirect(e.target.value)}
+                >
+                  {!loadingFromData ? (
+                    <option selected>
+                      {brandDirect ? `${brandDirect}` : 'Оберіть марку'}
+                    </option>
+                  ) : (
+                    <option selected>Завантаження...</option>
+                  )}
+                  {bmBrands
+                    ? bmBrands.map(brand => (
+                        <option value={brand.name}> {brand.name}</option>
+                      ))
+                    : null}
+                </select>
+              </div>
+              {/* <div className={styles.select_container}>
               <span className={styles.number}>2</span>
               <select
                 value={choosenModel}
@@ -174,8 +344,49 @@ const NewMainPage = ({ userAgent }) => {
                       ))
                   : null}
               </select>
-            </div>
-            <div className={styles.select_container}>
+            </div> */}
+              <div className={styles.select_container}>
+                <span className={styles.number}>2</span>
+                <select
+                  value={modelDirect}
+                  onChange={e => setModelDirect(e.target.value)}
+                >
+                  {!loadingFromData ? (
+                    <option selected>
+                      {modelDirect ? `${modelDirect}` : 'Оберіть модель'}
+                    </option>
+                  ) : (
+                    <option selected>Завантаження...</option>
+                  )}
+                  {brandDirect && bmModels
+                    ? bmModels.map(model1 => (
+                        <option value={model1.name}>{model1.name}</option>
+                      ))
+                    : null}
+                </select>
+              </div>
+              <div className={styles.select_container}>
+                <span className={styles.number}>3</span>
+                <select
+                  value={engineDirect}
+                  onChange={e => setEngineDirect(e.target.value)}
+                >
+                  {!loadingFromData ? (
+                    <option selected>
+                      {engineDirect ? `${engineDirect}` : 'Оберіть двигун'}
+                    </option>
+                  ) : (
+                    <option selected>Завантаження...</option>
+                  )}
+                  {modelDirect && brandDirect && bmEngines
+                    ? bmEngines.map(engine => (
+                        <option value={engine.name}>{engine.name}</option>
+                      ))
+                    : null}
+                </select>
+              </div>
+
+              {/* <div className={styles.select_container}>
               <span className={styles.number}>3</span>
               <select
                 value={choosenCategory}
@@ -210,31 +421,32 @@ const NewMainPage = ({ userAgent }) => {
                       .Models.map(part => <option value={part}>{part}</option>)
                   : null}
               </select>
+            </div> */}
+              <button className={styles.search_button} type="submit">
+                Вибрати авто
+              </button>
             </div>
-            <button className={styles.search_button} type="submit">
-              Пошук
-            </button>
+            {errorForm ? (
+              <div className={styles.error_form}>Заповніть усі дані</div>
+            ) : null}
+            <Link href="/leave_request" className={styles.cannot_find_part}>
+              <span className={styles.cannot_find_part_title}>
+                Не вдається знайти запчастину? Ми допоможемо!
+              </span>
+            </Link>
+          </form>
+          <div className={styles.promo_container}>
+            <div className={styles.arrow_cont}>{arrow}</div>
+            <div className={styles.imag_contaier}>
+              <img
+                loading="lazy"
+                src="https://backend.bayrakparts.com/images/media/baner_new.jpg"
+              />
+            </div>
+            <div className={styles.arrow_cont}>{arrowRew}</div>
           </div>
-          {errorForm ? (
-            <div className={styles.error_form}>Заповніть усі дані</div>
-          ) : null}
-          <Link href="/leave_request" className={styles.cannot_find_part}>
-            <span className={styles.cannot_find_part_title}>
-              Не вдається знайти запчастину? Ми допоможемо!
-            </span>
-          </Link>
-        </form>
-        <div className={styles.promo_container}>
-          <div className={styles.arrow_cont}>{arrow}</div>
-          <div className={styles.imag_contaier}>
-            <img
-              loading="lazy"
-              src="https://backend.bayrakparts.com/images/media/baner_new.jpg"
-            />
-          </div>
-          <div className={styles.arrow_cont}>{arrowRew}</div>
         </div>
-      </div>
+      )}
       <div className={styles.container_for_brands}>
         <h2>Популярні категорії</h2>
         <CategoryInMain />
@@ -447,13 +659,27 @@ const NewMainPage = ({ userAgent }) => {
   )
 }
 
-export const getServerSideProps = async ({ req }) => {
+export const getServerSideProps = async ({ req, query }) => {
   const userAgent = req.headers['user-agent']
+  console.log(query)
 
-  return {
-    props: {
-      userAgent: userAgent,
-    },
+  if (query.brand && query.model) {
+    return {
+      props: {
+        userAgent: userAgent,
+        query: query,
+      },
+    }
+  } else {
+    return {
+      props: {
+        userAgent: userAgent,
+        query: {
+          brand: null,
+          model: null,
+        },
+      },
+    }
   }
 }
 

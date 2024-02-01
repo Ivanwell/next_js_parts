@@ -9,7 +9,7 @@
 .links {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  max-width: 100%;
   padding-left: 11%;
   align-items: center;
   gap: 20px;
@@ -25,6 +25,20 @@
   display: flex;
   align-items: center;
   height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+}
+
+.category_title {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  width: 80%;
+  padding-left: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .links a li {
@@ -74,7 +88,7 @@
     font-weight: 600;
     background-color: #eee;
     height: 30px;
-    font-size: 14px;
+    font-size: 12px;
     list-style: none;
   }
 
@@ -89,10 +103,22 @@
     row-gap: 10px;
   }
 
+  .links h3 {
+    white-space: nowrap;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    line-height: 100%;
+  }
+
   .links a {
+    display: flex;
+    align-items: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 10px;
+    padding-right: 1px;
   }
 
   .pod_cat_cont a span {

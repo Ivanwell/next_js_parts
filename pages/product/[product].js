@@ -26,9 +26,16 @@ import * as ga from '../../components/lib/gtag'
 import { useRouter } from 'next/router'
 import { useUserAgent } from 'next-useragent'
 import { adddToCart, showFullImage } from '@/global_state/features/cart_redux'
+import {
+  changeLinkPath,
+  setGlobalBrand,
+  setGlobalModel,
+  setGlobalEngine,
+} from '@/global_state/features/cardata_redux'
 import { useDispatch } from 'react-redux'
 import Custom404 from '../404'
 import LinksHistory from '@/components/link_history/links_history'
+import { useEffect } from 'react'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
   if (!item) {
@@ -54,6 +61,18 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
 
   const dispatch = useDispatch()
   const router = useRouter()
+
+  console.log(router)
+
+  useEffect(() => {
+    dispatch(changeLinkPath(cat.fullPath))
+    if (router.query.brand && router.query.model && router.query.engine) {
+      dispatch(setGlobalBrand(router.query.brand))
+      dispatch(setGlobalModel(router.query.model))
+      dispatch(setGlobalEngine(router.query.engine))
+    }
+  }, [])
+
   const [end, setEnd] = useState(10)
   const [numerPerItem, setNumberPerItem] = useState(1)
   const [name, setName] = useState('')
@@ -254,7 +273,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
         ></meta>
         <meta property="og:description" content={metateg1}></meta>
       </Head>
-      {cat ? <LinksHistory fullPath={cat.fullPath} /> : null}
+      {/* {cat ? <LinksHistory fullPath={cat.fullPath} /> : null} */}
       {!ua.isMobile ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
           <div rel="schema:aggregateRating" className={styles.nodisplay}>

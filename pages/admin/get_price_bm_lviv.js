@@ -178,11 +178,11 @@ const AddOrderStatus = () => {
     // console.log(body)
     // const filtered = body.filter(item => item.categories.length === 0)
     // console.log(filtered)
-    const res1 = await fetch(`https://backend.bayrakparts.com/get_categories`, {
-      method: 'GET',
-    })
-    const body1 = await res1.json()
-    console.log(body1)
+    // const res1 = await fetch(`https://backend.bayrakparts.com/get_categories`, {
+    //   method: 'GET',
+    // })
+    // const body1 = await res1.json()
+    // console.log(body1)
 
     // const filtered = body1.filter(item => item.link.includes('<'))
     // console.log(filtered)
@@ -235,17 +235,24 @@ const AddOrderStatus = () => {
     // const body3 = body2.slice(0, 1597)
     // const body4 = body3.filter(item => item.categories.length === 0)
     // console.log(body4)
-    // const res4 = await fetch(
-    //   `http://backend.bayrakparts.com/add_cat_to_empty_cat`,
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     method: 'POST',
-    //     body: JSON.stringify({ arr: body3.slice(0, 1) }),
-    //   }
-    // )
-    // const body5 = await res4.json()
+    const res4 = await fetch(
+      `https://backend.bayrakparts.com/getProductsByEngine`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          category: 'Двигун/Механізм газорозподілу',
+          brand: 'BMW',
+          model: '5 (E39)',
+          engine: '530 d 184 л.с. (1998-2000)',
+        }),
+      }
+    )
+    const body5 = await res4.json()
+
+    console.log(body5)
 
     // const arr = []
     // let step = 0

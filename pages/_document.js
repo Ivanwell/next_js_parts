@@ -16,6 +16,7 @@ export default function Document() {
             gtag('config', 'G-6SSFMSDB43');`}
         </Script>
       </Head>
+
       <body>
         <Main />
         <NextScript />
