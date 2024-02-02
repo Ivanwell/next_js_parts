@@ -60,11 +60,15 @@ const Category = ({ body, body1, userAgent, amount }) => {
 
   let title = `${body.fullPath[body.fullPath.length - 1].ukr.toLowerCase()}`
 
+  let metaDescr = `${body.fullPath[
+    body.fullPath.length - 1
+  ].ukr.toLowerCase()} у інтернет-магазині автозапчастин BayrakParts`
+
   function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1)
   }
 
-  if (brand && model) {
+  if (brand && model && engine) {
     titleMeta = `Купити ${body.fullPath[
       body.fullPath.length - 1
     ].ukr.toLowerCase()} для ${brand} ${model} ${engine} - BAYRAKPARTS`
@@ -72,6 +76,10 @@ const Category = ({ body, body1, userAgent, amount }) => {
     title = `${body.fullPath[
       body.fullPath.length - 1
     ].ukr.toLowerCase()} для ${brand} ${model} ${engine}`
+
+    metaDescr = `${body.fullPath[
+      body.fullPath.length - 1
+    ].ukr.toLowerCase()} для ${brand} ${model} з двигуном ${engine} у інтернет-магазині автозапчастин BayrakParts`
   }
 
   const finalTitle = capitalize(title)
@@ -79,6 +87,7 @@ const Category = ({ body, body1, userAgent, amount }) => {
     <div className={styles.full_container}>
       <Head>
         <title>{titleMeta}</title>
+        <meta name="description" content={metaDescr} />
       </Head>
       {/* {body.fullPath ? <LinksHistory fullPath={body.fullPath} /> : null} */}
       {body.categories.length != 0 ? (

@@ -628,7 +628,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
               (item.lvivStock === '-' && item.otherStock == 1) ? (
                 <div className={styles.last_item_cont}>
                   <img
-                    src="https://bayrakparts.com/media/hot-icon.svg"
+                    src="https://backend.bayrakparts.com/images/media/hot-icon.svg"
                     alt="fire"
                     loading="lazy"
                   />

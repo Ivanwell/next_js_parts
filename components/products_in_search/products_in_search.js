@@ -110,6 +110,8 @@ const SearchedItem = ({ product }) => {
         <img
           src={item.img}
           onClick={() => dispatch(showFullImage(product.image))}
+          alt={item.title}
+          loading="lazy"
         />
       </div>
       <div className={styles.main_info_product}>
@@ -270,6 +272,8 @@ const SearchedItemMobile = ({ product }) => {
             <img
               src={item.img}
               onClick={() => dispatch(showFullImage(product.image))}
+              alt={item.title}
+              loading="lazy"
             />
           </div>
           <Link className={styles.main_info} href={link}>
