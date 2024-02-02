@@ -38,6 +38,7 @@ import LinksHistory from '@/components/link_history/links_history'
 import { useEffect } from 'react'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
+  console.log(item)
   if (!item) {
     return <Custom404 />
   }
@@ -272,6 +273,11 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           }
         ></meta>
         <meta property="og:description" content={metateg1}></meta>
+        <meta
+          property="og:url"
+          content={`https://bayrakparts.com/product/${item.link}`}
+        ></meta>
+        <meta property="og:image" content={mobileImage}></meta>
       </Head>
       {/* {cat ? <LinksHistory fullPath={cat.fullPath} /> : null} */}
       {!ua.isMobile ? (
@@ -978,6 +984,7 @@ export const getServerSideProps = async ({ req, params }) => {
     lvivStock: price.amount,
     lastUpdate: price.lastDate,
     otherStock: '-',
+    link: body.link[0].link,
   }
 
   const userAgent = req.headers['user-agent']
