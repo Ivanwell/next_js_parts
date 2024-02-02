@@ -3,7 +3,7 @@ import Script from 'next/script'
 
 export default function Document() {
   return (
-    <Html lang="ua">
+    <Html lang="uk">
       <Head>
         <Script
           strategy="lazyOnload"
