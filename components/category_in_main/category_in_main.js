@@ -26,7 +26,7 @@ const CategoryInMain = () => {
       >
         <span>Деталі для ТО</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/detali-dlya-to-min.png"
+          src="https://backend.bayrakparts.com/images/media/detali-dlya-to-min-250.png"
           loading="lazy"
         ></img>
       </Link>
@@ -36,7 +36,7 @@ const CategoryInMain = () => {
       >
         <span>Амортизатори</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/amortyzator.png"
+          src="https://backend.bayrakparts.com/images/media/amortyzator-250.png"
           loading="lazy"
         ></img>
       </Link>
@@ -46,14 +46,14 @@ const CategoryInMain = () => {
       >
         <span>Система охолодження</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/systema-oholodzennya-min.png"
+          src="https://backend.bayrakparts.com/images/media/systema-oholodzennya-min-250.png"
           loading="lazy"
         ></img>
       </Link>
       <Link href={`/categories/shasi${query}`} className={styles.category_cont}>
         <span>Ходова частина</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min.png"
+          src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min-250.png"
           loading="lazy"
         ></img>
       </Link>
@@ -63,27 +63,27 @@ const CategoryInMain = () => {
       >
         <span>Двигун</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/dvygun-min.png"
+          src="https://backend.bayrakparts.com/images/media/dvygun-min-250.png"
           loading="lazy"
         ></img>
       </Link>
       <Link
-        href={`/categories/aksesuary-zasoby-po-doglyadu-dod.tovary${query}`}
+        href={`/categories/kuzov-skladovi${query}`}
         className={styles.category_cont}
       >
-        <span>Аксесуари</span>
+        <span>Кузов</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/aksesuary-min.png"
+          src="https://backend.bayrakparts.com/images/media/pngegg (7).png"
           loading="lazy"
         ></img>
       </Link>
       <Link
-        href={`/categories/elektryka${query}`}
+        href={`/categories/galmivna-systema${query}`}
         className={styles.category_cont}
       >
-        <span>Електричні частини</span>
+        <span>Гальмівна система</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/electryka-min.png"
+          src="https://backend.bayrakparts.com/images/media/pngegg (4).png"
           loading="lazy"
         ></img>
       </Link>
@@ -93,7 +93,7 @@ const CategoryInMain = () => {
       >
         <span>Трансмісія</span>
         <img
-          src="https://backend.bayrakparts.com/images/media/transmision1-min.png"
+          src="https://backend.bayrakparts.com/images/media/transmision1-min-250.png"
           loading="lazy"
         ></img>
       </Link>

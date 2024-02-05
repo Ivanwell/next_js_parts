@@ -300,14 +300,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 5px;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.05s;
 }
 
-.category svg {
+/* .category svg {
   color: #f37c2e;
-}
+} */
 
 .category:hover {
   color: #f37c2e;

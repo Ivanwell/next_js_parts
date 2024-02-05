@@ -293,11 +293,11 @@ const NewNavbar = () => {
           <ul className={styles.list_categories}>
             <li className={styles.category}>
               <Link href="/categories/olyva-zmazka--i-tehnichni">
-                {droplet}Оливи та рідини
+                {droplet}Оливи
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/galmivna-systema">{discbrake}Гальма</Link>
+              <Link href="/categories/elektryka">{discbrake}Електрика</Link>
             </li>
             <li className={styles.category}>
               <Link href="/categories/systema-zapalyuvannya-rozzharyuvannya">
@@ -310,14 +310,12 @@ const NewNavbar = () => {
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/rulova-systema">
-                {remni}Рульова система
-              </Link>
+              <Link href="/categories/rulova-systema">{remni}Кермова</Link>
             </li>
 
-            <li className={styles.category}>
+            {/* <li className={styles.category}>
               <Link href="/categories/kuzov-skladovi">{accecories}Кузов</Link>
-            </li>
+            </li> */}
             <li className={styles.category}>
               <Link href="/categories/systema-vypusku-vpusku-povitrya">
                 {electric}Впуск/випуск
