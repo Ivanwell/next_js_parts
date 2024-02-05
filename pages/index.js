@@ -270,10 +270,14 @@ const NewMainPage = ({ userAgent, query }) => {
   const arrow = '<'
   const arrowRew = '>'
 
+  let titleMeta = 'BayrakParts || Запчастини з гарантією'
+  if (router.query.brand && router.query.model && router.query.engine) {
+    titleMeta = `Запчастини до ${router.query.brand} ${router.query.model} ${router.query.engine}`
+  }
   return (
     <div className={styles.main_container}>
       <Head>
-        <title>BayrakParts || Запчастини з гарантією </title>
+        <title>{titleMeta}</title>
         <meta
           name="description"
           content="Купити запчастини дешево з гарантією Львів, Київ, Тернопіль, Ужгород, Луцьк, Рівне, Житомир Hyundai/KIA, Хюндай , Toyota/Lexus, Тойота/Лексус, Nissan, Ніссан, Mazda, Мазда, Honda, Хонда, Subaru, Субару, BMW, БМВ,  Volkswagen, Фольксваген. Купити запчастини до ходової частини, двигуна, кузову, трансмісія, комплекти для ТО, комплект ГРМ, водяна помпа, масло, фільтр, амортизатор, сайлентблок. В наявності більше 50000 запчастин. Відправляємо в день замовлення."
