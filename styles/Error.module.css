@@ -15,7 +15,7 @@
 .error_container {
   width: 50%;
   height: 300px;
-  background-image: url('https://bayrakparts.com/media/da318fa9-252b-4a7a-9c0b-6bd9f7aa56ae.jpg');
+  background-image: url('https://backend.bayrakparts.com/images/media/da318fa9-252b-4a7a-9c0b-6bd9f7aa56ae.jpg');
   background-repeat: no-repeat;
   background-size: 75%;
   display: flex;
@@ -26,7 +26,7 @@
 .error_500_container {
   width: 50%;
   height: 500px;
-  background-image: url('https://bayrakparts.com/media/24ba0af8-a0f0-4e63-ae7b-b6c262b5a5b1.jpg');
+  background-image: url('https://backend.bayrakparts.com/images/media/24ba0af8-a0f0-4e63-ae7b-b6c262b5a5b1.jpg');
   background-repeat: no-repeat;
   background-size: 75%;
   display: flex;
