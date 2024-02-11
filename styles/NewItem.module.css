@@ -238,12 +238,19 @@
   line-height: 20px;
   font-size: 14px;
   cursor: pointer;
-  color: #132530;
-}
-
-.svg_and_title:hover {
   color: green;
   font-weight: 600;
+}
+
+.svg_and_title_add {
+  padding-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  line-height: 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .svg_and_title svg {
@@ -388,6 +395,21 @@
   justify-content: center;
   font-size: 22px;
   cursor: pointer;
+  gap: 10px;
+}
+
+.buy_btn_dis {
+  margin-top: 30px;
+  width: 90%;
+  height: 50px;
+  border: none;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: not-allowed;
   gap: 10px;
 }
 
@@ -798,6 +820,8 @@
     width: 100%;
     gap: 10px;
     align-items: center;
+    color: green;
+    font-weight: 600;
   }
 
   .out_stock_info {
@@ -894,6 +918,21 @@
   .buy_button_mobile {
     height: 42px;
     background-color: #e83f33;
+    border-radius: 6px;
+    border: none;
+    width: 75%;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .buy_button_mobile_dis {
+    height: 42px;
+    background-color: gray;
     border-radius: 6px;
     border: none;
     width: 75%;

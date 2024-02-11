@@ -14,12 +14,12 @@ const LinkHistory = ({ data, brand, model, engine }) => {
   }
   const text = capitalize(data.ukr)
   return (
-    <Link href={link}>
-      <li>
+    <li>
+      <Link href={link}>
         {arrowRight1}
         <span>{text}</span>
-      </li>
-    </Link>
+      </Link>
+    </li>
   )
 }
 

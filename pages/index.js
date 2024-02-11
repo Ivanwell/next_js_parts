@@ -494,10 +494,10 @@ const NewMainPage = ({ userAgent, query }) => {
               </Link>
 
               <Link
-                href="/categories/kuzov-skladovi"
+                href="/categories/elektryka"
                 className={styles.category_link}
               >
-                {accecories}Кузовні елемнти
+                {accecories}Електрика
               </Link>
 
               <Link

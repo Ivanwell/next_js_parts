@@ -154,7 +154,7 @@ const SearchedItem = ({ product }) => {
           <div className={styles.real_price}>{item.price},00 UAH</div>
           <span className={styles.deliver_cost}> + Вартість доставки</span>
         </div>
-        {item.lvivStock === '-' && item.otherStock === '-' ? (
+        {item.lvivStock == 0 && item.otherStock === '-' ? (
           <div className={styles.aviability_cont_out}>
             {preorder} Під замовлення
           </div>
@@ -167,6 +167,8 @@ const SearchedItem = ({ product }) => {
             <img src="https://backend.bayrakparts.com/images/media/hot-icon.svg" />
             Остання шт на складі
           </div>
+        ) : item.lvivStock == 0 ? (
+          <div className={styles.how_many_available}>На складі 0 шт</div>
         ) : (
           <div className={styles.how_many_available}>
             {+item.lvivStock > 0 || item.lvivStock === '> 10'
@@ -180,9 +182,9 @@ const SearchedItem = ({ product }) => {
           <div>{numberPerItem}</div>
           <button onClick={() => addNumberPerItem(1)}>+</button>
         </div>
-        {item.lvivStock === '-' && item.otherStock === '-' ? (
-          <button className={styles.ckeck_aviability}>
-            Уточнити наявність
+        {item.lvivStock == 0 && item.otherStock === '-' ? (
+          <button disabled className={styles.ckeck_aviability}>
+            Немає в наявності
           </button>
         ) : (
           <button
@@ -201,12 +203,28 @@ const SearchedItemMobile = ({ product }) => {
   const [numberPerItem, setNumberPerItem] = useState(1)
   const dispatch = useDispatch()
 
+  // const filteredPrice = product.supliers.filter(
+  //   item => +item.amount > 0 || item.amount === '> 10'
+  // )
+  // const price = filteredPrice.reduce((acc, loc) =>
+  //   +acc.price < +loc.price ? acc : loc
+  // )
+
   const filteredPrice = product.supliers.filter(
     item => +item.amount > 0 || item.amount === '> 10'
   )
-  const price = filteredPrice.reduce((acc, loc) =>
-    +acc.price < +loc.price ? acc : loc
-  )
+
+  let price
+
+  if (filteredPrice.length === 0) {
+    price = product.supliers.reduce((acc, loc) =>
+      +acc.price < +loc.price ? acc : loc
+    )
+  } else {
+    price = filteredPrice.reduce((acc, loc) =>
+      +acc.price < +loc.price ? acc : loc
+    )
+  }
 
   // let thumbImage
   // if (product.image === '-' || product.image === null) {
@@ -243,6 +261,8 @@ const SearchedItemMobile = ({ product }) => {
     otherStock: '-',
   }
 
+  console.log(item.lvivStock)
+
   const adddingToCard = item => {
     const newItem = { ...item, quantity: numberPerItem }
     dispatch(adddToCart(newItem))
@@ -278,7 +298,7 @@ const SearchedItemMobile = ({ product }) => {
           </div>
           <Link className={styles.main_info} href={link}>
             {title}{' '}
-            {item.lvivStock === '-' && item.otherStock === '-' ? (
+            {item.lvivStock == 0 && item.otherStock === '-' ? (
               <div className={styles.aviability_cont_out}>
                 {preorder} Під замовлення
               </div>
@@ -291,7 +311,7 @@ const SearchedItemMobile = ({ product }) => {
                 <img src="https://backend.bayrakparts.com/images/media/hot-icon.svg" />
                 Остання шт на складі
               </div>
-            ) : (
+            ) : item.lvivStock == 0 ? null : (
               <div className={styles.how_many_available}>
                 {+item.lvivStock > 0 || item.lvivStock === '> 10'
                   ? item.lvivStock
@@ -325,12 +345,18 @@ const SearchedItemMobile = ({ product }) => {
               <button onClick={() => addNumberPerItem(-1)}>{arrowDown}</button>
             </div>
           </div>
-          <button
-            className={styles.byu_btn_mobile}
-            onClick={() => adddingToCard(item)}
-          >
-            {newbasket}
-          </button>
+          {item.lvivStock == 0 ? (
+            <button className={styles.byu_btn_mobile_dis}>
+              Немає в наявності
+            </button>
+          ) : (
+            <button
+              className={styles.byu_btn_mobile}
+              onClick={() => adddingToCard(item)}
+            >
+              {newbasket}
+            </button>
+          )}
         </div>
       </div>
     </div>

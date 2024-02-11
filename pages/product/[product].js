@@ -256,7 +256,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
     router.push(`/thankyou`)
   }
 
-  const metateg1 = `✅Купити ${item.title} за ціною ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
+  const metateg1 = `✅Купити ${item.title}. Ціна : ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
 
   const linkToPage = `https://bayrakparts.com/product/${item.article}`
 
@@ -291,10 +291,17 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           <div rel="schema:offers" className={styles.nodisplay}>
             <div typeof="schema:Offer">
               <div property="schema:price" content={item.price}></div>
-              <div
-                property="schema:availability"
-                content="https://schema.org/InStock"
-              ></div>
+              {item.lvivStock == 0 ? (
+                <div
+                  property="schema:availability"
+                  content="https://schema.org/OutOfStock"
+                ></div>
+              ) : (
+                <div
+                  property="schema:availability"
+                  content="https://schema.org/InStock"
+                ></div>
+              )}
               <div property="schema:priceCurrency" content="UAH"></div>
               <div
                 property="schema:priceValidUntil"
@@ -354,7 +361,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           </div>
           <div className={styles.purchaise_container}>
             <div className={styles.wishlist_and_stock}>
-              <div className={styles.svg_and_title}>
+              <div className={styles.svg_and_title_add}>
                 {heart} Додати до відстеження
               </div>
               {item.lvivStock == 0 && item.otherStock === '-' ? (
@@ -391,7 +398,9 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   />
                   Остання шт на складі
                 </div>
-              ) : (
+              ) : item.lvivStock == 0 ? //   Немає в наявності // <div className={styles.how_many_available}>
+              // </div>
+              null : (
                 <div className={styles.how_many_available}>
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
@@ -415,12 +424,16 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 +
               </button>
             </div>
-            <button
-              className={styles.buy_btn}
-              onClick={() => addingToCard(item)}
-            >
-              {newbasket}Купити
-            </button>
+            {item.lvivStock == 0 ? (
+              <button className={styles.buy_btn_dis}>Немає в наявності</button>
+            ) : (
+              <button
+                className={styles.buy_btn}
+                onClick={() => addingToCard(item)}
+              >
+                {newbasket}Купити
+              </button>
+            )}
             <button
               className={styles.buy_btn_check}
               onClick={() => setOpenFormCheck(prev => !prev)}
@@ -594,10 +607,17 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           <div rel="schema:offers" className={styles.nodisplay}>
             <div typeof="schema:Offer">
               <div property="schema:price" content={item.price}></div>
-              <div
-                property="schema:availability"
-                content="https://schema.org/InStock"
-              ></div>
+              {item.lvivStock == 0 ? (
+                <div
+                  property="schema:availability"
+                  content="https://schema.org/OutOfStock"
+                ></div>
+              ) : (
+                <div
+                  property="schema:availability"
+                  content="https://schema.org/InStock"
+                ></div>
+              )}
               <div property="schema:priceCurrency" content="UAH"></div>
               <div
                 property="schema:priceValidUntil"
@@ -640,7 +660,8 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   />
                   Остання шт на складі
                 </div>
-              ) : (
+              ) : item.lvivStock == 0 ? // </div> //   Немає в наявності // <div className={styles.how_many_available}>
+              null : (
                 <div className={styles.how_many_available}>
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
@@ -648,7 +669,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   шт доступно
                 </div>
               )}
-              {item.lvivStock === 0 && item.otherStock === '-' ? (
+              {item.lvivStock == 0 && item.otherStock === '-' ? (
                 <div className={styles.out_stock_info}>
                   {preorder} Під замовлення
                 </div>
@@ -682,12 +703,18 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 </button>
               </div>
             </div>
-            <button
-              className={styles.buy_button_mobile}
-              onClick={() => addingToCard(item)}
-            >
-              {newbasket}Купити
-            </button>
+            {item.lvivStock == 0 ? (
+              <button disabled className={styles.buy_button_mobile_dis}>
+                Немає в наявності
+              </button>
+            ) : (
+              <button
+                className={styles.buy_button_mobile}
+                onClick={() => addingToCard(item)}
+              >
+                {newbasket}Купити
+              </button>
+            )}
           </div>
           <div className={styles.return_container}>
             14 днів гарантованого повернення

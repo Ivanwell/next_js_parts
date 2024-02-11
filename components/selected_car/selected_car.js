@@ -21,30 +21,30 @@ const SelectedCar = () => {
         <ul div className={styles.links}>
           <h3>Обране авто:</h3>
           {globalBrand ? (
-            <Link href={`/?brand=${globalBrand}`}>
-              <li>
+            <li>
+              <Link href={`/?brand=${globalBrand}`}>
                 {arrowRight1}
                 <span>{globalBrand}</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ) : null}
           {globalBrand && globalModel ? (
-            <Link href={`/?brand=${globalBrand}&model=${globalModel}`}>
-              <li>
+            <li>
+              <Link href={`/?brand=${globalBrand}&model=${globalModel}`}>
                 {arrowRight1}
                 <span>{globalModel}</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ) : null}
           {globalEngine && globalBrand && globalModel ? (
-            <Link
-              href={`/?brand=${globalBrand}&model=${globalModel}&engine=${globalEngine}`}
-            >
-              <li>
+            <li>
+              <Link
+                href={`/?brand=${globalBrand}&model=${globalModel}&engine=${globalEngine}`}
+              >
                 {arrowRight1}
                 <span>{globalEngine}</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ) : null}
         </ul>
       ) : null}
