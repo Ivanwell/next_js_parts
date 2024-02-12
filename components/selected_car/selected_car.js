@@ -46,6 +46,11 @@ const SelectedCar = () => {
               </Link>
             </li>
           ) : null}
+          {globalEngine && globalBrand && globalModel ? (
+            <li>
+              <button>Скасувати</button>
+            </li>
+          ) : null}
         </ul>
       ) : null}
     </>
