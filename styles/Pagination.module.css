@@ -1,11 +1,13 @@
 .pagination_cont {
-  width: 100%;
+  padding: 5px 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding-top: 20px;
+  margin-top: 20px;
+  background-color: #e0c4b1;
+  border-radius: 21px;
 }
 
 .link_component {
@@ -43,13 +45,12 @@
 
 @media all and (max-width: 740px) {
   .pagination_cont {
-    width: 100%;
+    padding: 5px 10px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .link_component {

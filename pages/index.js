@@ -538,7 +538,7 @@ const NewMainPage = ({ userAgent, query }) => {
             </div>
             {opened.first ? (
               <div className={styles.answer_cont}>
-                Ми продаємо запчастини до таких марок : Hyundai, Kia, Toyota,
+                Ми продаємо запчастини до таких марок: Hyundai, Kia, Toyota,
                 Lexus, Mazda, Nissan, Opel, Volkswagen, Ford, BMW, Honda,
                 General Motors
               </div>
@@ -555,7 +555,7 @@ const NewMainPage = ({ userAgent, query }) => {
             {opened.second ? (
               <div className={styles.answer_cont}>
                 Так звичайно, у нас представлений великий вибір мастил різних
-                в'язкостей та допусків а також комплекти фільтрів на будь-яку
+                в'язкостей та допусків, а також комплекти фільтрів на будь-яке
                 авто.
               </div>
             ) : null}
