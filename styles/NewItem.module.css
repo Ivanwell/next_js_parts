@@ -61,6 +61,9 @@
 .main_item_title {
   font-size: 26px;
   font-weight: 600;
+  max-width: 455px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main_item_details {

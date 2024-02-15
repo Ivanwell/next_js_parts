@@ -53,6 +53,7 @@ const NewNavbar = () => {
   const [article, setArticle] = useState('')
   const [loading, setLoading] = useState(false)
   const [noResults, setNoResults] = useState(false)
+  const [manyBrands, setManyBrands] = useState(null)
 
   const router = useRouter()
 
@@ -61,7 +62,7 @@ const NewNavbar = () => {
     setLoading(true)
     const res = await fetch(
       `https://backend.bayrakparts.com/get_item_info/${article
-        .replace(/[- /]/g, '')
+        .replace(/[- ./]/g, '')
         .toUpperCase()}`,
       {
         method: 'GET',
@@ -73,6 +74,27 @@ const NewNavbar = () => {
       router.push(`/product/${body.link[0].link}`)
     } else {
       setNoResults(true)
+    }
+    setLoading(false)
+  }
+
+  const searchInStockWithDiffBrands = async e => {
+    e.preventDefault()
+    setLoading(true)
+    const res = await fetch(
+      `https://backend.bayrakparts.com/get_items_info/${article
+        .replace(/[- ./]/g, '')
+        .toUpperCase()}`,
+      {
+        method: 'GET',
+      }
+    )
+
+    const body = await res.json()
+    if (body && body.length === 1) {
+      router.push(`/product/${body[0].link[0].link}`)
+    } else {
+      setManyBrands(body)
     }
     setLoading(false)
   }
@@ -178,6 +200,20 @@ const NewNavbar = () => {
           </div>
         </div>
       ) : null}
+      {manyBrands ? (
+        <div className={styles.many_brands}>
+          <div>Оберіть бренд</div>
+          {manyBrands.map(brand => (
+            <Link
+              onClick={() => setManyBrands(null)}
+              href={`https://bayrakparts.com/product/${brand.link[0].link}`}
+            >
+              {brand.brand}
+              <span>{brand.title}</span>
+            </Link>
+          ))}
+        </div>
+      ) : null}
       <div className={styles.header_links}>
         <Link className={styles.link_big} href="/">
           {info}
@@ -240,7 +276,7 @@ const NewNavbar = () => {
         ) : (
           <div className={styles.header_top_mobile}>
             <button
-              onClick={() => setOpenedSearch(false)}
+              onClick={() => searchInStockWithDiffBrands(false)}
               className={styles.header_top_mobile_back}
             >
               {arrowLeft}
@@ -265,7 +301,7 @@ const NewNavbar = () => {
           <div className={styles.select_part}>{car}Автозапчастини</div>
           <form
             className={styles.search_container}
-            onSubmit={e => searchInStock(e)}
+            onSubmit={e => searchInStockWithDiffBrands(e)}
           >
             <input
               className={styles.search_input}
