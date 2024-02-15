@@ -276,14 +276,14 @@ const NewNavbar = () => {
         ) : (
           <div className={styles.header_top_mobile}>
             <button
-              onClick={() => searchInStockWithDiffBrands(false)}
+              onClick={() => setOpenedSearch(false)}
               className={styles.header_top_mobile_back}
             >
               {arrowLeft}
             </button>
             <form
               className={styles.search_container_mobile}
-              onSubmit={e => searchInStock(e)}
+              onSubmit={e => searchInStockWithDiffBrands(e)}
             >
               <input
                 className={styles.search_input_mobile}
