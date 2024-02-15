@@ -94,7 +94,11 @@ const NewNavbar = () => {
     if (body && body.length === 1) {
       router.push(`/product/${body[0].link[0].link}`)
     } else {
-      setManyBrands(body)
+      if (body) {
+        setManyBrands(body)
+      } else {
+        setNoResults(true)
+      }
     }
     setLoading(false)
   }
