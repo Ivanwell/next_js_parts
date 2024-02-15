@@ -134,6 +134,30 @@ const AddOrderStatus = () => {
   }
 
   const test2 = async () => {
+    const res = await fetch(`https://backend.bayrakparts.com/getProductsMB`, {
+      method: 'GET',
+    })
+    const body = await res.json()
+
+    // let step = 0
+    // let arr = []
+    // while (step < body.mers.length) {
+    //   const filtered = body.mb.filter(
+    //     item => item.article === body.mers[step].article
+    //   )
+    //   if (filtered.length > 1) {
+    //     arr.push({
+    //       article: body.mers[step].article,
+    //       _id: filtered[0].itemWhole,
+    //       newId: body.mers[step].itemWhole,
+    //       _id_direct: filtered[0]._id,
+    //     })
+    //   }
+    //   step++
+    // }
+
+    console.log(body)
+
     // const res = await fetch(`http://backend.bayrakparts.com/give_direct`, {
     //   method: 'GET',
     // })
@@ -235,24 +259,24 @@ const AddOrderStatus = () => {
     // const body3 = body2.slice(0, 1597)
     // const body4 = body3.filter(item => item.categories.length === 0)
     // console.log(body4)
-    const res4 = await fetch(
-      `https://backend.bayrakparts.com/getProductsByEngine`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          category: 'Двигун/Механізм газорозподілу',
-          brand: 'BMW',
-          model: '5 (E39)',
-          engine: '530 d 184 л.с. (1998-2000)',
-        }),
-      }
-    )
-    const body5 = await res4.json()
+    // const res4 = await fetch(
+    //   `https://backend.bayrakparts.com/getProductsByEngine`,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //       category: 'Двигун/Механізм газорозподілу',
+    //       brand: 'BMW',
+    //       model: '5 (E39)',
+    //       engine: '530 d 184 л.с. (1998-2000)',
+    //     }),
+    //   }
+    // )
+    // const body5 = await res4.json()
 
-    console.log(body5)
+    // console.log(body5)
 
     // const arr = []
     // let step = 0

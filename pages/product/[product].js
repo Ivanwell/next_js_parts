@@ -34,7 +34,6 @@ import {
 } from '@/global_state/features/cardata_redux'
 import { useDispatch } from 'react-redux'
 import Custom404 from '../404'
-import LinksHistory from '@/components/link_history/links_history'
 import { useEffect } from 'react'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
@@ -62,8 +61,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
 
   const dispatch = useDispatch()
   const router = useRouter()
-
-  console.log(router)
 
   useEffect(() => {
     dispatch(changeLinkPath(cat.fullPath))
@@ -398,9 +395,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   />
                   Остання шт на складі
                 </div>
-              ) : item.lvivStock == 0 ? //   Немає в наявності // <div className={styles.how_many_available}>
-              // </div>
-              null : (
+              ) : item.lvivStock == 0 ? null : ( // </div> //   Немає в наявності // <div className={styles.how_many_available}>
                 <div className={styles.how_many_available}>
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
@@ -660,8 +655,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   />
                   Остання шт на складі
                 </div>
-              ) : item.lvivStock == 0 ? // </div> //   Немає в наявності // <div className={styles.how_many_available}>
-              null : (
+              ) : item.lvivStock == 0 ? null : ( // </div> //   Немає в наявності // <div className={styles.how_many_available}>
                 <div className={styles.how_many_available}>
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
