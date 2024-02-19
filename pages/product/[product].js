@@ -63,7 +63,10 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
   const router = useRouter()
 
   useEffect(() => {
-    dispatch(changeLinkPath(cat.fullPath))
+    if (cat) {
+      dispatch(changeLinkPath(cat.fullPath))
+    }
+
     if (router.query.brand && router.query.model && router.query.engine) {
       dispatch(setGlobalBrand(router.query.brand))
       dispatch(setGlobalModel(router.query.model))
