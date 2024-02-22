@@ -15,7 +15,6 @@ import {
 import { useRouter } from 'next/router'
 
 const LinkComponent = ({ linkData, brand, model, engine }) => {
-  console.log(linkData)
   let link = `/categories/${linkData.link}`
 
   if (brand && model) {

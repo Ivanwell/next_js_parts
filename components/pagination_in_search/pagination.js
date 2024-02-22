@@ -31,9 +31,19 @@ const LinkPrevPagination = ({ activeIndex }) => {
 }
 
 const LinkPagination = ({ index, activeIndex }) => {
-  const { asPath } = useRouter()
+  const { asPath, query } = useRouter()
 
-  let link = `${asPath.split('?')[0]}?page=${index}`
+  // let link = `${asPath.split('?')[0]}?page=${index}&${asPath
+  //   .split('?')[1]
+  //   .slice(0)}`
+
+  let car = ''
+
+  if (query.brand && query.model && query.engine) {
+    car = `&brand=${query.brand}&model=${query.model}&engine=${query.engine}`
+  }
+
+  let link = `${asPath.split('?')[0]}?page=${index}${car}`
 
   return (
     <Link

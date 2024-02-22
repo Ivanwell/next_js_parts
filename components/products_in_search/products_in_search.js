@@ -261,8 +261,6 @@ const SearchedItemMobile = ({ product }) => {
     otherStock: '-',
   }
 
-  console.log(item.lvivStock)
-
   const adddingToCard = item => {
     const newItem = { ...item, quantity: numberPerItem }
     dispatch(adddToCart(newItem))

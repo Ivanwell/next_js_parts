@@ -665,7 +665,6 @@ const NewMainPage = ({ userAgent, query }) => {
 
 export const getServerSideProps = async ({ req, query }) => {
   const userAgent = req.headers['user-agent']
-  console.log(query)
 
   if (query.brand && query.model) {
     return {

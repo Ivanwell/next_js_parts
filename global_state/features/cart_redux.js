@@ -22,7 +22,6 @@ export const cart = createSlice({
       const check = state.value.list.findIndex(
         item => item.article === action.payload.article
       )
-      console.log(action.payload)
       if (check !== -1) {
         state.value.list[check].quantity += action.payload.quantity
       } else {

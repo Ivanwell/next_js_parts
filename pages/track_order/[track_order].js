@@ -20,7 +20,6 @@ const Spiner = () => {
 }
 
 const Track_Order = productData => {
-  console.log(productData)
   let orderFromParams = null
   if (productData.productData) {
     orderFromParams = productData.productData

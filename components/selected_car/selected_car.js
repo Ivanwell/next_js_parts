@@ -2,8 +2,23 @@ import styles from '../../styles/Links.module.css'
 import Link from 'next/link'
 import { arrowRight1 } from '../SVGs/SVGs'
 import { useSelector } from 'react-redux'
+import { cancel } from '../SVGs/SVGs'
+import {
+  setGlobalBrand,
+  setGlobalModel,
+  setGlobalEngine,
+} from '@/global_state/features/cardata_redux'
+import { useDispatch } from 'react-redux'
 
 const SelectedCar = () => {
+  const dispatch = useDispatch()
+
+  const clearCar = e => {
+    dispatch(setGlobalBrand(null))
+    dispatch(setGlobalModel(null))
+    dispatch(setGlobalEngine(null))
+  }
+
   const globalBrand = useSelector(
     state => state.dataSelectscartReducer.value.globalBrand
   )
@@ -18,7 +33,7 @@ const SelectedCar = () => {
   return (
     <>
       {globalBrand || globalModel || globalEngine ? (
-        <ul div className={styles.links}>
+        <ul className={styles.links}>
           <h3>Обране авто:</h3>
           {globalBrand ? (
             <li>
@@ -48,7 +63,7 @@ const SelectedCar = () => {
           ) : null}
           {globalEngine && globalBrand && globalModel ? (
             <li>
-              <button>Скасувати</button>
+              <button onClick={clearCar}>{cancel}</button>
             </li>
           ) : null}
         </ul>

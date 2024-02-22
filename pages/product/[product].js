@@ -37,7 +37,6 @@ import Custom404 from '../404'
 import { useEffect } from 'react'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
-  console.log(item)
   if (!item) {
     return <Custom404 />
   }
@@ -173,8 +172,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
       }
     )
     const body1 = await res1.json()
-
-    console.log(body1)
 
     if (body1 && body1.product?.oe.length > 1) {
       setProductDescription(prev => {

@@ -48,6 +48,23 @@
   height: 100%;
 }
 
+.links li button {
+  background-color: #e83f33;
+  padding: 4px;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.links li button svg {
+  width: 12px;
+  height: 12px;
+}
+
 .pod_cat_cont {
   display: grid;
   padding-top: 10px;
