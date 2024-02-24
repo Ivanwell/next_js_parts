@@ -49,8 +49,12 @@
 }
 
 .titles_in_card {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  width: 100%;
+  padding-left: 15%;
+  text-decoration: underline;
 }
 
 .amount_cont {
@@ -85,7 +89,7 @@
   box-sizing: content-box;
   padding: 15px;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .loading {
@@ -96,6 +100,9 @@
   width: 100%;
   height: 100%;
   display: grid;
+  border: rgba(26, 41, 47, 255) 2px solid;
+  margin-top: 20px;
+  border-radius: 3px;
 }
 
 .container_for_input_and_cities {
@@ -107,12 +114,31 @@
   padding: 10px;
 }
 
+.cont_for_city_and_dep {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cont_for_city_and_dep select {
+  width: 350px;
+  height: 50px;
+}
+
+.cont_for_input_city {
+  width: 350px;
+  height: 70px;
+  border: #0068d7 1px solid;
+  border-radius: 3px;
+}
+
 .container_for_payment {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
 }
 
 .contaiern_for_inputs_row {
@@ -121,8 +147,6 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  border: #eee 2px solid;
-  border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -134,7 +158,6 @@
   align-items: center;
   flex-direction: column;
   gap: 7px;
-  padding: 10px;
 }
 
 .contaiern_for_input_row label {
@@ -147,36 +170,73 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.cont_for_but {
+  position: relative;
+}
+
+.cont_for_but > svg {
+  position: absolute;
+  top: 18px;
+  right: -14px;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  color: #0068d7;
+  border-radius: 50%;
 }
 
 .check_box_cont {
-  width: auto;
+  width: 350px;
   display: flex;
   align-items: center;
   text-align: left;
   justify-content: center;
   font-size: 18px;
-  gap: 5px;
+  gap: 10px;
   cursor: pointer;
   font-weight: 600;
+  border: #d43200 1px solid;
+  padding: 15px 25px 15px 25px;
+  border-radius: 3px;
+  height: 70px;
 }
 
-.check_box_cont input {
+.check_box_cont_checked {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  justify-content: center;
+  font-size: 18px;
+  gap: 10px;
   cursor: pointer;
+  font-weight: 600;
+  border: #0068d7 2px solid;
+  padding: 15px 25px 15px 25px;
+  border-radius: 3px;
+  height: 70px;
+  box-shadow: 5px 2px 2px #0068d7;
+}
+
+.cont_for_but input {
+  cursor: pointer;
+  display: none;
 }
 
 .fetched_cities {
-  top: 150px;
-  left: 5%;
-  width: 90%;
+  top: 55px;
+  left: 0;
+  width: 450px;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: #eee 1px solid;
+  border: #0068d7 2px solid;
   cursor: pointer;
   z-index: 2;
   background-color: white;
@@ -199,12 +259,12 @@
 
 .fetched_city:hover {
   width: 100%;
-  background-color: #edffc2;
+  background-color: #7db0f7;
 }
 
 .new_post_input_city {
-  width: 80%;
-  height: 40px;
+  width: 350px;
+  height: 50px;
   border: grey solid 1px;
   border-radius: 5px;
   cursor: pointer;
@@ -269,6 +329,94 @@
   }
 }
 
+.box {
+  position: relative;
+  border-radius: 3px;
+  width: 350px;
+}
+
+.input_pass {
+  transition: all 0.2s;
+  touch-action: manipulation;
+  cursor: text;
+  border-radius: 5px;
+  border: 2px solid gray;
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  font-size: 18px;
+  border: #132530 2px solid;
+}
+
+.label_pass {
+  position: absolute;
+  top: 20px;
+  left: 12px;
+  color: black;
+  font-size: 14px;
+  transition: all 0.2s;
+  /*enable click everywhere inside input */
+  pointer-events: none;
+}
+
+.input_pass::placeholder {
+  opacity: 0;
+  color: black;
+  font-size: 21px;
+}
+
+/*make the placeholder disappear on focus*/
+
+.input_pass:focus {
+  outline: none;
+  border: #0067d7 solid 2px;
+}
+
+.input_pass:placeholder-shown + .label_pass {
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  -webkit-transform: translate(0, 0) scale(1.5);
+  -moz-transform: translate(0, 0) scale(1.5);
+  -ms-transform: translate(0, 0) scale(1.5);
+  -o-transform: translate(0, 0) scale(1.5);
+  color: grey;
+}
+
+.input_pass:focus + .label_pass,
+.input_pass:not(:placeholder-shown) + .label_pass {
+  -webkit-transform: translate(2px, -30px) scale(1);
+  -moz-transform: translate(2px, -30px) scale(1);
+  -o-transform: translate(2px, -30px) scale(1);
+  -ms-transform: translate(2px, -30px) scale(1);
+  padding: 0 3px;
+  background-color: white;
+  color: #0067d7;
+}
+
+.input_pass:focus + .label_pass::after,
+.input_pass + .label_pass::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  background: white;
+  top: 50%;
+  left: -0.2em;
+  right: -0.2em;
+  z-index: -1;
+  padding: 0 3px;
+}
+
+.input_pass:not(:placeholder-shown) + .label_pass::after {
+  left: -0.1em;
+  right: -0.1em;
+}
+
 @media all and (max-width: 740px) {
   .cart_container {
     width: 95%;
@@ -305,10 +453,10 @@
   }
 
   .container_for_input_and_cities {
-    padding: 0px;
+    padding: 5px;
   }
   .container_for_payment {
-    padding: 0px;
+    padding: 5px;
   }
 
   .contaiern_for_inputs_row {
@@ -324,9 +472,11 @@
   }
 
   .fetched_cities {
-    top: 125px;
+    top: 50px;
+    width: 250px;
     max-height: 300px;
     overflow-y: scroll;
+    position: absolute;
   }
 
   .fetched_city {
@@ -343,7 +493,8 @@
   .check_boxs_cont {
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    gap: 15px;
   }
 
   .check_box_cont {
@@ -358,5 +509,45 @@
 
   .submit_order_btn {
     width: 80%;
+  }
+
+  .check_box_cont {
+    width: 250px;
+    font-size: 14px;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: #d43200 1px solid;
+    padding: 15px 25px 15px 25px;
+    border-radius: 3px;
+    height: 60px;
+  }
+
+  .check_box_cont_checked {
+    width: 250px;
+    font-size: 14px;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: #0068d7 2px solid;
+    padding: 15px 25px 15px 25px;
+    border-radius: 3px;
+    height: 60px;
+    box-shadow: 5px 2px 2px #0068d7;
+  }
+
+  .cont_for_city_and_dep {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .cont_for_city_and_dep select {
+    width: 250px;
+    height: 50px;
+  }
+
+  .box {
+    width: 250px;
   }
 }

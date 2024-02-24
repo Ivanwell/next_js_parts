@@ -3,7 +3,13 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../styles/Checkout.module.css'
 import * as ga from '../components/lib/gtag'
-import { newpost, cuirer, cash, credit } from '@/components/SVGs/SVGs'
+import {
+  newpost,
+  cuirer,
+  cash,
+  credit,
+  checkedCircule,
+} from '@/components/SVGs/SVGs'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import {
@@ -39,7 +45,8 @@ const CheckOut = () => {
   const [phone, setPhone] = useState('')
   const [loadingDepartments, setLoadingDepartments] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [deliveryType, setDeliveryType] = useState('NewPost')
+  const [deliveryType, setDeliveryType] = useState('Newpost')
+  const [paymentType, setPaymentType] = useState('Cash')
 
   const articlesToSend = `Артикули : ${sumury1.map(
     product => `${product.article + 'к-сть : ' + product.quantity} `
@@ -284,35 +291,99 @@ const CheckOut = () => {
                 </div>
                 <div className={styles.container_for_delivery_and_person}>
                   <div className={styles.container_for_input_and_cities}>
-                    <h2 className={styles.titles_in_card}>
-                      Оберіть тип доставки
-                    </h2>
+                    <div className={styles.container_for_payment}>
+                      <h2 className={styles.titles_in_card}>Тип оплати</h2>
+                      <div className={styles.contaiern_for_inputs_row}>
+                        <div className={styles.check_boxs_cont}>
+                          <div className={styles.cont_for_but}>
+                            <input
+                              type="radio"
+                              name="payment"
+                              id="cash"
+                              value="Cash"
+                              checked={paymentType === 'Cash'}
+                              onChange={e => setPaymentType(e.target.value)}
+                            />
+                            <label
+                              for="cash"
+                              className={
+                                paymentType != 'Cash'
+                                  ? styles.check_box_cont
+                                  : styles.check_box_cont_checked
+                              }
+                            >
+                              {cash}Післяплата у відділенні
+                            </label>
+                            {paymentType === 'Cash' ? checkedCircule : null}
+                          </div>
+                          <div className={styles.cont_for_but}>
+                            <input
+                              type="radio"
+                              name="payment"
+                              value="Card"
+                              id="creditcard"
+                              checked={paymentType === 'Card'}
+                              onChange={e => setPaymentType(e.target.value)}
+                            />
+                            <label
+                              for="creditcard"
+                              className={
+                                paymentType != 'Card'
+                                  ? styles.check_box_cont
+                                  : styles.check_box_cont_checked
+                              }
+                            >
+                              {credit}На безготівкоий рахунок
+                            </label>
+                            {paymentType === 'Card' ? checkedCircule : null}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h2 className={styles.titles_in_card}>Тип доставки</h2>
                     <div className={styles.check_boxs_cont}>
-                      <div className={styles.check_box_cont}>
+                      <div className={styles.cont_for_but}>
                         <input
                           type="radio"
                           name="delivery"
                           id="newpost"
-                          checked="checked"
-                          onChange={() => setDeliveryType('NewPost')}
+                          value="Newpost"
+                          onChange={e => setDeliveryType(e.target.value)}
                         />
-                        <label for="newpost" className={styles.check_box_cont}>
-                          {newpost}У відділення чи поштомат Нової пошти
+                        <label
+                          for="newpost"
+                          className={
+                            deliveryType != 'Newpost'
+                              ? styles.check_box_cont
+                              : styles.check_box_cont_checked
+                          }
+                        >
+                          {newpost}У відділення Нової пошти
                         </label>
+                        {deliveryType === 'Newpost' ? checkedCircule : null}
                       </div>
-                      <div className={styles.check_box_cont}>
+                      <div className={styles.cont_for_but}>
                         <input
                           type="radio"
                           name="delivery"
                           id="curierNP"
-                          onChange={() => setDeliveryType('curier')}
+                          value="Curier"
+                          onChange={e => setDeliveryType(e.target.value)}
                         />
-                        <label for="curierNP" className={styles.check_box_cont}>
+                        <label
+                          for="curierNP"
+                          className={
+                            deliveryType != 'Curier'
+                              ? styles.check_box_cont
+                              : styles.check_box_cont_checked
+                          }
+                        >
                           {cuirer}Кур'єрська доставка
                         </label>
+                        {deliveryType === 'Curier' ? checkedCircule : null}
                       </div>
                     </div>
-                    <div className={styles.contaiern_for_inputs_row}>
+                    {/* <div className={styles.contaiern_for_inputs_row}>
                       <div className={styles.contaiern_for_input_row}>
                         <label>Місто</label>
                         <input
@@ -336,7 +407,7 @@ const CheckOut = () => {
                           </div>
                         )}
                       </div>
-                      {deliveryType === 'NewPost' ? (
+                      {deliveryType === 'Newpost' ? (
                         <div className={styles.contaiern_for_input_row}>
                           <label>Відділення</label>
 
@@ -368,39 +439,68 @@ const CheckOut = () => {
                           />
                         </div>
                       )}
-                    </div>
-                  </div>
-                  <div className={styles.container_for_payment}>
-                    <h2 className={styles.titles_in_card}>Тип оплати</h2>
-                    <div className={styles.contaiern_for_inputs_row}>
-                      <div className={styles.check_boxs_cont}>
-                        <div className={styles.check_box_cont}>
-                          <input
-                            type="radio"
-                            name="payment"
-                            id="cash"
-                            checked="checked"
-                          />
-                          <label for="cash" className={styles.check_box_cont}>
-                            {cash}Післяплата у відділенні
-                          </label>
-                        </div>
-                        <div className={styles.check_box_cont}>
-                          <input type="radio" name="payment" id="creditcard" />
-                          <label
-                            for="creditcard"
-                            className={styles.check_box_cont}
-                          >
-                            {credit}На безготівкоий рахунок
-                          </label>
-                        </div>
+                    </div> */}
+                    <h2 className={styles.titles_in_card}>
+                      Місто та відділення
+                    </h2>
+                    <div className={styles.cont_for_city_and_dep}>
+                      <div className={styles.box}>
+                        <input
+                          maxlength="30"
+                          className={styles.input_pass}
+                          value={city}
+                          onChange={e => setCity(e.target.value)}
+                          required
+                          placeholder=" "
+                        />
+                        <label className={styles.label_pass} for="vin">
+                          Населений пункт
+                        </label>
+                        {!visibility ? null : (
+                          <div className={styles.fetched_cities}>
+                            {cities?.map(city => (
+                              <span
+                                className={styles.fetched_city}
+                                onClick={() =>
+                                  chooseCity(city.Present, city.DeliveryCity)
+                                }
+                              >
+                                {city.Present}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
+                      {deliveryType === 'Newpost' ? (
+                        <select
+                          className={styles.new_post_input_city}
+                          value={department}
+                          onChange={e => chooseDepartment(e)}
+                        >
+                          {loadingDepartments === true ? (
+                            <option className={styles.loading}>
+                              Завантажуємо відділення...
+                            </option>
+                          ) : (
+                            departments.map(city => (
+                              <option>{city.Description}</option>
+                            ))
+                          )}
+                        </select>
+                      ) : (
+                        <input
+                          className={styles.new_post_input_city}
+                          value={department}
+                          onChange={e => setDepartment(e.target.value)}
+                          required
+                        />
+                      )}
                     </div>
                   </div>
 
                   <div className={styles.container_for_input_and_cities}>
                     <h2 className={styles.titles_in_card}>Отримувач</h2>
-                    <div className={styles.contaiern_for_inputs_row}>
+                    {/* <div className={styles.contaiern_for_inputs_row}>
                       <div className={styles.contaiern_for_input_row}>
                         <label>Прізвище та ім'я</label>
                         <input
@@ -432,6 +532,46 @@ const CheckOut = () => {
                             }
                           }}
                         ></input>
+                      </div>
+                    </div> */}
+                    <div className={styles.cont_for_city_and_dep}>
+                      <div className={styles.box}>
+                        <input
+                          maxlength="30"
+                          className={styles.input_pass}
+                          value={pib}
+                          required
+                          placeholder=" "
+                          minlength="5"
+                          type="text"
+                          onChange={e => setPib(e.target.value)}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                            }
+                          }}
+                        />
+                        <label className={styles.label_pass} for="vin">
+                          Прізвище та ім'я
+                        </label>
+                      </div>
+                      <div className={styles.box}>
+                        <input
+                          minlength="10"
+                          className={styles.input_pass}
+                          value={phone}
+                          onChange={e => setPhone(e.target.value)}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                            }
+                          }}
+                          required
+                          placeholder=" "
+                        />
+                        <label className={styles.label_pass} for="vin">
+                          +380 -- --- ---
+                        </label>
                       </div>
                     </div>
                   </div>
