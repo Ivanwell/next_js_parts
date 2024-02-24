@@ -66,6 +66,20 @@
   transition: 0.2s;
   backdrop-filter: blur(3px);
   background-color: rgb(0 0 0 / 50%);
+  animation: whole_container 2s linear infinite;
+}
+
+@keyframes whole_container {
+  0% {
+    opacity: 0.1;
+  }
+
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .lds-dual-ring {
@@ -82,7 +96,7 @@
   border-radius: 50%;
   border: 6px solid #fff;
   border-color: #fff transparent #fff transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  animation: lds-dual-ring 1.2s;
 }
 @keyframes lds-dual-ring {
   0% {
