@@ -488,12 +488,21 @@ const CheckOut = () => {
                           )}
                         </select>
                       ) : (
-                        <input
-                          className={styles.new_post_input_city}
-                          value={department}
-                          onChange={e => setDepartment(e.target.value)}
-                          required
-                        />
+                        <div className={styles.box}>
+                          <input
+                            maxlength="30"
+                            className={styles.input_pass}
+                            value={department}
+                            required
+                            placeholder=" "
+                            minlength="5"
+                            type="text"
+                            onChange={e => setDepartment(e.target.value)}
+                          />
+                          <label className={styles.label_pass} for="vin">
+                            Адреса
+                          </label>
+                        </div>
                       )}
                     </div>
                   </div>

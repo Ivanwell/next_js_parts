@@ -18,6 +18,7 @@ import {
   retirning1,
   question,
   info_circule,
+  tools,
 } from '@/components/SVGs/SVGs'
 import Compatibility from '@/components/compatability/compatabikity'
 import Head from 'next/head'
@@ -334,11 +335,13 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
             <div className={styles.main_item_atcile}>
               Артикул : {item.article}
             </div>
+            <div className={styles.main_item_atcile}>Стан : новий</div>
             <button
               className={styles.details_new_btn}
               onClick={() => loadInformationProduct()}
             >
-              {gear} {loadingInformation ? 'Завантаження...' : 'Характеристики'}
+              {gear}{' '}
+              {loadingInformation ? 'Завантаження...' : 'Дізнатись деталі'}
             </button>
             {productDescription.details ? (
               <div className={styles.main_item_details}>
@@ -352,9 +355,79 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 ))}
               </div>
             ) : null}
-            <div className={styles.returning_cont_new}>
+            {/* <div className={styles.returning_cont_new}>
               {retirning1}14 днів гарантованого повернення
-            </div>
+            </div> */}
+            <button
+              className={styles.buy_btn_check}
+              onClick={() => setOpenFormCheck(prev => !prev)}
+            >
+              {tools}Чи підійде до мого авто?
+            </button>
+            {openedFormCheck ? (
+              <div className={styles.detail_cont_new}>
+                <form
+                  className={styles.request_form_cont_new}
+                  onSubmit={e => check_vin(e)}
+                >
+                  <span>Введіть вінкод</span>
+                  <input
+                    className={styles.input_vin_desctop}
+                    placeholder="VIN *"
+                    required
+                    minLength={17}
+                    onChange={e => setVin(e.target.value)}
+                  />
+                  {!searchedCarByVin ? (
+                    <button
+                      className={styles.submit_button_desctop}
+                      type="submit"
+                    >
+                      {!checking ? (
+                        <>Перевірити</>
+                      ) : (
+                        <span className={styles.loader}></span>
+                      )}
+                    </button>
+                  ) : null}
+                  {searchedCarByVin ? (
+                    <div className={styles.searched_car_mobile}>
+                      <b>Ваше авто </b>
+                      {searchedCarByVin === 'no car' ? (
+                        <b>не знайдено</b>
+                      ) : (
+                        <span>
+                          {searchedCarByVin.brand} {searchedCarByVin.model}
+                        </span>
+                      )}
+                      <div className={styles.searched_check_needed_desc}>
+                        {info_circule}Потрібна перевірка спеціалістом
+                      </div>
+                      <div>
+                        Залиште номер телефону та ми перевіримо чи запчастина
+                        підійде до Вашого авто
+                      </div>
+                      <input
+                        className={styles.input_phone_desctop}
+                        placeholder="Телефон *"
+                        onChange={e => setNumberPhone(e.target.value)}
+                      />
+                      {minLength ? (
+                        <div className={styles.empty_name_phone}>
+                          Неповний номер телефону
+                        </div>
+                      ) : null}
+                      <button
+                        className={styles.submit_button_desctop}
+                        onClick={e => check_vin_request(e)}
+                      >
+                        Перевірте будь ласка
+                      </button>
+                    </div>
+                  ) : null}
+                </form>
+              </div>
+            ) : null}
           </div>
           <div className={styles.purchaise_container}>
             <div className={styles.wishlist_and_stock}>
@@ -400,7 +473,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
                     : item.otherStock}{' '}
-                  шт доступно
+                  шт на складі
                 </div>
               )}
             </div>
@@ -429,7 +502,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 {newbasket}Купити
               </button>
             )}
-            <button
+            {/* <button
               className={styles.buy_btn_check}
               onClick={() => setOpenFormCheck(prev => !prev)}
             >
@@ -498,7 +571,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   ) : null}
                 </form>
               </div>
-            ) : null}
+            ) : null} */}
             {}
           </div>
         </div>
