@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { starReview } from '@/components/SVGs/SVGs'
 import * as ga from '../components/lib/gtag'
+import Head from 'next/head'
 
 const LeaveReview = () => {
   const [name, setName] = useState(null)
@@ -35,6 +36,26 @@ const LeaveReview = () => {
 
   return (
     <div className={styles.whole_cont}>
+      <Head>
+        <title>Залиште нам відгук - BAYRAKPARTS</title>
+        <meta
+          name="description"
+          content="Завжди раді Вашим відгукам. Завдяки ним ми стаємо кращими."
+        />
+        <meta property="og:type" content="website"></meta>
+        <meta
+          property="og:title"
+          content="Завжди раді Вашим відгукам. Завдяки ним ми стаємо кращими."
+        ></meta>
+        <meta
+          property="og:description"
+          content="Завжди раді Вашим відгукам. Завдяки ним ми стаємо кращими."
+        ></meta>
+        <meta
+          property="og:url"
+          content={`https://bayrakparts.com/leave_review`}
+        ></meta>
+      </Head>
       <div className={styles.smaller_cont}>
         <div className={styles.search_result_cont}>
           <h2>
