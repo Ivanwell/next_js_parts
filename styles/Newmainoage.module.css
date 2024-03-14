@@ -235,9 +235,19 @@
   justify-content: space-between;
 }
 
+.our_descr_for_reviews {
+  padding-top: 15px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  align-items: center;
+  justify-content: center;
+}
+
 .our_desc1 {
   width: 30%;
-  height: 50px;
+  height: 75px;
   border: #132530 1px solid;
   border-radius: 5px;
   display: flex;
@@ -322,6 +332,106 @@
   text-align: left;
   padding: 5%;
   font-size: 18px;
+}
+
+.review_cont {
+  margin-top: 10px;
+  position: relative;
+  width: 95%;
+  height: 90px;
+  border-radius: 45px;
+  background: linear-gradient(to left, #e0e0e0, #b4b4b4);
+  display: flex;
+  align-items: start;
+  padding-top: 10px;
+  justify-content: start;
+  padding-left: 100px;
+  flex-direction: column;
+}
+
+.review_cont img {
+  position: absolute;
+  max-height: 70px;
+  top: 10px;
+  left: 10px;
+}
+
+.starts_cont {
+  display: flex;
+  gap: 2px;
+}
+
+.starts_cont svg {
+  width: 27px;
+  height: 27px;
+  color: #f8bf05;
+}
+
+.review_cont span {
+  font-weight: 600;
+  font-size: 17px;
+  padding-top: 3px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.review_cont span div {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.review_cont button {
+  border: none;
+  background: none;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
+.review_cont button:hover {
+  text-decoration: underline;
+}
+
+.bottom_of_reviews {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+
+.leave_review_btn {
+  width: 200px;
+  height: 36px;
+  border: none;
+  background-color: #0067d7;
+  border-radius: 18px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more_review_btn {
+  width: 200px;
+  height: 36px;
+  background: none;
+  border: #a4abb5 2px solid;
+  border-radius: 18px;
+  color: #a4abb5;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.text_review {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 90%;
 }
 
 @media all and (max-width: 1300px) {
@@ -511,5 +621,23 @@
   .cont_for_question {
     height: 55px;
     text-align: left;
+  }
+
+  .our_descr_for_reviews {
+    padding-top: 15px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+  }
+
+  .starts_cont svg {
+    width: 22px;
+    height: 22px;
+    color: #f8bf05;
+  }
+
+  .review_cont {
+    width: 100%;
   }
 }

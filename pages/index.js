@@ -1,5 +1,5 @@
 import styles from '@/styles/Newmainoage.module.css'
-import { search } from '@/components/SVGs/SVGs'
+import { search, starReview } from '@/components/SVGs/SVGs'
 import { useEffect, useState } from 'react'
 import CategoryInMain from '@/components/category_in_main/category_in_main'
 import { useRouter } from 'next/router'
@@ -40,6 +40,7 @@ import {
 } from '@/global_state/features/cardata_redux'
 import { useSelector } from 'react-redux'
 import { useUserAgent } from 'next-useragent'
+import Review from '@/components/review/review'
 
 const NewMainPage = ({ userAgent, query }) => {
   let ua
@@ -63,6 +64,8 @@ const NewMainPage = ({ userAgent, query }) => {
   const [brandDirect, setBrandDirect] = useState(null)
   const [modelDirect, setModelDirect] = useState(null)
   const [engineDirect, setEngineDirect] = useState(null)
+  const [reviews, setReviews] = useState([])
+  const [pageReview, setPageReview] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -184,6 +187,33 @@ const NewMainPage = ({ userAgent, query }) => {
     } else {
     }
   }, [])
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    const { signal } = abortController
+    const getReviews = async () => {
+      try {
+        const res = await fetch(
+          `https://update.bayrakparts.com/getReviews?step=${pageReview}`,
+          {
+            method: 'GET',
+            signal: signal,
+          }
+        )
+
+        const body = await res.json()
+        setReviews(body)
+      } catch (error) {
+        if (!signal?.aborted) {
+        }
+      }
+    }
+    getReviews()
+
+    return () => {
+      abortController.abort()
+    }
+  }, [pageReview])
 
   useEffect(() => {
     if (brandDirect) {
@@ -628,6 +658,65 @@ const NewMainPage = ({ userAgent, query }) => {
             ) : null}
           </div>
         </div>
+        <h2 className={styles.why_we}>Відгуки наших покупців</h2>
+        <div className={styles.our_descr_for_reviews}>
+          {reviews.map(review => (
+            <Review details={review} />
+          ))}
+          {/* <div className={styles.review_cont}>
+            <img src="https://api.bonapart.pro/public/bayrakparts/user-3297.svg" />
+            <div className={styles.starts_cont}>
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+            </div>
+            <span>
+              <div>06.03.2024</div> Горбач Андрій
+            </span>
+            <button>Переглянути відгук...</button>
+          </div>
+          <div className={styles.review_cont}>
+            <img src="https://api.bonapart.pro/public/bayrakparts/pngaaa.com-365827.png" />
+            <div className={styles.starts_cont}>
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+            </div>
+            <span>
+              <div>24.02.2024</div> Наталія Бучко
+            </span>
+            <button>Переглянути відгук...</button>
+          </div>
+          <div className={styles.review_cont}>
+            <img src="https://api.bonapart.pro/public/bayrakparts/pngaaa.com-365827.png" />
+            <div className={styles.starts_cont}>
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+              {starReview}
+            </div>
+            <span>
+              <div>04.12.2023</div> Галина
+            </span>
+            <button>Переглянути відгук...</button>
+          </div> */}
+        </div>
+        <div className={styles.bottom_of_reviews}>
+          <Link href="/leave_review" className={styles.leave_review_btn}>
+            Залишити відгук
+          </Link>
+          <button
+            onClick={e => setPageReview(prev => prev + 1)}
+            className={styles.more_review_btn}
+          >
+            Переглянути ще...
+          </button>
+        </div>
         <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
         <div className={styles.our_descr}>
           <div className={styles.our_desc1}>
@@ -643,8 +732,7 @@ const NewMainPage = ({ userAgent, query }) => {
             Швидко відповідаємо (до 20 хвилин)
           </div>
         </div>
-        <h2 className={styles.why_we}>Відгуки наших покупців</h2>
-        <div className={styles.our_descr}>
+        {/* <div className={styles.our_descr}>
           <div className={styles.our_desc2}>
             Галина (власниця KIA Venga)
             <img src="https://static.wixstatic.com/media/1dd549_6f21d4850b964cdf913e61c940b41186~mv2.jpg/v1/fill/w_647,h_367,al_c,lg_1,q_80,enc_auto/1dd549_6f21d4850b964cdf913e61c940b41186~mv2.jpg" />
@@ -657,7 +745,7 @@ const NewMainPage = ({ userAgent, query }) => {
             Наталія (власниця Ford Escape)
             <img src="https://static.wixstatic.com/media/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg/v1/fill/w_647,h_367,al_c,lg_1,q_80,enc_auto/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

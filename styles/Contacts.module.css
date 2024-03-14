@@ -251,6 +251,118 @@
   gap: 10px;
 }
 
+.stars_container {
+  display: flex;
+  gap: 5px;
+}
+
+.star_container svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.star_container svg:hover {
+  color: #ff6700;
+}
+
+.container {
+  position: relative;
+}
+
+.container .container__items {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.5em;
+  width: 25%;
+  height: 100%;
+}
+
+.container .container__items input {
+  display: none;
+}
+
+.container .container__items label {
+  width: 20%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.container .container__items label .star_stroke {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: hsl(233 80% 70%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.container .container__items label .star_stroke .star_fill {
+  width: 70%;
+  aspect-ratio: 1;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.container .container__items input:hover ~ label .star_stroke,
+.container .container__items input:checked ~ label .star_stroke {
+  background: hsl(38 90% 55%);
+}
+
+.container .container__items input:checked ~ label .star_stroke .star_fill {
+  background: hsl(38 90% 55%);
+}
+
+.container .container__items label:hover .label_description::after {
+  content: attr(data-content);
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  margin-top: 1em;
+  margin-inline: auto;
+
+  width: 100%;
+  height: 2em;
+
+  color: #fff;
+
+  text-align: center;
+  font-size: 2rem;
+
+  transform: rotateY(180deg);
+}
+
+.success_created_review {
+  color: #2063d0;
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 15px;
+}
+
 @media all and (max-width: 600px) {
   .search_model_cont {
     max-width: 100%;
@@ -362,5 +474,15 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
+  }
+
+  .container .container__items {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 0 0.5em;
+    width: 80%;
+    height: 100%;
   }
 }

@@ -233,7 +233,7 @@ const NewNavbar = () => {
         </Link>
       </div>
       <div className={styles.discount_box}>
-        ВСТИГНІТЬ ОТРИМАТИ ЗИМОВУ ЗНИЖКУ 20%
+        НАРЕШТІ ВЕСНА! ОТРИМАЙТЕ ЗНИЖКУ 20%
       </div>
       <div className={styles.main_header}>
         <div className={styles.header_top_desctop}>
