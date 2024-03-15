@@ -1,13 +1,16 @@
+'use client'
 import styles from '../../styles/Footer.module.css'
 import { scedj, tel, mail } from '../SVGs/SVGs'
 import Link from 'next/link'
 import Script from 'next/script'
-import { memo } from 'react'
 
 const NewFooter = () => {
   return (
     <footer className={styles.whole_footer}>
-      <Script src="https://a1.avto.pro/partnership/js?bt=4&amp;sid=682851&amp;s=avtopro.ua" />
+      <Script
+        strategy="lazyOnload"
+        src="https://a1.avto.pro/partnership/js?bt=4&amp;sid=682851&amp;s=avtopro.ua"
+      />
       <div className={styles.whole_footer_container}>
         <ul className={styles.cont_for_partners}>
           <label className={styles.column_name}>Наші партнери</label>
@@ -75,4 +78,4 @@ const NewFooter = () => {
   )
 }
 
-export default memo(NewFooter)
+export default NewFooter

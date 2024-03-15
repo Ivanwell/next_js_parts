@@ -347,6 +347,20 @@
   justify-content: start;
   padding-left: 100px;
   flex-direction: column;
+  cursor: pointer;
+}
+
+.review_cont_full {
+  margin-top: 10px;
+  position: relative;
+  width: 95%;
+  height: 90px;
+  border-radius: 45px;
+  background: linear-gradient(to left, #e0e0e0, #b4b4b4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .review_cont img {
@@ -431,6 +445,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 90%;
+}
+
+.text_review_full {
+  font-size: 13px;
   width: 90%;
 }
 
