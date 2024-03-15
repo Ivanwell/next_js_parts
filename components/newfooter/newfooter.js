@@ -1,11 +1,21 @@
 import styles from '../../styles/Footer.module.css'
 import { scedj, tel, mail } from '../SVGs/SVGs'
 import Link from 'next/link'
+import Script from 'next/script'
+import { memo } from 'react'
 
 const NewFooter = () => {
   return (
     <footer className={styles.whole_footer}>
+      <Script src="https://a1.avto.pro/partnership/js?bt=4&amp;sid=682851&amp;s=avtopro.ua" />
       <div className={styles.whole_footer_container}>
+        <ul className={styles.cont_for_partners}>
+          <label className={styles.column_name}>Наші партнери</label>
+          <div class="pro-seller-label-banner"></div>
+          <a href="https://avtopro.ua/catalog/" class="pro-seller-label-anchor">
+            Автопро - маркетплейс запчастей
+          </a>
+        </ul>
         <ul className={styles.column_links}>
           <label className={styles.column_name}>Про компанію</label>
           <li className={styles.column_link}>
@@ -37,14 +47,6 @@ const NewFooter = () => {
           </li>
         </ul>
         <ul className={styles.column_links}>
-          <label className={styles.column_name}>Популярні товари</label>
-          <li className={styles.column_link}>Оливи 0W20</li>
-          <li className={styles.column_link}>Оливи 5W30</li>
-          <li className={styles.column_link}>Оливи 10W40</li>
-          <li className={styles.column_link}>Антифриз червоний</li>
-          <li className={styles.column_link}>Автолампа 12V</li>
-        </ul>
-        <ul className={styles.column_links}>
           <label className={styles.column_name}>Швидкий зв'язок з нами</label>
           <li className={styles.column_link}>Моб. тел. 093-728-93-84</li>
           <li className={styles.column_link}>
@@ -62,10 +64,15 @@ const NewFooter = () => {
           {tel} +38 (093)-728-94-85
         </a>
         <div className={styles.footer_row}>{mail}office@bayrakparts.com</div>
+        <label className={styles.column_name}>Наші партнери</label>
+        <div class="pro-seller-label-banner"></div>
+        <a href="https://avtopro.ua/catalog/" class="pro-seller-label-anchor">
+          Автопро - маркетплейс запчастей
+        </a>
         <span>© 2023 Всі права захищено</span>
       </div>
     </footer>
   )
 }
 
-export default NewFooter
+export default memo(NewFooter)

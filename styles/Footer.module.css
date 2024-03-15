@@ -35,6 +35,12 @@
   list-style: none;
 }
 
+.cont_for_partners {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .column_link {
   color: #a7adb4;
   font-size: 16px;
