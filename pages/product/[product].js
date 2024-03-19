@@ -94,10 +94,17 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
     oe: [{ brand: item.brandName, number: item.article }],
   })
 
-  const googleTitleArr = item.title.split(' ')
-  const googleTitle = googleTitleArr.slice(0, 5).join(' ') + ` ${item.article}`
+  let googleTitleArr
+  let googleTitle
 
-  const title = `${item.brandName} ${item.article} - ${item.title}`
+  if (item.unicTitle) {
+    googleTitle = item.unicTitle
+  } else {
+    googleTitleArr = item.title.split(' ')
+    googleTitle = googleTitleArr.slice(0, 5).join(' ') + ` ${item.article}`
+  }
+
+  let title = `${item.brandName} ${item.article} - ${item.title}`
   const metaTitle = `⭐${item.brandName} ${item.article}⭐ - ${item.title}`
 
   function capitalize(s) {
@@ -1079,6 +1086,7 @@ export const getServerSideProps = async ({ req, params }) => {
     lastUpdate: price.lastDate,
     otherStock: '-',
     link: body.link[0].link,
+    unicTitle: body?.unicTitle || null,
   }
 
   const userAgent = req.headers['user-agent']
