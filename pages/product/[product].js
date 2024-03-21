@@ -36,6 +36,7 @@ import {
 import { useDispatch } from 'react-redux'
 import Custom404 from '../404'
 import { useEffect } from 'react'
+import ReviewProduct from '@/components/review_product/review_product'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
   if (!item) {
@@ -263,8 +264,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
 
   const metateg1 = `✅Купити ${item.title}. Ціна : ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
 
-  const linkToPage = `https://bayrakparts.com/product/${item.article}`
-
   return (
     <div className={styles.main_item}>
       <Head>
@@ -284,7 +283,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
         ></meta>
         <meta property="og:image" content={mobileImage}></meta>
       </Head>
-      {/* {cat ? <LinksHistory fullPath={cat.fullPath} /> : null} */}
       {!ua.isMobile ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
           <div rel="schema:aggregateRating" className={styles.nodisplay}>
@@ -313,7 +311,10 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 datatype="xsd:date"
                 content="31-12-2025"
               ></div>
-              <div rel="schema:url" resource={linkToPage}></div>
+              <div
+                rel="schema:url"
+                resource={`https://bayrakparts.com/product/${item.link}`}
+              ></div>
               <div
                 property="schema:itemCondition"
                 content="https://schema.org/NewCondition"
@@ -699,7 +700,10 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                 datatype="xsd:date"
                 content="31-12-2025"
               ></div>
-              <div rel="schema:url" resource={linkToPage}></div>
+              <div
+                rel="schema:url"
+                resource={`https://bayrakparts.com/product/${item.link}`}
+              ></div>
               <div
                 property="schema:itemCondition"
                 content="https://schema.org/NewCondition"
@@ -1020,6 +1024,11 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           </div>
         </div>
       ) : null}
+      <ReviewProduct
+        article={item.article}
+        brand={item.brandName}
+        reviewsArr={item.reviews}
+      />
     </div>
   )
 }
@@ -1087,6 +1096,7 @@ export const getServerSideProps = async ({ req, params }) => {
     otherStock: '-',
     link: body.link[0].link,
     unicTitle: body?.unicTitle || null,
+    reviews: body?.reviews || null,
   }
 
   const userAgent = req.headers['user-agent']

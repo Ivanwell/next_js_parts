@@ -15,6 +15,17 @@
   padding: 20px;
   width: 80%;
   height: 100%;
+  min-height: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.container_item_desctop_and_mobile {
+  padding: 20px;
+  width: 80%;
+  height: 100%;
   min-height: 350px;
   display: flex;
   align-items: flex-start;
@@ -516,9 +527,32 @@
   width: 100%;
   height: 100%;
   border: #0067d7 solid 2px;
+  border-radius: 3px;
+}
+
+.container_for_reviews {
+  width: 100%;
+  height: 100%;
+  border: #979797 solid 2px;
+  border-radius: 3px;
+}
+
+.reviews_desctop {
+  padding: 20px;
 }
 
 .request_form_cont {
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.request_form_cont_review {
   width: 100%;
   height: 100%;
   padding-left: 20px;
@@ -555,7 +589,21 @@
   text-indent: 10px;
 }
 
+.input_name_phone_review {
+  transition: 1s;
+  height: 35px;
+  border: #eee solid 2px;
+  font-size: 16px;
+  line-height: 35px;
+  text-indent: 10px;
+}
+
 .input_name_phone:focus::placeholder {
+  color: transparent;
+  transition: 0.5s;
+}
+
+.input_name_phone_review:focus::placeholder {
   color: transparent;
   transition: 0.5s;
 }
@@ -565,6 +613,21 @@
   width: 50%;
   padding-bottom: 15px;
   font-weight: 600;
+}
+
+.description_request_review {
+  font-size: 18px;
+  width: 50%;
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+
+.description_request_red {
+  font-size: 18px;
+  width: 100%;
+  padding-bottom: 15px;
+  font-weight: 600;
+  color: #e83f33;
 }
 
 .description_question {
@@ -584,7 +647,23 @@
   text-indent: 10px;
 }
 
+.input_vin_text_area {
+  width: 40%;
+  transition: 1s;
+  height: 80px;
+  border: #eee solid 2px;
+  font-size: 16px;
+  line-height: 35px;
+  text-indent: 10px;
+  margin-bottom: 15px;
+}
+
 .input_vin:focus::placeholder {
+  color: transparent;
+  transition: 0.5s;
+}
+
+.input_vin_text_area:focus::placeholder {
   color: transparent;
   transition: 0.5s;
 }
@@ -609,8 +688,42 @@
   cursor: pointer;
 }
 
+.submit_button_review {
+  width: 35%;
+  height: 40px;
+  border: 2px solid black;
+  margin-top: 10px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+}
+
 .submit_button:hover {
   background-color: #0067d7;
+}
+
+.submit_button_review:hover {
+  background-color: #0067d7;
+}
+
+.leave_request_open_btn {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border: none;
+  height: 40px;
+  width: 30%;
+  background-color: #0067d7;
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 1s;
+  font-size: 17px;
+}
+
+.leave_request_open_btn:hover {
+  background-color: #1b55b3;
 }
 
 .more_button {
@@ -695,6 +808,35 @@
   line-height: 35px;
   text-indent: 10px;
   margin-bottom: 5px;
+}
+
+.smiles_cont {
+  display: flex;
+  gap: 10px;
+}
+
+.smiles_cont svg {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.checked_star svg {
+  color: #2063d0;
+  transition: 0.2s;
+}
+
+.reviews_box {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+}
+
+.status_added_review {
+  font-size: 18px;
+  color: #0067d7;
+  font-weight: 600;
+  padding: 20px;
 }
 
 @media all and (max-width: 1300px) {
@@ -1242,6 +1384,10 @@
     width: 100%;
   }
 
+  .input_name_phone_review {
+    width: 100%;
+  }
+
   .searched_car_mobile span {
     color: #2063d0;
     font-size: 16px;
@@ -1263,6 +1409,58 @@
     left: -100px;
     box-sizing: border-box;
     animation: shadowRolling 2s linear infinite;
+  }
+
+  .reviews_box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container_item_desctop_and_mobile {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .leave_request_open_btn {
+    width: 60%;
+  }
+
+  .request_form_cont_review {
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input_vin_text_area {
+    width: 100%;
+  }
+
+  .description_request_review {
+    width: 100%;
+  }
+
+  .smiles_cont svg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .submit_button_review {
+    width: 80%;
+    border: none;
+    background-color: #1b55b3;
+    color: white;
+    border-radius: 3px;
   }
 
   @keyframes shadowRolling {
