@@ -241,6 +241,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  row-gap: 20px;
   align-items: center;
   justify-content: center;
 }
@@ -350,6 +351,92 @@
   cursor: pointer;
 }
 
+.comment_cont {
+  position: absolute;
+  top: -15px;
+  right: 17px;
+  height: 35px;
+  padding: 8px;
+  background-color: #f37c2e;
+  border-radius: 17px;
+  color: white;
+}
+
+.commentar {
+  border: 1px solid #a4abb5;
+  border-radius: 5px;
+  padding: 10px;
+  width: 60%;
+  text-align: right;
+  position: relative;
+}
+
+.commentar_cont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add_comment_cont {
+  padding: 15px;
+  border: #a4abb5 2px solid;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cont_for_buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cont_for_label_and_input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cont_for_label_and_input input {
+  height: 30px;
+  border-radius: 3px;
+  text-indent: 10px;
+  border: #b4b4b4 2px solid;
+}
+
+.add_direct_comment {
+  width: 40%;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #0067d7;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.add_direct_comment_escape {
+  width: 40%;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #ff471a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.from_for_coment {
+  position: absolute;
+  background-color: white;
+  color: #0067d7;
+  font-size: 12px;
+  top: -12px;
+  padding: 4px;
+  font-weight: 600;
+  text-align: 12px;
+}
+
 .review_cont_full {
   margin-top: 10px;
   position: relative;
@@ -361,6 +448,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.add_comment_btn {
+  width: 30%;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  color: #0067d7;
+  font-weight: 600;
 }
 
 .review_cont img {
@@ -448,9 +544,41 @@
   width: 90%;
 }
 
+.text_review_opened {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.cont_for_full_review_with_comments {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: 0.2s;
+}
+
 .text_review_full {
   font-size: 13px;
   width: 90%;
+}
+
+.cont_for_review_and_coments {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment_message {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.comment_date {
+  font-size: 12px;
 }
 
 @media all and (max-width: 1300px) {
@@ -660,5 +788,17 @@
 
   .review_cont {
     width: 100%;
+  }
+
+  .commentar {
+    width: 75%;
+  }
+
+  .add_direct_comment {
+    height: 45px;
+  }
+
+  .add_direct_comment_escape {
+    height: 45px;
   }
 }
