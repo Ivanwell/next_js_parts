@@ -58,22 +58,22 @@ export default function App({
     return null
   }
 
-  if (typeof window === 'undefined') {
-    return <h1>Завантаження</h1>
-  } else
-    return (
-      //     <DynamicHeader>
-      <Layout>
-        <>
-          {loading === false ? (
-            <Component {...pageProps} />
-          ) : (
-            <h1 className="loading_spinner">
-              <div className="lds-dual-ring"></div>
-            </h1>
-          )}
-        </>
-      </Layout>
-      //    </DynamicHeader>
-    )
+  // if (typeof window === 'undefined') {
+  //   return <h1>Завантаження</h1>
+  // } else
+  return (
+    //     <DynamicHeader>
+    <Layout>
+      <>
+        {loading === false ? (
+          <Component {...pageProps} />
+        ) : (
+          <h1 className="loading_spinner">
+            <div className="lds-dual-ring"></div>
+          </h1>
+        )}
+      </>
+    </Layout>
+    //    </DynamicHeader>
+  )
 }
