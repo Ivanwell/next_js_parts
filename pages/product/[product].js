@@ -37,6 +37,7 @@ import { useDispatch } from 'react-redux'
 import Custom404 from '../404'
 import { useEffect } from 'react'
 import ReviewProduct from '@/components/review_product/review_product'
+import Script from 'next/script'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
   if (!item) {
@@ -271,6 +272,34 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           content={`https://bayrakparts.com/product/${item.link}`}
         ></meta>
         <meta property="og:image" content={mobileImage}></meta>
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'http://schema.org',
+              '@type': 'Product',
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingCount: reviews,
+                ratingValue: rating,
+                description: item.unicTitle,
+              },
+              image: mobileImage,
+              name: item.title,
+              category: item.categoryName,
+              itemCondition: 'https://schema.org/NewCondition',
+              offers: {
+                '@type': 'Offer',
+                availability:
+                  item.lvivStock == 0
+                    ? 'https://schema.org/OutOfStock'
+                    : 'https://schema.org/InStock',
+                price: item.price,
+                priceCurrency: 'UAH',
+              },
+            }),
+          }}
+        />
       </Head>
       {/* {!ua.isMobile ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
@@ -940,62 +969,10 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
         </div>
       ) : null} */}
       {router.query.viewport != 'mobile' ? (
-        <div
-          className={styles.container_item_desctop}
-          vocab="https://schema.org/"
-          typeof="Product"
-        >
-          <span
-            className={styles.nodisplay}
-            property="category"
-            content={item.categoryName}
-          ></span>
-          <div
-            property="aggregateRating"
-            typeof="AggregateRating"
-            className={styles.nodisplay}
-          >
-            <span property="ratingCount" content={reviews}></span>
-            <span property="ratingValue" content={rating}></span>
-          </div>
-
-          <div
-            property="offers"
-            typeof="AggregateOffer"
-            className={styles.nodisplay}
-          >
-            <div property="price" content={item.price}></div>
-            {item.lvivStock == 0 ? (
-              <link
-                property="availability"
-                href="https://schema.org/OutOfStock"
-              />
-            ) : (
-              <link property="availability" href="https://schema.org/InStock" />
-            )}
-            <span property="priceCurrency" content="UAH"></span>
-            <div
-              property="schema:priceValidUntil"
-              datatype="xsd:date"
-              content="31-12-2025"
-            ></div>
-            <div property="offers" typeof="Offer">
-              <a
-                property="url"
-                href={`https://bayrakparts.com/product/${item.link}`}
-              >
-                Save A Lot Monitors - $1250
-              </a>
-            </div>
-            <link
-              property="itemCondition"
-              href="https://schema.org/NewCondition"
-            />
-          </div>
+        <div className={styles.container_item_desctop}>
           <div className={styles.container_image}>
             <span className={styles.brand_title}>{item.brandName}</span>
             <img
-              property="image"
               resource={item.img}
               src={item.img}
               alt={item.title}
@@ -1004,11 +981,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
             />
           </div>
           <div className={styles.informaton_container}>
-            <h1
-              className={styles.main_item_title}
-              property="name"
-              content={item.title}
-            >
+            <h1 className={styles.main_item_title} content={item.title}>
               {title}
             </h1>
             <div className={styles.main_item_atcile}>
@@ -1342,16 +1315,8 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
       ) : null}
 
       {router.query.viewport === 'mobile' ? (
-        <div
-          className={styles.container_item_mobile}
-          vocab="https://schema.org/"
-          typeof="Product"
-        >
-          <span
-            className={styles.nodisplay}
-            property="category"
-            content={item.categoryName}
-          ></span>
+        <div className={styles.container_item_mobile}>
+          <span className={styles.nodisplay}></span>
           <div
             property="aggregateRating"
             typeof="AggregateRating"
@@ -1360,44 +1325,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
             <span property="ratingCount" content={reviews}></span>
             <span property="ratingValue" content={rating}></span>
           </div>
-          <div
-            property="offers"
-            typeof="AggregateOffer"
-            className={styles.nodisplay}
-          >
-            <div property="price" content={item.price}></div>
-            {item.lvivStock == 0 ? (
-              <link
-                property="availability"
-                href="https://schema.org/OutOfStock"
-              />
-            ) : (
-              <link property="availability" href="https://schema.org/InStock" />
-            )}
-            <span property="priceCurrency" content="UAH"></span>
-            <div
-              property="schema:priceValidUntil"
-              datatype="xsd:date"
-              content="31-12-2025"
-            ></div>
-            <div property="offers" typeof="Offer">
-              <a
-                property="url"
-                href={`https://bayrakparts.com/product/${item.link}`}
-              >
-                Save A Lot Monitors - $1250
-              </a>
-            </div>
-            <link
-              property="itemCondition"
-              href="https://schema.org/NewCondition"
-            />
-          </div>
-          <h1
-            className={styles.top_info_mobile}
-            property="name"
-            content={item.title}
-          >
+          <h1 className={styles.top_info_mobile} content={item.title}>
             {title}
           </h1>
           <div className={styles.article_mobile}>Артикул : {item.article}</div>
@@ -1405,7 +1333,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
             className={styles.image_mobile}
             src={mobileImage}
             alt={item.title}
-            rel="image"
             resource={item.img}
             loading="lazy"
             onClick={() => dispatch(showFullImage(item.img))}
@@ -1422,7 +1349,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
                   />
                   Остання шт на складі
                 </div>
-              ) : item.lvivStock == 0 ? null : ( // </div> //   Немає в наявності // <div className={styles.how_many_available}>
+              ) : item.lvivStock == 0 ? null : (
                 <div className={styles.how_many_available}>
                   {+item.lvivStock > 0 || item.lvivStock === '> 10'
                     ? item.lvivStock
