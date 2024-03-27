@@ -59,7 +59,7 @@ export default function App({
   }
 
   if (typeof window === 'undefined') {
-    return <></>
+    return <h1>Завантаження</h1>
   } else
     return (
       //     <DynamicHeader>
