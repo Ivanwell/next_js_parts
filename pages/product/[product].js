@@ -257,7 +257,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
     <div className={styles.main_item}>
       <Head>
         <title>{googleTitle + ` - BAYRAKPARTS`}</title>
-        <meta name="description" content={metateg1} />
+        <meta name="description" content={metateg1.slice(0, 159)} />
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:title"
@@ -940,47 +940,62 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
         </div>
       ) : null} */}
       {router.query.viewport != 'mobile' ? (
-        <div className={styles.container_item_desctop} typeof="schema:Product">
-          <div rel="schema:aggregateRating" className={styles.nodisplay}>
-            <div typeof="schema:AggregateRating">
-              <div property="schema:reviewCount" content={reviews}></div>
-              <div property="schema:ratingValue" content={rating}></div>
-            </div>
+        <div
+          className={styles.container_item_desctop}
+          vocab="https://schema.org/"
+          typeof="Product"
+        >
+          <span
+            className={styles.nodisplay}
+            property="category"
+            content={item.categoryName}
+          ></span>
+          <div
+            property="aggregateRating"
+            typeof="AggregateRating"
+            className={styles.nodisplay}
+          >
+            <span property="ratingCount" content={reviews}></span>
+            <span property="ratingValue" content={rating}></span>
           </div>
-          <div rel="schema:offers" className={styles.nodisplay}>
-            <div typeof="schema:Offer">
-              <div property="schema:price" content={item.price}></div>
-              {item.lvivStock == 0 ? (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/OutOfStock"
-                ></div>
-              ) : (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/InStock"
-                ></div>
-              )}
-              <div property="schema:priceCurrency" content="UAH"></div>
-              <div
-                property="schema:priceValidUntil"
-                datatype="xsd:date"
-                content="31-12-2025"
-              ></div>
-              <div
-                rel="schema:url"
-                resource={`https://bayrakparts.com/product/${item.link}`}
-              ></div>
-              <div
-                property="schema:itemCondition"
-                content="https://schema.org/NewCondition"
-              ></div>
+
+          <div
+            property="offers"
+            typeof="AggregateOffer"
+            className={styles.nodisplay}
+          >
+            <div property="price" content={item.price}></div>
+            {item.lvivStock == 0 ? (
+              <link
+                property="availability"
+                href="https://schema.org/OutOfStock"
+              />
+            ) : (
+              <link property="availability" href="https://schema.org/InStock" />
+            )}
+            <span property="priceCurrency" content="UAH"></span>
+            <div
+              property="schema:priceValidUntil"
+              datatype="xsd:date"
+              content="31-12-2025"
+            ></div>
+            <div property="offers" typeof="Offer">
+              <a
+                property="url"
+                href={`https://bayrakparts.com/product/${item.link}`}
+              >
+                Save A Lot Monitors - $1250
+              </a>
             </div>
+            <link
+              property="itemCondition"
+              href="https://schema.org/NewCondition"
+            />
           </div>
           <div className={styles.container_image}>
             <span className={styles.brand_title}>{item.brandName}</span>
             <img
-              rel="schema:image"
+              property="image"
               resource={item.img}
               src={item.img}
               alt={item.title}
@@ -991,7 +1006,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           <div className={styles.informaton_container}>
             <h1
               className={styles.main_item_title}
-              property="schema:name"
+              property="name"
               content={item.title}
             >
               {title}
@@ -1327,46 +1342,60 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
       ) : null}
 
       {router.query.viewport === 'mobile' ? (
-        <div className={styles.container_item_mobile} typeof="schema:Product">
-          <div rel="schema:aggregateRating" className={styles.nodisplay}>
-            <div typeof="schema:AggregateRating">
-              <div property="schema:reviewCount" content={reviews}></div>
-              <div property="schema:ratingValue" content={rating}></div>
-            </div>
+        <div
+          className={styles.container_item_mobile}
+          vocab="https://schema.org/"
+          typeof="Product"
+        >
+          <span
+            className={styles.nodisplay}
+            property="category"
+            content={item.categoryName}
+          ></span>
+          <div
+            property="aggregateRating"
+            typeof="AggregateRating"
+            className={styles.nodisplay}
+          >
+            <span property="ratingCount" content={reviews}></span>
+            <span property="ratingValue" content={rating}></span>
           </div>
-          <div rel="schema:offers" className={styles.nodisplay}>
-            <div typeof="schema:Offer">
-              <div property="schema:price" content={item.price}></div>
-              {item.lvivStock == 0 ? (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/OutOfStock"
-                ></div>
-              ) : (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/InStock"
-                ></div>
-              )}
-              <div property="schema:priceCurrency" content="UAH"></div>
-              <div
-                property="schema:priceValidUntil"
-                datatype="xsd:date"
-                content="31-12-2025"
-              ></div>
-              <div
-                rel="schema:url"
-                resource={`https://bayrakparts.com/product/${item.link}`}
-              ></div>
-              <div
-                property="schema:itemCondition"
-                content="https://schema.org/NewCondition"
-              ></div>
+          <div
+            property="offers"
+            typeof="AggregateOffer"
+            className={styles.nodisplay}
+          >
+            <div property="price" content={item.price}></div>
+            {item.lvivStock == 0 ? (
+              <link
+                property="availability"
+                href="https://schema.org/OutOfStock"
+              />
+            ) : (
+              <link property="availability" href="https://schema.org/InStock" />
+            )}
+            <span property="priceCurrency" content="UAH"></span>
+            <div
+              property="schema:priceValidUntil"
+              datatype="xsd:date"
+              content="31-12-2025"
+            ></div>
+            <div property="offers" typeof="Offer">
+              <a
+                property="url"
+                href={`https://bayrakparts.com/product/${item.link}`}
+              >
+                Save A Lot Monitors - $1250
+              </a>
             </div>
+            <link
+              property="itemCondition"
+              href="https://schema.org/NewCondition"
+            />
           </div>
           <h1
             className={styles.top_info_mobile}
-            property="schema:name"
+            property="name"
             content={item.title}
           >
             {title}
@@ -1376,7 +1405,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
             className={styles.image_mobile}
             src={mobileImage}
             alt={item.title}
-            rel="schema:image"
+            rel="image"
             resource={item.img}
             loading="lazy"
             onClick={() => dispatch(showFullImage(item.img))}
@@ -1752,6 +1781,7 @@ export const getServerSideProps = async ({ req, params }) => {
     link: body.link[0].link,
     unicTitle: body?.unicTitle || null,
     reviews: body?.reviews || null,
+    categoryName: body.categoryName,
   }
 
   const userAgent = req.headers['user-agent']

@@ -145,7 +145,10 @@ const Review = details => {
           className={styles.review_cont}
           onClick={e => setOpened(prev => !prev)}
         >
-          <img src="https://api.bonapart.pro/public/bayrakparts/user-3297.svg" />
+          <img
+            src="https://api.bonapart.pro/public/bayrakparts/user-3297.svg"
+            alt="user"
+          />
           {!opened ? (
             <div className={styles.starts_cont}>
               {arr.map(star => (
