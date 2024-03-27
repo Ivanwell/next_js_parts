@@ -3,11 +3,11 @@ import NewFooter from '../newfooter/newfooter'
 import styles from '../../styles/Layuot.module.css'
 import { ReduxProvider } from '@/global_state/provider'
 
-const Layout = ({ children, breakpoint }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <ReduxProvider>
-        <NewNavbar breakpoint={breakpoint} />
+        <NewNavbar />
         <main className={styles.main_root}>{children}</main>
         <NewFooter />
       </ReduxProvider>

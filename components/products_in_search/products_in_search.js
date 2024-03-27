@@ -29,9 +29,7 @@ const NoSearchResult = () => {
           <span>
             Проте Ви можете залишити заявку і ми пошукаємо запчастину вручну
           </span>
-          <Link href="https://bayrakparts.com/leave_request">
-            Залишити заявку
-          </Link>
+          <Link href="/leave_request">Залишити заявку</Link>
         </div>
       </div>
     </div>
@@ -89,10 +87,10 @@ const SearchedItem = ({ product }) => {
     dispatch(adddToCart(newItem))
   }
 
-  let link = `https://bayrakparts.com/product/${product.link[0]?.link}`
+  let link = `/product/${product.link[0]?.link}`
 
   if (router.query.brand && router.query.model && router.query.engine) {
-    link = `https://bayrakparts.com/product/${product.link[0]?.link}?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
+    link = `/${product.link[0]?.link}?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
   }
 
   const addNumberPerItem = number => {
@@ -268,7 +266,7 @@ const SearchedItemMobile = ({ product }) => {
     dispatch(adddToCart(newItem))
   }
 
-  const link = `https://bayrakparts.com/product/${product.link[0]?.link}`
+  const link = `/product/${product.link[0]?.link}`
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
@@ -365,27 +363,13 @@ const SearchedItemMobile = ({ product }) => {
 
 const NewSearchByCategory = ({
   productData,
-  userAgent,
   amount,
   brand,
   model,
   engine,
   finalTitle,
 }) => {
-  const device = useSelector(state => state.dataSelectscartReducer.value.device)
-  // let ua
-
-  // if (userAgent.uaString) {
-  //   ua = useUserAgent(userAgent.uaString)
-  // } else {
-  //   ua = useUserAgent(window.navigator.userAgent)
-  // }
-
-  // let title = `Знайдено ${amount} шт`
-
-  // if (brand && model && engine) {
-  //   title = `Знайдено ${amount} шт для ${brand} ${model} ${engine}`
-  // }
+  const router = useRouter()
 
   return (
     <div className={styles.whole_search_container}>
@@ -423,7 +407,7 @@ const NewSearchByCategory = ({
           </div>
         ) : null} */}
 
-        {device != 0 ? (
+        {router.query.viewport != 'mobile' ? (
           <div className={styles.search_result_cont}>
             {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
             <div className={styles.search_results}>
@@ -437,7 +421,7 @@ const NewSearchByCategory = ({
           </div>
         ) : null}
 
-        {device === 0 ? (
+        {router.query.viewport === 'mobile' ? (
           <div className={styles.search_result_cont_mobile}>
             <div className={styles.search_results_mobile}>
               {productData.length > 0 ? (

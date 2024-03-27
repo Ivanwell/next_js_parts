@@ -34,7 +34,6 @@ import {
   setGlobalEngine,
 } from '@/global_state/features/cardata_redux'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 import Custom404 from '../404'
 import { useEffect } from 'react'
 import ReviewProduct from '@/components/review_product/review_product'
@@ -43,8 +42,6 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
   if (!item) {
     return <Custom404 />
   }
-
-  const device = useSelector(state => state.dataSelectscartReducer.value.device)
 
   let mobileImage = item.img
 
@@ -942,7 +939,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           </div>
         </div>
       ) : null} */}
-      {device != 0 ? (
+      {router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
           <div rel="schema:aggregateRating" className={styles.nodisplay}>
             <div typeof="schema:AggregateRating">
@@ -1240,7 +1237,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           </div>
         </div>
       ) : null}
-      {openedDetailsCont && device != 0 ? (
+      {openedDetailsCont && router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop}>
           <div className={styles.cont_for_oem_and_compability}>
             <div className={styles.cont_for_oem_title}>
@@ -1280,7 +1277,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           </div>
         </div>
       ) : null}
-      {device != 0 ? (
+      {router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop}>
           <div className={styles.container_for_question}>
             <h2 className={styles.cont_for_oem_title}>
@@ -1329,7 +1326,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
         </div>
       ) : null}
 
-      {device === 0 ? (
+      {router.query.viewport === 'mobile' ? (
         <div className={styles.container_item_mobile} typeof="schema:Product">
           <div rel="schema:aggregateRating" className={styles.nodisplay}>
             <div typeof="schema:AggregateRating">

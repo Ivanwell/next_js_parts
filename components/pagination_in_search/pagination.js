@@ -7,9 +7,7 @@ const LinkNextPagination = ({ activeIndex }) => {
 
   const next = '>'
 
-  let link = `https://bayrakparts.com${asPath.split('?')[0]}?page=${
-    +activeIndex + 1
-  }`
+  let link = `${asPath.split('?')[0]}?page=${+activeIndex + 1}`
 
   return (
     <Link className={styles.link_component} href={link}>
@@ -23,9 +21,7 @@ const LinkPrevPagination = ({ activeIndex }) => {
 
   const next = '<'
 
-  let link = `https://bayrakparts.com${asPath.split('?')[0]}?page=${
-    +activeIndex - 1
-  }`
+  let link = `${asPath.split('?')[0]}?page=${+activeIndex - 1}`
 
   return (
     <Link className={styles.link_component} href={link}>
@@ -47,9 +43,7 @@ const LinkPagination = ({ index, activeIndex }) => {
     car = `&brand=${query.brand}&model=${query.model}&engine=${query.engine}`
   }
 
-  let link = `https://bayrakparts.com${
-    asPath.split('?')[0]
-  }?page=${index}${car}`
+  let link = `${asPath.split('?')[0]}?page=${index}${car}`
 
   return (
     <Link

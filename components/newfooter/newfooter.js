@@ -22,43 +22,31 @@ const NewFooter = () => {
         <ul className={styles.column_links}>
           <label className={styles.column_name}>Про компанію</label>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/aboutus">
-              Коротко про нашу компанію
-            </Link>
+            <Link href="/aboutus">Коротко про нашу компанію</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/newcontacts">
-              Як з нами зв'язатись?
-            </Link>
+            <Link href="/newcontacts">Як з нами зв'язатись?</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/leave_request">
-              Залишити заявку
-            </Link>
+            <Link href="/leave_request">Залишити заявку</Link>
           </li>
         </ul>
         <ul className={styles.column_links}>
           <label className={styles.column_name}>Підтримка клієнтів</label>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/payment_and_delivery">
-              Доставка
-            </Link>
+            <Link href="/payment_and_delivery">Доставка</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/payment_and_delivery">
-              Оплата
-            </Link>
+            <Link href="/payment_and_delivery">Оплата</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/return_policy">Повернення</Link>
+            <Link href="/return_policy">Повернення</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/reklamatsia">Рекламація</Link>
+            <Link href="/reklamatsia">Рекламація</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="https://bayrakparts.com/how_to_order">
-              Як підібрати запчастину?
-            </Link>
+            <Link href="/how_to_order">Як підібрати запчастину?</Link>
           </li>
         </ul>
         <ul className={styles.column_links}>

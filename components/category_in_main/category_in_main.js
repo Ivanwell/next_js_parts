@@ -31,7 +31,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/amortyzatsiya${query}`}
+        href={`/categories/amortyzatsiya${query}`}
         className={styles.category_cont}
       >
         <span>Амортизатори</span>
@@ -41,7 +41,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/systema-oholodzhennya${query}`}
+        href={`/categories/systema-oholodzhennya${query}`}
         className={styles.category_cont}
       >
         <span>Система охолодження</span>
@@ -50,10 +50,7 @@ const CategoryInMain = () => {
           loading="lazy"
         ></img>
       </Link>
-      <Link
-        href={`https://bayrakparts.com/categories/shasi${query}`}
-        className={styles.category_cont}
-      >
+      <Link href={`/categories/shasi${query}`} className={styles.category_cont}>
         <span>Ходова частина</span>
         <img
           src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min-250.png"
@@ -61,7 +58,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/dvygun${query}`}
+        href={`/categories/dvygun${query}`}
         className={styles.category_cont}
       >
         <span>Двигун</span>
@@ -71,7 +68,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/kuzov-skladovi${query}`}
+        href={`/categories/kuzov-skladovi${query}`}
         className={styles.category_cont}
       >
         <span>Кузов</span>
@@ -81,7 +78,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/galmivna-systema${query}`}
+        href={`/categories/galmivna-systema${query}`}
         className={styles.category_cont}
       >
         <span>Гальмівна система</span>
@@ -91,7 +88,7 @@ const CategoryInMain = () => {
         ></img>
       </Link>
       <Link
-        href={`https://bayrakparts.com/categories/pryvid${query}`}
+        href={`/categories/pryvid${query}`}
         className={styles.category_cont}
       >
         <span>Трансмісія</span>

@@ -39,18 +39,9 @@ import {
   setEngine,
 } from '@/global_state/features/cardata_redux'
 import { useSelector } from 'react-redux'
-import { useUserAgent } from 'next-useragent'
 import Review from '@/components/review/review'
 
 const NewMainPage = ({ userAgent, query }) => {
-  // let ua
-
-  // if (userAgent.uaString) {
-  //   ua = useUserAgent(userAgent.uaString)
-  // } else {
-  //   ua = useUserAgent(window?.navigator.userAgent)
-  // }
-
   const router = useRouter()
   const [errorForm, setErrorForm] = useState(false)
   const [opened, setOpened] = useState({
@@ -484,77 +475,6 @@ const NewMainPage = ({ userAgent, query }) => {
       <div className={styles.container_for_brands}>
         <h2>Популярні категорії</h2>
         <CategoryInMain />
-        {/* {ua.isMobile ? (
-          <>
-            <h2>Інші категорії</h2>
-            <div className={styles.category_link_cont}>
-              <Link
-                className={styles.category_link}
-                href="/categories/olyva-zmazka--i-tehnichni"
-              >
-                {droplet}
-                Оливи та рідини
-              </Link>
-              <Link
-                href="/categories/galmivna-systema"
-                className={styles.category_link}
-              >
-                {discbrake}Гальмівна система
-              </Link>
-
-              <Link
-                href="/categories/systema-zapalyuvannya-rozzharyuvannya"
-                className={styles.category_link}
-              >
-                {fireIgn}Запалення/розжарювання
-              </Link>
-
-              <Link
-                href="/categories/obigriv-kondytsioner"
-                className={styles.category_link}
-              >
-                {hodovaa}Опалення/кондиціонування
-              </Link>
-
-              <Link
-                href="/categories/rulova-systema"
-                className={styles.category_link}
-              >
-                {remni}Рульова система
-              </Link>
-
-              <Link
-                href="/categories/elektryka"
-                className={styles.category_link}
-              >
-                {accecories}Електрика
-              </Link>
-
-              <Link
-                href="/categories/systema-vypusku-vpusku-povitrya"
-                className={styles.category_link}
-              >
-                {electric}Впуск/випуск
-              </Link>
-
-              <Link
-                href="/categories/systemy-pidgotovky-podachi-palyva"
-                className={styles.category_link}
-              >
-                {tiress}Подача палива
-              </Link>
-
-              <Link
-                href="/categories/aksesuary-zasoby-po-doglyadu-dod.tovary"
-                className={styles.category_link}
-              >
-                {kuzov}
-                Аксесуари
-              </Link>
-            </div>
-          </>
-        ) : null} */}
-
         <div className={styles.categories_in_mobile_only}>
           <h2>Інші категорії</h2>
           <div className={styles.category_link_cont}>
@@ -799,39 +719,21 @@ const NewMainPage = ({ userAgent, query }) => {
             Швидко відповідаємо (до 20 хвилин)
           </div>
         </div>
-        {/* <div className={styles.our_descr}>
-          <div className={styles.our_desc2}>
-            Галина (власниця KIA Venga)
-            <img src="https://static.wixstatic.com/media/1dd549_6f21d4850b964cdf913e61c940b41186~mv2.jpg/v1/fill/w_647,h_367,al_c,lg_1,q_80,enc_auto/1dd549_6f21d4850b964cdf913e61c940b41186~mv2.jpg" />
-          </div>
-          <div className={styles.our_desc2}>
-            Пан Остап (власник KIA Sportage)
-            <img src="https://static.wixstatic.com/media/1dd549_c315377f510445efa023b1dcbecd4408~mv2.jpg/v1/fill/w_626,h_357,al_c,lg_1,q_80,enc_auto/1dd549_c315377f510445efa023b1dcbecd4408~mv2.jpg" />
-          </div>
-          <div className={styles.our_desc2}>
-            Наталія (власниця Ford Escape)
-            <img src="https://static.wixstatic.com/media/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg/v1/fill/w_647,h_367,al_c,lg_1,q_80,enc_auto/1dd549_0a945f2d0ccd44a39e0decc02a8bb7ae~mv2.jpg" />
-          </div>
-        </div> */}
       </div>
     </div>
   )
 }
 
 export const getServerSideProps = async ({ req, query }) => {
-  //const userAgent = req.headers['user-agent']
-
   if (query.brand && query.model) {
     return {
       props: {
-        //  userAgent: userAgent,
         query: query,
       },
     }
   } else {
     return {
       props: {
-        //  userAgent: userAgent,
         query: {
           brand: null,
           model: null,

@@ -33,14 +33,13 @@ import {
   handleOpenPropToCheck,
   hideFullImage,
 } from '@/global_state/features/cart_redux'
-import { setDevice } from '@/global_state/features/cardata_redux'
 import LinksHistory from '../link_history/links_history'
 import { useDispatch } from 'react-redux'
 import SelectedCar from '../selected_car/selected_car'
 
-const NewNavbar = ({ breakpoint }) => {
+function NewNavbar() {
   const dispatch = useDispatch()
-  dispatch(setDevice(breakpoint))
+
   const sumury = useSelector(state => state.cartReducer.value.total)
   const sumury2 = useSelector(state => state.cartReducer.value.sum)
   const openedProposal = useSelector(
@@ -142,7 +141,7 @@ const NewNavbar = ({ breakpoint }) => {
           <div className={styles.mobile_menu_links_container}>
             <div className={styles.title_in_mobile_menu}>BAYRAKPARTS</div>
             <Link
-              href="https://bayrakparts.com"
+              href="/"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -150,7 +149,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/how_to_order"
+              href="/how_to_order"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -158,7 +157,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/leave_request"
+              href="/leave_request"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -166,7 +165,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/aboutus"
+              href="/aboutus"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -174,7 +173,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/checkout"
+              href="/checkout"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -182,7 +181,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/track_order"
+              href="/track_order"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -190,7 +189,7 @@ const NewNavbar = ({ breakpoint }) => {
               {onearrowright}
             </Link>
             <Link
-              href="https://bayrakparts.com/contacts"
+              href="/contacts"
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
@@ -212,7 +211,7 @@ const NewNavbar = ({ breakpoint }) => {
           {manyBrands.map(brand => (
             <Link
               onClick={() => setManyBrands(null)}
-              href={`https://bayrakparts.com/product/${brand.link[0].link}`}
+              href={`/${brand.link[0].link}`}
             >
               {brand.brand}
               <span>{brand.title}</span>
@@ -221,21 +220,15 @@ const NewNavbar = ({ breakpoint }) => {
         </div>
       ) : null}
       <div className={styles.header_links}>
-        <Link className={styles.link_big} href="https://bayrakparts.com/">
+        <Link className={styles.link_big} href="/">
           {info}
           ГОЛОВНА
         </Link>
-        <Link
-          className={styles.link_big}
-          href="https://bayrakparts.com/payment_and_delivery"
-        >
+        <Link className={styles.link_big} href="/payment_and_delivery">
           {info}
           ДОСТАВКА ТА ОПЛАТА
         </Link>
-        <Link
-          className={styles.link_big}
-          href="https://bayrakparts.com/contacts"
-        >
+        <Link className={styles.link_big} href="/contacts">
           {info}
           КОНТАКТИ
         </Link>
@@ -247,17 +240,14 @@ const NewNavbar = ({ breakpoint }) => {
         <div className={styles.header_top_desctop}>
           <div className={styles.header_logo}>BAYRAKPARTS</div>
           <div className={styles.login}>
-            <Link
-              href="https://bayrakparts.com/track_order"
-              title="Відстежити замовлення"
-            >
+            <Link href="/track_order" title="Відстежити замовлення">
               {garage1}
             </Link>
-            <Link href="https://bayrakparts.com/payment_and_delivery">
+            <Link href="/payment_and_delivery">
               {heart}
               <div className={styles.number_in_circule_container}>0</div>
             </Link>
-            <Link href="https://bayrakparts.com/">
+            <Link href="/">
               {personWithoutAuth}
               Увійти
             </Link>
@@ -279,10 +269,7 @@ const NewNavbar = ({ breakpoint }) => {
               >
                 {search}
               </div>
-              <Link
-                href="https://bayrakparts.com/checkout"
-                className={styles.busket_mobile_cont}
-              >
+              <Link href="/checkout" className={styles.busket_mobile_cont}>
                 {sumury > 0 ? (
                   <div className={styles.items_in_circule}>{sumury}</div>
                 ) : null}
@@ -331,10 +318,7 @@ const NewNavbar = ({ breakpoint }) => {
             </button>
           </form>
           <div className={styles.basket_container}>
-            <Link
-              href="https://bayrakparts.com/checkout"
-              className={styles.basket_and_numbers}
-            >
+            <Link href="/checkout" className={styles.basket_and_numbers}>
               {newbasket}
               <div className={styles.near_basket_items}>
                 <span>{sumury} товарів</span>
@@ -349,46 +333,42 @@ const NewNavbar = ({ breakpoint }) => {
         <div className={styles.header_bottom}>
           <ul className={styles.list_categories}>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/olyva-zmazka--i-tehnichni">
+              <Link href="/categories/olyva-zmazka--i-tehnichni">
                 {droplet}Оливи
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/elektryka">
-                {discbrake}Електрика
-              </Link>
+              <Link href="/categories/elektryka">{discbrake}Електрика</Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/systema-zapalyuvannya-rozzharyuvannya">
+              <Link href="/categories/systema-zapalyuvannya-rozzharyuvannya">
                 {fireIgn}Запалення
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/obigriv-kondytsioner">
+              <Link href="/categories/obigriv-kondytsioner">
                 {hodovaa}Опалення/конд
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/rulova-systema">
-                {remni}Кермова
-              </Link>
+              <Link href="/categories/rulova-systema">{remni}Кермова</Link>
             </li>
 
             {/* <li className={styles.category}>
               <Link href="/categories/kuzov-skladovi">{accecories}Кузов</Link>
             </li> */}
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/systema-vypusku-vpusku-povitrya">
+              <Link href="/categories/systema-vypusku-vpusku-povitrya">
                 {electric}Впуск/випуск
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/systemy-pidgotovky-podachi-palyva">
+              <Link href="/categories/systemy-pidgotovky-podachi-palyva">
                 {tiress}Подача палива
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="https://bayrakparts.com/categories/aksesuary-zasoby-po-doglyadu-dod.tovary">
+              <Link href="/categories/aksesuary-zasoby-po-doglyadu-dod.tovary">
                 {kuzov}
                 Аксесуари
               </Link>
