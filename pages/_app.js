@@ -48,15 +48,15 @@ export default function App({
     }
   }, [router.events])
 
-  // const [showChild, setShowChild] = useState(false)
+  const [showChild, setShowChild] = useState(false)
 
-  // useEffect(() => {
-  //   setShowChild(true)
-  // }, [])
+  useEffect(() => {
+    setShowChild(true)
+  }, [])
 
-  // if (!showChild) {
-  //   return null
-  // }
+  if (!showChild) {
+    return null
+  }
 
   // if (typeof window === 'undefined') {
   //   return <h1>Завантаження</h1>
