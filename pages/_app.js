@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
+import Layout from '@/components/layout/layout'
 
 export default function App({
   Component,
@@ -13,9 +14,9 @@ export default function App({
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
-  const DynamicHeader = dynamic(() => import('@/components/layout/layout'), {
-    loading: () => <Preloader />,
-  })
+  // const DynamicHeader = dynamic(() => import('@/components/layout/layout'), {
+  //   loading: () => <Preloader />,
+  // })
 
   const handleStart = url => {
     setLoading(true)
@@ -61,7 +62,8 @@ export default function App({
     return <></>
   } else
     return (
-      <DynamicHeader>
+      //     <DynamicHeader>
+      <Layout>
         <>
           {loading === false ? (
             <Component {...pageProps} />
@@ -71,6 +73,7 @@ export default function App({
             </h1>
           )}
         </>
-      </DynamicHeader>
+      </Layout>
+      //    </DynamicHeader>
     )
 }
