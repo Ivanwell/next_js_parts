@@ -685,14 +685,14 @@
     gap: 15px;
   }
 
-  .links_menu_mobile a {
+  .links_menu_mobile div {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
   }
 
-  .links_menu_mobile a svg {
+  .links_menu_mobile div svg {
     color: #f37c2e;
     width: 25px;
     height: 25px;

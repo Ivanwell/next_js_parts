@@ -29,7 +29,9 @@ const NoSearchResult = () => {
           <span>
             Проте Ви можете залишити заявку і ми пошукаємо запчастину вручну
           </span>
-          <Link href="/leave_request">Залишити заявку</Link>
+          <Link href="https://bayrakparts.com/leave_request">
+            Залишити заявку
+          </Link>
         </div>
       </div>
     </div>
@@ -87,10 +89,10 @@ const SearchedItem = ({ product }) => {
     dispatch(adddToCart(newItem))
   }
 
-  let link = `/product/${product.link[0]?.link}`
+  let link = `https://bayrakparts.com/product/${product.link[0]?.link}`
 
   if (router.query.brand && router.query.model && router.query.engine) {
-    link = `/product/${product.link[0]?.link}?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
+    link = `https://bayrakparts.com/product/${product.link[0]?.link}?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
   }
 
   const addNumberPerItem = number => {
@@ -266,7 +268,7 @@ const SearchedItemMobile = ({ product }) => {
     dispatch(adddToCart(newItem))
   }
 
-  const link = `/product/${product.link[0]?.link}`
+  const link = `https://bayrakparts.com/product/${product.link[0]?.link}`
 
   const addNumberPerItem = number => {
     if (numberPerItem + number === 0) {
