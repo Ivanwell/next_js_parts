@@ -33,12 +33,14 @@ import {
   handleOpenPropToCheck,
   hideFullImage,
 } from '@/global_state/features/cart_redux'
+import { setDevice } from '@/global_state/features/cardata_redux'
 import LinksHistory from '../link_history/links_history'
 import { useDispatch } from 'react-redux'
 import SelectedCar from '../selected_car/selected_car'
 
-const NewNavbar = () => {
+const NewNavbar = ({ breakpoint }) => {
   const dispatch = useDispatch()
+  dispatch(setDevice(breakpoint))
   const sumury = useSelector(state => state.cartReducer.value.total)
   const sumury2 = useSelector(state => state.cartReducer.value.sum)
   const openedProposal = useSelector(

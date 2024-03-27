@@ -7,7 +7,7 @@ import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
 import Layout from '@/components/layout/layout'
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps, breakpoint }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -58,9 +58,10 @@ export default function App({ Component, pageProps }) {
   // if (typeof window === 'undefined') {
   //   return <h1>Завантаження</h1>
   // } else
+
   return (
     //     <DynamicHeader>
-    <Layout>
+    <Layout breakpoint={breakpoint}>
       <>
         {loading === false ? (
           <Component {...pageProps} />
@@ -74,3 +75,28 @@ export default function App({ Component, pageProps }) {
     //    </DynamicHeader>
   )
 }
+
+App.getInitialProps = async ctx => {
+  if (typeof window === 'undefined') {
+    // device detection is used to set up breakpoint for MyApp
+    // so DesignSystem uses this value in is prop
+    // then CSS is extracted in _document.js and added to HTML
+    // so MyApp is initially rendered for detected device.
+    const DeviceDetect = eval('require("node-device-detector")')
+    const device = new DeviceDetect()
+    const {
+      device: { type },
+    } = device.detect(ctx.ctx.req.headers['user-agent'])
+    const breakpoint = [
+      true,
+      type === 'tablet',
+      type === 'desktop',
+    ].lastIndexOf(true)
+
+    return {
+      breakpoint,
+    }
+  }
+}
+
+export default App

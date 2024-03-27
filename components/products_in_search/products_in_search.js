@@ -5,7 +5,7 @@ import Pagination from '../pagination_in_search/pagination'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { adddToCart } from '@/global_state/features/cart_redux'
-import { useUserAgent } from 'next-useragent'
+import { useSelector } from 'react-redux'
 import { showFullImage } from '@/global_state/features/cart_redux'
 import {
   heart,
@@ -372,6 +372,7 @@ const NewSearchByCategory = ({
   engine,
   finalTitle,
 }) => {
+  const device = useSelector(state => state.dataSelectscartReducer.value.device)
   // let ua
 
   // if (userAgent.uaString) {
@@ -422,35 +423,39 @@ const NewSearchByCategory = ({
           </div>
         ) : null} */}
 
-        <div className={styles.search_result_cont}>
-          {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
-          <div className={styles.search_results}>
-            {productData.length > 0 ? (
-              productData.map(product => <SearchedItem product={product} />)
-            ) : (
-              <NoSearchResult />
-            )}
+        {device != 0 ? (
+          <div className={styles.search_result_cont}>
+            {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
+            <div className={styles.search_results}>
+              {productData.length > 0 ? (
+                productData.map(product => <SearchedItem product={product} />)
+              ) : (
+                <NoSearchResult />
+              )}
+            </div>
+            <Pagination amount={amount} />
           </div>
-          <Pagination amount={amount} />
-        </div>
+        ) : null}
 
-        <div className={styles.search_result_cont_mobile}>
-          <div className={styles.search_results_mobile}>
-            {productData.length > 0 ? (
-              <h1>{finalTitle}</h1>
-            ) : (
-              <h1>Не знайдено</h1>
-            )}
-            {productData.length > 0 ? (
-              productData.map(product => (
-                <SearchedItemMobile product={product} />
-              ))
-            ) : (
-              <NoSearchResult />
-            )}
+        {device === 0 ? (
+          <div className={styles.search_result_cont_mobile}>
+            <div className={styles.search_results_mobile}>
+              {productData.length > 0 ? (
+                <h1>{finalTitle}</h1>
+              ) : (
+                <h1>Не знайдено</h1>
+              )}
+              {productData.length > 0 ? (
+                productData.map(product => (
+                  <SearchedItemMobile product={product} />
+                ))
+              ) : (
+                <NoSearchResult />
+              )}
+            </div>
+            <Pagination amount={amount} />
           </div>
-          <Pagination amount={amount} />
-        </div>
+        ) : null}
       </div>
     </div>
   )
