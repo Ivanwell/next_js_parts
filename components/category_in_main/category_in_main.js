@@ -21,7 +21,7 @@ const CategoryInMain = () => {
   return (
     <div className={styles.container_for_items_row}>
       <Link
-        href={`https://bayrakparts.com/categories/filtry-komplektuyuchi${query}`}
+        href={`/categories/filtry-komplektuyuchi${query}`}
         className={styles.category_cont}
       >
         <span>Деталі для ТО</span>

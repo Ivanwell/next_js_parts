@@ -7,10 +7,7 @@ import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
 import Layout from '@/components/layout/layout'
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+export default function App({ Component, pageProps }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -48,15 +45,15 @@ export default function App({
     }
   }, [router.events])
 
-  const [showChild, setShowChild] = useState(false)
+  // const [showChild, setShowChild] = useState(false)
 
-  useEffect(() => {
-    setShowChild(true)
-  }, [])
+  // useEffect(() => {
+  //   setShowChild(true)
+  // }, [])
 
-  if (!showChild) {
-    return null
-  }
+  // if (!showChild) {
+  //   return null
+  // }
 
   // if (typeof window === 'undefined') {
   //   return <h1>Завантаження</h1>

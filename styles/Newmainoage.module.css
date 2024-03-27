@@ -215,6 +215,10 @@
   row-gap: 20px;
 }
 
+.categories_in_mobile_only {
+  display: none;
+}
+
 .error_form {
   width: 100%;
   text-align: center;
@@ -321,6 +325,7 @@
   padding-left: 5%;
   padding-right: 5%;
   font-weight: 600;
+  gap: 5px;
 }
 
 .cont_for_question svg {
@@ -743,6 +748,12 @@
     justify-content: center;
     flex-direction: column;
     gap: 5px;
+  }
+
+  .categories_in_mobile_only {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .category_link {

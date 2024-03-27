@@ -102,7 +102,6 @@ const AddCommentForm = ({ setOpenedAddComment, _id }) => {
 }
 
 const Review = details => {
-  console.log(details)
   const [opened, setOpened] = useState(false)
   const [openedAddComment, setOpenedAddComment] = useState(false)
   const arr = new Array(+details.details.stars).fill('1')

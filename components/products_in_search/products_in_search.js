@@ -372,13 +372,13 @@ const NewSearchByCategory = ({
   engine,
   finalTitle,
 }) => {
-  let ua
+  // let ua
 
-  if (userAgent.uaString) {
-    ua = useUserAgent(userAgent.uaString)
-  } else {
-    ua = useUserAgent(window.navigator.userAgent)
-  }
+  // if (userAgent.uaString) {
+  //   ua = useUserAgent(userAgent.uaString)
+  // } else {
+  //   ua = useUserAgent(window.navigator.userAgent)
+  // }
 
   // let title = `Знайдено ${amount} шт`
 
@@ -389,7 +389,7 @@ const NewSearchByCategory = ({
   return (
     <div className={styles.whole_search_container}>
       <div className={styles.search_container}>
-        {!ua.isMobile ? (
+        {/* {!ua.isMobile ? (
           <div className={styles.search_result_cont}>
             {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
             <div className={styles.search_results}>
@@ -420,7 +420,37 @@ const NewSearchByCategory = ({
             </div>
             <Pagination amount={amount} />
           </div>
-        ) : null}
+        ) : null} */}
+
+        <div className={styles.search_result_cont}>
+          {productData.length > 0 ? <h1>{finalTitle}</h1> : null}
+          <div className={styles.search_results}>
+            {productData.length > 0 ? (
+              productData.map(product => <SearchedItem product={product} />)
+            ) : (
+              <NoSearchResult />
+            )}
+          </div>
+          <Pagination amount={amount} />
+        </div>
+
+        <div className={styles.search_result_cont_mobile}>
+          <div className={styles.search_results_mobile}>
+            {productData.length > 0 ? (
+              <h1>{finalTitle}</h1>
+            ) : (
+              <h1>Не знайдено</h1>
+            )}
+            {productData.length > 0 ? (
+              productData.map(product => (
+                <SearchedItemMobile product={product} />
+              ))
+            ) : (
+              <NoSearchResult />
+            )}
+          </div>
+          <Pagination amount={amount} />
+        </div>
       </div>
     </div>
   )
