@@ -38,6 +38,7 @@ import Custom404 from '../404'
 import { useEffect } from 'react'
 import ReviewProduct from '@/components/review_product/review_product'
 import Script from 'next/script'
+import JSONLD from '@/components/LDJSON/LDJSON'
 
 const Item = ({ item, userAgent, rating, reviews, cat }) => {
   if (!item) {
@@ -257,7 +258,7 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
   return (
     <div className={styles.main_item}>
       <Head>
-        <title>{googleTitle + ` - BAYRAKPARTS`}</title>
+        <title>{googleTitle.slice(0, 61) + ` - BAYRAKPARTS`}</title>
         <meta name="description" content={metateg1.slice(0, 159)} />
         <meta property="og:type" content="website"></meta>
         <meta
@@ -272,35 +273,35 @@ const Item = ({ item, userAgent, rating, reviews, cat }) => {
           content={`https://bayrakparts.com/product/${item.link}`}
         ></meta>
         <meta property="og:image" content={mobileImage}></meta>
-        <Script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'http://schema.org',
-              '@type': 'Product',
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingCount: reviews,
-                ratingValue: rating,
-                description: item.unicTitle,
-              },
-              image: mobileImage,
-              name: item.title,
-              category: item.categoryName,
-              itemCondition: 'https://schema.org/NewCondition',
-              offers: {
-                '@type': 'Offer',
-                availability:
-                  item.lvivStock == 0
-                    ? 'https://schema.org/OutOfStock'
-                    : 'https://schema.org/InStock',
-                price: item.price,
-                priceCurrency: 'UAH',
-              },
-            }),
-          }}
-        />
       </Head>
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'http://schema.org',
+            '@type': 'Product',
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingCount: reviews,
+              ratingValue: rating,
+              description: item.unicTitle,
+            },
+            image: mobileImage,
+            name: item.title,
+            category: item.categoryName,
+            itemCondition: 'https://schema.org/NewCondition',
+            offers: {
+              '@type': 'Offer',
+              availability:
+                item.lvivStock == 0
+                  ? 'https://schema.org/OutOfStock'
+                  : 'https://schema.org/InStock',
+              price: item.price,
+              priceCurrency: 'UAH',
+            },
+          }),
+        }}
+      />
       {/* {!ua.isMobile ? (
         <div className={styles.container_item_desctop} typeof="schema:Product">
           <div rel="schema:aggregateRating" className={styles.nodisplay}>
