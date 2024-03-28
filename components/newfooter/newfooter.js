@@ -1,6 +1,6 @@
 'use client'
 import styles from '../../styles/Footer.module.css'
-import { scedj, tel, mail } from '../SVGs/SVGs'
+import { scedj, tel, mail, instagram } from '../SVGs/SVGs'
 import Link from 'next/link'
 import Script from 'next/script'
 
@@ -29,6 +29,11 @@ const NewFooter = () => {
           </li>
           <li className={styles.column_link}>
             <Link href="/leave_request">Залишити заявку</Link>
+          </li>
+          <li className={styles.column_link}>
+            <Link href="https://www.instagram.com/bayrakparts">
+              Ми в інстаграмі
+            </Link>
           </li>
         </ul>
         <ul className={styles.column_links}>
@@ -65,6 +70,12 @@ const NewFooter = () => {
         <div className={styles.footer_row}>{scedj}ПН-ПТ 9:00 - 18:30</div>
         <a href="tel:+380937289485" className={styles.footer_row}>
           {tel} +38 (093)-728-94-85
+        </a>
+        <a
+          className={styles.footer_row}
+          href="https://www.instagram.com/bayrakparts"
+        >
+          {instagram} Ми в інстаграмі
         </a>
         <div className={styles.footer_row}>{mail}office@bayrakparts.com</div>
         <label className={styles.column_name}>Наші партнери</label>

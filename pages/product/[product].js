@@ -25,7 +25,6 @@ import Head from 'next/head'
 import { useState } from 'react'
 import * as ga from '../../components/lib/gtag'
 import { useRouter } from 'next/router'
-import { useUserAgent } from 'next-useragent'
 import { adddToCart, showFullImage } from '@/global_state/features/cart_redux'
 import {
   changeLinkPath,
@@ -38,9 +37,8 @@ import Custom404 from '../404'
 import { useEffect } from 'react'
 import ReviewProduct from '@/components/review_product/review_product'
 import Script from 'next/script'
-import JSONLD from '@/components/LDJSON/LDJSON'
 
-const Item = ({ item, userAgent, rating, reviews, cat }) => {
+const Item = ({ item, rating, reviews, cat }) => {
   if (!item) {
     return <Custom404 />
   }

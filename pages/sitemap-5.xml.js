@@ -1,6 +1,6 @@
 const EXTERNAL_DATA_URL = 'https://bayrakparts.com/'
 
-function generateSiteMap(links) {
+function generateSiteMap(links, aiLinks) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      ${links
@@ -14,6 +14,22 @@ function generateSiteMap(links) {
      `
        })
        .join('')}
+       ${aiLinks
+         .map(link => {
+           return `
+       <url>
+          <loc>${`${EXTERNAL_DATA_URL}articles/${link.link}`}</loc>
+          <changefreq>weekly</changefreq>
+          <priority>0.9</priority>
+       </url>
+     `
+         })
+         .join('')}
+         <url>
+          <loc>${`${EXTERNAL_DATA_URL}articles`}</loc>
+          <changefreq>weekly</changefreq>
+          <priority>0.9</priority>
+       </url>
    </urlset>
  `
 }
@@ -29,12 +45,12 @@ export async function getServerSideProps({ res }) {
 
   const body1 = await res1.json()
 
-  // const res2 = await fetch(`https://backend.bayrakparts.com/get_categories`, {
-  //   method: 'GET',
-  // })
-  // const body2 = await res2.json()
+  const res2 = await fetch(`https://update.bayrakparts.com/getArticlesAi`, {
+    method: 'GET',
+  })
+  const body2 = await res2.json()
 
-  const sitemap = generateSiteMap(body1)
+  const sitemap = generateSiteMap(body1, body2)
 
   res.setHeader('Content-Type', 'text/xml')
   res.write(sitemap)

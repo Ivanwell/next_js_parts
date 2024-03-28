@@ -705,6 +705,15 @@ const NewMainPage = ({ userAgent, query }) => {
           </button>
         </div>
         <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
+        <div className={styles.text_about_company}>
+          Ласкаво просимо до BayrakParts – вашого вірного постачальника
+          автозапчастин. Ми - ваш надійний партнер у світі автозапчастин,
+          пропонуючи широкий асортимент якісних деталей для автомобілів різних
+          марок та моделей. Наша місія - забезпечити наших клієнтів найвищою
+          якістю продукції та неперевершеним обслуговуванням. Ми ретельно
+          відбираємо кожну запчастину, щоб ви могли бути впевнені в її
+          надійності та довговічності.
+        </div>
         <div className={styles.our_descr}>
           <div className={styles.our_desc1}>
             {sighn}
@@ -718,6 +727,19 @@ const NewMainPage = ({ userAgent, query }) => {
             {watch}
             Швидко відповідаємо (до 20 хвилин)
           </div>
+        </div>
+        <h2 className={styles.why_we}>Корисні статті та поради</h2>
+        <div className={styles.blog_container}>
+          <Link href="articles/yak-pidgotuvaty-avto-do-lita">
+            Як підготувати авто до літа
+          </Link>
+          <Link href="articles/top-vyrobnyky-avtozapchastyn-u-sviti">
+            Топ виробники автозапчастин у світі
+          </Link>
+          <Link href="articles/yak-vyznachyty-polomku-v-mashyni">
+            Як визначити поломку в машині
+          </Link>
+          <Link href="articles">Усі наші статті</Link>
         </div>
       </div>
     </div>

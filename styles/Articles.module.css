@@ -1,0 +1,135 @@
+.main_article_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.text_of_article {
+  position: relative;
+  width: 70%;
+  font-size: 18px;
+  line-height: 30px;
+  text-decoration: none;
+  white-space: pre-wrap;
+  border: #0067d7 1px solid;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.date_article {
+  position: absolute;
+  font-size: 14px;
+  color: grey;
+  top: -15px;
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  right: 20px;
+}
+
+.date_article_for_list {
+  position: absolute;
+  font-size: 14px;
+  color: grey;
+  top: -10px;
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  right: 20px;
+}
+
+.link_to_main {
+  background-color: #0067d7;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 23px;
+  color: white;
+  font-weight: 600;
+  width: 180px;
+}
+
+.articles_container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* .articles_container a {
+  border: #0067d7 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  position: relative;
+} */
+
+.link_for_article {
+  border: #0067d7 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.link_for_article:hover {
+  box-shadow: 5px 5px 5px #0067d7;
+}
+
+.link_for_article:active {
+  box-shadow: 3px 3px 3px #0067d7;
+}
+
+.cont_for_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media all and (max-width: 600px) {
+  .main_article_page h1 {
+    text-align: center;
+  }
+  .text_of_article {
+    width: 95%;
+    font-size: 17px;
+    line-height: 27px;
+    text-decoration: none;
+    white-space: pre-wrap;
+  }
+
+  .date_article {
+    font-size: 12px;
+    color: grey;
+    text-align: right;
+  }
+
+  .articles_container {
+    margin-top: 15px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .date_article_for_list {
+    position: absolute;
+    font-size: 14px;
+    color: grey;
+    top: -8px;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    right: 10px;
+  }
+}
