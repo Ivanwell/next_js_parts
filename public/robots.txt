@@ -2,6 +2,7 @@ User-agent: *
 Disallow: /admin
 Disallow: /track_order
 Disallow: /search
+Disallow: /stock
 
 Host: https://bayrakparts.com
 Sitemap: https://bayrakparts.com/sitemap.xml

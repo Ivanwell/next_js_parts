@@ -311,9 +311,9 @@ const NewMainPage = ({ userAgent, query }) => {
         <div className={styles.container_for_search_and_promo}>
           <form className={styles.search_form} onSubmit={e => submitSearch(e)}>
             <div className={styles.container_search_form}>
-              <div className={styles.select_car_title}>
+              <h1 className={styles.select_car_title}>
                 {search}Виберіть Ваше авто для пошуку запчастин
-              </div>
+              </h1>
               {/* <div className={styles.select_container}>
               <span className={styles.number}>1</span>
               <select
