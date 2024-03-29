@@ -40,6 +40,7 @@ import {
 } from '@/global_state/features/cardata_redux'
 import { useSelector } from 'react-redux'
 import Review from '@/components/review/review'
+import Script from 'next/script'
 
 const NewMainPage = ({ userAgent, query }) => {
   const router = useRouter()
@@ -309,6 +310,19 @@ const NewMainPage = ({ userAgent, query }) => {
         <meta name="theme-color" content="#f37c2e"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'http://schema.org',
+            '@type': 'Organization',
+            name: 'BayrakParts',
+            telephone: '+380937289485',
+            url: 'https://bayrakparts.com',
+            description: 'Якісні автозапчастини з уього світу',
+          }),
+        }}
+      />
       {globalBrand && globalModel && engine ? null : (
         <div className={styles.container_for_search_and_promo}>
           <form className={styles.search_form} onSubmit={e => submitSearch(e)}>
