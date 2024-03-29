@@ -28,6 +28,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/detali-dlya-to-min-250.png"
           loading="lazy"
+          alt="to"
         ></img>
       </Link>
       <Link
@@ -38,6 +39,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/amortyzator-250.png"
           loading="lazy"
+          alt="shocks"
         ></img>
       </Link>
       <Link
@@ -48,6 +50,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/systema-oholodzennya-min-250.png"
           loading="lazy"
+          alt="radiators"
         ></img>
       </Link>
       <Link href={`/categories/shasi${query}`} className={styles.category_cont}>
@@ -55,6 +58,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min-250.png"
           loading="lazy"
+          alt="chassis"
         ></img>
       </Link>
       <Link
@@ -65,6 +69,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/dvygun-min-250.png"
           loading="lazy"
+          alt="engine"
         ></img>
       </Link>
       <Link
@@ -75,6 +80,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/pngegg (7).png"
           loading="lazy"
+          alt="body"
         ></img>
       </Link>
       <Link
@@ -85,6 +91,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/pngegg (4).png"
           loading="lazy"
+          alt="brakes"
         ></img>
       </Link>
       <Link
@@ -95,6 +102,7 @@ const CategoryInMain = () => {
         <img
           src="https://backend.bayrakparts.com/images/media/transmision1-min-250.png"
           loading="lazy"
+          alt="transmission"
         ></img>
       </Link>
     </div>

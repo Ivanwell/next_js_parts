@@ -35,6 +35,31 @@
   text-indent: 10px;
   padding-left: 10px;
   line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.text_about_company p {
+  border: #353535 1px solid;
+  padding: 30px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.text_about_company p h3 {
+  position: absolute;
+  top: -16px;
+  padding-left: 0px;
+  padding-right: 10px;
+  background-color: white;
+  color: #0067d7;
+  font-size: 20px;
+  font-weight: 600;
+  border: #0067d7 1px solid;
+  border-radius: 5px;
+  background-color: #0067d7;
+  color: white;
 }
 
 .container_search_form {
@@ -844,6 +869,15 @@
   }
 
   .text_about_company {
+    margin-top: 20px;
     text-align: center;
+  }
+
+  .text_about_company p h3 {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
   }
 }

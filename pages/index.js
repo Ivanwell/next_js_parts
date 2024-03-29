@@ -118,6 +118,8 @@ const NewMainPage = ({ userAgent, query }) => {
     }
   }
 
+  const text = ''
+
   useEffect(() => {
     if (fullPath) {
       dispatch(changeLinkPath(null))
@@ -291,7 +293,7 @@ const NewMainPage = ({ userAgent, query }) => {
   const arrow = '<'
   const arrowRew = '>'
 
-  let titleMeta = 'BayrakParts || Запчастини з гарантією'
+  let titleMeta = 'BayrakParts || Запчастини для авто з гарантією'
   if (router.query.brand && router.query.model && router.query.engine) {
     titleMeta = `Запчастини до ${router.query.brand} ${router.query.model} ${router.query.engine}`
   }
@@ -301,7 +303,7 @@ const NewMainPage = ({ userAgent, query }) => {
         <title>{titleMeta}</title>
         <meta
           name="description"
-          content="Купити запчастини дешево з гарантією Львів, Київ, Тернопіль, Ужгород, Луцьк, Рівне, Житомир Hyundai/KIA, Хюндай , Toyota/Lexus, Тойота/Лексус, Nissan, Ніссан, Mazda, Мазда, Honda, Хонда, Subaru, Субару, BMW, БМВ,  Volkswagen, Фольксваген. Купити запчастини до ходової частини, двигуна, кузову, трансмісія, комплекти для ТО, комплект ГРМ, водяна помпа, масло, фільтр, амортизатор, сайлентблок. В наявності більше 50000 запчастин. Відправляємо в день замовлення."
+          content="Купити запчастини дешево з гарантією Львів Hyundai/KIA, Хюндай , Toyota/Lexus, Тойота/Лексус, Nissan, Ніссан, Mazda, Мазда, Honda, Хонда, Subaru, Субару, BMW, БМВ,  Volkswagen, Фольксваген. "
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f37c2e"></meta>
@@ -312,7 +314,7 @@ const NewMainPage = ({ userAgent, query }) => {
           <form className={styles.search_form} onSubmit={e => submitSearch(e)}>
             <div className={styles.container_search_form}>
               <h1 className={styles.select_car_title}>
-                {search}Виберіть Ваше авто для пошуку запчастин
+                {search}Виберіть авто для пошуку запчастин
               </h1>
               {/* <div className={styles.select_container}>
               <span className={styles.number}>1</span>
@@ -466,6 +468,7 @@ const NewMainPage = ({ userAgent, query }) => {
               <img
                 loading="lazy"
                 src="https://backend.bayrakparts.com/images/media/baner_new.jpg"
+                alt="baner"
               />
             </div>
             <div className={styles.arrow_cont}>{arrowRew}</div>
@@ -704,7 +707,7 @@ const NewMainPage = ({ userAgent, query }) => {
             Переглянути ще...
           </button>
         </div>
-        <h2 className={styles.why_we}>Чому вигідно працювати з нами?</h2>
+        <h2 className={styles.why_we}>Вітаємо у світі автозапчастин</h2>
         <div className={styles.text_about_company}>
           Ласкаво просимо до BayrakParts – вашого вірного постачальника
           автозапчастин. Ми - ваш надійний партнер у світі автозапчастин,
@@ -714,7 +717,7 @@ const NewMainPage = ({ userAgent, query }) => {
           відбираємо кожну запчастину, щоб ви могли бути впевнені в її
           надійності та довговічності.
         </div>
-        <div className={styles.our_descr}>
+        {/* <div className={styles.our_descr}>
           <div className={styles.our_desc1}>
             {sighn}
             Ми відповідаємо за правильний підбір запчастин
@@ -727,7 +730,7 @@ const NewMainPage = ({ userAgent, query }) => {
             {watch}
             Швидко відповідаємо (до 20 хвилин)
           </div>
-        </div>
+        </div> */}
         <h2 className={styles.why_we}>Корисні статті та поради</h2>
         <div className={styles.blog_container}>
           <Link href="articles/yak-pidgotuvaty-avto-do-lita">
@@ -740,6 +743,44 @@ const NewMainPage = ({ userAgent, query }) => {
             Як визначити поломку в машині
           </Link>
           <Link href="articles">Усі наші статті</Link>
+        </div>
+        <h2 className={styles.why_we}>Чому запчастини саме у нас</h2>
+        <div className={styles.text_about_company}>
+          <p>
+            <h3>Широкий асортимент товарів</h3>
+            BayrakParts пропонує великий вибір автозапчастин для різних марок і
+            моделей автомобілів. Ви знайдете все, що потрібно для ремонту або
+            підтримки вашого автомобіля, від запчастин двигуна до кузовних
+            деталей.
+          </p>
+          <p>
+            <h3>Висока якість продукції</h3>
+            Ми працюємо тільки з надійними постачальниками, які гарантують
+            якість своєї продукції. Всі запчастини проходять ретельну перевірку
+            перед тим, як потрапляти до наших полиць, щоб ви могли мати
+            впевненість у їхній надійності.
+          </p>
+          <p>
+            <h3>Конкурентні ціни</h3>
+            BayrakParts пропонує конкурентоспроможні ціни на всі свої товари. Ми
+            розуміємо, що ремонт автомобіля може бути витратним, тому ми
+            намагаємося зробити наші товари доступними для широкого кола
+            клієнтів.
+          </p>
+          <p>
+            <h3> Зручний сервіс</h3>
+            Наша команда з досвідчених фахівців завжди готова допомогти вам з
+            вибором потрібних запчастин або вирішенням будь-яких питань. Ми
+            пропонуємо швидку доставку і зручні способи оплати, щоб зробити
+            процес покупок максимально комфортним для вас.
+          </p>
+          <p>
+            <h3> Клієнтська підтримка</h3>
+            Наша компанія цінує кожного клієнта, тому ми завжди готові надати
+            вам найвищий рівень обслуговування. Ми віримо у взаємовигідні
+            стосунки з нашими клієнтами і завжди раді відповісти на ваші
+            запитання або врахувати ваші побажання.
+          </p>
         </div>
       </div>
     </div>
