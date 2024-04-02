@@ -278,6 +278,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  grid-template-rows: auto;
   row-gap: 20px;
   align-items: center;
   justify-content: center;
