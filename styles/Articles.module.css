@@ -55,6 +55,7 @@
   color: white;
   font-weight: 600;
   width: 180px;
+  cursor: pointer;
 }
 
 .articles_container {
@@ -131,5 +132,9 @@
     padding-left: 5px;
     padding-right: 5px;
     right: 10px;
+  }
+
+  .cont_for_buttons {
+    flex-direction: column;
   }
 }

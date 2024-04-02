@@ -15,7 +15,6 @@
   padding: 20px;
   width: 80%;
   height: 100%;
-  min-height: 250px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -368,6 +367,28 @@
   color: red;
   font-weight: 600;
   padding-top: 5px;
+}
+
+.cont_related_articles {
+  width: 100%;
+  padding: 20px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cont_related_articles li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cont_related_articles a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #606062;
 }
 
 .last_item_cont img {
@@ -1454,6 +1475,17 @@
   .smiles_cont svg {
     width: 45px;
     height: 45px;
+  }
+
+  .cont_related_articles {
+    padding: 10px;
+  }
+
+  .cont_related_articles a {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .submit_button_review {

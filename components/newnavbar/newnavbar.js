@@ -243,7 +243,7 @@ function NewNavbar() {
             <Link href="/track_order" title="Відстежити замовлення">
               {garage1}
             </Link>
-            <Link href="/payment_and_delivery">
+            <Link href="/payment_and_delivery" title="Збережені товари">
               {heart}
               <div className={styles.number_in_circule_container}>0</div>
             </Link>

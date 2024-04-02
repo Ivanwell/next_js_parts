@@ -40,14 +40,14 @@
   gap: 40px;
 }
 
-.text_about_company p {
+.text_about_company div {
   border: #353535 1px solid;
   padding: 30px;
   border-radius: 5px;
   position: relative;
 }
 
-.text_about_company p h3 {
+.text_about_company div h3 {
   position: absolute;
   top: -16px;
   padding-left: 0px;
@@ -873,7 +873,7 @@
     text-align: center;
   }
 
-  .text_about_company p h3 {
+  .text_about_company div h3 {
     left: 0;
     right: 0;
     margin-left: auto;

@@ -43,32 +43,6 @@ const LinksHistory = () => {
     <>
       {fullPath ? (
         <ul div className={styles.links}>
-          {/* {globalBrand ? (
-            <Link href={`/?brand=${globalBrand}`}>
-              <li>
-                {arrowRight1}
-                <span>{globalBrand}</span>
-              </li>
-            </Link>
-          ) : null}
-          {globalBrand && globalModel ? (
-            <Link href={`/?brand=${globalBrand}&model=${globalModel}`}>
-              <li>
-                {arrowRight1}
-                <span>{globalModel}</span>
-              </li>
-            </Link>
-          ) : null}
-          {globalEngine && globalBrand && globalModel ? (
-            <Link
-              href={`/?brand=${globalBrand}&model=${globalModel}&engine=${globalEngine}`}
-            >
-              <li>
-                {arrowRight1}
-                <span>{globalEngine}</span>
-              </li>
-            </Link>
-          ) : null} */}
           {fullPath
             ? fullPath.map(category => (
                 <LinkHistory

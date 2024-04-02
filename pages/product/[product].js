@@ -9,13 +9,14 @@ import {
   oeNumbers,
   help,
   arrowLeft,
+  flag,
   box2,
   arrowup,
   arrowDown,
   plusCircule,
   minus,
   gear,
-  retirning1,
+  articles,
   question,
   info_circule,
   tools,
@@ -37,6 +38,7 @@ import Custom404 from '../404'
 import { useEffect } from 'react'
 import ReviewProduct from '@/components/review_product/review_product'
 import Script from 'next/script'
+import Link from 'next/link'
 
 const Item = ({ item, rating, reviews, cat }) => {
   if (!item) {
@@ -1312,6 +1314,25 @@ const Item = ({ item, rating, reviews, cat }) => {
           </div>
         </div>
       ) : null}
+      {router.query.viewport != 'mobile' && cat.relatedArticles.length > 0 ? (
+        <div className={styles.container_item_desctop}>
+          <div className={styles.container_for_question}>
+            <h2 className={styles.cont_for_oem_title}>
+              {articles} Корисні статті
+            </h2>
+            <ul className={styles.cont_related_articles}>
+              {cat.relatedArticles.map(relatedArticle => (
+                <li>
+                  {flag}
+                  <Link href={`/articles/${relatedArticle.link}`}>
+                    {relatedArticle.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : null}
 
       {router.query.viewport === 'mobile' ? (
         <div className={styles.container_item_mobile}>
@@ -1630,6 +1651,23 @@ const Item = ({ item, rating, reviews, cat }) => {
                 Надіслати запит
               </button>
             </form>
+          </div>
+          <div className={styles.detail_cont_mobile}>
+            <div className={styles.detal_title_mobile_form}>
+              <h2 className={styles.icon_and_name}>{articles}Корисні статті</h2>
+            </div>
+            <div className={styles.request_form_cont}>
+              <ul className={styles.cont_related_articles}>
+                {cat.relatedArticles.map(relatedArticle => (
+                  <li>
+                    {flag}
+                    <Link href={`/articles/${relatedArticle.link}`}>
+                      {relatedArticle.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       ) : null}

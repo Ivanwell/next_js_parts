@@ -1,8 +1,10 @@
 import styles from '@/styles/Articles.module.css'
 import Link from 'next/link'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 const Article = ({ article }) => {
+  const router = useRouter()
   return (
     <div className={styles.main_article_page}>
       <Head>
@@ -20,6 +22,9 @@ const Article = ({ article }) => {
         {article.text}
       </section>
       <di className={styles.cont_for_buttons}>
+        <div className={styles.link_to_main} onClick={() => router.back()}>
+          Назад до товару
+        </div>
         <Link className={styles.link_to_main} href="/articles">
           Усі статті
         </Link>
