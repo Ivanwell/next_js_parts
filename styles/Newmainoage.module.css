@@ -275,7 +275,7 @@
 .our_descr_for_reviews {
   padding-top: 15px;
   width: 100%;
-  height: 250px;
+  min-height: 250px;
   display: grid;
   display: -webkit-grid;
   grid-template-columns: repeat(3, 33%);
