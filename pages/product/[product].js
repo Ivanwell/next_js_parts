@@ -78,6 +78,16 @@ const Item = ({ item, cat }) => {
     })
   }
 
+  let rating
+
+  if (item.reviews.length > 0) {
+    rating = {
+      '@type': 'AggregateRating',
+      ratingCount: item.reviews.length,
+      ratingValue: itemRating,
+    }
+  }
+
   const dispatch = useDispatch()
   const router = useRouter()
 
@@ -282,6 +292,48 @@ const Item = ({ item, cat }) => {
 
   const metateg1 = `✅Купити ${item.title}. Ціна : ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
 
+  let dataPage = {
+    '@context': 'http://schema.org',
+    '@type': 'Product',
+    image: mobileImage,
+    description: item.unicTitle,
+    name: item.title,
+    category: item.categoryName,
+    itemCondition: 'https://schema.org/NewCondition',
+    offers: {
+      '@type': 'Offer',
+      availability:
+        item.lvivStock == 0
+          ? 'https://schema.org/OutOfStock'
+          : 'https://schema.org/InStock',
+      price: item.price,
+      priceCurrency: 'UAH',
+    },
+  }
+
+  if (item.reviews.length > 0) {
+    dataPage = {
+      '@context': 'http://schema.org',
+      '@type': 'Product',
+      aggregateRating: rating,
+      image: mobileImage,
+      description: item.unicTitle,
+      name: item.title,
+      category: item.categoryName,
+      itemCondition: 'https://schema.org/NewCondition',
+      offers: {
+        '@type': 'Offer',
+        availability:
+          item.lvivStock == 0
+            ? 'https://schema.org/OutOfStock'
+            : 'https://schema.org/InStock',
+        price: item.price,
+        priceCurrency: 'UAH',
+      },
+      review: reviewsArr,
+    }
+  }
+
   return (
     <div className={styles.main_item}>
       <Head>
@@ -304,30 +356,7 @@ const Item = ({ item, cat }) => {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'http://schema.org',
-            '@type': 'Product',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingCount: item.reviews.length,
-              ratingValue: itemRating,
-              description: item.unicTitle,
-            },
-            image: mobileImage,
-            name: item.title,
-            category: item.categoryName,
-            itemCondition: 'https://schema.org/NewCondition',
-            offers: {
-              '@type': 'Offer',
-              availability:
-                item.lvivStock == 0
-                  ? 'https://schema.org/OutOfStock'
-                  : 'https://schema.org/InStock',
-              price: item.price,
-              priceCurrency: 'UAH',
-            },
-            review: reviewsArr,
-          }),
+          __html: JSON.stringify(dataPage),
         }}
       />
       {router.query.viewport != 'mobile' ? (
