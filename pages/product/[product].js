@@ -70,7 +70,10 @@ const Item = ({ item, cat }) => {
         author: review.person,
         datePublished: review.createdDate,
         reviewBody: review.message,
-        reviewRating: review.stars,
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: review.stars,
+        },
       }
     })
   }
