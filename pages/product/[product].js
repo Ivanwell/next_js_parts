@@ -67,7 +67,7 @@ const Item = ({ item, cat }) => {
     reviewsArr = item.reviews.map(review => {
       return {
         '@type': 'Review',
-        author: { '@type': 'Person', givenName: review.person },
+        author: { '@type': 'Person', name: review.person },
         datePublished: review.createdDate,
         reviewBody: review.message,
         reviewRating: {
