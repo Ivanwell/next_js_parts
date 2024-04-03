@@ -1656,18 +1656,20 @@ const Item = ({ item, rating, reviews, cat }) => {
             <div className={styles.detal_title_mobile_form}>
               <h2 className={styles.icon_and_name}>{articles}Корисні статті</h2>
             </div>
-            <div className={styles.request_form_cont}>
-              <ul className={styles.cont_related_articles}>
-                {cat.relatedArticles.map(relatedArticle => (
-                  <li>
-                    {flag}
-                    <Link href={`/articles/${relatedArticle.link}`}>
-                      {relatedArticle.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {cat.relatedArticles.length > 0 ? (
+              <div className={styles.request_form_cont}>
+                <ul className={styles.cont_related_articles}>
+                  {cat.relatedArticles.map(relatedArticle => (
+                    <li>
+                      {flag}
+                      <Link href={`/articles/${relatedArticle.link}`}>
+                        {relatedArticle.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : null}
