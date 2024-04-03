@@ -1,7 +1,9 @@
 .container_for_items_row {
   width: 100%;
   display: grid;
+  display: -webkit-grid;
   grid-template-columns: repeat(4, 25%);
+  grid-template-columns: -webkit-repeat(4, 25%);
   justify-content: center;
   align-items: center;
   height: 100%;
