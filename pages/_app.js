@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
 import Layout from '@/components/layout/layout'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 function App({ Component, pageProps }) {
   const router = useRouter()
