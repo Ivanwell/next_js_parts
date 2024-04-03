@@ -40,7 +40,7 @@ import ReviewProduct from '@/components/review_product/review_product'
 import Script from 'next/script'
 import Link from 'next/link'
 
-const Item = ({ item, rating, reviews, cat }) => {
+const Item = ({ item, cat }) => {
   if (!item) {
     return <Custom404 />
   }
@@ -49,6 +49,30 @@ const Item = ({ item, rating, reviews, cat }) => {
 
   if (item.img.includes('cdn.bm.parts')) {
     mobileImage = item.img.slice(0, 26) + 's/320x320/' + item.img.slice(26)
+  }
+
+  let itemRating = 0
+
+  if (item.reviews.length > 0) {
+    const sum = item.reviews.reduce(
+      (accumulator, currentValue) => accumulator + +currentValue.stars,
+      0
+    )
+    itemRating = sum / item.reviews.length
+  }
+
+  let reviewsArr = []
+
+  if (item.reviews.length > 0) {
+    reviewsArr = item.reviews.map(review => {
+      return {
+        '@type': 'Review',
+        author: review.person,
+        datePublished: review.createdDate,
+        reviewBody: review.message,
+        reviewRating: review.stars,
+      }
+    })
   }
 
   const dispatch = useDispatch()
@@ -282,8 +306,8 @@ const Item = ({ item, rating, reviews, cat }) => {
             '@type': 'Product',
             aggregateRating: {
               '@type': 'AggregateRating',
-              ratingCount: reviews,
-              ratingValue: rating,
+              ratingCount: item.reviews.length,
+              ratingValue: itemRating,
               description: item.unicTitle,
             },
             image: mobileImage,
@@ -299,676 +323,10 @@ const Item = ({ item, rating, reviews, cat }) => {
               price: item.price,
               priceCurrency: 'UAH',
             },
+            review: reviewsArr,
           }),
         }}
       />
-      {/* {!ua.isMobile ? (
-        <div className={styles.container_item_desctop} typeof="schema:Product">
-          <div rel="schema:aggregateRating" className={styles.nodisplay}>
-            <div typeof="schema:AggregateRating">
-              <div property="schema:reviewCount" content={reviews}></div>
-              <div property="schema:ratingValue" content={rating}></div>
-            </div>
-          </div>
-          <div rel="schema:offers" className={styles.nodisplay}>
-            <div typeof="schema:Offer">
-              <div property="schema:price" content={item.price}></div>
-              {item.lvivStock == 0 ? (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/OutOfStock"
-                ></div>
-              ) : (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/InStock"
-                ></div>
-              )}
-              <div property="schema:priceCurrency" content="UAH"></div>
-              <div
-                property="schema:priceValidUntil"
-                datatype="xsd:date"
-                content="31-12-2025"
-              ></div>
-              <div
-                rel="schema:url"
-                resource={`https://bayrakparts.com/product/${item.link}`}
-              ></div>
-              <div
-                property="schema:itemCondition"
-                content="https://schema.org/NewCondition"
-              ></div>
-            </div>
-          </div>
-          <div className={styles.container_image}>
-            <span className={styles.brand_title}>{item.brandName}</span>
-            <img
-              rel="schema:image"
-              resource={item.img}
-              src={item.img}
-              alt={item.title}
-              loading="lazy"
-              onClick={() => dispatch(showFullImage(item.img))}
-            />
-          </div>
-          <div className={styles.informaton_container}>
-            <h1
-              className={styles.main_item_title}
-              property="schema:name"
-              content={item.title}
-            >
-              {title}
-            </h1>
-            <div className={styles.main_item_atcile}>
-              Артикул : {item.article}
-            </div>
-            <div className={styles.main_item_atcile}>Стан : новий</div>
-            <button
-              className={styles.details_new_btn}
-              onClick={() => loadInformationProduct()}
-            >
-              {gear}{' '}
-              {loadingInformation ? 'Завантаження...' : 'Дізнатись деталі'}
-            </button>
-            {productDescription.details ? (
-              <div className={styles.main_item_details}>
-                {Object.keys(productDescription?.details).map((key, index) => (
-                  <span className={styles.item_detail_row}>
-                    <div>{capitalize(key)}</div>
-                    <div>
-                      {Object.values(productDescription?.details)[index]}
-                    </div>
-                  </span>
-                ))}
-              </div>
-            ) : null}
-            <button
-              className={styles.buy_btn_check}
-              onClick={() => setOpenFormCheck(prev => !prev)}
-            >
-              {tools}Чи підійде до мого авто?
-            </button>
-            {openedFormCheck ? (
-              <div className={styles.detail_cont_new}>
-                <form
-                  className={styles.request_form_cont_new}
-                  onSubmit={e => check_vin(e)}
-                >
-                  <span>Введіть вінкод</span>
-                  <input
-                    className={styles.input_vin_desctop}
-                    placeholder="VIN *"
-                    required
-                    minLength={17}
-                    onChange={e => setVin(e.target.value)}
-                  />
-                  {!searchedCarByVin ? (
-                    <button
-                      className={styles.submit_button_desctop}
-                      type="submit"
-                    >
-                      {!checking ? (
-                        <>Перевірити</>
-                      ) : (
-                        <span className={styles.loader}></span>
-                      )}
-                    </button>
-                  ) : null}
-                  {searchedCarByVin ? (
-                    <div className={styles.searched_car_mobile}>
-                      <b>Ваше авто </b>
-                      {searchedCarByVin === 'no car' ? (
-                        <b>не знайдено</b>
-                      ) : (
-                        <span>
-                          {searchedCarByVin.brand} {searchedCarByVin.model}
-                        </span>
-                      )}
-                      <div className={styles.searched_check_needed_desc}>
-                        {info_circule}Потрібна перевірка спеціалістом
-                      </div>
-                      <div>
-                        Залиште номер телефону та ми перевіримо чи запчастина
-                        підійде до Вашого авто
-                      </div>
-                      <input
-                        className={styles.input_phone_desctop}
-                        placeholder="Телефон *"
-                        onChange={e => setNumberPhone(e.target.value)}
-                      />
-                      {minLength ? (
-                        <div className={styles.empty_name_phone}>
-                          Неповний номер телефону
-                        </div>
-                      ) : null}
-                      <button
-                        className={styles.submit_button_desctop}
-                        onClick={e => check_vin_request(e)}
-                      >
-                        Перевірте будь ласка
-                      </button>
-                    </div>
-                  ) : null}
-                </form>
-              </div>
-            ) : null}
-          </div>
-          <div className={styles.purchaise_container}>
-            <div className={styles.wishlist_and_stock}>
-              <div className={styles.svg_and_title_add}>
-                {heart} Додати до відстеження
-              </div>
-              {item.lvivStock == 0 && item.otherStock === '-' ? (
-                <div className={styles.svg_and_title}>
-                  {preorder} Під замовлення
-                </div>
-              ) : (
-                <div className={styles.svg_and_title}>{box} В наявності</div>
-              )}
-            </div>
-            <div className={styles.price_container_with_disc}>
-              {item.lvivStock == 1 ||
-              (item.lvivStock === '-' && item.otherStock == 1) ? (
-                <div className={styles.old_price_and_disc_cont}>
-                  <div className={styles.old_price}>
-                    {Math.ceil(item.price * 1.25)} UAH
-                  </div>
-                  <div className={styles.disc_container}>-20%</div>
-                </div>
-              ) : null}
-              <div className={styles.real_price}>{item.price},00 UAH</div>
-              <span className={styles.deliver_cost}>
-                Останнє оновлення: {item.lastUpdate}
-              </span>
-            </div>
-            <div className={styles.aviability_cont}>
-              {item.lvivStock == 1 ||
-              (item.lvivStock == '-' && item.otherStock == 1) ? (
-                <div className={styles.last_item_cont}>
-                  <img
-                    src="https://backend.bayrakparts.com/images/media/hot-icon.svg"
-                    alt="fire"
-                    loading="lazy"
-                  />
-                  Остання шт на складі
-                </div>
-              ) : item.lvivStock == 0 ? null : ( // </div> //   Немає в наявності // <div className={styles.how_many_available}>
-                <div className={styles.how_many_available}>
-                  {+item.lvivStock > 0 || item.lvivStock === '> 10'
-                    ? item.lvivStock
-                    : item.otherStock}{' '}
-                  шт на складі
-                </div>
-              )}
-            </div>
-            <div className={styles.add_remove_items_container}>
-              <button
-                className={styles.add_remove_btn}
-                onClick={() => addNumberPerItem(-1)}
-              >
-                -
-              </button>
-              <div className={styles.added_items}>{numerPerItem}</div>
-              <button
-                className={styles.add_remove_btn}
-                onClick={() => addNumberPerItem(1)}
-              >
-                +
-              </button>
-            </div>
-            {item.lvivStock == 0 ? (
-              <button className={styles.buy_btn_dis}>Немає в наявності</button>
-            ) : (
-              <button
-                className={styles.buy_btn}
-                onClick={() => addingToCard(item)}
-              >
-                {newbasket}Купити
-              </button>
-            )}
-          </div>
-        </div>
-      ) : null} */}
-      {/* {!ua.isMobile && openedDetailsCont ? (
-        <div className={styles.container_item_desctop}>
-          <div className={styles.cont_for_oem_and_compability}>
-            <div className={styles.cont_for_oem_title}>
-              {oeNumbers} <>Оригінальні номери</>
-            </div>
-            <div className={styles.cont_for_oem_numbers}>
-              {productDescription.oe.slice(0, end).map(brand => (
-                <div className={styles.number_and_brand}>
-                  <span>{brand.brand?.toUpperCase()}</span>
-                  <span>{brand.number?.toUpperCase()}</span>
-                </div>
-              ))}
-              {productDescription.oe.length < 10 ? null : end >=
-                productDescription.oe.length ? (
-                <div className={styles.more_button} onClick={() => setEnd(10)}>
-                  Згорнути
-                </div>
-              ) : (
-                <div
-                  className={styles.more_button}
-                  onClick={() => setEnd(prev => prev + 10)}
-                >
-                  Ще...
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={styles.cont_for_oem_and_compability}>
-            <div className={styles.cont_for_oem_title}>
-              {car}Підходить до таких авто
-            </div>
-            {productDescription.fits.length === 0 ? (
-              <div className={styles.non_info}>Немає інформації</div>
-            ) : (
-              <Compatibility fits={productDescription.fits} />
-            )}
-          </div>
-        </div>
-      ) : null} */}
-      {/* {!ua.isMobile ? (
-        <div className={styles.container_item_desctop}>
-          <div className={styles.container_for_question}>
-            <h2 className={styles.cont_for_oem_title}>
-              {help}Безкоштовно перевіримо чи підійде {item.brandName}{' '}
-              {item.article} до Вашого авто
-            </h2>
-            <form
-              className={styles.request_form_cont}
-              onSubmit={e => check_compatability(e)}
-            >
-              <div className={styles.description_request}>
-                1. Для перевірки потрібно лише вінкод та Ваші контактні дані
-              </div>
-              <div className={styles.row_for_name_numberphone}>
-                <input
-                  className={styles.input_name_phone}
-                  placeholder="Ім'я *"
-                  required
-                  minLength={4}
-                  onChange={e => setName(e.target.value)}
-                />
-                <input
-                  className={styles.input_name_phone}
-                  placeholder="Телефон *"
-                  required
-                  minLength={10}
-                  onChange={e => setNumberPhone(e.target.value)}
-                />
-              </div>
-              <div className={styles.description_request}>
-                2. Вінкод знаходиться у свідоцтві про реєстрацію або у додатку
-                'ДІЯ'
-              </div>
-              <input
-                className={styles.input_vin}
-                placeholder="VIN *"
-                required
-                minLength={17}
-                onChange={e => setVin(e.target.value)}
-              />
-              <button className={styles.submit_button} type="submit">
-                Надіслати запит
-              </button>
-            </form>
-          </div>
-        </div>
-      ) : null} */}
-      {/* {ua.isMobile ? (
-        <div className={styles.container_item_mobile} typeof="schema:Product">
-          <div rel="schema:aggregateRating" className={styles.nodisplay}>
-            <div typeof="schema:AggregateRating">
-              <div property="schema:reviewCount" content={reviews}></div>
-              <div property="schema:ratingValue" content={rating}></div>
-            </div>
-          </div>
-          <div rel="schema:offers" className={styles.nodisplay}>
-            <div typeof="schema:Offer">
-              <div property="schema:price" content={item.price}></div>
-              {item.lvivStock == 0 ? (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/OutOfStock"
-                ></div>
-              ) : (
-                <div
-                  property="schema:availability"
-                  content="https://schema.org/InStock"
-                ></div>
-              )}
-              <div property="schema:priceCurrency" content="UAH"></div>
-              <div
-                property="schema:priceValidUntil"
-                datatype="xsd:date"
-                content="31-12-2025"
-              ></div>
-              <div
-                rel="schema:url"
-                resource={`https://bayrakparts.com/product/${item.link}`}
-              ></div>
-              <div
-                property="schema:itemCondition"
-                content="https://schema.org/NewCondition"
-              ></div>
-            </div>
-          </div>
-          <h1
-            className={styles.top_info_mobile}
-            property="schema:name"
-            content={item.title}
-          >
-            {title}
-          </h1>
-          <div className={styles.article_mobile}>Артикул : {item.article}</div>
-          <img
-            className={styles.image_mobile}
-            src={mobileImage}
-            alt={item.title}
-            rel="schema:image"
-            resource={item.img}
-            loading="lazy"
-            onClick={() => dispatch(showFullImage(item.img))}
-          />
-          <div className={styles.price_info_cont}>
-            <div className={styles.stock_info_cont}>
-              {item.lvivStock == 1 ||
-              (item.lvivStock === '-' && item.otherStock == 1) ? (
-                <div className={styles.last_item_cont}>
-                  <img
-                    src="https://backend.bayrakparts.com/images/media/hot-icon.svg"
-                    alt="fire"
-                    loading="lazy"
-                  />
-                  Остання шт на складі
-                </div>
-              ) : item.lvivStock == 0 ? null : ( // </div> //   Немає в наявності // <div className={styles.how_many_available}>
-                <div className={styles.how_many_available}>
-                  {+item.lvivStock > 0 || item.lvivStock === '> 10'
-                    ? item.lvivStock
-                    : item.otherStock}{' '}
-                  шт доступно
-                </div>
-              )}
-              {item.lvivStock == 0 && item.otherStock === '-' ? (
-                <div className={styles.out_stock_info}>
-                  {preorder} Під замовлення
-                </div>
-              ) : (
-                <div className={styles.in_stock_info}>{box2} В наявності</div>
-              )}
-            </div>
-            <div className={styles.price_container_with_disc}>
-              {item.lvivStock == 1 ||
-              (item.lvivStock === '-' && item.otherStock == 1) ? (
-                <div className={styles.old_price_and_disc_cont}>
-                  <div className={styles.old_price}>
-                    {Math.ceil(item.price * 1.25)} UAH
-                  </div>
-                  <div className={styles.disc_container}>-20%</div>
-                </div>
-              ) : null}
-              <div className={styles.real_price}>{item.price},00 UAH</div>
-              <span className={styles.deliver_cost}>
-                Останнє оновлення: {item.lastUpdate}
-              </span>
-            </div>
-          </div>
-          <div className={styles.buttons_container}>
-            <div className={styles.add_remove_btns_container}>
-              {numerPerItem}
-              <div className={styles.add_remove_btns}>
-                <button onClick={() => addNumberPerItem(1)}>{arrowup}</button>
-                <button onClick={() => addNumberPerItem(-1)}>
-                  {arrowDown}
-                </button>
-              </div>
-            </div>
-            {item.lvivStock == 0 ? (
-              <button disabled className={styles.buy_button_mobile_dis}>
-                Немає в наявності
-              </button>
-            ) : (
-              <button
-                className={styles.buy_button_mobile}
-                onClick={() => addingToCard(item)}
-              >
-                {newbasket}Купити
-              </button>
-            )}
-          </div>
-          <div className={styles.return_container}>
-            14 днів гарантованого повернення
-            <div className={styles.returning_mobile}>{returning}</div>
-          </div>
-          <button
-            className={
-              !openedFormCheck
-                ? styles.check_button_mobile
-                : styles.check_button_mobile_opened
-            }
-            onClick={() => setOpenFormCheck(prev => !prev)}
-          >
-            Чи підійде до мого авто{question}
-          </button>
-          {openedFormCheck ? (
-            <div className={styles.detail_cont_mobile}>
-              <form
-                className={styles.request_form_cont}
-                onSubmit={e => check_vin(e)}
-              >
-                <span>Введіть вінкод</span>
-                <input
-                  className={styles.input_vin_mobile}
-                  placeholder="VIN *"
-                  required
-                  minLength={17}
-                  onChange={e => setVin(e.target.value)}
-                />
-                {!searchedCarByVin ? (
-                  <button className={styles.submit_button_mobile} type="submit">
-                    {!checking ? (
-                      <>Перевірити</>
-                    ) : (
-                      <span className={styles.loader}></span>
-                    )}
-                  </button>
-                ) : null}
-                {searchedCarByVin ? (
-                  <div className={styles.searched_car_mobile}>
-                    <b>Ваше авто </b>
-                    {searchedCarByVin === 'no car' ? (
-                      <b>не знайдено</b>
-                    ) : (
-                      <span>
-                        {searchedCarByVin.brand} {searchedCarByVin.model}
-                      </span>
-                    )}
-                    <div className={styles.searched_check_needed}>
-                      {info_circule}Потрібна перевірка спеціалістом
-                    </div>
-                    <div>
-                      Залиште номер телефону та ми перевіримо чи запчастина
-                      підійде до Вашого авто
-                    </div>
-                    <input
-                      className={styles.input_name_phone}
-                      placeholder="Телефон *"
-                      onChange={e => setNumberPhone(e.target.value)}
-                    />
-                    {minLength ? (
-                      <div className={styles.empty_name_phone}>
-                        Неповний номер телефону
-                      </div>
-                    ) : null}
-                    <button
-                      className={styles.submit_button_mobile}
-                      onClick={e => check_vin_request(e)}
-                    >
-                      Перевірте будь ласка
-                    </button>
-                  </div>
-                ) : null}
-              </form>
-            </div>
-          ) : null}
-          <div className={styles.detail_cont_mobile}>
-            <div
-              className={styles.detal_title_mobile}
-              onClick={() => loadDetailsMobile()}
-            >
-              <div className={styles.icon_and_name}>{gear}Деталі</div>
-              <div className={styles.center}>
-                {!openedDetailsMobile ? plusCircule : minus}
-              </div>
-            </div>
-            {openedDetailsMobile ? (
-              <div className={styles.info_container}>
-                {productDescription.details ? (
-                  <>
-                    {Object.keys(productDescription?.details).map(
-                      (key, index) => (
-                        <span className={styles.item_detail_row}>
-                          <span className={styles.detail_key}>
-                            {capitalize(key)}:
-                          </span>{' '}
-                          <span className={styles.detail_value}>
-                            {Object.values(productDescription?.details)[index]}
-                          </span>
-                          <br />
-                        </span>
-                      )
-                    )}
-                  </>
-                ) : (
-                  <span className={styles.item_detail_row}>
-                    {!loadingInformation ? (
-                      <>Немає інформації</>
-                    ) : (
-                      <>Завантаження...</>
-                    )}
-                  </span>
-                )}
-              </div>
-            ) : null}
-          </div>
-          <div className={styles.detail_cont_mobile}>
-            <div
-              className={styles.detal_title_mobile}
-              onClick={() => loadFitsMobile()}
-            >
-              <div className={styles.icon_and_name}>
-                {car}Підходить до таких авто
-              </div>
-              <div className={styles.center}>
-                {!openedFitsMobile ? plusCircule : minus}
-              </div>
-            </div>
-            {openedFitsMobile ? (
-              <div className={styles.info_container}>
-                {productDescription.fits.length === 0 ? (
-                  <div className={styles.non_info}>
-                    {loadingInformation
-                      ? 'Завантаження...'
-                      : 'Немає інформації'}
-                  </div>
-                ) : (
-                  <Compatibility fits={productDescription.fits} />
-                )}
-              </div>
-            ) : null}
-          </div>
-          <div className={styles.detail_cont_mobile}>
-            <div
-              className={styles.detal_title_mobile}
-              onClick={() => loadOEMobile()}
-            >
-              <div className={styles.icon_and_name}>
-                {oeNumbers}Оригінальні номери
-              </div>
-              <div className={styles.center}>
-                {!openOE ? plusCircule : minus}
-              </div>
-            </div>
-            {openOE ? (
-              <div className={styles.info_container}>
-                {!loadingInformation ? (
-                  <>
-                    {productDescription.oe.slice(0, end).map(brand => (
-                      <div className={styles.number_and_brand}>
-                        <span>{brand.brand.toUpperCase()}</span>
-                        <span>{brand.number.toUpperCase()}</span>
-                      </div>
-                    ))}
-                  </>
-                ) : (
-                  <div className={styles.number_and_brand}>
-                    <span>Завантаження...</span>
-                  </div>
-                )}
-                {productDescription.oe.length < 10 ? null : end >=
-                  productDescription.oe.length ? (
-                  <div
-                    className={styles.more_button}
-                    onClick={() => setEnd(10)}
-                  >
-                    Згорнути
-                  </div>
-                ) : (
-                  <div
-                    className={styles.more_button}
-                    onClick={() => setEnd(prev => prev + 10)}
-                  >
-                    Ще...
-                  </div>
-                )}
-              </div>
-            ) : null}
-          </div>
-          <div className={styles.detail_cont_mobile}>
-            <div className={styles.detal_title_mobile_form}>
-              <h2 className={styles.icon_and_name}>
-                {help}Безкоштовно перевіримо
-              </h2>
-            </div>
-            <form
-              className={styles.request_form_cont}
-              onSubmit={e => check_compatability(e)}
-            >
-              <span>
-                Залиште вінкод Вашого авто, та ми безкоштовно перевіримо чи
-                підійде дана запчастина до нього
-              </span>
-              <input
-                className={styles.input_name_phone}
-                placeholder="Ім'я *"
-                required
-                minLength={4}
-                onChange={e => setName(e.target.value)}
-              />
-              <input
-                className={styles.input_name_phone}
-                placeholder="Телефон *"
-                required
-                minLength={10}
-                onChange={e => setNumberPhone(e.target.value)}
-              />
-              <input
-                className={styles.input_vin_mobile}
-                placeholder="VIN *"
-                required
-                minLength={17}
-                onChange={e => setVin(e.target.value)}
-              />
-              <button className={styles.submit_button_mobile} type="submit">
-                Надіслати запит
-              </button>
-            </form>
-          </div>
-        </div>
-      ) : null} */}
       {router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop}>
           <div className={styles.container_image}>
@@ -1336,15 +694,6 @@ const Item = ({ item, rating, reviews, cat }) => {
 
       {router.query.viewport === 'mobile' ? (
         <div className={styles.container_item_mobile}>
-          <span className={styles.nodisplay}></span>
-          <div
-            property="aggregateRating"
-            typeof="AggregateRating"
-            className={styles.nodisplay}
-          >
-            <span property="ratingCount" content={reviews}></span>
-            <span property="ratingValue" content={rating}></span>
-          </div>
           <h1 className={styles.top_info_mobile} content={item.title}>
             {title}
           </h1>
@@ -1707,9 +1056,6 @@ export const getServerSideProps = async ({ req, params }) => {
     return {
       props: {
         item: null,
-        userAgent: null,
-        rating: null,
-        reviews: null,
       },
     }
   }
@@ -1750,25 +1096,14 @@ export const getServerSideProps = async ({ req, params }) => {
     categoryName: body.categoryName,
   }
 
-  const userAgent = req.headers['user-agent']
-
-  function randomNumber(min, max) {
-    return Math.random() * (max - min) + min
-  }
-
-  const rating = randomNumber(4, 5).toString().slice(0, 3)
-  let reviews = Math.floor(Math.random() * 10) + 1
-
   let cat = null
   if (body.categories[0]) {
     cat = body.categories[0]
   }
+
   return {
     props: {
       item,
-      userAgent,
-      rating,
-      reviews,
       cat,
     },
   }
