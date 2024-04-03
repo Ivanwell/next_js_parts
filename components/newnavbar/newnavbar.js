@@ -211,7 +211,7 @@ function NewNavbar() {
           {manyBrands.map(brand => (
             <Link
               onClick={() => setManyBrands(null)}
-              href={`/${brand.link[0].link}`}
+              href={`/product/${brand.link[0]?.link}`}
             >
               {brand.brand}
               <span>{brand.title}</span>

@@ -8,7 +8,7 @@ import {
   car,
   oeNumbers,
   help,
-  arrowLeft,
+  discriptionIcon,
   flag,
   box2,
   arrowup,
@@ -290,7 +290,11 @@ const Item = ({ item, cat }) => {
     router.push(`/thankyou`)
   }
 
-  const metateg1 = `✅Купити ${item.title}. Ціна : ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
+  let metateg1 = `✅Купити ${item.title}. Ціна : ${item.price} грн. ⚡В наявності ${item.lvivStock} шт. Гарантія якості. Напишіть нам та отримайте додаткову знижку.`
+
+  if (item.discription) {
+    metateg1 = item.discription
+  }
 
   let dataPage = {
     '@context': 'http://schema.org',
@@ -338,7 +342,7 @@ const Item = ({ item, cat }) => {
     <div className={styles.main_item}>
       <Head>
         <title>{googleTitle.slice(0, 61) + ` - BAYRAKPARTS`}</title>
-        <meta name="description" content={metateg1.slice(0, 159)} />
+        <meta name="description" content={metateg1} />
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:title"
@@ -656,6 +660,20 @@ const Item = ({ item, cat }) => {
           </div>
         </div>
       ) : null}
+      {router.query.viewport != 'mobile' && item.discription ? (
+        <div className={styles.container_item_desctop}>
+          <div className={styles.container_for_question}>
+            <h2 className={styles.cont_for_oem_title}>
+              {discriptionIcon}Про товар
+            </h2>
+            <div className={styles.request_form_cont}>
+              <div className={styles.description_produc}>
+                {item.discription}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
       {router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop}>
           <div className={styles.container_for_question}>
@@ -880,6 +898,16 @@ const Item = ({ item, cat }) => {
               </form>
             </div>
           ) : null}
+          {item.discription ? (
+            <div className={styles.detail_cont_mobile}>
+              <div className={styles.detal_title_mobile}>
+                <div className={styles.icon_and_name}>
+                  {discriptionIcon}Про товар
+                </div>
+              </div>
+              <div className={styles.info_container}>{item.discription}</div>
+            </div>
+          ) : null}
           <div className={styles.detail_cont_mobile}>
             <div
               className={styles.detal_title_mobile}
@@ -1033,11 +1061,14 @@ const Item = ({ item, cat }) => {
               </button>
             </form>
           </div>
-          <div className={styles.detail_cont_mobile}>
-            <div className={styles.detal_title_mobile_form}>
-              <h2 className={styles.icon_and_name}>{articles}Корисні статті</h2>
-            </div>
-            {cat.relatedArticles.length > 0 ? (
+          {cat.relatedArticles.length > 0 ? (
+            <div className={styles.detail_cont_mobile}>
+              <div className={styles.detal_title_mobile_form}>
+                <h2 className={styles.icon_and_name}>
+                  {articles}Корисні статті
+                </h2>
+              </div>
+
               <div className={styles.request_form_cont}>
                 <ul className={styles.cont_related_articles}>
                   {cat.relatedArticles.map(relatedArticle => (
@@ -1050,8 +1081,8 @@ const Item = ({ item, cat }) => {
                   ))}
                 </ul>
               </div>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
 
@@ -1113,10 +1144,17 @@ export const getServerSideProps = async ({ req, params }) => {
       'https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg'
   }
 
+  let discription = null
+
+  if (body.discription) {
+    discription = body.discription
+  }
+
   const item = {
     title: body.title,
     price: price.price,
     img: body.image,
+    discription: discription,
     article: body.article,
     brandName: body.brand,
     lvivStock: price.amount,

@@ -636,6 +636,13 @@
   font-weight: 600;
 }
 
+.description_product {
+  font-size: 18px;
+  width: 100%;
+  padding-bottom: 15px;
+  font-weight: 600;
+}
+
 .description_request_review {
   font-size: 18px;
   width: 50%;
