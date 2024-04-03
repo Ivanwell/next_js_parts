@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
 import dynamic from 'next/dynamic'
 import Layout from '@/components/layout/layout'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 function App({ Component, pageProps }) {
   const router = useRouter()
@@ -72,7 +71,6 @@ function App({ Component, pageProps }) {
           </h1>
         )}
       </>
-      <SpeedInsights />
     </Layout>
     //    </DynamicHeader>
   )
