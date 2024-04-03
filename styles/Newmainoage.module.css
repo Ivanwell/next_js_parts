@@ -280,6 +280,7 @@
   display: -webkit-grid;
   grid-template-columns: repeat(3, 33%);
   grid-template-columns: -webkit-repeat(3, 33%);
+  grid-row: 1;
   row-gap: 20px;
   align-items: center;
   justify-content: center;

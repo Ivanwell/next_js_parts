@@ -4,6 +4,7 @@
   display: -webkit-grid;
   grid-template-columns: repeat(4, 25%);
   grid-template-columns: -webkit-repeat(4, 25%);
+  grid-row: 1;
   justify-content: center;
   align-items: center;
   height: 100%;
