@@ -41,6 +41,7 @@ import Script from 'next/script'
 import Link from 'next/link'
 
 const Item = ({ item, cat }) => {
+  console.log(cat)
   if (!item) {
     return <Custom404 />
   }
@@ -85,6 +86,28 @@ const Item = ({ item, cat }) => {
       '@type': 'AggregateRating',
       ratingCount: item.reviews.length,
       ratingValue: itemRating,
+    }
+  }
+
+  let list
+  let broadList
+
+  if (cat) {
+    list = cat.fullPath.map((category, index) => {
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@id': `https://bayrakparts.com/categories/${category.eng}`,
+          name: category.ukr,
+        },
+      }
+    })
+
+    broadList = {
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: list,
     }
   }
 
@@ -304,6 +327,9 @@ const Item = ({ item, cat }) => {
     name: item.title,
     category: item.categoryName,
     itemCondition: 'https://schema.org/NewCondition',
+    mpn: item.article,
+    sku: item.article,
+    brand: { '@type': 'Brand', name: item.brandName },
     offers: {
       '@type': 'Offer',
       availability:
@@ -312,6 +338,8 @@ const Item = ({ item, cat }) => {
           : 'https://schema.org/InStock',
       price: item.price,
       priceCurrency: 'UAH',
+      priceValidUntil: '2025-10-15',
+      url: `https://bayrakparts.com/product/${item.link}`,
     },
   }
 
@@ -363,6 +391,14 @@ const Item = ({ item, cat }) => {
           __html: JSON.stringify(dataPage),
         }}
       />
+      {cat ? (
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(broadList),
+          }}
+        />
+      ) : null}
       {router.query.viewport != 'mobile' ? (
         <div className={styles.container_item_desctop}>
           <div className={styles.container_image}>
