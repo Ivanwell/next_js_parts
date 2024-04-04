@@ -58,6 +58,18 @@ const Category = ({ body, body1, userAgent, amount }) => {
     body.fullPath.length - 1
   ].ukr.toLowerCase()} - BAYRAKPARTS`
 
+  let title = `${body.fullPath[body.fullPath.length - 1].ukr.toLowerCase()}`
+
+  if (router.query.page > 1) {
+    titleMeta = `Купити ${body.fullPath[
+      body.fullPath.length - 1
+    ].ukr.toLowerCase()} сторінка ${router.query.page} - BAYRAKPARTS`
+
+    title = `${body.fullPath[
+      body.fullPath.length - 1
+    ].ukr.toLowerCase()} (сторінка ${router.query.page})`
+  }
+
   const list = body.fullPath.map((category, index) => {
     return {
       '@type': 'ListItem',
@@ -86,8 +98,6 @@ const Category = ({ body, body1, userAgent, amount }) => {
     itemListElement: list,
   }
 
-  let title = `${body.fullPath[body.fullPath.length - 1].ukr.toLowerCase()}`
-
   let metaDescr = `${body.fullPath[
     body.fullPath.length - 1
   ].ukr.toLowerCase()} у інтернет-магазині автозапчастин BayrakParts`
@@ -111,6 +121,7 @@ const Category = ({ body, body1, userAgent, amount }) => {
   }
 
   const finalTitle = capitalize(title)
+
   return (
     <div className={styles.full_container}>
       <Head>
