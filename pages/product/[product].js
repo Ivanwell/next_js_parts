@@ -41,7 +41,6 @@ import Script from 'next/script'
 import Link from 'next/link'
 
 const Item = ({ item, cat }) => {
-  console.log(cat)
   if (!item) {
     return <Custom404 />
   }
@@ -352,6 +351,9 @@ const Item = ({ item, cat }) => {
       description: item.unicTitle,
       name: item.title,
       category: item.categoryName,
+      mpn: item.article,
+      sku: item.article,
+      brand: { '@type': 'Brand', name: item.brandName },
       itemCondition: 'https://schema.org/NewCondition',
       offers: {
         '@type': 'Offer',
@@ -361,6 +363,8 @@ const Item = ({ item, cat }) => {
             : 'https://schema.org/InStock',
         price: item.price,
         priceCurrency: 'UAH',
+        priceValidUntil: '2025-10-15',
+        url: `https://bayrakparts.com/product/${item.link}`,
       },
       review: reviewsArr,
     }
