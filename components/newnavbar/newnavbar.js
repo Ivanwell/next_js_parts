@@ -303,7 +303,9 @@ function NewNavbar() {
         )}
 
         <div className={styles.header_main}>
-          <div className={styles.select_part}>{car}Автозапчастини</div>
+          <Link href="/categories" className={styles.select_part}>
+            {car}Автозапчастини
+          </Link>
           <form
             className={styles.search_container}
             onSubmit={e => searchInStockWithDiffBrands(e)}

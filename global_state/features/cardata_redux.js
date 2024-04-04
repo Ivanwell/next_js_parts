@@ -16,6 +16,7 @@ const initialState = {
     bmBrands: null,
     bmModels: null,
     bmEngines: null,
+    isPathShown: true,
   },
 }
 
@@ -97,6 +98,9 @@ export const dataSelects = createSlice({
     setEngine: (state, action) => {
       state.value.engine = action.payload
     },
+    setPathShown: (state, action) => {
+      state.value.isPathShown = action.payload
+    },
   },
 })
 
@@ -115,5 +119,6 @@ export const {
   setBmEngines,
   setGlobalEngine,
   setEngine,
+  setPathShown,
 } = dataSelects.actions
 export default dataSelects.reducer

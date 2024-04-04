@@ -28,6 +28,10 @@ const LinksHistory = () => {
     state => state.dataSelectscartReducer.value.fullPath
   )
 
+  const isPathShown = useSelector(
+    state => state.dataSelectscartReducer.value.isPathShown
+  )
+
   const globalBrand = useSelector(
     state => state.dataSelectscartReducer.value.globalBrand
   )
@@ -39,20 +43,30 @@ const LinksHistory = () => {
   const globalEngine = useSelector(
     state => state.dataSelectscartReducer.value.engine
   )
+
+  const defaultValue = { eng: '', ukr: 'Автозапчастини' }
   return (
     <>
-      {fullPath ? (
+      {fullPath && isPathShown ? (
         <ul div className={styles.links}>
-          {fullPath
-            ? fullPath.map(category => (
+          {fullPath && isPathShown ? (
+            <>
+              <LinkHistory
+                data={defaultValue}
+                brand={globalBrand}
+                model={globalModel}
+                engine={globalEngine}
+              />
+              {fullPath.map(category => (
                 <LinkHistory
                   data={category}
                   brand={globalBrand}
                   model={globalModel}
                   engine={globalEngine}
                 />
-              ))
-            : null}
+              ))}
+            </>
+          ) : null}
         </ul>
       ) : null}
     </>

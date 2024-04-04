@@ -95,13 +95,24 @@ const Item = ({ item, cat }) => {
     list = cat.fullPath.map((category, index) => {
       return {
         '@type': 'ListItem',
-        position: index + 1,
+        position: index + 2,
         item: {
           '@id': `https://bayrakparts.com/categories/${category.eng}`,
           name: category.ukr,
         },
       }
     })
+
+    const defaultAllCat = {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@id': `https://bayrakparts.com/categories`,
+        name: 'Автозапчастини',
+      },
+    }
+
+    list.unshift(defaultAllCat)
 
     const broadItem = {
       '@type': 'ListItem',
@@ -111,7 +122,6 @@ const Item = ({ item, cat }) => {
         name: item.title,
       },
     }
-
     list.push(broadItem)
 
     broadList = {

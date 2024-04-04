@@ -13,6 +13,7 @@ import {
   setGlobalEngine,
 } from '@/global_state/features/cardata_redux'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 
 const LinkComponent = ({ linkData, brand, model, engine }) => {
   let link = `/categories/${linkData.link}`
@@ -57,6 +58,34 @@ const Category = ({ body, body1, userAgent, amount }) => {
     body.fullPath.length - 1
   ].ukr.toLowerCase()} - BAYRAKPARTS`
 
+  const list = body.fullPath.map((category, index) => {
+    return {
+      '@type': 'ListItem',
+      position: index + 2,
+      item: {
+        '@id': `https://bayrakparts.com/categories/${category.eng}`,
+        name: category.ukr,
+      },
+    }
+  })
+
+  const defaultAllCat = {
+    '@type': 'ListItem',
+    position: 1,
+    item: {
+      '@id': `https://bayrakparts.com/categories`,
+      name: 'Автозапчастини',
+    },
+  }
+
+  list.unshift(defaultAllCat)
+
+  const broadList = {
+    '@context': 'http://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: list,
+  }
+
   let title = `${body.fullPath[body.fullPath.length - 1].ukr.toLowerCase()}`
 
   let metaDescr = `${body.fullPath[
@@ -88,7 +117,12 @@ const Category = ({ body, body1, userAgent, amount }) => {
         <title>{titleMeta}</title>
         <meta name="description" content={metaDescr} />
       </Head>
-      {/* {body.fullPath ? <LinksHistory fullPath={body.fullPath} /> : null} */}
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(broadList),
+        }}
+      />
       {body.categories.length != 0 ? (
         <h1 className={styles.category_title}>{finalTitle}</h1>
       ) : null}
