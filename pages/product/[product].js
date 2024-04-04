@@ -93,13 +93,24 @@ const Item = ({ item, cat }) => {
 
   if (cat) {
     list = cat.fullPath.map((category, index) => {
-      return {
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@id': `https://bayrakparts.com/categories/${category.eng}`,
-          name: category.ukr,
-        },
+      if (index + 1 === cat.fullPath.length) {
+        return {
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@id': `https://bayrakparts.com/product/${item.link}`,
+            name: item.title,
+          },
+        }
+      } else {
+        return {
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@id': `https://bayrakparts.com/categories/${category.eng}`,
+            name: category.ukr,
+          },
+        }
       }
     })
 
@@ -109,6 +120,8 @@ const Item = ({ item, cat }) => {
       itemListElement: list,
     }
   }
+
+  console.log(list)
 
   const dispatch = useDispatch()
   const router = useRouter()
