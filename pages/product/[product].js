@@ -93,26 +93,26 @@ const Item = ({ item, cat }) => {
 
   if (cat) {
     list = cat.fullPath.map((category, index) => {
-      if (index + 1 === cat.fullPath.length) {
-        return {
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@id': `https://bayrakparts.com/product/${item.link}`,
-            name: item.title,
-          },
-        }
-      } else {
-        return {
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@id': `https://bayrakparts.com/categories/${category.eng}`,
-            name: category.ukr,
-          },
-        }
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@id': `https://bayrakparts.com/categories/${category.eng}`,
+          name: category.ukr,
+        },
       }
     })
+
+    const broadItem = {
+      '@type': 'ListItem',
+      position: list.length + 1,
+      item: {
+        '@id': `https://bayrakparts.com/product/${item.link}`,
+        name: item.title,
+      },
+    }
+
+    list.push(broadItem)
 
     broadList = {
       '@context': 'http://schema.org',
