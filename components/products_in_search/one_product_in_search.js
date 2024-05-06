@@ -22,7 +22,7 @@ const One_product_in_search = ({ product, fits, linkQuery }) => {
         {fits === 'true' ? (
           <div className={styles.fit_indicator}>{fitsIndicator}</div>
         ) : null}
-        <img src={product.image} />
+        <img src={product.image} alt={product.title} />
       </div>
       <div className={styles.title_and_compatibility}>
         <Link href={link}>
