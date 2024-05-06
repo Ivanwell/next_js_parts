@@ -38,7 +38,7 @@ const AddCommentForm = ({ setOpenedAddComment, _id }) => {
   const addingComment = async e => {
     e.preventDefault()
     let token = await fetch(
-      'https://update.bayrakparts.com/add_comment_to_review',
+      'https://api.bayrakparts.com/api/info/add_comment_to_review',
       {
         headers: {
           'Content-Type': 'application/json',
@@ -118,8 +118,8 @@ const Review = details => {
           />
           {!opened ? (
             <div className={styles.starts_cont}>
-              {arr.map(star => (
-                <>{starReview}</>
+              {arr.map((star, i) => (
+                <div key={`star${i}`}>{starReview}</div>
               ))}
             </div>
           ) : null}

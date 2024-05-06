@@ -67,8 +67,20 @@
 
 .pod_cat_cont {
   display: grid;
-  padding-top: 10px;
-  width: 80%;
+  padding-top: 20px;
+  width: 100%;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  row-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pod_cat_cont_main {
+  display: grid;
+  padding-top: 20px;
+  width: 78%;
   grid-template-columns: 25% 25% 25% 25%;
   justify-content: center;
   align-items: center;
@@ -93,6 +105,16 @@
 .link_pod_category span {
   width: 90%;
   text-align: center;
+}
+
+.history_container {
+  display: flex;
+  width: 78%;
+  padding-top: 10px;
+}
+
+.links_and_history_cont {
+  width: 78%;
 }
 
 @media all and (max-width: 740px) {

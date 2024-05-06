@@ -10,25 +10,30 @@ const LeaveRequest = () => {
   const [numberPhone, setNumberPhone] = useState('')
   const [vin, setVin] = useState('')
 
-  const makeRequest = e => {
+  const makeRequest = async e => {
     e.preventDefault()
     router.push(`/thankyou`)
     ga.event({
       action: 'generate_lead',
     })
-    fetch(
-      `https://api.telegram.org/bot6173056848:AAE0eviFsiQtx0CWxEJyBizEdl_zhaJ0P1w/sendMessage?chat_id=@edetalRequests&text=Запит на підбір BayrakParts з запиту! ${
-        ' Вінкод : ' +
-        vin +
-        ', запчастина : ' +
-        part +
-        ' .Клієнт ' +
-        name +
-        ' ' +
-        numberPhone
-      }`
+    const request = await fetch(
+      'https://api.bayrakparts.com/api/info/leave_search_request',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          part: part,
+          name: name,
+          phone: numberPhone,
+          vin: vin,
+        }),
+      }
     )
+    const res = await request.json()
   }
+
   return (
     <div className={styles.whole_cont}>
       <div className={styles.smaller_cont}>
@@ -36,10 +41,7 @@ const LeaveRequest = () => {
           <h2>
             Щоб пришвидшити процес пошуку запчастин, будь ласка заповніть форму
           </h2>
-          <form
-            className={styles.request_form_cont}
-            onSubmit={e => makeRequest(e)}
-          >
+          <form className={styles.request_form_cont} onSubmit={makeRequest}>
             <div className={styles.description_request}>
               1. Ваше ім'я та номер телефону
             </div>

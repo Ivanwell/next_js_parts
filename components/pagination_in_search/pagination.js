@@ -1,5 +1,6 @@
 import styles from '../../styles/Pagination.module.css'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import Link from 'next/link'
 
 const LinkNextPagination = ({ activeIndex }) => {
@@ -33,10 +34,6 @@ const LinkPrevPagination = ({ activeIndex }) => {
 const LinkPagination = ({ index, activeIndex }) => {
   const { asPath, query } = useRouter()
 
-  // let link = `${asPath.split('?')[0]}?page=${index}&${asPath
-  //   .split('?')[1]
-  //   .slice(0)}`
-
   let car = ''
 
   if (query.brand && query.model && query.engine) {
@@ -61,9 +58,10 @@ const Pagination = ({ amount }) => {
   const { asPath } = useRouter()
   let activeIndex = 1
 
-  if (asPath.split('?page=')[1]) {
-    activeIndex = asPath.split('?page=')[1]
+  if (asPath.split('page=')[1]) {
+    activeIndex = asPath.split('page=')[1]
   }
+
   const totalLinks = Math.ceil(amount / 20)
   const paginationArr = Array.from(Array(totalLinks), (_, i) => i + 1)
 

@@ -1,0 +1,445 @@
+.container_for_form {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form_car_choose {
+  width: 78%;
+  height: 50px;
+  border: 2px solid #0067d7;
+  border-radius: 2px;
+  display: flex;
+  position: relative;
+}
+
+.choose_car_button {
+  width: 33.33%;
+  height: 100%;
+  background-color: #0067d7;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+
+.choose_car_button:hover {
+  background-color: #023a76;
+}
+
+.choose_car_button:hover .triangle_for_button {
+  background-color: #023a76;
+}
+
+.triangle_for_button {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  right: -18px;
+  transform: rotate(45deg);
+  background-color: #0067d7;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  transition: 0.3s;
+}
+
+.cont_for_brand_list {
+  padding: 20px;
+  width: 100%;
+  height: 350px;
+  position: absolute;
+  background-color: #eee;
+  top: 50px;
+  border-radius: 2px;
+  border: #0067d7 1px solid;
+  row-gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  z-index: 10;
+}
+
+.cont_for_brand_list span {
+  font-size: 18px;
+  transition: 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 15px;
+}
+
+.cont_for_brand_list span:hover {
+  color: #0067d7;
+}
+
+.finally_choosen_car_cont {
+  width: 78%;
+  height: 50px;
+  border: #a4abb5 2px solid;
+  /* color: rgba(26, 41, 47, 255); */
+  color: #023a76;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: 0.2s;
+}
+
+.finally_choosen_car_cont_fits {
+  width: 78%;
+  height: 50px;
+  background-color: #03a908;
+  /* color: rgba(26, 41, 47, 255); */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: 0.2s;
+}
+
+.finally_choosen_car_cont_does_not_fit {
+  width: 78%;
+  height: 50px;
+  background-color: red;
+  /* color: rgba(26, 41, 47, 255); */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2px;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: 0.2s;
+}
+
+.car_name_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.finally_choosen_car_cont svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.finally_choosen_car_cont_does_not_fit svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.finally_choosen_car_cont_fits svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.finally_choosen_car_cont_fits div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finally_choosen_car_cont_does_not_fit div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finally_choosen_car_cont div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose_car_button:disabled {
+  cursor: not-allowed;
+  background-color: #a4abb5;
+}
+
+@media all and (max-width: 740px) {
+  .container_for_form_mobile {
+    width: 100vw;
+    min-height: 70px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px;
+    position: relative;
+  }
+
+  .cont_for_selecting {
+    width: 90%;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #0067d7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cont_for_brands_models_engines_mobile {
+    position: absolute;
+    width: 95%;
+    height: 450px;
+    background-color: #023a76;
+    z-index: 10;
+    top: 55px;
+    border-radius: 5px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    text-indent: 20px;
+    color: white;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-items: center;
+  }
+
+  .cont_for_brands_models_engines_mobile span {
+    white-space: nowrap;
+  }
+
+  .cont_for_brands_models_engines_mobile_models span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70vw;
+  }
+
+  .cont_for_brands_models_engines_mobile_engines span {
+    white-space: nowrap;
+  }
+
+  .cont_for_brands_models_engines_mobile_models {
+    position: absolute;
+    width: 95%;
+    max-width: 95%;
+    height: 450px;
+    background-color: #023a76;
+    z-index: 10;
+    top: 95px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    text-indent: 20px;
+    color: white;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-items: center;
+  }
+
+  .cont_for_brands_models_engines_mobile_engines {
+    position: absolute;
+    width: 95%;
+    height: 450px;
+    background-color: #023a76;
+    z-index: 10;
+    top: 140px;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    text-indent: 20px;
+    color: white;
+    gap: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-items: center;
+  }
+
+  .spiner_cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  .exit_cont {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: #a4abb5;
+    z-index: 15;
+    right: 8px;
+    top: 8px;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .exit_cont svg {
+    color: black;
+    width: 20px;
+    height: 20px;
+  }
+
+  .choosen_car_container {
+    padding: 10px;
+    width: 100vw;
+    min-height: 80px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+  }
+
+  .container_for_link_and_btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .look_for_parts_to_selected_car {
+    margin-top: 10px;
+    height: 36px;
+    background-color: #0067d7;
+    color: white;
+    font-weight: 600;
+    border-radius: 18px;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .choosen_car_title {
+    position: absolute;
+    color: #0067d7;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    left: 25px;
+    top: 3px;
+  }
+
+  .choosen_car_title_not_fit {
+    position: absolute;
+    color: red;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    left: 25px;
+    top: 3px;
+  }
+
+  .choosen_car_title_fit {
+    position: absolute;
+    color: #03a908;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
+    left: 25px;
+    top: 3px;
+  }
+
+  .choosen_car {
+    border: #0067d7 2px solid;
+    padding: 18px 10px 18px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 98%;
+    text-align: center;
+  }
+
+  .choosen_car_not_fit {
+    border: red 2px solid;
+    padding: 18px 10px 18px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 98%;
+    text-align: center;
+  }
+
+  .choosen_car_fit {
+    border: #03a908 2px solid;
+    padding: 18px 10px 18px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    border-radius: 3px;
+    width: 98%;
+    text-align: center;
+  }
+
+  /* .direct_select_item {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 95%;
+    height: 20px;
+  } */
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

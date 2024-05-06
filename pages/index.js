@@ -1,14 +1,10 @@
 import styles from '@/styles/Newmainoage.module.css'
-import { search, starReview } from '@/components/SVGs/SVGs'
 import { useEffect, useState } from 'react'
 import CategoryInMain from '@/components/category_in_main/category_in_main'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import {
-  sighn,
-  checkbox1,
-  watch,
   droplet,
   discbrake,
   fireIgn,
@@ -22,29 +18,12 @@ import {
   minus,
 } from '@/components/SVGs/SVGs'
 import { useDispatch } from 'react-redux'
-import {
-  setDataForForm,
-  setLoadingData,
-  setBrand,
-  setModel,
-  setCategory,
-  setPart,
-  changeLinkPath,
-  setGlobalBrand,
-  setGlobalModel,
-  setBmBrands,
-  setBmModels,
-  setBmEngines,
-  setGlobalEngine,
-  setEngine,
-} from '@/global_state/features/cardata_redux'
-import { useSelector } from 'react-redux'
+import { changeLinkPath } from '@/global_state/features/cardata_redux'
 import Review from '@/components/review/review'
 import Script from 'next/script'
 
-const NewMainPage = ({ userAgent, query }) => {
+const NewMainPage = () => {
   const router = useRouter()
-  const [errorForm, setErrorForm] = useState(false)
   const [opened, setOpened] = useState({
     first: false,
     second: false,
@@ -53,142 +32,21 @@ const NewMainPage = ({ userAgent, query }) => {
     fifth: false,
     sixth: false,
   })
-  const [brandDirect, setBrandDirect] = useState(null)
-  const [modelDirect, setModelDirect] = useState(null)
-  const [engineDirect, setEngineDirect] = useState(null)
   const [reviews, setReviews] = useState([])
   const [pageReview, setPageReview] = useState(1)
 
   const dispatch = useDispatch()
 
-  const formNewData = useSelector(
-    state => state.dataSelectscartReducer.value.dataForSelects
-  )
-  const choosenBrand = useSelector(
-    state => state.dataSelectscartReducer.value.brand
-  )
-  const choosenModel = useSelector(
-    state => state.dataSelectscartReducer.value.model
-  )
-  const choosenCategory = useSelector(
-    state => state.dataSelectscartReducer.value.category
-  )
-  const choosenPart = useSelector(
-    state => state.dataSelectscartReducer.value.part
-  )
-  const loadingFromData = useSelector(
-    state => state.dataSelectscartReducer.value.loading
-  )
-
-  const bmBrands = useSelector(
-    state => state.dataSelectscartReducer.value.bmBrands
-  )
-
-  const bmModels = useSelector(
-    state => state.dataSelectscartReducer.value.bmModels
-  )
-
-  const bmEngines = useSelector(
-    state => state.dataSelectscartReducer.value.bmEngines
-  )
-
-  const engine = useSelector(state => state.dataSelectscartReducer.value.engine)
-
-  const globalEngine = useSelector(
-    state => state.dataSelectscartReducer.value.engine
-  )
-
-  const globalBrand = useSelector(
-    state => state.dataSelectscartReducer.value.globalBrand
-  )
-  const globalModel = useSelector(
-    state => state.dataSelectscartReducer.value.globalModel
-  )
-  const fullPath = useSelector(
-    state => state.dataSelectscartReducer.value.fullPath
-  )
-
-  const submitingSearch = e => {
-    e.preventDefault()
-    if (!choosenBrand || !choosenModel || !choosenCategory || !choosenPart) {
-      setErrorForm(true)
-    } else {
-      setErrorForm(false)
-      const article = choosenPart + ' ' + choosenBrand + ' ' + choosenModel
-      router.push(`/search/${article}`)
-    }
-  }
-
-  const text = ''
-
   useEffect(() => {
-    if (fullPath) {
-      dispatch(changeLinkPath(null))
-    }
-
-    if (router.query.brand && router.query.model && router.query.engine) {
-      dispatch(setGlobalBrand(router.query.brand))
-      dispatch(setGlobalModel(router.query.model))
-      dispatch(setGlobalEngine(router.query.engine))
-      setBrandDirect(router.query.brand)
-      setModelDirect(router.query.model)
-      setEngineDirect(router.query.engine)
-    } else if (router.query.brand && router.query.model) {
-      setBrandDirect(router.query.brand)
-      setModelDirect(router.query.model)
-      setEngineDirect(null)
-      dispatch(setGlobalBrand(null))
-      dispatch(setGlobalEngine(null))
-      dispatch(setGlobalModel(null))
-    } else if (router.query.brand) {
-      setBrandDirect(router.query.brand)
-      setModelDirect(null)
-      setEngineDirect(null)
-      dispatch(setGlobalBrand(null))
-      dispatch(setGlobalEngine(null))
-      dispatch(setGlobalModel(null))
-    }
-
-    if (!bmBrands) {
-      const abortController = new AbortController()
-      const { signal } = abortController
-      const apiCall = async () => {
-        try {
-          dispatch(setLoadingData(true))
-          const res = await fetch(
-            `https://backend.bayrakparts.com/getAllCarBrands`,
-            {
-              method: 'GET',
-              signal: signal,
-            }
-          )
-
-          const body = await res.json()
-          dispatch(setBmBrands(body))
-          dispatch(setLoadingData(false))
-        } catch (error) {
-          if (!signal?.aborted) {
-            console.error(error)
-            dispatch(setLoadingData(false))
-          }
-        }
-      }
-      apiCall()
-
-      return () => {
-        abortController.abort()
-      }
-    } else {
-    }
-  }, [])
-
-  useEffect(() => {
+    dispatch(changeLinkPath(null))
+    //dispatch(setFits(false))
     const abortController = new AbortController()
     const { signal } = abortController
     const getReviews = async () => {
       try {
         const res = await fetch(
-          `https://update.bayrakparts.com/getReviews?step=${pageReview}`,
+          // `https://update.bayrakparts.com/getReviews?step=${pageReview}`,
+          `https://api.bayrakparts.com/api/info/get_reviews?step=${pageReview}`,
           {
             method: 'GET',
             signal: signal,
@@ -209,94 +67,9 @@ const NewMainPage = ({ userAgent, query }) => {
     }
   }, [pageReview])
 
-  useEffect(() => {
-    if (brandDirect) {
-      setEngineDirect(null)
-      if (!router.query.model) {
-        setModelDirect(null)
-      }
-      dispatch(setBmModels(null))
-      const abortController = new AbortController()
-      const { signal } = abortController
-      const apiCall = async () => {
-        try {
-          dispatch(setLoadingData(true))
-          const res = await fetch(
-            `https://backend.bayrakparts.com/getAllCarModelsByBrand/${brandDirect}`,
-            {
-              method: 'GET',
-              signal: signal,
-            }
-          )
-
-          const body = await res.json()
-          dispatch(setBmModels(body))
-          dispatch(setLoadingData(false))
-        } catch (error) {
-          if (!signal?.aborted) {
-            console.error(error)
-            dispatch(setLoadingData(false))
-          }
-        }
-      }
-      apiCall()
-
-      return () => {
-        abortController.abort()
-      }
-    } else {
-    }
-  }, [brandDirect])
-
-  useEffect(() => {
-    if (modelDirect && brandDirect) {
-      setEngineDirect(null)
-      dispatch(setBmEngines(null))
-      const abortController = new AbortController()
-      const { signal } = abortController
-      const apiCall = async () => {
-        try {
-          dispatch(setLoadingData(true))
-          const res = await fetch(
-            `https://backend.bayrakparts.com/getAllEnginesByModel/${brandDirect}?model=${modelDirect}`,
-            {
-              method: 'GET',
-              signal: signal,
-            }
-          )
-
-          const body = await res.json()
-          dispatch(setBmEngines(body))
-          dispatch(setLoadingData(false))
-        } catch (error) {
-          if (!signal?.aborted) {
-            console.error(error)
-            dispatch(setLoadingData(false))
-          }
-        }
-      }
-      apiCall()
-
-      return () => {
-        abortController.abort()
-      }
-    } else {
-    }
-  }, [modelDirect])
-
-  const submitSearch = e => {
-    e.preventDefault()
-    dispatch(setGlobalBrand(brandDirect))
-    dispatch(setGlobalModel(modelDirect))
-    dispatch(setGlobalEngine(engineDirect))
-  }
-
-  const arrow = '<'
-  const arrowRew = '>'
-
   let titleMeta = 'BayrakParts || Запчастини для авто з гарантією'
   if (router.query.brand && router.query.model && router.query.engine) {
-    titleMeta = `Запчастини до ${router.query.brand} ${router.query.model} ${router.query.engine}`
+    titleMeta = `Запчастини до ${router.query.brand} ${router.query.model} ${router.query.engine} - BayrakParts`
   }
   return (
     <div className={styles.main_container}>
@@ -323,172 +96,7 @@ const NewMainPage = ({ userAgent, query }) => {
           }),
         }}
       />
-      {globalBrand && globalModel && engine ? null : (
-        <div className={styles.container_for_search_and_promo}>
-          <form className={styles.search_form} onSubmit={e => submitSearch(e)}>
-            <div className={styles.container_search_form}>
-              <h1 className={styles.select_car_title}>
-                {search}Виберіть авто для пошуку запчастин
-              </h1>
-              {/* <div className={styles.select_container}>
-              <span className={styles.number}>1</span>
-              <select
-                value={choosenBrand}
-                onChange={e => dispatch(setBrand(e.target.value))}
-              >
-                {!loadingFromData ? (
-                  <option selected>Оберіть марку</option>
-                ) : (
-                  <option selected>Завантаження...</option>
-                )}
-                {formNewData
-                  ? formNewData.brands.map(brand => <option>{brand}</option>)
-                  : null}
-              </select>
-            </div> */}
-              <div className={styles.select_container}>
-                <span className={styles.number}>1</span>
-                <select
-                  value={brandDirect}
-                  onChange={e => setBrandDirect(e.target.value)}
-                >
-                  {!loadingFromData ? (
-                    <option selected>
-                      {brandDirect ? `${brandDirect}` : 'Оберіть марку'}
-                    </option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {bmBrands
-                    ? bmBrands.map(brand => (
-                        <option value={brand.name}> {brand.name}</option>
-                      ))
-                    : null}
-                </select>
-              </div>
-              {/* <div className={styles.select_container}>
-              <span className={styles.number}>2</span>
-              <select
-                value={choosenModel}
-                onChange={e => dispatch(setModel(e.target.value))}
-              >
-                {!loadingFromData ? (
-                  <option selected>Оберіть модель</option>
-                ) : (
-                  <option selected>Завантаження...</option>
-                )}
-                {choosenBrand
-                  ? formNewData.models
-                      .find(product => product.brandName === choosenBrand)
-                      .Models.map(model1 => (
-                        <option value={model1}>{model1}</option>
-                      ))
-                  : null}
-              </select>
-            </div> */}
-              <div className={styles.select_container}>
-                <span className={styles.number}>2</span>
-                <select
-                  value={modelDirect}
-                  onChange={e => setModelDirect(e.target.value)}
-                >
-                  {!loadingFromData ? (
-                    <option selected>
-                      {modelDirect ? `${modelDirect}` : 'Оберіть модель'}
-                    </option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {brandDirect && bmModels
-                    ? bmModels.map(model1 => (
-                        <option value={model1.name}>{model1.name}</option>
-                      ))
-                    : null}
-                </select>
-              </div>
-              <div className={styles.select_container}>
-                <span className={styles.number}>3</span>
-                <select
-                  value={engineDirect}
-                  onChange={e => setEngineDirect(e.target.value)}
-                >
-                  {!loadingFromData ? (
-                    <option selected>
-                      {engineDirect ? `${engineDirect}` : 'Оберіть двигун'}
-                    </option>
-                  ) : (
-                    <option selected>Завантаження...</option>
-                  )}
-                  {modelDirect && brandDirect && bmEngines
-                    ? bmEngines.map(engine => (
-                        <option value={engine.name}>{engine.name}</option>
-                      ))
-                    : null}
-                </select>
-              </div>
 
-              {/* <div className={styles.select_container}>
-              <span className={styles.number}>3</span>
-              <select
-                value={choosenCategory}
-                onChange={e => dispatch(setCategory(e.target.value))}
-              >
-                {!loadingFromData ? (
-                  <option selected>Оберіть категорію</option>
-                ) : (
-                  <option selected>Завантаження...</option>
-                )}
-                {choosenModel
-                  ? formNewData.categories.map(categori => (
-                      <option value={categori}>{categori}</option>
-                    ))
-                  : null}
-              </select>
-            </div>
-            <div className={styles.select_container}>
-              <span className={styles.number}>4</span>
-              <select
-                onChange={e => dispatch(setPart(e.target.value))}
-                value={choosenPart}
-              >
-                {!loadingFromData ? (
-                  <option selected>Оберіть запчастину</option>
-                ) : (
-                  <option selected>Завантаження...</option>
-                )}
-                {choosenCategory
-                  ? formNewData.exactParts
-                      .find(castogory => castogory.catigory === choosenCategory)
-                      .Models.map(part => <option value={part}>{part}</option>)
-                  : null}
-              </select>
-            </div> */}
-              <button className={styles.search_button} type="submit">
-                Вибрати авто
-              </button>
-            </div>
-            {errorForm ? (
-              <div className={styles.error_form}>Заповніть усі дані</div>
-            ) : null}
-            <Link href="/leave_request" className={styles.cannot_find_part}>
-              <span className={styles.cannot_find_part_title}>
-                Не вдається знайти запчастину? Ми допоможемо!
-              </span>
-            </Link>
-          </form>
-          <div className={styles.promo_container}>
-            <div className={styles.arrow_cont}>{arrow}</div>
-            <div className={styles.imag_contaier}>
-              <img
-                loading="lazy"
-                src="https://backend.bayrakparts.com/images/media/baner_new.jpg"
-                alt="baner"
-              />
-            </div>
-            <div className={styles.arrow_cont}>{arrowRew}</div>
-          </div>
-        </div>
-      )}
       <div className={styles.container_for_brands}>
         <h2>Популярні категорії</h2>
         <CategoryInMain />
@@ -665,50 +273,8 @@ const NewMainPage = ({ userAgent, query }) => {
         <h2 className={styles.why_we}>Відгуки наших покупців</h2>
         <div className={styles.our_descr_for_reviews}>
           {reviews.map(review => (
-            <Review details={review} />
+            <Review key={review.message} details={review} />
           ))}
-          {/* <div className={styles.review_cont}>
-            <img src="https://api.bonapart.pro/public/bayrakparts/user-3297.svg" />
-            <div className={styles.starts_cont}>
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-            </div>
-            <span>
-              <div>06.03.2024</div> Горбач Андрій
-            </span>
-            <button>Переглянути відгук...</button>
-          </div>
-          <div className={styles.review_cont}>
-            <img src="https://api.bonapart.pro/public/bayrakparts/pngaaa.com-365827.png" />
-            <div className={styles.starts_cont}>
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-            </div>
-            <span>
-              <div>24.02.2024</div> Наталія Бучко
-            </span>
-            <button>Переглянути відгук...</button>
-          </div>
-          <div className={styles.review_cont}>
-            <img src="https://api.bonapart.pro/public/bayrakparts/pngaaa.com-365827.png" />
-            <div className={styles.starts_cont}>
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-              {starReview}
-            </div>
-            <span>
-              <div>04.12.2023</div> Галина
-            </span>
-            <button>Переглянути відгук...</button>
-          </div> */}
         </div>
         <div className={styles.bottom_of_reviews}>
           <Link href="/leave_review" className={styles.leave_review_btn}>
@@ -731,20 +297,6 @@ const NewMainPage = ({ userAgent, query }) => {
           відбираємо кожну запчастину, щоб ви могли бути впевнені в її
           надійності та довговічності.
         </div>
-        {/* <div className={styles.our_descr}>
-          <div className={styles.our_desc1}>
-            {sighn}
-            Ми відповідаємо за правильний підбір запчастин
-          </div>
-          <div className={styles.our_desc1}>
-            {checkbox1}
-            Більше 5 тисяч запчастин до усіх марок
-          </div>
-          <div className={styles.our_desc1}>
-            {watch}
-            Швидко відповідаємо (до 20 хвилин)
-          </div>
-        </div> */}
         <h2 className={styles.why_we}>Корисні статті та поради</h2>
         <div className={styles.blog_container}>
           <Link href="articles/yak-pidgotuvaty-avto-do-lita">

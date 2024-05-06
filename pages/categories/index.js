@@ -3,17 +3,14 @@ import styles from '../../styles/Links.module.css'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
-import {
-  setPathShown,
-  changeLinkPath,
-} from '@/global_state/features/cardata_redux'
+import { changeLinkPath } from '@/global_state/features/cardata_redux'
 
-const LinkComponent = ({ linkData, brand, model, engine }) => {
-  let link = `/categories/${linkData.link}`
+const LinkComponent = ({ linkData }) => {
+  const linkQuery = useSelector(
+    state => state.dataSelectscartReducer.value.selectedCar
+  )
+  let link = `/categories/${linkData.link}${linkQuery}`
 
-  if (brand && model) {
-    link = `/categories/${linkData.link}?brand=${brand}&model=${model}&engine=${engine}`
-  }
   return (
     <Link href={link} className={styles.link_pod_category}>
       <span>{linkData.name}</span>
@@ -21,49 +18,93 @@ const LinkComponent = ({ linkData, brand, model, engine }) => {
   )
 }
 
-const CategoryMainPage = ({ body, body1, userAgent, amount }) => {
+const CategoryMainPage = ({ mainCategories }) => {
   const dispatch = useDispatch()
-
-  // dispatch(setPathShown(true))
   dispatch(changeLinkPath([]))
-  const brand = useSelector(
-    state => state.dataSelectscartReducer.value.globalBrand
+
+  return (
+    <div className={styles.full_container}>
+      <Head>
+        <title>Категорії автозапчастин</title>
+        <meta name="description" content="Категорії автозапчастин" />
+      </Head>
+      <h1>Категорії автозапчастин</h1>
+      <div className={styles.pod_cat_cont_main}>
+        {mainCategories.map(catInfo => (
+          <LinkComponent key={catInfo.link} linkData={catInfo} />
+        ))}
+      </div>
+    </div>
   )
+}
 
-  const model = useSelector(
-    state => state.dataSelectscartReducer.value.globalModel
-  )
-
-  const engine = useSelector(state => state.dataSelectscartReducer.value.engine)
-
+export const getServerSideProps = async () => {
   const mainCategories = [
     {
       name: 'Оливи',
       link: 'olyva-zmazka--i-tehnichni',
     },
     {
+      name: 'Гальмівна система',
+      link: 'galmivna-systema',
+    },
+    {
+      name: 'Трансмісія',
+      link: 'pryvid',
+    },
+    {
       name: 'Електрика',
       link: 'elektryka',
     },
+    {
+      name: 'Система запалювання',
+      link: 'systema-zapalyuvannya-rozzharyuvannya',
+    },
+    {
+      name: 'Опалення і кондиціонування',
+      link: 'obigriv-kondytsioner',
+    },
+    {
+      name: 'Рульова система',
+      link: 'rulova-systema',
+    },
+    {
+      name: 'Система випуску і впуску повітря',
+      link: 'systema-vypusku-vpusku-povitrya',
+    },
+    {
+      name: 'Подача палива',
+      link: 'systemy-pidgotovky-podachi-palyva',
+    },
+    {
+      name: 'Фільтри',
+      link: 'filtry-komplektuyuchi',
+    },
+    {
+      name: 'Амортизація складові',
+      link: 'amortyzatsiya',
+    },
+    {
+      name: 'Система охолодження',
+      link: 'systema-oholodzhennya',
+    },
+    {
+      name: 'Ходова частина',
+      link: 'shasi',
+    },
+    {
+      name: 'Комплектуючі двигуна',
+      link: 'dvygun',
+    },
+    {
+      name: 'Кузовні частини',
+      link: 'kuzov-skladovi',
+    },
   ]
-  return (
-    <div className={styles.full_container}>
-      <Head>
-        <title>Категорії автозапчастин</title>
-      </Head>
-      <h1>Категорії автозапчастин</h1>
-      {mainCategories.map(catInfo => (
-        <div className={styles.pod_cat_cont}>
-          <LinkComponent
-            linkData={catInfo}
-            brand={brand}
-            model={model}
-            engine={engine}
-          />
-        </div>
-      ))}
-    </div>
-  )
+
+  return {
+    props: { mainCategories },
+  }
 }
 
 export default CategoryMainPage

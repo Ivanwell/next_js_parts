@@ -33,15 +33,17 @@ import {
   handleOpenPropToCheck,
   hideFullImage,
 } from '@/global_state/features/cart_redux'
-import LinksHistory from '../link_history/links_history'
 import { useDispatch } from 'react-redux'
-import SelectedCar from '../selected_car/selected_car'
+import New_car_choose_form from '../choose_car_form/new_choose_car_form'
 
 function NewNavbar() {
   const dispatch = useDispatch()
 
   const sumury = useSelector(state => state.cartReducer.value.total)
   const sumury2 = useSelector(state => state.cartReducer.value.sum)
+  const linkQuery = useSelector(
+    state => state.dataSelectscartReducer.value.selectedCar
+  )
   const openedProposal = useSelector(
     state => state.cartReducer.value.openedCheckoutProposal
   )
@@ -81,6 +83,7 @@ function NewNavbar() {
 
   const searchInStockWithDiffBrands = async e => {
     e.preventDefault()
+    setNoResults(false)
     setLoading(true)
     const res = await fetch(
       `https://backend.bayrakparts.com/get_items_info/${article
@@ -93,7 +96,7 @@ function NewNavbar() {
 
     const body = await res.json()
     if (body && body.length === 1) {
-      router.push(`/product/${body[0].link[0].link}`)
+      router.push(`/product/${body[0].link[0].link}${linkQuery}`)
     } else {
       if (body.length > 1) {
         setManyBrands(body)
@@ -119,7 +122,6 @@ function NewNavbar() {
       {openedProposal ? (
         <div className={styles.added_to_cart_cont}>
           <div className={styles.choose_to_proceed_or_back}>
-            <div>Товар успішно доданий до кошика</div>
             <Link
               href="/checkout"
               onClick={() => dispatch(handleOpenPropToCheck(false))}
@@ -238,7 +240,9 @@ function NewNavbar() {
       </div>
       <div className={styles.main_header}>
         <div className={styles.header_top_desctop}>
-          <div className={styles.header_logo}>BAYRAKPARTS</div>
+          <Link href={`/`} className={styles.header_logo}>
+            BAYRAKPARTS
+          </Link>
           <div className={styles.login}>
             <Link href="/track_order" title="Відстежити замовлення">
               {garage1}
@@ -335,42 +339,50 @@ function NewNavbar() {
         <div className={styles.header_bottom}>
           <ul className={styles.list_categories}>
             <li className={styles.category}>
-              <Link href="/categories/olyva-zmazka--i-tehnichni">
+              <Link href={`/categories/olyva-zmazka--i-tehnichni${linkQuery}`}>
                 {droplet}Оливи
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/elektryka">{discbrake}Електрика</Link>
+              <Link href={`/categories/elektryka${linkQuery}`}>
+                {discbrake}Електрика
+              </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/systema-zapalyuvannya-rozzharyuvannya">
+              <Link
+                href={`/categories/systema-zapalyuvannya-rozzharyuvannya${linkQuery}`}
+              >
                 {fireIgn}Запалення
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/obigriv-kondytsioner">
+              <Link href={`/categories/obigriv-kondytsioner${linkQuery}`}>
                 {hodovaa}Опалення/конд
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/rulova-systema">{remni}Кермова</Link>
+              <Link href={`/categories/rulova-systema${linkQuery}`}>
+                {remni}Кермова
+              </Link>
             </li>
-
-            {/* <li className={styles.category}>
-              <Link href="/categories/kuzov-skladovi">{accecories}Кузов</Link>
-            </li> */}
             <li className={styles.category}>
-              <Link href="/categories/systema-vypusku-vpusku-povitrya">
+              <Link
+                href={`/categories/systema-vypusku-vpusku-povitrya${linkQuery}`}
+              >
                 {electric}Впуск/випуск
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/systemy-pidgotovky-podachi-palyva">
+              <Link
+                href={`/categories/systemy-pidgotovky-podachi-palyva${linkQuery}`}
+              >
                 {tiress}Подача палива
               </Link>
             </li>
             <li className={styles.category}>
-              <Link href="/categories/aksesuary-zasoby-po-doglyadu-dod.tovary">
+              <Link
+                href={`/categories/aksesuary-zasoby-po-doglyadu-dod.tovary${linkQuery}`}
+              >
                 {kuzov}
                 Аксесуари
               </Link>
@@ -384,8 +396,11 @@ function NewNavbar() {
           </div>
         ) : null}
       </div>
-      <SelectedCar />
-      <LinksHistory />
+      {router.asPath.includes('product') ||
+      router.asPath.includes('categories') ||
+      router.asPath === `/` ? (
+        <New_car_choose_form />
+      ) : null}
     </header>
   )
 }

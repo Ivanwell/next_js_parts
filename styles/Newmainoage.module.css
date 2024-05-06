@@ -119,11 +119,12 @@
 
 .container_for_brands h2 {
   background-color: #f37c2e;
-  padding: 7px;
   box-sizing: content-box;
   border-radius: 3px;
   text-indent: 20px;
   width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .number {
@@ -230,9 +231,8 @@
 }
 
 .container_for_brands {
-  width: 80%;
+  width: 78%;
   display: flex;
-  padding: 25px;
   box-sizing: border-box;
   height: 100%;
   gap: 30px;

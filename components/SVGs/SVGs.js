@@ -4,7 +4,7 @@ export const basket = (
     width="40"
     height="40"
     fill="currentColor"
-    className="bi bi-cart3"
+    classNameName="bi bi-cart3"
     viewBox="0 0 16 16"
   >
     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
@@ -17,7 +17,7 @@ export const close = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-x"
+    className="bi bi-x"
     viewBox="0 0 16 16"
   >
     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
@@ -30,7 +30,7 @@ export const deleteRed = (
     width="25"
     height="25"
     fill="red"
-    class="bi bi-x-circle"
+    className="bi bi-x-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -59,7 +59,7 @@ export const closeMobileMenu = (
     width="40"
     height="40"
     fill="#50661C"
-    class="bi bi-x-square-fill"
+    className="bi bi-x-square-fill"
     viewBox="0 0 16 16"
   >
     <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
@@ -72,11 +72,11 @@ export const returnBack = (
     width="25"
     height="25"
     fill="currentColor"
-    class="bi bi-arrow-up-left-circle"
+    className="bi bi-arrow-up-left-circle"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-5.904 2.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707l4.096 4.096z"
     />
   </svg>
@@ -88,11 +88,11 @@ export const tel = (
     width="22"
     height="22"
     fill="currentColor"
-    class="bi bi-telephone-fill"
+    className="bi bi-telephone-fill"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
     />
   </svg>
@@ -104,7 +104,7 @@ export const scedj = (
     width="22"
     height="22"
     fill="currentColor"
-    class="bi bi-alarm"
+    className="bi bi-alarm"
     viewBox="0 0 16 16"
   >
     <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z" />
@@ -118,7 +118,7 @@ export const car = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-car-front-fill"
+    className="bi bi-car-front-fill"
     viewBox="0 0 16 16"
   >
     <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
@@ -131,7 +131,7 @@ export const personWithoutAuth = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-person"
+    className="bi bi-person"
     viewBox="0 0 16 16"
     cursor="pointer"
   >
@@ -145,7 +145,7 @@ export const personWithAuth = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-person-fill-check"
+    className="bi bi-person-fill-check"
     viewBox="0 0 16 16"
     cursor="pointer"
   >
@@ -160,7 +160,7 @@ export const track = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-box-seam"
+    className="bi bi-box-seam"
     viewBox="0 0 16 16"
     cursor="pointer"
   >
@@ -174,7 +174,7 @@ export const money = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-coin"
+    className="bi bi-coin"
     cursor="pointer"
     viewBox="0 0 16 16"
   >
@@ -190,7 +190,7 @@ export const plane = (
     width="22"
     height="22"
     fill="currentColor"
-    class="bi bi-rocket-takeoff"
+    className="bi bi-rocket-takeoff"
     viewBox="0 0 16 16"
   >
     <path d="M9.752 6.193c.599.6 1.73.437 2.528-.362.798-.799.96-1.932.362-2.531-.599-.6-1.73-.438-2.528.361-.798.8-.96 1.933-.362 2.532Z" />
@@ -207,7 +207,7 @@ export const statusNotProccesedYet = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-headset"
+    className="bi bi-headset"
     viewBox="0 0 16 16"
   >
     <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z" />
@@ -220,7 +220,7 @@ export const rejectOrder = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-exclamation-circle"
+    className="bi bi-exclamation-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -234,7 +234,7 @@ export const inDepartment = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-mailbox-flag"
+    className="bi bi-mailbox-flag"
     viewBox="0 0 16 16"
   >
     <path d="M10.5 8.5V3.707l.854-.853A.5.5 0 0 0 11.5 2.5v-2A.5.5 0 0 0 11 0H9.5a.5.5 0 0 0-.5.5v8h1.5ZM5 7c0 .334-.164.264-.415.157C4.42 7.087 4.218 7 4 7c-.218 0-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0Z" />
@@ -248,7 +248,7 @@ export const inRoadToCustomer = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-truck"
+    className="bi bi-truck"
     viewBox="0 0 16 16"
   >
     <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
@@ -261,7 +261,7 @@ export const orderInProcess = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-person-gear"
+    className="bi bi-person-gear"
     viewBox="0 0 16 16"
   >
     <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
@@ -274,11 +274,11 @@ export const orderCompleted = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-shield-fill-check"
+    className="bi bi-shield-fill-check"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm2.146 5.146a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647z"
     />
   </svg>
@@ -290,7 +290,7 @@ export const newBuscet = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-cart2"
+    className="bi bi-cart2"
     viewBox="0 0 16 16"
   >
     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
@@ -298,7 +298,7 @@ export const newBuscet = (
 )
 
 export const newpost = (
-  <svg viewBox="0 0 24 24" width="30" height="30" class="Tgrwd">
+  <svg viewBox="0 0 24 24" width="30" height="30" className="Tgrwd">
     <g fill="red">
       <path d="m23.8 11.5-4.4-4.8c-.1-.1-.2-.2-.3-.2-.1 0-.1.1-.1.3v10.3c0 .2 0 .3.1.4.1 0 .2 0 .3-.1l4.4-4.9c.3-.3.3-.7 0-1zM13.9 18v-4H10v4H7s-1 0 0 1.5c0 0 4 4.5 5 4.5s5-4.5 5-4.5c1-1.4 0-1.4 0-1.4l-3.1-.1zM13.9 6v4H10V6H7S6 6 7 4.5c0 0 4-4.5 5-4.5s5 4.5 5 4.5c1 1.4 0 1.4 0 1.4l-3.1.1zM4.5 6.6.2 11.5c-.2.3-.2.7 0 .9l4.3 4.9c.1.1.2.1.3.1.1 0 .1-.1.1-.3V6.8c0-.2 0-.3-.1-.3 0 0-.1 0-.3.1z"></path>
     </g>
@@ -320,11 +320,11 @@ export const cash = (
     width="30"
     height="30"
     fill="green"
-    class="bi bi-cash-coin"
+    className="bi bi-cash-coin"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"
     />
     <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
@@ -339,7 +339,7 @@ export const credit = (
     width="30"
     height="30"
     fill="grey"
-    class="bi bi-credit-card"
+    className="bi bi-credit-card"
     viewBox="0 0 16 16"
   >
     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
@@ -353,7 +353,7 @@ export const info = (
     width="12"
     height="12"
     fill="currentColor"
-    class="bi bi-info-circle-fill"
+    className="bi bi-info-circle-fill"
     viewBox="0 0 16 16"
   >
     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
@@ -366,7 +366,7 @@ export const garage = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-car-front"
+    className="bi bi-car-front"
     viewBox="0 0 16 16"
   >
     <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17 1.247 0 2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276Z" />
@@ -380,7 +380,7 @@ export const heart = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-heart"
+    className="bi bi-heart"
     viewBox="0 0 16 16"
   >
     <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
@@ -393,7 +393,7 @@ export const garage1 = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-rocket"
+    className="bi bi-rocket"
     viewBox="0 0 16 16"
   >
     <path d="M8 8c.828 0 1.5-.895 1.5-2S8.828 4 8 4s-1.5.895-1.5 2S7.172 8 8 8Z" />
@@ -408,7 +408,7 @@ export const buskket = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-cart3"
+    className="bi bi-cart3"
     viewBox="0 0 16 16"
   >
     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
@@ -421,7 +421,7 @@ export const oil = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-database"
+    className="bi bi-database"
     viewBox="0 0 16 16"
   >
     <path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313ZM13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 5.698ZM14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13V4Zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 8.698Zm0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525Z" />
@@ -429,7 +429,7 @@ export const oil = (
 )
 
 export const hodova = (
-  <svg class="svg-icon" viewBox="0 0 20 20">
+  <svg className="svg-icon" viewBox="0 0 20 20">
     <path
       fill="currentColor"
       width="16"
@@ -451,7 +451,7 @@ export const search = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-search"
+    className="bi bi-search"
     viewBox="0 0 16 16"
   >
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -464,12 +464,12 @@ export const returning = (
     width="40"
     height="40"
     fill="currentColor"
-    class="bi bi-arrow-repeat"
+    className="bi bi-arrow-repeat"
     viewBox="0 0 16 16"
   >
     <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"
     />
   </svg>
@@ -481,7 +481,7 @@ export const retirning1 = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-repeat"
+    className="bi bi-repeat"
     viewBox="0 0 16 16"
   >
     <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z" />
@@ -494,7 +494,7 @@ export const box = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-check2-square"
+    className="bi bi-check2-square"
     viewBox="0 0 16 16"
   >
     <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
@@ -508,7 +508,7 @@ export const preorder = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-clock-history"
+    className="bi bi-clock-history"
     viewBox="0 0 16 16"
   >
     <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
@@ -539,15 +539,15 @@ export const rightArrow = (
     width="10"
     height="10"
     fill="currentColor"
-    class="bi bi-chevron-double-right"
+    className="bi bi-chevron-double-right"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"
     />
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"
     />
   </svg>
@@ -559,11 +559,11 @@ export const oeNumbers = (
     width="18"
     height="18"
     fill="currentColor"
-    class="bi bi-shuffle"
+    className="bi bi-shuffle"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"
     />
     <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
@@ -576,7 +576,7 @@ export const help = (
     width="18"
     height="18"
     fill="currentColor"
-    class="bi bi-person-raised-hand"
+    className="bi bi-person-raised-hand"
     viewBox="0 0 16 16"
   >
     <path d="M6 6.207v9.043a.75.75 0 0 0 1.5 0V10.5a.5.5 0 0 1 1 0v4.75a.75.75 0 0 0 1.5 0v-8.5a.25.25 0 1 1 .5 0v2.5a.75.75 0 0 0 1.5 0V6.5a3 3 0 0 0-3-3H6.236a.998.998 0 0 1-.447-.106l-.33-.165A.83.83 0 0 1 5 2.488V.75a.75.75 0 0 0-1.5 0v2.083c0 .715.404 1.37 1.044 1.689L5.5 5c.32.32.5.754.5 1.207Z" />
@@ -590,11 +590,11 @@ export const menuBurger = (
     width="30"
     height="30"
     fill="currentColor"
-    class="bi bi-list"
+    className="bi bi-list"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
     />
   </svg>
@@ -606,7 +606,7 @@ export const smallBuscet = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-cart3"
+    className="bi bi-cart3"
     viewBox="0 0 16 16"
     alt="buscet page"
   >
@@ -620,11 +620,11 @@ export const arrowLeft = (
     width="25"
     height="25"
     fill="currentColor"
-    class="bi bi-arrow-left"
+    className="bi bi-arrow-left"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
     />
   </svg>
@@ -636,11 +636,11 @@ export const box2 = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-box-seam-fill"
+    className="bi bi-box-seam-fill"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"
     />
   </svg>
@@ -652,7 +652,7 @@ export const box3 = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-box-seam"
+    className="bi bi-box-seam"
     viewBox="0 0 16 16"
   >
     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
@@ -665,7 +665,7 @@ export const arrowup = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-caret-up-fill"
+    className="bi bi-caret-up-fill"
     viewBox="0 0 16 16"
   >
     <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
@@ -678,7 +678,7 @@ export const arrowDown = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-caret-down-fill"
+    className="bi bi-caret-down-fill"
     viewBox="0 0 16 16"
   >
     <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -691,7 +691,7 @@ export const plusCircule = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-plus-circle"
+    className="bi bi-plus-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -705,7 +705,7 @@ export const minus = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-dash-circle"
+    className="bi bi-dash-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -719,7 +719,7 @@ export const gear = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-gear"
+    className="bi bi-gear"
     viewBox="0 0 16 16"
   >
     <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
@@ -733,11 +733,11 @@ export const onearrowright = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chevron-right"
+    className="bi bi-chevron-right"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
     />
   </svg>
@@ -749,7 +749,7 @@ export const infor = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-info-circle"
+    className="bi bi-info-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -763,7 +763,7 @@ export const chat = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chat-dots"
+    className="bi bi-chat-dots"
     viewBox="0 0 16 16"
   >
     <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
@@ -777,7 +777,7 @@ export const mail = (
     width="18"
     height="18"
     fill="currentColor"
-    class="bi bi-mailbox2-flag"
+    className="bi bi-mailbox2-flag"
     viewBox="0 0 16 16"
   >
     <path d="M10.5 8.5V3.707l.854-.853A.5.5 0 0 0 11.5 2.5v-2A.5.5 0 0 0 11 0H9.5a.5.5 0 0 0-.5.5v8h1.5Z" />
@@ -791,7 +791,7 @@ export const discbrake = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-disc"
+    className="bi bi-disc"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -805,15 +805,15 @@ export const droplet = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-droplet-half"
+    className="bi bi-droplet-half"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
     />
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"
     />
   </svg>
@@ -825,7 +825,7 @@ export const electric = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-ev-front"
+    className="bi bi-ev-front"
     viewBox="0 0 16 16"
   >
     <path d="M9.354 4.243a.188.188 0 0 0-.085-.218.186.186 0 0 0-.23.034L6.051 7.246a.188.188 0 0 0 .136.316h1.241l-.673 2.195a.188.188 0 0 0 .085.218c.075.043.17.03.23-.034l2.88-3.187a.188.188 0 0 0-.137-.316H8.572l.782-2.195Z" />
@@ -839,7 +839,7 @@ export const tiress = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-fan"
+    className="bi bi-fan"
     viewBox="0 0 16 16"
   >
     <path d="M10 3c0 1.313-.304 2.508-.8 3.4a1.991 1.991 0 0 0-1.484-.38c-.28-.982-.91-2.04-1.838-2.969a8.368 8.368 0 0 0-.491-.454A5.976 5.976 0 0 1 8 2c.691 0 1.355.117 1.973.332.018.219.027.442.027.668Zm0 5c0 .073-.004.146-.012.217 1.018-.019 2.2-.353 3.331-1.006a8.39 8.39 0 0 0 .57-.361 6.004 6.004 0 0 0-2.53-3.823 9.02 9.02 0 0 1-.145.64c-.34 1.269-.944 2.346-1.656 3.079.277.343.442.78.442 1.254Zm-.137.728a2.007 2.007 0 0 1-1.07 1.109c.525.87 1.405 1.725 2.535 2.377.2.116.402.222.605.317a5.986 5.986 0 0 0 2.053-4.111c-.208.073-.421.14-.641.199-1.264.339-2.493.356-3.482.11ZM8 10c-.45 0-.866-.149-1.2-.4-.494.89-.796 2.082-.796 3.391 0 .23.01.457.027.678A5.99 5.99 0 0 0 8 14c.94 0 1.83-.216 2.623-.602a8.359 8.359 0 0 1-.497-.458c-.925-.926-1.555-1.981-1.836-2.96-.094.013-.191.02-.29.02ZM6 8c0-.08.005-.16.014-.239-1.02.017-2.205.351-3.34 1.007a8.366 8.366 0 0 0-.568.359 6.003 6.003 0 0 0 2.525 3.839 8.37 8.37 0 0 1 .148-.653c.34-1.267.94-2.342 1.65-3.075A1.988 1.988 0 0 1 6 8Zm-3.347-.632c1.267-.34 2.498-.355 3.488-.107.196-.494.583-.89 1.07-1.1-.524-.874-1.406-1.733-2.541-2.388a8.363 8.363 0 0 0-.594-.312 5.987 5.987 0 0 0-2.06 4.106c.206-.074.418-.14.637-.199ZM8 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
@@ -853,7 +853,7 @@ export const hodovaa = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-gear-wide"
+    className="bi bi-gear-wide"
     viewBox="0 0 16 16"
   >
     <path d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 1 0-9.995 4.998 4.998 0 0 1 0 9.996z" />
@@ -866,12 +866,12 @@ export const accecories = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-speedometer"
+    className="bi bi-speedometer"
     viewBox="0 0 16 16"
   >
     <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"
     />
   </svg>
@@ -883,7 +883,7 @@ export const remni = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-command"
+    className="bi bi-command"
     viewBox="0 0 16 16"
   >
     <path d="M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3zM6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5H6zm4 1v4H6V6h4zm1-1V3.5A1.5 1.5 0 1 1 12.5 5H11zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5V11zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11H5z" />
@@ -896,7 +896,7 @@ export const kuzov = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-cone-striped"
+    className="bi bi-cone-striped"
     viewBox="0 0 16 16"
   >
     <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z" />
@@ -909,7 +909,7 @@ export const arrowRight = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-signpost-2"
+    className="bi bi-signpost-2"
     viewBox="0 0 16 16"
   >
     <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0zM13.5 3l.75 1-.75 1H2V3h11.5zm.5 5v2H2.5l-.75-1 .75-1H14z" />
@@ -922,11 +922,11 @@ export const coffe = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-cup-hot"
+    className="bi bi-cup-hot"
     viewBox="0 0 16 16"
   >
     <path
-      fill-rule="evenodd"
+      fillRule="evenodd"
       d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6H.5ZM13 12.5a2.01 2.01 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5ZM2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175Z"
     />
     <path d="m4.4.8-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 3.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8Zm3 0-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 6.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8Zm3 0-.003.004-.014.019a4.077 4.077 0 0 0-.204.31 2.337 2.337 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.198 3.198 0 0 1-.202.388 5.385 5.385 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 9.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8Z" />
@@ -939,7 +939,7 @@ export const list = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chat-right-text"
+    className="bi bi-chat-right-text"
     viewBox="0 0 16 16"
   >
     <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
@@ -953,7 +953,7 @@ export const checkbox1 = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-check-square"
+    className="bi bi-check-square"
     viewBox="0 0 16 16"
   >
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
@@ -967,7 +967,7 @@ export const sighn = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-exclamation-square"
+    className="bi bi-exclamation-square"
     viewBox="0 0 16 16"
   >
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
@@ -981,7 +981,7 @@ export const watch = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-stopwatch"
+    className="bi bi-stopwatch"
     viewBox="0 0 16 16"
   >
     <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
@@ -995,7 +995,7 @@ export const sadSmile = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-emoji-frown-fill"
+    className="bi bi-emoji-frown-fill"
     viewBox="0 0 16 16"
   >
     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z" />
@@ -1008,7 +1008,7 @@ export const question = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-question-square"
+    className="bi bi-question-square"
     viewBox="0 0 16 16"
   >
     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
@@ -1022,7 +1022,7 @@ export const info_circule = (
     width="18"
     height="18"
     fill="currentColor"
-    class="bi bi-info-circle"
+    className="bi bi-info-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -1036,7 +1036,7 @@ export const closeSvg = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-x-circle"
+    className="bi bi-x-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -1047,13 +1047,13 @@ export const closeSvg = (
 export const arrowRight1 = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
+    width="25"
+    height="25"
     fill="currentColor"
-    class="bi bi-caret-right-fill"
+    className="bi bi-dot"
     viewBox="0 0 16 16"
   >
-    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
   </svg>
 )
 
@@ -1063,7 +1063,7 @@ export const fireIgn = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-fire"
+    className="bi bi-fire"
     viewBox="0 0 16 16"
   >
     <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15" />
@@ -1076,7 +1076,7 @@ export const cancel = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-x-lg"
+    className="bi bi-x-lg"
     viewBox="0 0 16 16"
   >
     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
@@ -1089,7 +1089,7 @@ export const checkedCircule = (
     width="20"
     height="20"
     fill="currentColor"
-    class="bi bi-check-circle"
+    className="bi bi-check-circle"
     viewBox="0 0 16 16"
   >
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
@@ -1103,7 +1103,7 @@ export const tools = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-wrench-adjustable-circle"
+    className="bi bi-wrench-adjustable-circle"
     viewBox="0 0 16 16"
   >
     <path d="M12.496 8a4.5 4.5 0 0 1-1.703 3.526L9.497 8.5l2.959-1.11q.04.3.04.61" />
@@ -1117,7 +1117,7 @@ export const starReview = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-star-fill"
+    className="bi bi-star-fill"
     viewBox="0 0 16 16"
   >
     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -1130,7 +1130,7 @@ export const reviews = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chat-dots-fill"
+    className="bi bi-chat-dots-fill"
     viewBox="0 0 16 16"
   >
     <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
@@ -1143,7 +1143,7 @@ export const veryBad = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-1-circle"
+    className="bi bi-1-circle"
     viewBox="0 0 16 16"
   >
     <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383z" />
@@ -1156,7 +1156,7 @@ export const bad = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-2-circle"
+    className="bi bi-2-circle"
     viewBox="0 0 16 16"
   >
     <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306" />
@@ -1169,7 +1169,7 @@ export const normal = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-3-circle"
+    className="bi bi-3-circle"
     viewBox="0 0 16 16"
   >
     <path d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318" />
@@ -1183,7 +1183,7 @@ export const good = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-4-circle"
+    className="bi bi-4-circle"
     viewBox="0 0 16 16"
   >
     <path d="M7.519 5.057q.33-.527.657-1.055h1.933v5.332h1.008v1.107H10.11V12H8.85v-1.559H4.978V9.322c.77-1.427 1.656-2.847 2.542-4.265ZM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218" />
@@ -1197,7 +1197,7 @@ export const veryGood = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-5-circle"
+    className="bi bi-5-circle"
     viewBox="0 0 16 16"
   >
     <path d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m15 0A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-8.006 4.158c-1.57 0-2.654-.902-2.719-2.115h1.237c.14.72.832 1.031 1.529 1.031.791 0 1.57-.597 1.57-1.681 0-.967-.732-1.57-1.582-1.57-.767 0-1.242.45-1.435.808H5.445L5.791 4h4.705v1.103H6.875l-.193 2.343h.064c.17-.258.715-.68 1.611-.68 1.383 0 2.561.944 2.561 2.585 0 1.687-1.184 2.806-2.924 2.806Z" />
@@ -1210,7 +1210,7 @@ export const instagram = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-instagram"
+    className="bi bi-instagram"
     viewBox="0 0 16 16"
   >
     <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
@@ -1223,7 +1223,7 @@ export const articles = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-chat-right-quote"
+    className="bi bi-chat-right-quote"
     viewBox="0 0 16 16"
   >
     <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" />
@@ -1237,7 +1237,7 @@ export const flag = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-book"
+    className="bi bi-book"
     viewBox="0 0 16 16"
   >
     <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
@@ -1250,10 +1250,438 @@ export const discriptionIcon = (
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-card-text"
+    className="bi bi-card-text"
     viewBox="0 0 16 16"
   >
     <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
     <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
+  </svg>
+)
+
+export const carIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-car-front-fill"
+    viewBox="0 0 16 16"
+  >
+    <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17s3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
+  </svg>
+)
+
+export const edit = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-pencil-square"
+    viewBox="0 0 16 16"
+  >
+    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+    <path
+      fillRule="evenodd"
+      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+    />
+  </svg>
+)
+
+export const check = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-check-all"
+    viewBox="0 0 16 16"
+  >
+    <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z" />
+  </svg>
+)
+
+export const attention = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-exclamation-triangle"
+    viewBox="0 0 16 16"
+  >
+    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+  </svg>
+)
+
+export const quesion = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-question-circle"
+    viewBox="0 0 16 16"
+  >
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+    <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+  </svg>
+)
+
+export const exitIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    fill="currentColor"
+    className="bi bi-x-lg"
+    viewBox="0 0 16 16"
+  >
+    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+  </svg>
+)
+
+export const alerting = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-exclamation-triangle"
+    viewBox="0 0 16 16"
+  >
+    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z" />
+    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+  </svg>
+)
+
+export const checked = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-check-lg"
+    viewBox="0 0 16 16"
+  >
+    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+  </svg>
+)
+
+export const arrrowDown = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M2 7L12 17L22 7" stroke="currentColor" strokeWidth="2" />
+  </svg>
+)
+
+export const carChoosed = (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#ED6430" />
+    <path
+      d="M9 14L10.5 9.5H21.5L23 14M21.5 19C21.1022 19 20.7206 18.842 20.4393 18.5607C20.158 18.2794 20 17.8978 20 17.5C20 17.1022 20.158 16.7206 20.4393 16.4393C20.7206 16.158 21.1022 16 21.5 16C21.8978 16 22.2794 16.158 22.5607 16.4393C22.842 16.7206 23 17.1022 23 17.5C23 17.8978 22.842 18.2794 22.5607 18.5607C22.2794 18.842 21.8978 19 21.5 19ZM10.5 19C10.1022 19 9.72064 18.842 9.43934 18.5607C9.15804 18.2794 9 17.8978 9 17.5C9 17.1022 9.15804 16.7206 9.43934 16.4393C9.72064 16.158 10.1022 16 10.5 16C10.8978 16 11.2794 16.158 11.5607 16.4393C11.842 16.7206 12 17.1022 12 17.5C12 17.8978 11.842 18.2794 11.5607 18.5607C11.2794 18.842 10.8978 19 10.5 19ZM22.92 9C22.72 8.42 22.16 8 21.5 8H10.5C9.84 8 9.28 8.42 9.08 9L7 15V23C7 23.2652 7.10536 23.5196 7.29289 23.7071C7.48043 23.8946 7.73478 24 8 24H9C9.26522 24 9.51957 23.8946 9.70711 23.7071C9.89464 23.5196 10 23.2652 10 23V22H22V23C22 23.2652 22.1054 23.5196 22.2929 23.7071C22.4804 23.8946 22.7348 24 23 24H24C24.2652 24 24.5196 23.8946 24.7071 23.7071C24.8946 23.5196 25 23.2652 25 23V15L22.92 9Z"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const changeCar = (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M22.52 20.6666L24.4133 22.5199C25.6133 20.9732 26.3467 19.1866 26.5733 17.3333H23.88C23.6933 18.4933 23.24 19.6266 22.52 20.6666ZM17.3333 23.8666V26.5599C19.1867 26.3333 20.9867 25.6132 22.5333 24.4132L20.6133 22.4933C19.6133 23.2133 18.4933 23.6799 17.3333 23.8666ZM26.5733 14.6666C26.3467 12.8133 25.6133 11.0266 24.4133 9.47992L22.52 11.3733C23.24 12.3733 23.6933 13.5066 23.88 14.6666M20.7333 7.39992L14.6667 1.33325V5.42659C9.41333 6.07992 5.33333 10.5599 5.33333 15.9999C5.33333 21.4399 9.39999 25.9199 14.6667 26.5733V23.8799C10.88 23.2399 7.99999 19.9599 7.99999 15.9999C7.99999 12.0399 10.88 8.75992 14.6667 8.11992V13.3333L20.7333 7.39992Z"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const heartIcon = (
+  <svg
+    width="28"
+    height="25"
+    viewBox="0 0 28 25"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14.1334 20.7333L14.0001 20.8667L13.8534 20.7333C7.52008 14.9867 3.33341 11.1867 3.33341 7.33333C3.33341 4.66667 5.33342 2.66667 8.00008 2.66667C10.0534 2.66667 12.0534 4 12.7601 5.81333H15.2401C15.9467 4 17.9467 2.66667 20.0001 2.66667C22.6667 2.66667 24.6667 4.66667 24.6667 7.33333C24.6667 11.1867 20.4801 14.9867 14.1334 20.7333ZM20.0001 0C17.6801 0 15.4534 1.08 14.0001 2.77333C12.5467 1.08 10.3201 0 8.00008 0C3.89341 0 0.666748 3.21333 0.666748 7.33333C0.666748 12.36 5.20008 16.48 12.0667 22.7067L14.0001 24.4667L15.9334 22.7067C22.8001 16.48 27.3334 12.36 27.3334 7.33333C27.3334 3.21333 24.1067 0 20.0001 0Z"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const newBuscetIcon = (
+  <svg
+    width="45"
+    height="45"
+    viewBox="0 0 45 45"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M33.1637 32.3341H15.3829C14.4701 32.3341 13.651 31.8159 13.2451 30.9822C12.8388 30.1478 12.9276 29.1665 13.4775 28.4217L15.0987 26.2253C15.279 25.9805 15.6197 25.9328 15.8583 26.117C16.0972 26.3014 16.1449 26.6495 15.9642 26.8941L14.343 29.0904C14.0386 29.5031 13.9909 30.0255 14.2159 30.4877C14.4406 30.9493 14.8771 31.2245 15.3829 31.2245H33.1637C33.463 31.2245 33.7061 31.4732 33.7061 31.7794C33.7061 32.0853 33.4633 32.3341 33.1637 32.3341Z"
+      fill="white"
+    />
+    <path
+      d="M28.0053 27.1558H15.3851C15.1476 27.1558 14.9384 26.9989 14.8721 26.7712L10.9048 13.1291C10.6626 12.2963 9.98428 11.6697 9.13451 11.4936L6.51384 10.95C6.2249 10.8902 6.03918 10.6081 6.09951 10.3195C6.1594 10.0312 6.44123 9.84548 6.73101 9.90595L9.35147 10.4493C10.5895 10.7054 11.578 11.6187 11.9308 12.8314L11.9866 13.0243L33.089 12.8456H33.1092C33.9256 12.8456 34.6651 13.2603 35.0906 13.9578C35.5196 14.6608 35.5459 15.5153 35.1617 16.2437L30.0585 25.9184C29.6558 26.6816 28.8691 27.1558 28.0053 27.1558ZM15.7855 26.0889H28.0053C28.4713 26.0889 28.896 25.833 29.1134 25.4209L34.2166 15.7468C34.4241 15.3536 34.4097 14.8925 34.1781 14.5129C33.9467 14.1335 33.558 13.9121 33.0982 13.913L12.2958 14.0883L15.7855 26.0889Z"
+      fill="white"
+    />
+    <path
+      d="M13.2451 30.9822L14.1442 30.5445L14.1442 30.5444L13.2451 30.9822ZM13.4775 28.4217L12.6729 27.8278L12.6729 27.8278L13.4775 28.4217ZM15.0987 26.2253L15.9033 26.8192L15.904 26.8182L15.0987 26.2253ZM15.8583 26.117L16.4694 25.3254L16.4693 25.3254L15.8583 26.117ZM15.9642 26.8941L15.1599 26.2998L15.1597 26.3002L15.9642 26.8941ZM14.343 29.0904L13.5384 28.4965L13.5381 28.4969L14.343 29.0904ZM14.2159 30.4877L13.3167 30.9253L13.3168 30.9255L14.2159 30.4877ZM14.8721 26.7712L13.9118 27.0505L13.912 27.051L14.8721 26.7712ZM10.9048 13.1291L9.94454 13.4083L9.94454 13.4083L10.9048 13.1291ZM9.13451 11.4936L8.93142 12.4728L8.93163 12.4728L9.13451 11.4936ZM6.51384 10.95L6.71693 9.97088L6.71658 9.9708L6.51384 10.95ZM6.09951 10.3195L7.07834 10.5242L7.07861 10.5229L6.09951 10.3195ZM6.73101 9.90595L6.52674 10.8849L6.52798 10.8851L6.73101 9.90595ZM9.35147 10.4493L9.14844 11.4285L9.14892 11.4286L9.35147 10.4493ZM11.9308 12.8314L12.8914 12.5534L12.891 12.5522L11.9308 12.8314ZM11.9866 13.0243L11.026 13.3023L11.2368 14.0306L11.995 14.0242L11.9866 13.0243ZM33.089 12.8456V11.8456L33.0805 11.8457L33.089 12.8456ZM35.0906 13.9578L34.237 14.4786L34.237 14.4786L35.0906 13.9578ZM35.1617 16.2437L36.0462 16.7103L36.0463 16.7102L35.1617 16.2437ZM30.0585 25.9184L30.943 26.385L30.943 26.3849L30.0585 25.9184ZM15.7855 26.0889L14.8253 26.3681L15.0349 27.0889H15.7855V26.0889ZM29.1134 25.4209L29.9978 25.8876L29.9979 25.8875L29.1134 25.4209ZM34.2166 15.7468L33.3322 15.2801L33.3322 15.2802L34.2166 15.7468ZM34.1781 14.5129L33.3243 15.0337L33.3245 15.0338L34.1781 14.5129ZM33.0982 13.913L33.0964 12.9129L33.0898 12.913L33.0982 13.913ZM12.2958 14.0883L12.2874 13.0884L10.9669 13.0995L11.3356 14.3676L12.2958 14.0883ZM33.1637 31.3341H15.3829V33.3341H33.1637V31.3341ZM15.3829 31.3341C14.8606 31.3341 14.3861 31.0414 14.1442 30.5445L12.346 31.4199C12.9158 32.5905 14.0797 33.3341 15.3829 33.3341V31.3341ZM14.1442 30.5444C13.9002 30.0434 13.9541 29.4598 14.282 29.0156L12.6729 27.8278C11.9011 28.8733 11.7774 30.2522 12.346 31.42L14.1442 30.5444ZM14.282 29.0156L15.9033 26.8192L14.2942 25.6314L12.6729 27.8278L14.282 29.0156ZM15.904 26.8182C15.7532 27.023 15.4551 27.069 15.2473 26.9086L16.4693 25.3254C15.7842 24.7966 14.8048 24.9379 14.2934 25.6324L15.904 26.8182ZM15.2473 26.9086C15.0513 26.7573 15.0205 26.4885 15.1599 26.2998L16.7685 27.4883C17.2694 26.8104 17.1432 25.8456 16.4694 25.3254L15.2473 26.9086ZM15.1597 26.3002L13.5384 28.4965L15.1475 29.6843L16.7688 27.488L15.1597 26.3002ZM13.5381 28.4969C13.0126 29.2096 12.9293 30.1292 13.3167 30.9253L15.115 30.0502C15.0526 29.9218 15.0646 29.7967 15.1478 29.6839L13.5381 28.4969ZM13.3168 30.9255C13.7061 31.7251 14.488 32.2245 15.3829 32.2245V30.2245C15.2661 30.2245 15.175 30.1734 15.115 30.05L13.3168 30.9255ZM15.3829 32.2245H33.1637V30.2245H15.3829V32.2245ZM33.1637 32.2245C32.8894 32.2245 32.7061 32.0039 32.7061 31.7794H34.7061C34.7061 30.9425 34.0366 30.2245 33.1637 30.2245V32.2245ZM32.7061 31.7794C32.7061 31.5548 32.8894 31.3341 33.1637 31.3341V33.3341C34.0371 33.3341 34.7061 32.6158 34.7061 31.7794H32.7061ZM28.0053 26.1558H15.3851V28.1558H28.0053V26.1558ZM15.3851 26.1558C15.5916 26.1558 15.7739 26.2918 15.8321 26.4914L13.912 27.051C14.1029 27.706 14.7037 28.1558 15.3851 28.1558V26.1558ZM15.8323 26.492L11.865 12.8498L9.94454 13.4083L13.9118 27.0505L15.8323 26.492ZM11.865 12.8498C11.5193 11.6612 10.5494 10.7655 9.3374 10.5144L8.93163 12.4728C9.41915 12.5738 9.80585 12.9314 9.94454 13.4083L11.865 12.8498ZM9.33761 10.5144L6.71693 9.97088L6.31075 11.9292L8.93142 12.4728L9.33761 10.5144ZM6.71658 9.9708C6.96665 10.0226 7.13173 10.2689 7.07834 10.5242L5.12067 10.1149C4.94662 10.9473 5.48316 11.7579 6.3111 11.9293L6.71658 9.9708ZM7.07861 10.5229C7.02633 10.7746 6.77899 10.9375 6.52674 10.8849L6.93529 8.92704C6.10347 8.75346 5.29248 9.28777 5.12041 10.1162L7.07861 10.5229ZM6.52798 10.8851L9.14844 11.4285L9.5545 9.47014L6.93405 8.92678L6.52798 10.8851ZM9.14892 11.4286C10.0244 11.6097 10.7213 12.2538 10.9706 13.1107L12.891 12.5522C12.4348 10.9836 11.1545 9.80109 9.55402 9.47004L9.14892 11.4286ZM10.9702 13.1095L11.026 13.3023L12.9472 12.7462L12.8914 12.5534L10.9702 13.1095ZM11.995 14.0242L33.0975 13.8456L33.0805 11.8457L11.9781 12.0243L11.995 14.0242ZM33.089 13.8456H33.1092V11.8456H33.089V13.8456ZM33.1092 13.8456C33.5772 13.8456 33.9931 14.0789 34.237 14.4786L35.9443 13.4369C35.3371 12.4417 34.2741 11.8456 33.1092 11.8456V13.8456ZM34.237 14.4786C34.4823 14.8806 34.4972 15.36 34.2772 15.7772L36.0463 16.7102C36.5946 15.6706 36.557 14.441 35.9443 13.4369L34.237 14.4786ZM34.2772 15.7772L29.174 25.4518L30.943 26.3849L36.0462 16.7103L34.2772 15.7772ZM29.1741 25.4517C28.9447 25.8865 28.4986 26.1558 28.0053 26.1558V28.1558C29.2396 28.1558 30.367 27.4767 30.943 26.385L29.1741 25.4517ZM15.7855 27.0889H28.0053V25.0889H15.7855V27.0889ZM28.0053 27.0889C28.8419 27.0889 29.6071 26.628 29.9978 25.8876L28.229 24.9542C28.1848 25.038 28.1008 25.0889 28.0053 25.0889V27.0889ZM29.9979 25.8875L35.1011 16.2134L33.3322 15.2802L28.2289 24.9543L29.9979 25.8875ZM35.101 16.2135C35.4731 15.5086 35.4468 14.6722 35.0317 13.992L33.3245 15.0338C33.3726 15.1127 33.3752 15.1987 33.3322 15.2801L35.101 16.2135ZM35.0318 13.9922C34.6179 13.3137 33.9044 12.9115 33.0964 12.913L33.1 14.913C33.2115 14.9128 33.2754 14.9534 33.3243 15.0337L35.0318 13.9922ZM33.0898 12.913L12.2874 13.0884L12.3043 15.0883L33.1066 14.9129L33.0898 12.913ZM11.3356 14.3676L14.8253 26.3681L16.7458 25.8096L13.2561 13.8091L11.3356 14.3676Z"
+      fill="white"
+    />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M27.7777 34.4548C27.7777 32.6131 29.2752 31.1157 31.117 31.1157C32.9587 31.1157 34.4561 32.6131 34.4561 34.4548C34.4561 36.2966 32.9587 37.7941 31.117 37.7941C29.2751 37.7941 27.7777 36.2967 27.7777 34.4548ZM31.117 33.6594C30.6789 33.6594 30.3214 34.0168 30.3214 34.4548C30.3214 34.8927 30.6791 35.2504 31.117 35.2504C31.5548 35.2504 31.9124 34.8929 31.9124 34.4548C31.9124 34.0167 31.555 33.6594 31.117 33.6594Z"
+      fill="white"
+    />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M11.6672 34.4548C11.6672 32.6131 13.1646 31.1157 15.0064 31.1157C16.8482 31.1157 18.3456 32.6131 18.3456 34.4548C18.3456 36.2967 16.8483 37.7941 15.0064 37.7941C13.1646 37.7941 11.6672 36.2967 11.6672 34.4548ZM15.0064 33.6594C14.5684 33.6594 14.2109 34.0168 14.2109 34.4548C14.2109 34.8928 14.5685 35.2504 15.0064 35.2504C15.4443 35.2504 15.8019 34.8928 15.8019 34.4548C15.8019 34.0168 15.4445 33.6594 15.0064 33.6594Z"
+      fill="white"
+    />
+  </svg>
+)
+
+export const reviewChat = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9 22C8.73478 22 8.48043 21.8946 8.29289 21.7071C8.10536 21.5196 8 21.2652 8 21V18H4C3.46957 18 2.96086 17.7893 2.58579 17.4142C2.21071 17.0391 2 16.5304 2 16V4C2 2.89 2.9 2 4 2H20C20.5304 2 21.0391 2.21071 21.4142 2.58579C21.7893 2.96086 22 3.46957 22 4V16C22 16.5304 21.7893 17.0391 21.4142 17.4142C21.0391 17.7893 20.5304 18 20 18H13.9L10.2 21.71C10 21.9 9.75 22 9.5 22H9ZM5 5V7H19V5H5ZM5 9V11H13V9H5ZM5 13V15H15V13H5Z"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const starNew = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.62L12 2L9.19 8.62L2 9.24L7.45 13.97L5.82 21L12 17.27Z"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const notFilledStar = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12 15.39L8.24 17.66L9.23 13.38L5.91 10.5L10.29 10.13L12 6.09L13.71 10.13L18.09 10.5L14.77 13.38L15.76 17.66M22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.45 13.97L5.82 21L12 17.27L18.18 21L16.54 13.97L22 9.24Z"
+      fill="currentColor"
+    />
+  </svg>
+
+  //#ED6430
+)
+
+export const reply = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16 15.2L16 14.3L14.3 14C11.7 13.6 9.8 12.6 8.4 11.3C10.1 11.8 11.9 12.1 14 12.1L16 12.1L16 10.8L18.2 13L16 15.2ZM14 20L21 13L14 6L14 10.1C9 10.1 5.5 8.5 3 5C4 10 7 15 14 16"
+      fill="#C2C2C2"
+    />
+  </svg>
+)
+
+export const colorReply = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16 15.2L16 14.3L14.3 14C11.7 13.6 9.8 12.6 8.4 11.3C10.1 11.8 11.9 12.1 14 12.1L16 12.1L16 10.8L18.2 13L16 15.2ZM14 20L21 13L14 6L14 10.1C9 10.1 5.5 8.5 3 5C4 10 7 15 14 16"
+      fill="#ED6430"
+    />
+  </svg>
+)
+
+export const doesNotFit = (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="31"
+      height="31"
+      rx="6.5"
+      fill="#FF3B3B"
+      stroke="white"
+    />
+    <path
+      d="M9 14L10.5 9.5H21.5L23 14M21.5 19C21.1022 19 20.7206 18.842 20.4393 18.5607C20.158 18.2794 20 17.8978 20 17.5C20 17.1022 20.158 16.7206 20.4393 16.4393C20.7206 16.158 21.1022 16 21.5 16C21.8978 16 22.2794 16.158 22.5607 16.4393C22.842 16.7206 23 17.1022 23 17.5C23 17.8978 22.842 18.2794 22.5607 18.5607C22.2794 18.842 21.8978 19 21.5 19ZM10.5 19C10.1022 19 9.72064 18.842 9.43934 18.5607C9.15804 18.2794 9 17.8978 9 17.5C9 17.1022 9.15804 16.7206 9.43934 16.4393C9.72064 16.158 10.1022 16 10.5 16C10.8978 16 11.2794 16.158 11.5607 16.4393C11.842 16.7206 12 17.1022 12 17.5C12 17.8978 11.842 18.2794 11.5607 18.5607C11.2794 18.842 10.8978 19 10.5 19ZM22.92 9C22.72 8.42 22.16 8 21.5 8H10.5C9.84 8 9.28 8.42 9.08 9L7 15V23C7 23.2652 7.10536 23.5196 7.29289 23.7071C7.48043 23.8946 7.73478 24 8 24H9C9.26522 24 9.51957 23.8946 9.70711 23.7071C9.89464 23.5196 10 23.2652 10 23V22H22V23C22 23.2652 22.1054 23.5196 22.2929 23.7071C22.4804 23.8946 22.7348 24 23 24H24C24.2652 24 24.5196 23.8946 24.7071 23.7071C24.8946 23.5196 25 23.2652 25 23V15L22.92 9Z"
+      fill="white"
+    />
+    <circle cx="22" cy="20" r="6" fill="white" />
+    <path
+      d="M22 27.5C26.165 27.5 29.5 24.165 29.5 20C29.5 15.835 26.165 12.5 22 12.5C17.835 12.5 14.5 15.835 14.5 20C14.5 24.165 17.835 27.5 22 27.5ZM17.8333 20C17.8333 19.4593 17.9334 18.9515 18.1154 18.5025L23.4975 23.8846C23.0485 24.0666 22.5407 24.1667 22 24.1667C19.6939 24.1667 17.8333 22.3061 17.8333 20ZM22 15.8333C24.3061 15.8333 26.1667 17.6939 26.1667 20C26.1667 20.5407 26.0666 21.0485 25.8846 21.4975L20.5025 16.1154C20.9515 15.9334 21.4593 15.8333 22 15.8333Z"
+      fill="#FF3B3B"
+      stroke="white"
+    />
+  </svg>
+)
+
+export const circuleDoesNotFit = (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="27"
+      height="27"
+      rx="13.5"
+      fill="#FF3B3B"
+      stroke="white"
+    />
+    <path
+      d="M7 12L8.5 7.5H19.5L21 12M19.5 17C19.1022 17 18.7206 16.842 18.4393 16.5607C18.158 16.2794 18 15.8978 18 15.5C18 15.1022 18.158 14.7206 18.4393 14.4393C18.7206 14.158 19.1022 14 19.5 14C19.8978 14 20.2794 14.158 20.5607 14.4393C20.842 14.7206 21 15.1022 21 15.5C21 15.8978 20.842 16.2794 20.5607 16.5607C20.2794 16.842 19.8978 17 19.5 17ZM8.5 17C8.10218 17 7.72064 16.842 7.43934 16.5607C7.15804 16.2794 7 15.8978 7 15.5C7 15.1022 7.15804 14.7206 7.43934 14.4393C7.72064 14.158 8.10218 14 8.5 14C8.89782 14 9.27936 14.158 9.56066 14.4393C9.84196 14.7206 10 15.1022 10 15.5C10 15.8978 9.84196 16.2794 9.56066 16.5607C9.27936 16.842 8.89782 17 8.5 17ZM20.92 7C20.72 6.42 20.16 6 19.5 6H8.5C7.84 6 7.28 6.42 7.08 7L5 13V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22H7C7.26522 22 7.51957 21.8946 7.70711 21.7071C7.89464 21.5196 8 21.2652 8 21V20H20V21C20 21.2652 20.1054 21.5196 20.2929 21.7071C20.4804 21.8946 20.7348 22 21 22H22C22.2652 22 22.5196 21.8946 22.7071 21.7071C22.8946 21.5196 23 21.2652 23 21V13L20.92 7Z"
+      fill="white"
+    />
+    <circle cx="20" cy="18" r="6" fill="white" />
+    <path
+      d="M20 25.5C24.165 25.5 27.5 22.165 27.5 18C27.5 13.835 24.165 10.5 20 10.5C15.835 10.5 12.5 13.835 12.5 18C12.5 22.165 15.835 25.5 20 25.5ZM15.8333 18C15.8333 17.4593 15.9334 16.9515 16.1154 16.5025L21.4975 21.8846C21.0485 22.0666 20.5407 22.1667 20 22.1667C17.6939 22.1667 15.8333 20.3061 15.8333 18ZM20 13.8333C22.3061 13.8333 24.1667 15.6939 24.1667 18C24.1667 18.5407 24.0666 19.0485 23.8846 19.4975L18.5025 14.1154C18.9515 13.9334 19.4593 13.8333 20 13.8333Z"
+      fill="#FF3B3B"
+      stroke="white"
+    />
+  </svg>
+)
+
+export const fitsIndicator = (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="31"
+      height="31"
+      rx="6.5"
+      fill="#00AF5B"
+      stroke="white"
+    />
+    <path
+      d="M9 14L10.5 9.5H21.5L23 14M21.5 19C21.1022 19 20.7206 18.842 20.4393 18.5607C20.158 18.2794 20 17.8978 20 17.5C20 17.1022 20.158 16.7206 20.4393 16.4393C20.7206 16.158 21.1022 16 21.5 16C21.8978 16 22.2794 16.158 22.5607 16.4393C22.842 16.7206 23 17.1022 23 17.5C23 17.8978 22.842 18.2794 22.5607 18.5607C22.2794 18.842 21.8978 19 21.5 19ZM10.5 19C10.1022 19 9.72064 18.842 9.43934 18.5607C9.15804 18.2794 9 17.8978 9 17.5C9 17.1022 9.15804 16.7206 9.43934 16.4393C9.72064 16.158 10.1022 16 10.5 16C10.8978 16 11.2794 16.158 11.5607 16.4393C11.842 16.7206 12 17.1022 12 17.5C12 17.8978 11.842 18.2794 11.5607 18.5607C11.2794 18.842 10.8978 19 10.5 19ZM22.92 9C22.72 8.42 22.16 8 21.5 8H10.5C9.84 8 9.28 8.42 9.08 9L7 15V23C7 23.2652 7.10536 23.5196 7.29289 23.7071C7.48043 23.8946 7.73478 24 8 24H9C9.26522 24 9.51957 23.8946 9.70711 23.7071C9.89464 23.5196 10 23.2652 10 23V22H22V23C22 23.2652 22.1054 23.5196 22.2929 23.7071C22.4804 23.8946 22.7348 24 23 24H24C24.2652 24 24.5196 23.8946 24.7071 23.7071C24.8946 23.5196 25 23.2652 25 23V15L22.92 9Z"
+      fill="white"
+    />
+    <path
+      d="M14.6464 18.1509L14.3052 18.4921L14.6342 18.8452L19.7532 24.3401L20.1064 24.7192L20.4727 24.3528L28.8536 15.97L29.1743 15.6492L28.8861 15.2988L27.1452 13.1824L26.7951 12.7567L26.4055 13.1465L20.1191 19.4345L17.0945 16.4097L16.7409 16.0561L16.3874 16.4097L14.6464 18.1509Z"
+      fill="#00AF5B"
+      stroke="white"
+    />
+  </svg>
+)
+
+export const fitsInCircule = (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="0.5"
+      width="27"
+      height="27"
+      rx="13.5"
+      fill="#00AF5B"
+      stroke="white"
+    />
+    <path
+      d="M7 12L8.5 7.5H19.5L21 12M19.5 17C19.1022 17 18.7206 16.842 18.4393 16.5607C18.158 16.2794 18 15.8978 18 15.5C18 15.1022 18.158 14.7206 18.4393 14.4393C18.7206 14.158 19.1022 14 19.5 14C19.8978 14 20.2794 14.158 20.5607 14.4393C20.842 14.7206 21 15.1022 21 15.5C21 15.8978 20.842 16.2794 20.5607 16.5607C20.2794 16.842 19.8978 17 19.5 17ZM8.5 17C8.10218 17 7.72064 16.842 7.43934 16.5607C7.15804 16.2794 7 15.8978 7 15.5C7 15.1022 7.15804 14.7206 7.43934 14.4393C7.72064 14.158 8.10218 14 8.5 14C8.89782 14 9.27936 14.158 9.56066 14.4393C9.84196 14.7206 10 15.1022 10 15.5C10 15.8978 9.84196 16.2794 9.56066 16.5607C9.27936 16.842 8.89782 17 8.5 17ZM20.92 7C20.72 6.42 20.16 6 19.5 6H8.5C7.84 6 7.28 6.42 7.08 7L5 13V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22H7C7.26522 22 7.51957 21.8946 7.70711 21.7071C7.89464 21.5196 8 21.2652 8 21V20H20V21C20 21.2652 20.1054 21.5196 20.2929 21.7071C20.4804 21.8946 20.7348 22 21 22H22C22.2652 22 22.5196 21.8946 22.7071 21.7071C22.8946 21.5196 23 21.2652 23 21V13L20.92 7Z"
+      fill="white"
+    />
+    <path
+      d="M12.6464 16.1509L12.3052 16.4921L12.6342 16.8452L17.7532 22.3401L18.1064 22.7192L18.4727 22.3528L26.8536 13.97L27.1743 13.6492L26.8861 13.2988L25.1452 11.1824L24.7951 10.7567L24.4055 11.1465L18.1191 17.4345L15.0945 14.4097L14.7409 14.0561L14.3874 14.4097L12.6464 16.1509Z"
+      fill="#00AF5B"
+      stroke="white"
+    />
+  </svg>
+)
+
+export const orderIcon = (
+  <svg
+    width="26"
+    height="26"
+    viewBox="0 0 26 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M9.1 26C8.75522 26 8.42456 25.863 8.18076 25.6192C7.93696 25.3754 7.8 25.0448 7.8 24.7V20.8H2.6C1.91044 20.8 1.24912 20.5261 0.761522 20.0385C0.273928 19.5509 0 18.8896 0 18.2V2.6C0 1.157 1.17 0 2.6 0H23.4C24.0896 0 24.7509 0.273928 25.2385 0.761522C25.7261 1.24912 26 1.91044 26 2.6V18.2C26 18.8896 25.7261 19.5509 25.2385 20.0385C24.7509 20.5261 24.0896 20.8 23.4 20.8H15.47L10.66 25.623C10.4 25.87 10.075 26 9.75 26H9.1ZM10.4 18.2V22.204L14.404 18.2H23.4V2.6H2.6V18.2H10.4ZM5.2 6.5H20.8V9.1H5.2V6.5ZM5.2 11.7H16.9V14.3H5.2V11.7Z"
+      fill="white"
+    />
+  </svg>
+)
+
+export const attentionIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-exclamation-diamond"
+    viewBox="0 0 16 16"
+  >
+    <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z" />
+    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
   </svg>
 )

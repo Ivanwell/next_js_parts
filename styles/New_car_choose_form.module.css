@@ -1,0 +1,380 @@
+.main_container_for_serach {
+  background: rgba(246, 246, 246, 1);
+  height: 90px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.search_form {
+  border: rgba(237, 100, 48, 1) 2px solid;
+  border-radius: 28px;
+  height: 56px;
+  width: 78%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search_form_choosed {
+  border: rgba(192, 192, 192, 1) 1px solid;
+  border-radius: 28px;
+  height: 56px;
+  width: 78%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search_form_edit {
+  border: rgba(237, 100, 48, 1) 2px solid;
+  border-radius: 28px;
+  height: 56px;
+  width: 78%;
+  max-width: 78%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 13% 29% 29% 29%;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_form_edit svg {
+  margin-left: 14px;
+  width: 32px;
+  height: 32px;
+  margin-right: 14px;
+}
+
+.choosen_car_return_cont {
+  display: flex;
+  padding-right: 28px;
+  align-items: center;
+  gap: 10px;
+}
+
+.choosen_car_return_cont span {
+  color: rgba(237, 100, 48, 1);
+  font-size: 18px;
+}
+
+.choosen_car_return_cont svg {
+  width: 32px;
+  height: 32px;
+  margin-right: 0;
+}
+
+.cont_text_and_arrow {
+  display: flex;
+  align-items: center;
+  text-indent: 0px;
+  background: none;
+  width: 100%;
+  justify-content: start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.name_of_fieled {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.name_of_fieled_orange {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(237, 100, 48, 1);
+}
+
+.cont_text_and_arrow svg {
+  width: 15px;
+  height: 15px;
+  color: rgba(29, 41, 46, 1);
+  margin: 0;
+}
+
+.container_for_text_search {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  width: 100%;
+  text-indent: 38px;
+}
+
+.container_for_text_search_edit {
+  display: flex;
+  gap: 10px;
+}
+
+.search_form .container_for_text_search h2 {
+  color: rgba(237, 100, 48, 1);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.search_form .container_for_text_search h3 {
+  font-size: 13px;
+  color: rgba(136, 136, 136, 1);
+  font-weight: 400;
+  text-indent: 0px;
+  letter-spacing: 0.2px;
+}
+
+.container_for_text_search_edit h3 {
+  max-width: 90%;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.container_for_text_search_edit h3 svg {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.search_form > svg {
+  margin-right: 28px;
+  transition: 0.2s;
+}
+
+.whole_container_for_search {
+  position: absolute;
+  width: 79%;
+  max-width: 79%;
+  top: 80px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  border: rgba(187, 187, 187, 1) 1px solid;
+  padding: 15px 30px 15px 30px;
+}
+
+.search_input_cont {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px rgba(187, 187, 187, 1) solid;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+
+.title_search {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.search_input_cont input {
+  width: 300px;
+  border: rgba(237, 100, 48, 1) 2px solid;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 18px;
+  text-indent: 20px;
+  color: rgba(237, 100, 48, 1);
+}
+
+.search_input_cont input:focus {
+  outline: none;
+}
+
+.cont_for_brands_etc {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.brands_column {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 19px;
+  gap: 7px;
+  width: 100%;
+  text-align: left;
+  padding-right: 30px;
+}
+
+.brands_column li {
+  color: rgba(136, 136, 136, 1);
+  cursor: pointer;
+  transition: 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.brands_column li:hover {
+  color: rgba(29, 41, 46, 1);
+  font-weight: 450;
+}
+
+.name_of_choosen_car {
+  font-size: 18px;
+}
+
+.choosen_car_text_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 14px;
+  gap: 10px;
+}
+
+.choosen_car_text_icon svg {
+  margin: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.loading_brands_process {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  padding-top: 20px;
+}
+
+.main_container_for_search_mobile {
+  width: 100%;
+  background-color: rgba(245, 245, 245, 1);
+  height: 93px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search_box_mobile {
+  background-color: white;
+  width: 100%;
+  height: 63px;
+  border-radius: 18px;
+  border: rgba(237, 100, 48, 1) 2px solid;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search_title {
+  color: rgba(237, 100, 48, 1);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.search_description {
+  color: rgba(136, 136, 136, 1);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+@media all and (max-width: 600px) {
+  .whole_container_for_search {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    top: 80px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: rgba(187, 187, 187, 1) 1px solid;
+    padding: 10px 25px 10px 25px;
+    height: 70vh;
+  }
+
+  .cont_for_brands_etc {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    overflow: hidden;
+    overflow: auto;
+  }
+
+  .search_box_mobile_edit {
+    background-color: white;
+    width: 100%;
+    height: 63px;
+    border-radius: 18px;
+    border: rgba(237, 100, 48, 1) 2px solid;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .car_name_cont {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 15px;
+  }
+
+  .row_brand_model {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .edit_mode_arrow {
+    display: flex;
+    gap: 5px;
+    color: rgba(237, 100, 48, 1);
+    align-items: center;
+  }
+
+  .edit_mode_arrow svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .change_auto_icon_cont {
+    display: flex;
+    align-items: center;
+  }
+
+  .row_brand_model span {
+    max-width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .engine_choosen_title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 5%;
+  }
+}

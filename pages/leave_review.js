@@ -13,19 +13,23 @@ const LeaveReview = () => {
 
   const uploadReview = async e => {
     e.preventDefault()
-    let token = await fetch('https://update.bayrakparts.com/add_review', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        review: {
-          name: name,
-          stars: stars,
-          message: message,
+    let token = await fetch(
+      // 'https://update.bayrakparts.com/add_review',
+      'https://api.bayrakparts.com/api/info/add_review',
+      {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    })
+        method: 'POST',
+        body: JSON.stringify({
+          review: {
+            name: name,
+            stars: stars,
+            message: message,
+          },
+        }),
+      }
+    )
     const res = await token.json()
     if (res === 'success') {
       setSuccess(true)
@@ -92,8 +96,8 @@ const LeaveReview = () => {
             <div className={styles.description_request}>
               3. Оцініть нашу роботу по шкалі від 1 до 5
             </div>
-            <div class={styles.container}>
-              <div class={styles.container__items}>
+            <div className={styles.container}>
+              <div className={styles.container__items}>
                 <input
                   type="radio"
                   name="stars"
@@ -101,8 +105,8 @@ const LeaveReview = () => {
                   onClick={e => setStars(5)}
                 />
                 <label for="st5">
-                  <div class={styles.star_stroke}>
-                    <div class={styles.star_fill}></div>
+                  <div className={styles.star_stroke}>
+                    <div className={styles.star_fill}></div>
                   </div>
                 </label>
                 <input
@@ -112,8 +116,8 @@ const LeaveReview = () => {
                   onClick={e => setStars(4)}
                 />
                 <label for="st4">
-                  <div class={styles.star_stroke}>
-                    <div class={styles.star_fill}></div>
+                  <div className={styles.star_stroke}>
+                    <div className={styles.star_fill}></div>
                   </div>
                 </label>
                 <input
@@ -123,8 +127,8 @@ const LeaveReview = () => {
                   onClick={e => setStars(3)}
                 />
                 <label for="st3">
-                  <div class={styles.star_stroke}>
-                    <div class={styles.star_fill}></div>
+                  <div className={styles.star_stroke}>
+                    <div className={styles.star_fill}></div>
                   </div>
                 </label>
                 <input
@@ -134,8 +138,8 @@ const LeaveReview = () => {
                   onClick={e => setStars(2)}
                 />
                 <label for="st2">
-                  <div class={styles.star_stroke}>
-                    <div class={styles.star_fill}></div>
+                  <div className={styles.star_stroke}>
+                    <div className={styles.star_fill}></div>
                   </div>
                 </label>
                 <input
@@ -145,8 +149,8 @@ const LeaveReview = () => {
                   onClick={e => setStars(1)}
                 />
                 <label for="st1">
-                  <div class={styles.star_stroke}>
-                    <div class={styles.star_fill}></div>
+                  <div className={styles.star_stroke}>
+                    <div className={styles.star_fill}></div>
                   </div>
                 </label>
               </div>

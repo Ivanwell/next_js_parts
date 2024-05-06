@@ -14,8 +14,11 @@ const NewFooter = () => {
       <div className={styles.whole_footer_container}>
         <ul className={styles.cont_for_partners}>
           <label className={styles.column_name}>Наші партнери</label>
-          <div class="pro-seller-label-banner"></div>
-          <a href="https://avtopro.ua/catalog/" class="pro-seller-label-anchor">
+          <div className="pro-seller-label-banner"></div>
+          <a
+            href="https://avtopro.ua/catalog/"
+            className="pro-seller-label-anchor"
+          >
             Автопро - маркетплейс запчастей
           </a>
         </ul>
@@ -25,7 +28,7 @@ const NewFooter = () => {
             <Link href="/aboutus">Коротко про нашу компанію</Link>
           </li>
           <li className={styles.column_link}>
-            <Link href="/newcontacts">Як з нами зв'язатись?</Link>
+            <Link href="/contacts">Як з нами зв'язатись?</Link>
           </li>
           <li className={styles.column_link}>
             <Link href="/leave_request">Залишити заявку</Link>
@@ -79,11 +82,14 @@ const NewFooter = () => {
         </a>
         <div className={styles.footer_row}>{mail}office@bayrakparts.com</div>
         <label className={styles.column_name}>Наші партнери</label>
-        <div class="pro-seller-label-banner"></div>
-        <a href="https://avtopro.ua/catalog/" class="pro-seller-label-anchor">
+        <div className="pro-seller-label-banner"></div>
+        <a
+          href="https://avtopro.ua/catalog/"
+          className="pro-seller-label-anchor"
+        >
           Автопро - маркетплейс запчастей
         </a>
-        <span>© 2023 Всі права захищено</span>
+        <span>© 2024 Всі права захищено</span>
       </div>
     </footer>
   )

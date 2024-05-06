@@ -3,21 +3,10 @@ import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
 const CategoryInMain = () => {
-  const globalEngine = useSelector(
-    state => state.dataSelectscartReducer.value.engine
+  const query = useSelector(
+    state => state.dataSelectscartReducer.value.selectedCar
   )
 
-  const globalBrand = useSelector(
-    state => state.dataSelectscartReducer.value.globalBrand
-  )
-  const globalModel = useSelector(
-    state => state.dataSelectscartReducer.value.globalModel
-  )
-
-  let query = ''
-  if (globalBrand && globalModel && globalEngine) {
-    query = `?brand=${globalBrand}&model=${globalModel}&engine=${globalEngine}`
-  }
   return (
     <div className={styles.container_for_items_row}>
       <Link
