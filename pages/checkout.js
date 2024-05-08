@@ -248,7 +248,7 @@ const CheckOut = () => {
         {sumury1.length === 0 ? (
           <div className={styles.page_container}>
             <div className={styles.cart_container}>
-              <h1>Жодного товару не обрано</h1>
+              <h1>Жодного товару не обрано!</h1>
             </div>
           </div>
         ) : (
@@ -262,7 +262,7 @@ const CheckOut = () => {
                   submitOrder(e)
                 }}
               >
-                <h1>Ваше замовлення</h1>
+                <h1>Ваше замовлення!</h1>
 
                 {sumury1.map(item => (
                   <div className={styles.list_of_products}>
