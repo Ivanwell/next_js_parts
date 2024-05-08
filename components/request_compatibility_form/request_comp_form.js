@@ -63,9 +63,12 @@ const RequestCompatibilityFrom = ({ article, brand }) => {
         </h2>
         {arrrowDown}
       </div>
-      <label className={styles.vin_label}>Вінкод автомобіля:</label>
+      <label for="vin" className={styles.vin_label}>
+        Вінкод автомобіля:
+      </label>
       <input
         className={styles.vin_input}
+        id="vin"
         value={vin}
         onChange={e => setVin(e.target.value)}
         required
@@ -74,10 +77,13 @@ const RequestCompatibilityFrom = ({ article, brand }) => {
       <span className={styles.vin_explanation}>
         Вінкод знаходиться у свідоцтві про реєстрацію або у додатку "ДІЯ"
       </span>
-      <label className={styles.vin_label}>Ваші контакти:</label>
+      <label for="name" className={styles.vin_label}>
+        Ваші контакти:
+      </label>
       <div className={styles.row_for_input_name_and_phone}>
         <input
           placeholder="Ім'я"
+          id="name"
           value={name}
           onChange={e => setName(e.target.value)}
           required

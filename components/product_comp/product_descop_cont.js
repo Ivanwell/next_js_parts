@@ -28,7 +28,7 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
         ) : fitsLocal === 'true' ? (
           <div className={styles.fits_indicator_near_img}>{fitsIndicator}</div>
         ) : null}
-        <img src={img} alt={title} />
+        <img src={img} alt={title} loading="lazy" />
       </div>
       <div className={styles.product_info_container}>
         <h1>

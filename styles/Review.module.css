@@ -282,7 +282,7 @@
   justify-content: space-between;
 }
 
-.row_for_name_and_input span {
+.row_for_name_and_input label {
   width: 30%;
   font-size: 16px;
   font-weight: 400;

@@ -65,7 +65,7 @@ const LeaveReviewBox = ({ article, brand }) => {
         {openLeaveReview ? (
           <form className={styles.review_box_container} onSubmit={uploadReview}>
             <div className={styles.row_for_name_and_input}>
-              <span>Ваше ім'я:</span>
+              <label>Ваше ім'я:</label>
               <input
                 required
                 value={name}
@@ -74,9 +74,9 @@ const LeaveReviewBox = ({ article, brand }) => {
               />
             </div>
             <div className={styles.row_for_name_and_input}>
-              <span className={noStarSeted ? styles.red : styles.ordinary}>
+              <label className={noStarSeted ? styles.red : styles.ordinary}>
                 Ваше оцінка:
-              </span>
+              </label>
               <div className={styles.stars_container}>
                 <div
                   className={star ? styles.not_filled_star : styles.grey_star}
@@ -125,7 +125,7 @@ const LeaveReviewBox = ({ article, brand }) => {
               </div>
             </div>
             <div className={styles.row_for_name_and_input}>
-              <span className={styles.text_area_title}>Ваш відгук:</span>
+              <label className={styles.text_area_title}>Ваш відгук:</label>
               <textarea
                 required
                 value={message}

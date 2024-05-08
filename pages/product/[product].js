@@ -207,6 +207,11 @@ export const getServerSideProps = async ({ req, params }) => {
     unicTitle: body?.product.unicTitle || null,
     reviews: body?.product.reviews || null,
     categoryName: body.product.categoryName || null,
+    mobileImage: body.product.image.includes('cdn.bm.parts')
+      ? body.product.image.slice(0, 26) +
+        's/320x320/' +
+        body.product.image.slice(26)
+      : null,
   }
 
   return {

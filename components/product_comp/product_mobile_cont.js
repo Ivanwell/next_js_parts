@@ -18,7 +18,7 @@ const Product_in_mobile = ({ fitsLocal, fullPath, item }) => {
     dispatch(adddToCart(newItem))
   }
 
-  const { img, title, brandName, article, price, lvivStock, discription } = item
+  const { img, title, brandName, article, price, lvivStock, mobileImage } = item
 
   return (
     <div className={styles.product_container_mobile}>
@@ -33,7 +33,7 @@ const Product_in_mobile = ({ fitsLocal, fullPath, item }) => {
             {fitsIndicator}
           </div>
         ) : null}
-        <img src={img} alt={title} />
+        <img src={mobileImage || img} alt={title} loading="lazy" />
       </div>
       <h1>
         {title} - {brandName} {article}
