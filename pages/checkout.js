@@ -199,7 +199,7 @@ const CheckOut = () => {
     })
     fetch(
       `https://api.telegram.org/bot6173056848:'${
-        process.env.NEXT_VERCEL_TOKEN_TELEGRAM
+        process.env.NEXT_PUBLIC_VERCEL_ENV_TELEGRAM_TOKEN
       }'/sendMessage?chat_id=@edetalRequests&text=Нове замовлення ${orderNumber} BayrakParts! ${
         city + ' ' + department + ' ' + pib + ' ' + phone + ' ' + articlesToSend
       }`
