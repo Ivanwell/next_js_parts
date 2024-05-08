@@ -110,7 +110,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
             <LinksHistory />
             <DesctopProdcutCont
               fitsLocal={fitsLocal}
-              fullPath={cat.fullPath}
+              fullPath={cat?.fullPath || null}
               item={item}
             />
           </div>
@@ -139,7 +139,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
           <LinksHistory />
           <Product_in_mobile
             fitsLocal={fitsLocal}
-            fullPath={cat.fullPath}
+            fullPath={cat?.fullPath || null}
             item={item}
           />
           {item.discription ? (

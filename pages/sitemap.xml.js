@@ -48,6 +48,9 @@ function generateSiteMap() {
     <sitemap>
       <loc>https://bayrakparts.com/sitemap-7.xml</loc>
     </sitemap>
+    <sitemap>
+      <loc>https://bayrakparts.com/sitemap-8.xml</loc>
+    </sitemap>
   </sitemapindex>
  `
 }
