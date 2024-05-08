@@ -198,7 +198,9 @@ const CheckOut = () => {
       },
     })
     fetch(
-      `https://api.telegram.org/bot6173056848:AAE0eviFsiQtx0CWxEJyBizEdl_zhaJ0P1w/sendMessage?chat_id=@edetalRequests&text=Нове замовлення ${orderNumber} BayrakParts! ${
+      `https://api.telegram.org/bot6173056848:${
+        process.env.TOKEN_TELEGRAM
+      }/sendMessage?chat_id=@edetalRequests&text=Нове замовлення ${orderNumber} BayrakParts! ${
         city + ' ' + department + ' ' + pib + ' ' + phone + ' ' + articlesToSend
       }`
     )
