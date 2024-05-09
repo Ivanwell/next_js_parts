@@ -57,9 +57,6 @@ const CheckOut = () => {
 
       const apiCall = async () => {
         try {
-          const data = {
-            city1: city,
-          }
           const res = await fetch(
             `https://api.bayrakparts.com/api/info/get_cities?city=${city}`,
             {
@@ -69,7 +66,7 @@ const CheckOut = () => {
           )
 
           const body = await res.json()
-          setCities(body.data[0]?.Addresses)
+          setCities(body)
           setVisibility(true)
         } catch (error) {
           if (!signal?.aborted) {
@@ -105,9 +102,9 @@ const CheckOut = () => {
 
           const body = await res.json()
 
-          setDepartments(body.data)
-          if (body.data.length === 1) {
-            setDepartment(body.data[0].Description)
+          setDepartments(body)
+          if (body.length === 1) {
+            setDepartment(body[0].department)
           }
         } catch (error) {
           if (!signal?.aborted) {
@@ -337,63 +334,6 @@ const CheckOut = () => {
                         {deliveryType === 'Curier' ? checkedCircule : null}
                       </div>
                     </div>
-                    {/* <div className={styles.contaiern_for_inputs_row}>
-                      <div className={styles.contaiern_for_input_row}>
-                        <label>Місто</label>
-                        <input
-                          className={styles.new_post_input_city}
-                          value={city}
-                          onChange={e => setCity(e.target.value)}
-                          required
-                        ></input>
-                        {!visibility ? null : (
-                          <div className={styles.fetched_cities}>
-                            {cities?.map(city => (
-                              <span
-                                className={styles.fetched_city}
-                                onClick={() =>
-                                  chooseCity(city.Present, city.DeliveryCity)
-                                }
-                              >
-                                {city.Present}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                      {deliveryType === 'Newpost' ? (
-                        <div className={styles.contaiern_for_input_row}>
-                          <label>Відділення</label>
-
-                          <select
-                            className={styles.new_post_input_city}
-                            value={department}
-                            onChange={e => chooseDepartment(e)}
-                          >
-                            {loadingDepartments === true ? (
-                              <option className={styles.loading}>
-                                Завантажуємо відділення...
-                              </option>
-                            ) : (
-                              departments.map(city => (
-                                <option>{city.Description}</option>
-                              ))
-                            )}
-                          </select>
-                        </div>
-                      ) : (
-                        <div className={styles.contaiern_for_input_row}>
-                          <label>Вулиця/ Будинок/ Квартира</label>
-
-                          <input
-                            className={styles.new_post_input_city}
-                            value={department}
-                            onChange={e => setDepartment(e.target.value)}
-                            required
-                          />
-                        </div>
-                      )}
-                    </div> */}
                     <h2 className={styles.titles_in_card}>
                       Місто та відділення
                     </h2>
@@ -415,11 +355,9 @@ const CheckOut = () => {
                             {cities?.map(city => (
                               <span
                                 className={styles.fetched_city}
-                                onClick={() =>
-                                  chooseCity(city.Present, city.DeliveryCity)
-                                }
+                                onClick={() => chooseCity(city.city, city.id)}
                               >
-                                {city.Present}
+                                {city.city}
                               </span>
                             ))}
                           </div>
@@ -437,7 +375,7 @@ const CheckOut = () => {
                             </option>
                           ) : (
                             departments.map(city => (
-                              <option>{city.Description}</option>
+                              <option>{city.department}</option>
                             ))
                           )}
                         </select>
