@@ -104,16 +104,17 @@ const CheckOut = () => {
           )
 
           const body = await res.json()
-          setLoadingDepartments(false)
+
           setDepartments(body.data)
           if (body.data.length === 1) {
             setDepartment(body.data[0].Description)
           }
         } catch (error) {
           if (!signal?.aborted) {
-            setLoadingDepartments(false)
             console.error(error)
           }
+        } finally {
+          setLoadingDepartments(false)
         }
       }
 
