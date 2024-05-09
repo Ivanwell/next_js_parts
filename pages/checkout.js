@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import styles from '../styles/Checkout.module.css'
 import * as ga from '../components/lib/gtag'
 import {
@@ -29,9 +28,6 @@ const Spiner = () => {
 }
 
 const CheckOut = () => {
-  const router = useRouter()
-  const { asPath } = useRouter()
-
   const sumury1 = useSelector(state => state.cartReducer.value.list)
   const sumury2 = useSelector(state => state.cartReducer.value.sum)
 
@@ -47,10 +43,6 @@ const CheckOut = () => {
   const [loading, setLoading] = useState(false)
   const [deliveryType, setDeliveryType] = useState('Newpost')
   const [paymentType, setPaymentType] = useState('Cash')
-
-  const articlesToSend = `Артикули : ${sumury1.map(
-    product => `${product.article + 'к-сть : ' + product.quantity} `
-  )}`
 
   useEffect(() => {
     if (city.length < 3) {
@@ -69,9 +61,7 @@ const CheckOut = () => {
             city1: city,
           }
           const res = await fetch(
-            `https://api.bonapart.pro/novaposhta?city1=${encodeURIComponent(
-              data.city1
-            )}`,
+            `https://api.bayrakparts.com/api/info/get_cities?city=${city}`,
             {
               method: 'GET',
               signal: signal,
@@ -105,14 +95,8 @@ const CheckOut = () => {
       const { signal } = abortController
       const apiCall = async () => {
         try {
-          const data = {
-            city1: choosenCity,
-          }
-
           const res = await fetch(
-            `https://api.bonapart.pro/novaposhtadepartments?city1=${encodeURIComponent(
-              data.city1
-            )}`,
+            `https://api.bayrakparts.com/api/info/get_departments?cityref=${choosenCity}`,
             {
               method: 'GET',
               signal: signal,
@@ -144,72 +128,39 @@ const CheckOut = () => {
   const submitOrder = async e => {
     e.preventDefault()
     setLoading(true)
-    const date = new Date()
-    const year = date.getFullYear()
-    let month = date.getMonth() + 1
-    if (month < 10) {
-      month = `0${month}`
-    }
-    let day = date.getDate()
-    if (day < 10) {
-      day = `0${day}`
-    }
-    const hour = date.getHours()
-    let minutes = date.getMinutes()
-    if (minutes < 10) {
-      minutes = `0${minutes}`
-    }
 
-    const finalDate = `${day}.${month}.${year}, ${hour}:${minutes}`
-
-    let userId = 'Роздрібний клієнт'
-
-    const res = await fetch(`https://api.bonapart.pro/getOrders`, {
-      method: 'GET',
-    })
-
-    const body = await res.json()
-    const orderNumber = +body[body.length - 1].order_id + 1
-    let token = await fetch('https://api.bonapart.pro/create_order_status', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        order_id: orderNumber,
-        status: 'Замовлення створене, та ще не обробилось нашою системою',
-        lastUpdateTime: finalDate,
-        createdTime: finalDate,
-        order_items: sumury1,
-        items_amount: sumury1,
-        delivery_info: {
-          city: city,
-          department: department,
-          pib: pib,
-          phone: phone,
+    let request = await fetch(
+      'https://api.bayrakparts.com/api/info/create_order',
+      {
+        headers: {
+          'Content-Type': 'application/json',
         },
-        user_id: userId,
-      }),
-    })
+        method: 'POST',
+        body: JSON.stringify({
+          products: sumury1,
+          delivery: {
+            city: city,
+            department: department,
+            pib: pib,
+            phone: phone,
+          },
+        }),
+      }
+    )
+
+    const orderNumber = await request.json()
+
     ga.event({
       action: 'purchase',
-      params: {
-        page_location: `https://www.bayrakparts.com${asPath}`,
-      },
     })
-    fetch(
-      `https://api.telegram.org/bot6173056848:${
-        process.env.NEXT_PUBLIC_VERCEL_ENV_TELEGRAM_TOKEN
-      }/sendMessage?chat_id=@edetalRequests&text=Нове замовлення ${orderNumber} BayrakParts! ${
-        city + ' ' + department + ' ' + pib + ' ' + phone + ' ' + articlesToSend
-      }`
-    )
+
     dispatch(deleteAllItems())
     setLoading(false)
-    router.push(
-      { pathname: '/thankyou_for_order', query: { orderNumber: orderNumber } },
-      'thankyou_for_order'
-    )
+    console.log(orderNumber)
+    // router.push(
+    //   { pathname: '/thankyou_for_order', query: { orderNumber: orderNumber } },
+    //   'thankyou_for_order'
+    // )
   }
 
   const chooseCity = async (choosencity, cityref) => {
