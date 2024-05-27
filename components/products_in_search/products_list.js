@@ -2,13 +2,12 @@ import styles from '../../styles/Product_list.module.css'
 import Pagination from '../pagination_in_search/pagination'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { showFullImage } from '@/global_state/features/cart_redux'
 import LinksHistory from '../link_history_in_product/link_history_in_product'
 import Product_in_search_mobile from '../product_comp/product_in_search_mobile'
 import No_products_found from './no_products_found'
 import One_product_in_search from './one_product_in_search'
 
-const ProductsList = ({ productData, amount, finalTitle, fits }) => {
+const ProductsList = ({ productData, fits, amount }) => {
   const router = useRouter()
   const linkQuery = useSelector(
     state => state.dataSelectscartReducer.value.selectedCar
@@ -42,6 +41,7 @@ const ProductsList = ({ productData, amount, finalTitle, fits }) => {
           <No_products_found />
         )}
       </div>
+      <Pagination amount={amount} />
     </div>
   )
 }

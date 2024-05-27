@@ -1,20 +1,15 @@
 import '../styles/globals.css'
-import Preloader from '@/components/preloader'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
-import dynamic from 'next/dynamic'
+import { SessionProvider } from 'next-auth/react'
 import Layout from '@/components/layout/layout'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps: { session, ...pageProps } }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-
-  // const DynamicHeader = dynamic(() => import('@/components/layout/layout'), {
-  //   loading: () => <Preloader />,
-  // })
 
   const handleStart = url => {
     setLoading(true)
@@ -46,37 +41,23 @@ function App({ Component, pageProps }) {
     }
   }, [router.events])
 
-  // const [showChild, setShowChild] = useState(false)
-
-  // useEffect(() => {
-  //   setShowChild(true)
-  // }, [])
-
-  // if (!showChild) {
-  //   return null
-  // }
-
-  // if (typeof window === 'undefined') {
-  //   return <h1>Завантаження</h1>
-  // } else
-
   return (
-    //     <DynamicHeader>
-    <Layout>
-      <>
-        {loading === false ? (
-          <>
-            <Component {...pageProps} />
-            <SpeedInsights />
-          </>
-        ) : (
-          <h1 className="loading_spinner">
-            <div className="lds-dual-ring"></div>
-          </h1>
-        )}
-      </>
-    </Layout>
-    //    </DynamicHeader>
+    <SessionProvider session={session}>
+      <Layout>
+        <>
+          {loading === false ? (
+            <>
+              <Component {...pageProps} />
+              <SpeedInsights />
+            </>
+          ) : (
+            <h1 className="loading_spinner">
+              <div className="lds-dual-ring"></div>
+            </h1>
+          )}
+        </>
+      </Layout>
+    </SessionProvider>
   )
 }
 

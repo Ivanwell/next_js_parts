@@ -1,6 +1,5 @@
 import styles from '../../styles/Pagination.module.css'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
 import Link from 'next/link'
 
 const LinkNextPagination = ({ activeIndex }) => {
@@ -22,7 +21,9 @@ const LinkPrevPagination = ({ activeIndex }) => {
 
   const next = '<'
 
-  let link = `${asPath.split('?')[0]}?page=${+activeIndex - 1}`
+  let link = `${asPath.split('?')[0]}?page=${
+    +activeIndex - 1 === 0 ? '1' : +activeIndex - 1
+  }`
 
   return (
     <Link className={styles.link_component} href={link}>
@@ -66,81 +67,105 @@ const Pagination = ({ amount }) => {
   const paginationArr = Array.from(Array(totalLinks), (_, i) => i + 1)
 
   return (
-    <div className={styles.pagination_cont}>
-      {paginationArr.length < 8 ? (
-        <>
-          {paginationArr.map(link => {
-            return <LinkPagination index={link} activeIndex={activeIndex} />
-          })}
-        </>
-      ) : (
-        <>
-          <LinkPrevPagination activeIndex={activeIndex} />
-          <LinkPagination index={1} activeIndex={activeIndex} />
-          {+activeIndex == 1 ? (
+    <>
+      {paginationArr.length > 0 ? (
+        <div className={styles.pagination_cont}>
+          {paginationArr.length < 8 ? (
             <>
-              {paginationArr.slice(1, +activeIndex + 2).map(link => {
+              {paginationArr.map(link => {
                 return <LinkPagination index={link} activeIndex={activeIndex} />
               })}
-              ....
-            </>
-          ) : +activeIndex == 2 || +activeIndex == 3 ? (
-            <>
-              {paginationArr.slice(1, +activeIndex + 1).map(link => {
-                return <LinkPagination index={link} activeIndex={activeIndex} />
-              })}
-              ....
-            </>
-          ) : +activeIndex == paginationArr.length ? (
-            <>
-              ....
-              {paginationArr
-                .slice(+activeIndex - 4, +activeIndex - 1)
-                .map(link => {
-                  return (
-                    <LinkPagination index={link} activeIndex={activeIndex} />
-                  )
-                })}
-            </>
-          ) : +activeIndex == paginationArr.length - 1 ? (
-            <>
-              ....
-              {paginationArr.slice(+activeIndex - 3, +activeIndex).map(link => {
-                return <LinkPagination index={link} activeIndex={activeIndex} />
-              })}
-            </>
-          ) : +activeIndex == paginationArr.length - 2 ? (
-            <>
-              ....
-              {paginationArr
-                .slice(+activeIndex - 2, +activeIndex + 1)
-                .map(link => {
-                  return (
-                    <LinkPagination index={link} activeIndex={activeIndex} />
-                  )
-                })}
             </>
           ) : (
             <>
-              ....
-              {paginationArr
-                .slice(+activeIndex - 2, +activeIndex + 1)
-                .map(link => {
-                  return (
-                    <LinkPagination index={link} activeIndex={activeIndex} />
-                  )
-                })}
-              ....
+              <LinkPrevPagination activeIndex={activeIndex} />
+              <LinkPagination index={1} activeIndex={activeIndex} />
+              {+activeIndex == 1 ? (
+                <>
+                  {paginationArr.slice(1, +activeIndex + 2).map(link => {
+                    return (
+                      <LinkPagination index={link} activeIndex={activeIndex} />
+                    )
+                  })}
+                  ....
+                </>
+              ) : +activeIndex == 2 || +activeIndex == 3 ? (
+                <>
+                  {paginationArr.slice(1, +activeIndex + 1).map(link => {
+                    return (
+                      <LinkPagination index={link} activeIndex={activeIndex} />
+                    )
+                  })}
+                  ....
+                </>
+              ) : +activeIndex == paginationArr.length ? (
+                <>
+                  ....
+                  {paginationArr
+                    .slice(+activeIndex - 4, +activeIndex - 1)
+                    .map(link => {
+                      return (
+                        <LinkPagination
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
+                </>
+              ) : +activeIndex == paginationArr.length - 1 ? (
+                <>
+                  ....
+                  {paginationArr
+                    .slice(+activeIndex - 3, +activeIndex)
+                    .map(link => {
+                      return (
+                        <LinkPagination
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
+                </>
+              ) : +activeIndex == paginationArr.length - 2 ? (
+                <>
+                  ....
+                  {paginationArr
+                    .slice(+activeIndex - 2, +activeIndex + 1)
+                    .map(link => {
+                      return (
+                        <LinkPagination
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
+                </>
+              ) : (
+                <>
+                  ....
+                  {paginationArr
+                    .slice(+activeIndex - 2, +activeIndex + 1)
+                    .map(link => {
+                      return (
+                        <LinkPagination
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
+                  ....
+                </>
+              )}
+              <LinkPagination
+                index={paginationArr.length}
+                activeIndex={activeIndex}
+              />
+              <LinkNextPagination activeIndex={activeIndex} />
             </>
           )}
-          <LinkPagination
-            index={paginationArr.length}
-            activeIndex={activeIndex}
-          />
-          <LinkNextPagination activeIndex={activeIndex} />
-        </>
-      )}
-    </div>
+        </div>
+      ) : null}
+    </>
   )
 }
 

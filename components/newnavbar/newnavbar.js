@@ -35,6 +35,7 @@ import {
 } from '@/global_state/features/cart_redux'
 import { useDispatch } from 'react-redux'
 import New_car_choose_form from '../choose_car_form/new_choose_car_form'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 function NewNavbar() {
   const dispatch = useDispatch()
@@ -60,33 +61,12 @@ function NewNavbar() {
 
   const router = useRouter()
 
-  const searchInStock = async e => {
-    e.preventDefault()
-    setLoading(true)
-    const res = await fetch(
-      `https://backend.bayrakparts.com/get_item_info/${article
-        .replace(/[- ./]/g, '')
-        .toUpperCase()}`,
-      {
-        method: 'GET',
-      }
-    )
-
-    const body = await res.json()
-    if (body) {
-      router.push(`/product/${body.link[0].link}`)
-    } else {
-      setNoResults(true)
-    }
-    setLoading(false)
-  }
-
   const searchInStockWithDiffBrands = async e => {
     e.preventDefault()
     setNoResults(false)
     setLoading(true)
     const res = await fetch(
-      `https://backend.bayrakparts.com/get_items_info/${article
+      `https://api.bayrakparts.com/api/info/get_products?article=${article
         .replace(/[- ./]/g, '')
         .toUpperCase()}`,
       {
@@ -95,11 +75,12 @@ function NewNavbar() {
     )
 
     const body = await res.json()
-    if (body && body.length === 1) {
-      router.push(`/product/${body[0].link[0].link}${linkQuery}`)
+
+    if (body.products && body.products.length === 1) {
+      router.push(`/product/${body.products[0].link[0].link}${linkQuery}`)
     } else {
-      if (body.length > 1) {
-        setManyBrands(body)
+      if (body.products.length > 1) {
+        setManyBrands(body.products)
       } else {
         setNoResults(true)
       }
@@ -210,8 +191,9 @@ function NewNavbar() {
       {manyBrands ? (
         <div className={styles.many_brands}>
           <div>Оберіть бренд</div>
-          {manyBrands.map(brand => (
+          {manyBrands.map((brand, index) => (
             <Link
+              key={`brands${index}`}
               onClick={() => setManyBrands(null)}
               href={`/product/${brand.link[0]?.link}`}
             >

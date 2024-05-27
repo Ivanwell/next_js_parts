@@ -13,23 +13,19 @@ const LeaveReview = () => {
 
   const uploadReview = async e => {
     e.preventDefault()
-    let token = await fetch(
-      // 'https://update.bayrakparts.com/add_review',
-      'https://api.bayrakparts.com/api/info/add_review',
-      {
-        headers: {
-          'Content-Type': 'application/json',
+    let token = await fetch('https://api.bayrakparts.com/api/info/add_review', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        review: {
+          name: name,
+          stars: stars,
+          message: message,
         },
-        method: 'POST',
-        body: JSON.stringify({
-          review: {
-            name: name,
-            stars: stars,
-            message: message,
-          },
-        }),
-      }
-    )
+      }),
+    })
     const res = await token.json()
     if (res === 'success') {
       setSuccess(true)

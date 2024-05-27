@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import styles from '../../styles/Product_list.module.css'
 import Link from 'next/link'
 import SuitabilityContainer from '../suitability_container/suitability_container'
+import { showFullImage } from '@/global_state/features/cart_redux'
 import {
   heartIcon,
   fitsIndicator,
@@ -22,7 +23,17 @@ const One_product_in_search = ({ product, fits, linkQuery }) => {
         {fits === 'true' ? (
           <div className={styles.fit_indicator}>{fitsIndicator}</div>
         ) : null}
-        <img src={product.image} alt={product.title} loading="lazy" />
+        <img
+          src={
+            product.image.includes('cdn.bm.parts')
+              ? product.image.slice(0, 26) +
+                's/320x320/' +
+                product.image.slice(26)
+              : product.image
+          }
+          alt={product.title}
+          loading="lazy"
+        />
       </div>
       <div className={styles.title_and_compatibility}>
         <Link href={link}>
