@@ -1,7 +1,7 @@
 import styles from '../../styles/Product.module.css'
 import LinksHistory from '@/components/link_history_in_product/link_history_in_product'
 import { useDispatch } from 'react-redux'
-import { changeLinkPath, setFits } from '@/global_state/features/cardata_redux'
+import { changeLinkPath } from '@/global_state/features/cardata_redux'
 import ReviewProductNew from '@/components/review_in_product_new/review_in_product'
 import LeaveReviewBox from '@/components/review_in_product_new/leave_review_box'
 import RequestCompatibilityFrom from '@/components/request_compatibility_form/request_comp_form'
