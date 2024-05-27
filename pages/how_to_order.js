@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const HowToOrder = () => {
+  console.log('how to order')
   const router = useRouter()
   const [name, setName] = useState('')
   const [part, setPart] = useState('')
