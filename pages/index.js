@@ -39,13 +39,11 @@ const NewMainPage = () => {
 
   useEffect(() => {
     dispatch(changeLinkPath(null))
-    //dispatch(setFits(false))
     const abortController = new AbortController()
     const { signal } = abortController
     const getReviews = async () => {
       try {
         const res = await fetch(
-          // `https://update.bayrakparts.com/getReviews?step=${pageReview}`,
           `https://api.bayrakparts.com/api/info/get_reviews?step=${pageReview}`,
           {
             method: 'GET',
@@ -98,7 +96,7 @@ const NewMainPage = () => {
       />
 
       <div className={styles.container_for_brands}>
-        <h2>Популярні категорії</h2>
+        <h1>Автозапчастини до Вашого авто</h1>
         <CategoryInMain />
         <div className={styles.categories_in_mobile_only}>
           <h2>Інші категорії</h2>

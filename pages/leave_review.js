@@ -1,8 +1,5 @@
 import styles from '../styles/Contacts.module.css'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { starReview } from '@/components/SVGs/SVGs'
-import * as ga from '../components/lib/gtag'
 import Head from 'next/head'
 
 const LeaveReview = () => {

@@ -1,14 +1,12 @@
 import styles from '../../styles/NewNavbar.module.css'
 import Link from 'next/link'
 import {
-  info,
   personWithoutAuth,
   garage1,
   heart,
   car,
   fireIgn,
   newbasket,
-  menuBurger,
   search,
   smallBuscet,
   arrowLeft,
@@ -203,20 +201,6 @@ function NewNavbar() {
           ))}
         </div>
       ) : null}
-      <div className={styles.header_links}>
-        <Link className={styles.link_big} href="/">
-          {info}
-          ГОЛОВНА
-        </Link>
-        <Link className={styles.link_big} href="/payment_and_delivery">
-          {info}
-          ДОСТАВКА ТА ОПЛАТА
-        </Link>
-        <Link className={styles.link_big} href="/contacts">
-          {info}
-          КОНТАКТИ
-        </Link>
-      </div>
       <div className={styles.discount_box}>
         НАРЕШТІ ВЕСНА! ОТРИМАЙТЕ ЗНИЖКУ 20%
       </div>
@@ -225,6 +209,17 @@ function NewNavbar() {
           <Link href={`/`} className={styles.header_logo}>
             BAYRAKPARTS
           </Link>
+          <div className={styles.header_links}>
+            <Link className={styles.link_big} href="/">
+              ГОЛОВНА
+            </Link>
+            <Link className={styles.link_big} href="/payment_and_delivery">
+              ДОСТАВКА ТА ОПЛАТА
+            </Link>
+            <Link className={styles.link_big} href="/contacts">
+              КОНТАКТИ
+            </Link>
+          </div>
           <div className={styles.login}>
             <Link href="/track_order" title="Відстежити замовлення">
               {garage1}
@@ -239,23 +234,25 @@ function NewNavbar() {
             </Link>
           </div>
         </div>
-        {!openedSearch ? (
+        {/* {!openedSearch ? (
           <div className={styles.header_top_mobile}>
             <div
-              className={styles.menu_burger_svg}
+              className={styles.header_logo}
               onClick={() => setOpenedMobileMenu(true)}
             >
-              {menuBurger}
+              BAYRAKPARTS
             </div>
-            <div className={styles.header_logo}>BAYRAKPARTS</div>
             <div className={styles.menu_burger_svg}>
-              <div
-                className={styles.menu_burger_svg}
-                onClick={() => setOpenedSearch(true)}
-              >
-                {search}
-              </div>
               <Link href="/checkout" className={styles.busket_mobile_cont}>
+                {heart}
+              </Link>
+              <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
+                {personWithoutAuth}
+              </Link>
+              <Link href="/checkout" className={styles.busket_mobile_cont}>
+                {garage1}
+              </Link>
+              <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
                 {sumury > 0 ? (
                   <div className={styles.items_in_circule}>{sumury}</div>
                 ) : null}
@@ -286,7 +283,33 @@ function NewNavbar() {
               </button>
             </form>
           </div>
-        )}
+        )} */}
+        <div className={styles.header_top_mobile}>
+          <div
+            className={styles.header_logo}
+            onClick={() => setOpenedMobileMenu(true)}
+          >
+            BAYRAKPARTS
+          </div>
+          <div className={styles.menu_burger_svg}>
+            <Link href="/checkout" className={styles.busket_mobile_cont}>
+              {garage1}
+            </Link>
+            <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
+              {personWithoutAuth}
+            </Link>
+            <Link href="/checkout" className={styles.busket_mobile_cont}>
+              {heart}
+            </Link>
+            <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
+              {sumury > 0 ? (
+                <div className={styles.items_in_circule}>{sumury}</div>
+              ) : null}
+
+              {smallBuscet}
+            </Link>
+          </div>
+        </div>
 
         <div className={styles.header_main}>
           <Link href="/categories" className={styles.select_part}>
@@ -294,7 +317,7 @@ function NewNavbar() {
           </Link>
           <form
             className={styles.search_container}
-            onSubmit={e => searchInStockWithDiffBrands(e)}
+            onSubmit={searchInStockWithDiffBrands}
           >
             <input
               className={styles.search_input}
@@ -371,6 +394,29 @@ function NewNavbar() {
             </li>
           </ul>
         </div>
+        <div className={styles.mobile_nav_contacts}>
+          <div className={styles.header_links}>
+            <Link className={styles.link_big} href="/">
+              ГОЛОВНА
+            </Link>
+            <Link className={styles.link_big} href="/payment_and_delivery">
+              ДОСТАВКА ТА ОПЛАТА
+            </Link>
+            <Link className={styles.link_big} href="/contacts">
+              КОНТАКТИ
+            </Link>
+          </div>
+        </div>
+        <form
+          className={styles.mobile_search_from_container}
+          onSubmit={searchInStockWithDiffBrands}
+        >
+          <input
+            onChange={e => setArticle(e.target.value)}
+            placeholder="Введіть номер запчастини..."
+          />
+          <button type="submit">{loading ? 'Шукаємо' : 'Пошук'}</button>
+        </form>
         {noResults ? (
           <div className={styles.no_result}>
             Не знайдено такого артикулу. Перевірте будь ласка чи артикул вірно

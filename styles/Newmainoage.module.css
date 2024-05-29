@@ -127,6 +127,17 @@
   padding-bottom: 10px;
 }
 
+.container_for_brands h1 {
+  background-color: #f37c2e;
+  box-sizing: content-box;
+  border-radius: 3px;
+  text-indent: 20px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
 .number {
   background-color: #0067d7;
   height: 50px;
@@ -865,6 +876,11 @@
 
   .add_direct_comment {
     height: 45px;
+  }
+
+  .container_for_brands h1 {
+    font-size: 21px;
+    font-weight: 600;
   }
 
   .add_direct_comment_escape {

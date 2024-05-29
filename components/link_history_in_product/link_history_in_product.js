@@ -20,7 +20,7 @@ const LinkHistory = ({ data }) => {
     <li>
       <Link href={link}>
         {arrowRight1}
-        <span>{text}</span>
+        <span>{capitalize(data.ukr)}</span>
       </Link>
     </li>
   )

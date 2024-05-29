@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
-import { SessionProvider } from 'next-auth/react'
 import Layout from '@/components/layout/layout'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
@@ -42,22 +41,20 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   }, [router.events])
 
   return (
-    <SessionProvider session={session}>
-      <Layout>
-        <>
-          {loading === false ? (
-            <>
-              <Component {...pageProps} />
-              <SpeedInsights />
-            </>
-          ) : (
-            <h1 className="loading_spinner">
-              <div className="lds-dual-ring"></div>
-            </h1>
-          )}
-        </>
-      </Layout>
-    </SessionProvider>
+    <Layout>
+      <>
+        {loading === false ? (
+          <>
+            <Component {...pageProps} />
+            <SpeedInsights />
+          </>
+        ) : (
+          <h1 className="loading_spinner">
+            <div className="lds-dual-ring"></div>
+          </h1>
+        )}
+      </>
+    </Layout>
   )
 }
 

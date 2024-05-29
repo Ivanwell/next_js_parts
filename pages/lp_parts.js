@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Lp_parts.module.css'
 import {
-  arrowRight,
   tel,
   checkbox1,
   sighn,

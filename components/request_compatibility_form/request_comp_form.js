@@ -63,7 +63,7 @@ const RequestCompatibilityFrom = ({ article, brand }) => {
         </h2>
         {arrrowDown}
       </div>
-      <label for="vin" className={styles.vin_label}>
+      <label htmlFor="vin" className={styles.vin_label}>
         Вінкод автомобіля:
       </label>
       <input
@@ -77,7 +77,7 @@ const RequestCompatibilityFrom = ({ article, brand }) => {
       <span className={styles.vin_explanation}>
         Вінкод знаходиться у свідоцтві про реєстрацію або у додатку "ДІЯ"
       </span>
-      <label for="name" className={styles.vin_label}>
+      <label htmlFor="name" className={styles.vin_label}>
         Ваші контакти:
       </label>
       <div className={styles.row_for_input_name_and_phone}>
