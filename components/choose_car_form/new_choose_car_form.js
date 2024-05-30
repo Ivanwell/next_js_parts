@@ -284,7 +284,9 @@ const New_car_choose_form = () => {
   }
 
   const goToFindPage = () => {
-    let path
+    let path = `${
+      router.asPath.split('?')[0]
+    }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}`
 
     dispatch(
       setSelectedCar(
@@ -293,17 +295,17 @@ const New_car_choose_form = () => {
     )
 
     if (
-      router.asPath.includes('product') ||
-      router.asPath.includes('categories')
+      router.asPath.includes('product')
+      //||
+      // router.asPath.includes('categories')
     ) {
       path = `${
         router.asPath.split('?')[0]
       }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}&fits=${
         router.query.fits
       }`
-
-      router.push(path)
     }
+    router.push(path)
   }
 
   const goToFindPageWithQuerys = () => {
@@ -335,7 +337,7 @@ const New_car_choose_form = () => {
       setChoosenModel(router.query.model)
       setChoosenEngine(router.query.engine)
       setFinnalychooseCar(true)
-      goToFindPageWithQuerys()
+      //goToFindPageWithQuerys()
     }
   }, [])
 
