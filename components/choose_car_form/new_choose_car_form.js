@@ -283,11 +283,59 @@ const New_car_choose_form = () => {
     setOpenedBrandCont(prev => !prev)
   }
 
+  const goToFindPage = () => {
+    let path
+
+    dispatch(
+      setSelectedCar(
+        `?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}`
+      )
+    )
+
+    if (
+      router.asPath.includes('product') ||
+      router.asPath.includes('categories')
+    ) {
+      path = `${
+        router.asPath.split('?')[0]
+      }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}&fits=${
+        router.query.fits
+      }`
+
+      router.push(path)
+    }
+  }
+
+  const goToFindPageWithQuerys = () => {
+    let path
+
+    dispatch(
+      setSelectedCar(
+        `?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
+      )
+    )
+
+    if (
+      router.asPath.includes('product') ||
+      router.asPath.includes('categories')
+    ) {
+      path = `${router.asPath.split('?')[0]}?brand=${
+        router.query.brand
+      }&model=${router.query.model}&engine=${router.query.engine}&fits=${
+        router.query.fits
+      }`
+
+      router.push(path)
+    }
+  }
+
   useEffect(() => {
     if (router.query.brand && router.query.model && router.query.engine) {
       setChoosenBrand(router.query.brand)
       setChoosenModel(router.query.model)
       setChoosenEngine(router.query.engine)
+      setFinnalychooseCar(true)
+      goToFindPageWithQuerys()
     }
   }, [])
 
@@ -308,14 +356,6 @@ const New_car_choose_form = () => {
 
           const body = await res.json()
 
-          // const values = body
-          //   .map(({ products_count }) => products_count)
-          //   .sort((a, b) => b - a)
-          //   .slice(0, 40)
-          // const top40 = body.filter(({ products_count }) =>
-          //   values.includes(products_count)
-          // )
-
           setBrands(body)
         } catch (error) {
           if (!signal?.aborted) {
@@ -333,9 +373,9 @@ const New_car_choose_form = () => {
   }, [startSearching])
 
   useEffect(() => {
-    setChoosenModel(null)
-    setChoosenEngine(null)
-    if (choosenBrand) {
+    if (choosenBrand && !router.query.brand) {
+      setChoosenModel(null)
+      setChoosenEngine(null)
       setLoading(true)
       const abortController = new AbortController()
       const { signal } = abortController
@@ -387,7 +427,12 @@ const New_car_choose_form = () => {
   }, [choosenBrand])
 
   useEffect(() => {
-    if (choosenBrand && choosenModel) {
+    if (
+      choosenBrand &&
+      choosenModel &&
+      !router.query.model &&
+      !router.query.brand
+    ) {
       setLoading(true)
       const abortController = new AbortController()
       const { signal } = abortController
@@ -445,29 +490,18 @@ const New_car_choose_form = () => {
   }, [choosenModel])
 
   useEffect(() => {
-    if (choosenBrand && choosenModel && choosenEnagine) {
+    if (
+      choosenBrand &&
+      choosenModel &&
+      choosenEnagine &&
+      !router.query.model &&
+      !router.query.brand &&
+      !router.query.engine
+    ) {
       setFinnalychooseCar(true)
       setOpenedEnginesCont(false)
-      let path
 
-      dispatch(
-        setSelectedCar(
-          `?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}`
-        )
-      )
-
-      if (
-        router.asPath.includes('product') ||
-        router.asPath.includes('categories')
-      ) {
-        path = `${
-          router.asPath.split('?')[0]
-        }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}&fits=${
-          router.query.fits
-        }`
-
-        router.push(path)
-      }
+      goToFindPage()
     }
   }, [choosenEnagine])
 
@@ -523,8 +557,6 @@ const New_car_choose_form = () => {
       setOpenedEnginesCont(true)
     }
   }
-
-  console.log(router.query.viewport)
 
   return (
     <>

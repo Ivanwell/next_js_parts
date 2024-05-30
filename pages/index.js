@@ -22,8 +22,7 @@ import { changeLinkPath } from '@/global_state/features/cardata_redux'
 import Review from '@/components/review/review'
 import Script from 'next/script'
 
-const NewMainPage = ({ running }) => {
-  console.log(running)
+const NewMainPage = () => {
   const router = useRouter()
   const [opened, setOpened] = useState({
     first: false,
