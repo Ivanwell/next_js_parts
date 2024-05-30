@@ -72,8 +72,14 @@ const Pagination = ({ amount }) => {
         <div className={styles.pagination_cont}>
           {paginationArr.length < 8 ? (
             <>
-              {paginationArr.map(link => {
-                return <LinkPagination index={link} activeIndex={activeIndex} />
+              {paginationArr.map((link, index) => {
+                return (
+                  <LinkPagination
+                    key={`pag${index}`}
+                    index={link}
+                    activeIndex={activeIndex}
+                  />
+                )
               })}
             </>
           ) : (
@@ -82,20 +88,32 @@ const Pagination = ({ amount }) => {
               <LinkPagination index={1} activeIndex={activeIndex} />
               {+activeIndex == 1 ? (
                 <>
-                  {paginationArr.slice(1, +activeIndex + 2).map(link => {
-                    return (
-                      <LinkPagination index={link} activeIndex={activeIndex} />
-                    )
-                  })}
+                  {paginationArr
+                    .slice(1, +activeIndex + 2)
+                    .map((link, index) => {
+                      return (
+                        <LinkPagination
+                          key={`pagan${index}`}
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
                   ....
                 </>
               ) : +activeIndex == 2 || +activeIndex == 3 ? (
                 <>
-                  {paginationArr.slice(1, +activeIndex + 1).map(link => {
-                    return (
-                      <LinkPagination index={link} activeIndex={activeIndex} />
-                    )
-                  })}
+                  {paginationArr
+                    .slice(1, +activeIndex + 1)
+                    .map((link, index) => {
+                      return (
+                        <LinkPagination
+                          key={`pagana${index}`}
+                          index={link}
+                          activeIndex={activeIndex}
+                        />
+                      )
+                    })}
                   ....
                 </>
               ) : +activeIndex == paginationArr.length ? (
@@ -103,11 +121,12 @@ const Pagination = ({ amount }) => {
                   ....
                   {paginationArr
                     .slice(+activeIndex - 4, +activeIndex - 1)
-                    .map(link => {
+                    .map((link, index) => {
                       return (
                         <LinkPagination
                           index={link}
                           activeIndex={activeIndex}
+                          key={`pagi${index}`}
                         />
                       )
                     })}
@@ -117,9 +136,10 @@ const Pagination = ({ amount }) => {
                   ....
                   {paginationArr
                     .slice(+activeIndex - 3, +activeIndex)
-                    .map(link => {
+                    .map((link, index) => {
                       return (
                         <LinkPagination
+                          key={`paganat${index}`}
                           index={link}
                           activeIndex={activeIndex}
                         />
@@ -131,9 +151,10 @@ const Pagination = ({ amount }) => {
                   ....
                   {paginationArr
                     .slice(+activeIndex - 2, +activeIndex + 1)
-                    .map(link => {
+                    .map((link, index) => {
                       return (
                         <LinkPagination
+                          key={`paganatio${index}`}
                           index={link}
                           activeIndex={activeIndex}
                         />
@@ -145,9 +166,10 @@ const Pagination = ({ amount }) => {
                   ....
                   {paginationArr
                     .slice(+activeIndex - 2, +activeIndex + 1)
-                    .map(link => {
+                    .map((link, index) => {
                       return (
                         <LinkPagination
+                          key={`paginaton${index}`}
                           index={link}
                           activeIndex={activeIndex}
                         />

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
 import Layout from '@/components/layout/layout'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import GoogleAnalytics from '@/components/google_analitycs/google_analitycs'
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   const router = useRouter()
@@ -54,6 +55,7 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
           </h1>
         )}
       </>
+      <GoogleAnalytics />
     </Layout>
   )
 }
