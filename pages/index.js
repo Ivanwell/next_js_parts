@@ -37,33 +37,33 @@ const NewMainPage = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(changeLinkPath(null))
-    const abortController = new AbortController()
-    const { signal } = abortController
-    const getReviews = async () => {
-      try {
-        const res = await fetch(
-          `https://api.bayrakparts.com/api/info/get_reviews?step=${pageReview}`,
-          {
-            method: 'GET',
-            signal: signal,
-          }
-        )
+  // useEffect(() => {
+  //   dispatch(changeLinkPath(null))
+  //   const abortController = new AbortController()
+  //   const { signal } = abortController
+  //   const getReviews = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `https://api.bayrakparts.com/api/info/get_reviews?step=${pageReview}`,
+  //         {
+  //           method: 'GET',
+  //           signal: signal,
+  //         }
+  //       )
 
-        const body = await res.json()
-        setReviews(body)
-      } catch (error) {
-        if (!signal?.aborted) {
-        }
-      }
-    }
-    getReviews()
+  //       const body = await res.json()
+  //       setReviews(body)
+  //     } catch (error) {
+  //       if (!signal?.aborted) {
+  //       }
+  //     }
+  //   }
+  //   getReviews()
 
-    return () => {
-      abortController.abort()
-    }
-  }, [pageReview])
+  //   return () => {
+  //     abortController.abort()
+  //   }
+  // }, [pageReview])
 
   let titleMeta = 'BayrakParts || Запчастини для авто з гарантією'
   if (router.query.brand && router.query.model && router.query.engine) {
