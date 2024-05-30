@@ -14,7 +14,7 @@ const LinkComponent = ({ linkData }) => {
     state => state.dataSelectscartReducer.value.selectedCar
   )
 
-  let link = `/categories/${linkData.link}${linkQuery}`
+  let link = `/categories/${linkData?.link}${linkQuery}`
 
   return (
     <Link href={link} className={styles.link_pod_category}>
@@ -56,7 +56,7 @@ const Category = ({
           <LinksHistory />
           <span className={styles.pod_cat_cont}>
             {body.categories.map(catInfo => (
-              <LinkComponent key={catInfo.link} linkData={catInfo} />
+              <LinkComponent key={catInfo?.link} linkData={catInfo} />
             ))}
           </span>
         </div>
