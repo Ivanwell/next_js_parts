@@ -353,9 +353,18 @@ const NewMainPage = ({ running }) => {
 }
 
 export const getServerSideProps = async ({ req, query }) => {
+  const res = await fetch(
+    `https://api.bayrakparts.com/api/info/get_reviews?step=0`,
+    {
+      method: 'GET',
+    }
+  )
+
+  const body = await res.json()
+
   return {
     props: {
-      running: 'running',
+      running: body,
     },
   }
 }
