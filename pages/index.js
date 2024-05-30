@@ -71,7 +71,7 @@ const NewMainPage = () => {
   }
   return (
     <div className={styles.main_container}>
-      <Head>
+      {/* <Head>
         <title>{titleMeta}</title>
         <meta
           name="description"
@@ -346,7 +346,7 @@ const NewMainPage = () => {
             запитання або врахувати ваші побажання.
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
