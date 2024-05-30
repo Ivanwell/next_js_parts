@@ -284,9 +284,7 @@ const New_car_choose_form = () => {
   }
 
   const goToFindPage = () => {
-    let path = `${
-      router.asPath.split('?')[0]
-    }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}`
+    let path
 
     dispatch(
       setSelectedCar(
@@ -295,49 +293,31 @@ const New_car_choose_form = () => {
     )
 
     if (
-      router.asPath.includes('product')
-      //||
-      // router.asPath.includes('categories')
+      router.asPath.includes('product') ||
+      router.asPath.includes('categories')
     ) {
       path = `${
         router.asPath.split('?')[0]
       }?brand=${choosenBrand}&model=${choosenModel}&engine=${choosenEnagine}&fits=${
         router.query.fits
       }`
-    }
-    router.push(path)
-  }
-
-  const goToFindPageWithQuerys = () => {
-    let path
-
-    dispatch(
-      setSelectedCar(
-        `?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
-      )
-    )
-
-    if (
-      router.asPath.includes('product') ||
-      router.asPath.includes('categories')
-    ) {
-      path = `${router.asPath.split('?')[0]}?brand=${
-        router.query.brand
-      }&model=${router.query.model}&engine=${router.query.engine}&fits=${
-        router.query.fits
-      }`
-
       router.push(path)
     }
+    // else if (router.asPath.includes('categories')) {
+    //   router.push(path)
+    // }
   }
-
   useEffect(() => {
     if (router.query.brand && router.query.model && router.query.engine) {
       setChoosenBrand(router.query.brand)
       setChoosenModel(router.query.model)
       setChoosenEngine(router.query.engine)
+      dispatch(
+        setSelectedCar(
+          `?brand=${router.query.brand}&model=${router.query.model}&engine=${router.query.engine}`
+        )
+      )
       setFinnalychooseCar(true)
-      //goToFindPageWithQuerys()
     }
   }, [])
 
