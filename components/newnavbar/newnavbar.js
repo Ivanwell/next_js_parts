@@ -126,7 +126,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{car}Головна</div>
+              <span>{car}Головна</span>
               {onearrowright}
             </Link>
             <Link
@@ -134,7 +134,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{search}Пошук</div>
+              <span>{search}Пошук</span>
               {onearrowright}
             </Link>
             <Link
@@ -142,7 +142,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{chat}Залишити заявку</div>
+              <span>{chat}Залишити заявку</span>
               {onearrowright}
             </Link>
             <Link
@@ -150,7 +150,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{infor}Про нас</div>
+              <span>{infor}Про нас</span>
               {onearrowright}
             </Link>
             <Link
@@ -158,7 +158,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{smallBuscet}Корзина</div>
+              <span>{smallBuscet}Корзина</span>
               {onearrowright}
             </Link>
             <Link
@@ -166,7 +166,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{garage1}Відстежити</div>
+              <span>{garage1}Відстежити</span>
               {onearrowright}
             </Link>
             <Link
@@ -174,7 +174,7 @@ function NewNavbar() {
               className={styles.links_menu_mobile}
               onClick={() => setOpenedMobileMenu(false)}
             >
-              <div>{tel}Контакти</div>
+              <span>{tel}Контакти</span>
               {onearrowright}
             </Link>
             <div
@@ -226,7 +226,7 @@ function NewNavbar() {
             </Link>
             <Link href="/payment_and_delivery" title="Збережені товари">
               {heart}
-              <div className={styles.number_in_circule_container}>0</div>
+              <span className={styles.number_in_circule_container}>0</span>
             </Link>
             <Link href="/">
               {personWithoutAuth}
@@ -234,56 +234,6 @@ function NewNavbar() {
             </Link>
           </div>
         </div>
-        {/* {!openedSearch ? (
-          <div className={styles.header_top_mobile}>
-            <div
-              className={styles.header_logo}
-              onClick={() => setOpenedMobileMenu(true)}
-            >
-              BAYRAKPARTS
-            </div>
-            <div className={styles.menu_burger_svg}>
-              <Link href="/checkout" className={styles.busket_mobile_cont}>
-                {heart}
-              </Link>
-              <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
-                {personWithoutAuth}
-              </Link>
-              <Link href="/checkout" className={styles.busket_mobile_cont}>
-                {garage1}
-              </Link>
-              <Link href="/checkout" className={styles.busket_mobile_cont_sm}>
-                {sumury > 0 ? (
-                  <div className={styles.items_in_circule}>{sumury}</div>
-                ) : null}
-
-                {smallBuscet}
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <div className={styles.header_top_mobile}>
-            <button
-              onClick={() => setOpenedSearch(false)}
-              className={styles.header_top_mobile_back}
-            >
-              {arrowLeft}
-            </button>
-            <form
-              className={styles.search_container_mobile}
-              onSubmit={e => searchInStockWithDiffBrands(e)}
-            >
-              <input
-                className={styles.search_input_mobile}
-                onChange={e => setArticle(e.target.value)}
-                placeholder="Введіть номер запчастини..."
-              />
-              <button type="submit" className={styles.search_mobele_btn}>
-                {!loading ? search : '---'}
-              </button>
-            </form>
-          </div>
-        )} */}
         <div className={styles.header_top_mobile}>
           <div
             className={styles.header_logo}
@@ -331,10 +281,10 @@ function NewNavbar() {
           <div className={styles.basket_container}>
             <Link href="/checkout" className={styles.basket_and_numbers}>
               {newbasket}
-              <div className={styles.near_basket_items}>
+              <span className={styles.near_basket_items}>
                 <span>{sumury} товарів</span>
                 <span className={styles.small_font}># роздріб</span>
-              </div>
+              </span>
             </Link>
             <div className={styles.total_sum}>
               {sumury2 === 0 ? '0' : sumury2} грн

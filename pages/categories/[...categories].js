@@ -54,11 +54,11 @@ const Category = ({
       {body.categories.length != 0 ? (
         <div className={styles.links_and_history_cont}>
           <LinksHistory />
-          <div className={styles.pod_cat_cont}>
+          <span className={styles.pod_cat_cont}>
             {body.categories.map(catInfo => (
               <LinkComponent key={catInfo.link} linkData={catInfo} />
             ))}
-          </div>
+          </span>
         </div>
       ) : (
         <ProductsList

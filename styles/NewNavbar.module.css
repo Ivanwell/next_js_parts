@@ -756,7 +756,7 @@
     gap: 15px;
   }
 
-  .links_menu_mobile div {
+  .links_menu_mobile span {
     display: flex;
     align-items: center;
     justify-content: center;
