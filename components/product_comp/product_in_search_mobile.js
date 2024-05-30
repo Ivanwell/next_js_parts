@@ -35,7 +35,7 @@ const Product_in_search_mobile = ({ fitsLocal, product }) => {
         <img src={image} alt={title} />
       </div>
       <Link
-        href={`/product/${product.link[0].link}${linkQuery}${
+        href={`/product/${product?.link[0]?.link}${linkQuery}${
           fitsLocal === 'true' ? `&fits=true` : ''
         }`}
       >
@@ -60,7 +60,7 @@ const Product_in_search_mobile = ({ fitsLocal, product }) => {
             className={styles.buy_button}
             onClick={() => {
               router.push(
-                `/product/${product.link[0].link}${linkQuery}${
+                `/product/${product?.link[0]?.link}${linkQuery}${
                   fitsLocal === 'true' ? `&fits=true` : ''
                 }`
               )
