@@ -351,23 +351,23 @@ const NewMainPage = () => {
   )
 }
 
-export const getServerSideProps = async ({ req, query }) => {
-  if (query.brand && query.model) {
-    return {
-      props: {
-        query: query,
-      },
-    }
-  } else {
-    return {
-      props: {
-        query: {
-          brand: null,
-          model: null,
-        },
-      },
-    }
-  }
-}
+// export const getServerSideProps = async ({ req, query }) => {
+//   if (query.brand && query.model) {
+//     return {
+//       props: {
+//         query: query,
+//       },
+//     }
+//   } else {
+//     return {
+//       props: {
+//         query: {
+//           brand: null,
+//           model: null,
+//         },
+//       },
+//     }
+//   }
+// }
 
 export default NewMainPage
