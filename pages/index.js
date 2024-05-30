@@ -22,7 +22,8 @@ import { changeLinkPath } from '@/global_state/features/cardata_redux'
 import Review from '@/components/review/review'
 import Script from 'next/script'
 
-const NewMainPage = () => {
+const NewMainPage = ({ running }) => {
+  console.log(running)
   const router = useRouter()
   const [opened, setOpened] = useState({
     first: false,
@@ -351,23 +352,12 @@ const NewMainPage = () => {
   )
 }
 
-// export const getServerSideProps = async ({ req, query }) => {
-//   if (query.brand && query.model) {
-//     return {
-//       props: {
-//         query: query,
-//       },
-//     }
-//   } else {
-//     return {
-//       props: {
-//         query: {
-//           brand: null,
-//           model: null,
-//         },
-//       },
-//     }
-//   }
-// }
+export const getServerSideProps = async ({ req, query }) => {
+  return {
+    props: {
+      running: 'running',
+    },
+  }
+}
 
 export default NewMainPage

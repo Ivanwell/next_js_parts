@@ -33,7 +33,6 @@ import {
 } from '@/global_state/features/cart_redux'
 import { useDispatch } from 'react-redux'
 import New_car_choose_form from '../choose_car_form/new_choose_car_form'
-import { useSession, signIn, signOut } from 'next-auth/react'
 
 function NewNavbar() {
   const dispatch = useDispatch()
@@ -50,7 +49,6 @@ function NewNavbar() {
     state => state.cartReducer.value.imgCont.visibility
   )
   const fullImage = useSelector(state => state.cartReducer.value.imgCont.image)
-  const [openedSearch, setOpenedSearch] = useState(false)
   const [openedMenuMobile, setOpenedMobileMenu] = useState(false)
   const [article, setArticle] = useState('')
   const [loading, setLoading] = useState(false)

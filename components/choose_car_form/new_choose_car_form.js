@@ -5,8 +5,6 @@ import { arrrowDown, carChoosed, changeCar } from '../SVGs/SVGs'
 import { useDispatch } from 'react-redux'
 import { setSelectedCar } from '@/global_state/features/cardata_redux'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
-import Link from 'next/link'
 
 const BrandsList = ({ setChoosenBrand, brands }) => {
   const [showedBrands, setShowBrands] = useState([])
@@ -321,7 +319,6 @@ const New_car_choose_form = () => {
           setBrands(body)
         } catch (error) {
           if (!signal?.aborted) {
-       
           }
         } finally {
           setLoading(false)
@@ -526,6 +523,8 @@ const New_car_choose_form = () => {
       setOpenedEnginesCont(true)
     }
   }
+
+  console.log(router.query.viewport)
 
   return (
     <>
