@@ -192,11 +192,12 @@ export const getServerSideProps = async ({ req, params }) => {
   }
 
   const item = {
-    title: body.product.title,
+    title: `${body.product.article} ${body.product.brand} ${body.product.title}`,
     price: body.product.supliers[0]?.price || null,
     img:
-      body.product.image ||
-      'https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
+      body.product.image === '-'
+        ? 'https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg'
+        : body.product.image,
     discription:
       body.product.discription ||
       `Замовте ${body.product.title} у магазині автозапчастин BAYRAKPARTS. Топова якість та швидка доставка`,

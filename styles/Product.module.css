@@ -379,6 +379,7 @@
   position: absolute;
   right: 10px;
   top: 0px;
+  z-index: 20;
 }
 
 .fits_indicator_near_img_mobile {

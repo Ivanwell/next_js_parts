@@ -154,7 +154,7 @@ const CheckOut = () => {
 
     dispatch(deleteAllItems())
     setLoading(false)
-    console.log(orderNumber)
+
     // router.push(
     //   { pathname: '/thankyou_for_order', query: { orderNumber: orderNumber } },
     //   'thankyou_for_order'

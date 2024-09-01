@@ -33,9 +33,27 @@ import {
 } from '@/global_state/features/cart_redux'
 import { useDispatch } from 'react-redux'
 import New_car_choose_form from '../choose_car_form/new_choose_car_form'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 function NewNavbar() {
   const dispatch = useDispatch()
+
+  const test = async () => {
+    const credentials = {
+      username: 'Ivanwell',
+      password: 'test',
+    }
+
+    const res = await fetch('https://api.bayrakparts.com/api/auth/get_user', {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: { 'Content-Type': 'application/json' },
+    })
+    const user = await res.json()
+    console.log(user)
+  }
+
+  const { data: session } = useSession()
 
   const sumury = useSelector(state => state.cartReducer.value.total)
   const sumury2 = useSelector(state => state.cartReducer.value.sum)
@@ -200,7 +218,7 @@ function NewNavbar() {
         </div>
       ) : null}
       <div className={styles.discount_box}>
-        НАРЕШТІ ВЕСНА! ОТРИМАЙТЕ ЗНИЖКУ 20%
+        А ВЖЕ ОСІНЬ! ОТРИМАЙТЕ ЗНИЖКУ 20%
       </div>
       <div className={styles.main_header}>
         <div className={styles.header_top_desctop}>
@@ -226,10 +244,13 @@ function NewNavbar() {
               {heart}
               <span className={styles.number_in_circule_container}>0</span>
             </Link>
-            <Link href="/">
-              {personWithoutAuth}
-              Увійти
-            </Link>
+            {session ? (
+              'Logout'
+            ) : (
+              <button className={styles.sign_in_btn} onClick={() => signIn()}>
+                {personWithoutAuth}
+              </button>
+            )}
           </div>
         </div>
         <div className={styles.header_top_mobile}>

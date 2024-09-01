@@ -9,6 +9,7 @@ import {
 } from '../SVGs/SVGs'
 import { useDispatch } from 'react-redux'
 import { adddToCart } from '@/global_state/features/cart_redux'
+import Image from 'next/image'
 
 const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
   const dispatch = useDispatch()
@@ -28,7 +29,13 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
         ) : fitsLocal === 'true' ? (
           <div className={styles.fits_indicator_near_img}>{fitsIndicator}</div>
         ) : null}
-        <img src={img} alt={title} loading="lazy" />
+        <Image
+          src={img}
+          fill={true}
+          alt={title}
+          loading="lazy"
+          style={{ objectFit: 'contain' }}
+        />
       </div>
       <div className={styles.product_info_container}>
         <h1>

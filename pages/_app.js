@@ -6,6 +6,7 @@ import * as ga from '../components/lib/gtag'
 import Layout from '@/components/layout/layout'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import GoogleAnalytics from '@/components/google_analitycs/google_analitycs'
+import { SessionProvider } from 'next-auth/react'
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   const router = useRouter()
@@ -42,21 +43,23 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   }, [router.events])
 
   return (
-    <Layout>
-      <>
-        {loading === false ? (
-          <>
-            <Component {...pageProps} />
-            <SpeedInsights />
-          </>
-        ) : (
-          <h1 className="loading_spinner">
-            <div className="lds-dual-ring"></div>
-          </h1>
-        )}
-      </>
-      <GoogleAnalytics />
-    </Layout>
+    <SessionProvider session={session}>
+      <Layout>
+        <>
+          {loading === false ? (
+            <>
+              <Component {...pageProps} />
+              <SpeedInsights />
+            </>
+          ) : (
+            <h1 className="loading_spinner">
+              <div className="lds-dual-ring"></div>
+            </h1>
+          )}
+        </>
+        <GoogleAnalytics />
+      </Layout>
+    </SessionProvider>
   )
 }
 

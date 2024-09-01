@@ -23,6 +23,12 @@
   height: 85%;
 }
 
+.sign_in_btn {
+  background: none;
+  border: none;
+  color: #91989d;
+}
+
 .whole_image_cont svg {
   width: 40px;
   height: 40px;

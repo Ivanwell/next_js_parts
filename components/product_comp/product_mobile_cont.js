@@ -9,6 +9,7 @@ import {
 } from '../SVGs/SVGs'
 import { useDispatch } from 'react-redux'
 import { adddToCart } from '@/global_state/features/cart_redux'
+import Image from 'next/image'
 
 const Product_in_mobile = ({ fitsLocal, fullPath, item }) => {
   const dispatch = useDispatch()
@@ -33,7 +34,14 @@ const Product_in_mobile = ({ fitsLocal, fullPath, item }) => {
             {fitsIndicator}
           </div>
         ) : null}
-        <img src={mobileImage || img} alt={title} loading="lazy" />
+
+        <Image
+          src={mobileImage || img}
+          alt={title}
+          loading="lazy"
+          fill={true}
+          style={{ objectFit: 'contain' }}
+        />
       </div>
       <h1>
         {title} - {brandName} {article}
