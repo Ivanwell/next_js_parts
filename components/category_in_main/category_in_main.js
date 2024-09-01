@@ -1,6 +1,7 @@
 import styles from '../../styles/Category_in_main.module.css'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 
 const CategoryInMain = () => {
   const query = useSelector(
@@ -14,85 +15,149 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Деталі для ТО</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/detali-dlya-to-min-250.png"
           loading="lazy"
           alt="to"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/amortyzatsiya${query}`}
         className={styles.category_cont}
       >
         <span>Амортизатори</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/amortyzator-250.png"
           loading="lazy"
           alt="shocks"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/systema-oholodzhennya${query}`}
         className={styles.category_cont}
       >
         <span>Система охолодження</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/systema-oholodzennya-min-250.png"
           loading="lazy"
           alt="radiators"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link href={`/categories/shasi${query}`} className={styles.category_cont}>
         <span>Ходова частина</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min-250.png"
           loading="lazy"
           alt="chassis"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/dvygun${query}`}
         className={styles.category_cont}
       >
         <span>Двигун</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/dvygun-min-250.png"
           loading="lazy"
           alt="engine"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/kuzov-skladovi${query}`}
         className={styles.category_cont}
       >
         <span>Кузов</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/pngegg (7).png"
           loading="lazy"
           alt="body"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/galmivna-systema${query}`}
         className={styles.category_cont}
       >
         <span>Гальмівна система</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/pngegg (4).png"
           loading="lazy"
           alt="brakes"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
       <Link
         href={`/categories/pryvid${query}`}
         className={styles.category_cont}
       >
         <span>Трансмісія</span>
-        <img
+        <Image
           src="https://backend.bayrakparts.com/images/media/transmision1-min-250.png"
           loading="lazy"
           alt="transmission"
-        ></img>
+          fill={true}
+          style={{
+            maxHeight: '80%',
+            maxWidth: '80%',
+            objectFit: 'contain',
+            top: '30px',
+            left: '30px',
+          }}
+        />
       </Link>
     </div>
   )

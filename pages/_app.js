@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import * as ga from '../components/lib/gtag'
 import Layout from '@/components/layout/layout'
-import { SpeedInsights } from '@vercel/speed-insights/react'
 import GoogleAnalytics from '@/components/google_analitycs/google_analitycs'
 import { SessionProvider } from 'next-auth/react'
 
@@ -49,7 +48,6 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
           {loading === false ? (
             <>
               <Component {...pageProps} />
-              <SpeedInsights />
             </>
           ) : (
             <h1 className="loading_spinner">
