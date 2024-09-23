@@ -15,7 +15,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Деталі для ТО</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/detali-dlya-to-min-250.png"
           loading="lazy"
           alt="to"
@@ -34,7 +34,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Амортизатори</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/amortyzator-250.png"
           loading="lazy"
           alt="shocks"
@@ -53,7 +53,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Система охолодження</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/systema-oholodzennya-min-250.png"
           loading="lazy"
           alt="radiators"
@@ -69,7 +69,7 @@ const CategoryInMain = () => {
       </Link>
       <Link href={`/categories/shasi${query}`} className={styles.category_cont}>
         <span>Ходова частина</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/hodova-chastyna-min-250.png"
           loading="lazy"
           alt="chassis"
@@ -88,7 +88,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Двигун</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/dvygun-min-250.png"
           loading="lazy"
           alt="engine"
@@ -107,7 +107,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Кузов</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/pngegg (7).png"
           loading="lazy"
           alt="body"
@@ -126,7 +126,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Гальмівна система</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/pngegg (4).png"
           loading="lazy"
           alt="brakes"
@@ -145,7 +145,7 @@ const CategoryInMain = () => {
         className={styles.category_cont}
       >
         <span>Трансмісія</span>
-        <Image
+        <img
           src="https://backend.bayrakparts.com/images/media/transmision1-min-250.png"
           loading="lazy"
           alt="transmission"

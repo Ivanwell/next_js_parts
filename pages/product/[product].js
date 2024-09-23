@@ -89,6 +89,10 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
           content={`https://bayrakparts.com/product/${item.link}`}
         ></meta>
         <meta property="og:image" content={item.img}></meta>
+        <link
+          rel="canonical"
+          href={`https://bayrakparts.com/product/${item.link}`}
+        ></link>
       </Head>
       <Script
         type="application/ld+json"
