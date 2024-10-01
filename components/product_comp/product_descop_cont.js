@@ -18,7 +18,7 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
     dispatch(adddToCart(newItem))
   }
 
-  const { img, title, brandName, article, price, lvivStock } = item
+  const { img, title, brandName, article, price, lvivStock, mobileImage } = item
 
   return (
     <div className={styles.product_container}>
@@ -29,7 +29,7 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
           <div className={styles.fits_indicator_near_img}>{fitsIndicator}</div>
         ) : null}
         <img
-          src={img}
+          src={mobileImage ? mobileImage : img}
           fill={true}
           alt={title}
           loading="lazy"
@@ -51,7 +51,7 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
         {price ? (
           <div className={styles.price}>{price},00 грн</div>
         ) : (
-          <div className={styles.price}>------ грн</div>
+          <div className={styles.price}>Ціну уточнюйте</div>
         )}
         <div className={styles.btn_and_stock}>
           {lvivStock ? (
