@@ -86,28 +86,28 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
         <meta property="og:description" content={item.discription}></meta>
         <meta
           property="og:url"
-          content={`https://bayrakparts.com/product/${item.link}`}
+          content={`https://bayrakparts.com${router.asPath}`}
         ></meta>
         <meta property="og:image" content={item.img}></meta>
         <link
           rel="canonical"
           href={`https://bayrakparts.com/product/${item.link}`}
         ></link>
-      </Head>
-      <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(dataPage),
-        }}
-      />
-      {cat ? (
-        <Script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(broadList),
+            __html: JSON.stringify(dataPage),
           }}
         />
-      ) : null}
+        {cat ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(broadList),
+            }}
+          />
+        ) : null}
+      </Head>
       {router.query.viewport != 'mobile' ? (
         <div className={styles.main_page_component}>
           <div className={styles.component_container}>
