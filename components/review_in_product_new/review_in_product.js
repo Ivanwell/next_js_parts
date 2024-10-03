@@ -8,8 +8,9 @@ import {
   reviewChat,
 } from '../SVGs/SVGs'
 import { useState } from 'react'
+import LeaveReviewBox from './leave_review_box'
 
-const CommentForm = ({ _id, setOpenedCommentSection }) => {
+const CommentForm = ({ _id, setOpenedCommentSection, addComment }) => {
   const [name, setName] = useState('')
   const [message, setMessage] = useState('')
   const [success, setSuccess] = useState(false)
@@ -40,6 +41,23 @@ const CommentForm = ({ _id, setOpenedCommentSection }) => {
         setSuccess(true)
         setName('')
         setMessage('')
+        const date = new Date()
+        const year = date.getFullYear()
+        let month = date.getMonth() + 1
+        if (month < 10) {
+          month = `0${month}`
+        }
+        let day = date.getDate()
+        if (day < 10) {
+          day = `0${day}`
+        }
+        const finalDate = `${day}.${month}.${year}`
+        addComment({
+          person: name,
+          message: message,
+          date: finalDate,
+        })
+        setOpenedCommentSection(false)
       } else {
         setSuccess('error')
       }
@@ -54,13 +72,19 @@ const CommentForm = ({ _id, setOpenedCommentSection }) => {
     <form className={styles.review_box_container} onSubmit={addingComment}>
       <div className={styles.row_for_name_and_input}>
         <span>Ваше ім'я:</span>
-        <input minLength={3} required onChange={e => setName(e.target.value)} />
+        <input
+          minLength={3}
+          required
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
       </div>
       <div className={styles.row_for_name_and_input}>
         <span className={styles.text_area_title}>Ваш коментар:</span>
         <textarea
           required
           minLength={4}
+          value={message}
           onChange={e => setMessage(e.target.value)}
         ></textarea>
       </div>
@@ -104,6 +128,11 @@ const Comment = ({ comment }) => {
 
 const OneReview = ({ review }) => {
   const [openedCommentSection, setOpenedCommentSection] = useState(false)
+  const [comments, setComments] = useState(review.comments)
+
+  const addComment = comment => {
+    setComments(prev => [...prev, comment])
+  }
 
   const starsNumber = +review.stars
   const leftStars = 5 - starsNumber
@@ -140,9 +169,9 @@ const OneReview = ({ review }) => {
       </div>
       <div className={styles.review_message}>{review.message}</div>
       <div className={styles.comments_container}>
-        {review.comments.length > 0 ? (
+        {comments.length > 0 ? (
           <>
-            {review.comments.map(comment => (
+            {comments.map(comment => (
               <Comment key={comment._id} comment={comment} />
             ))}
           </>
@@ -157,6 +186,7 @@ const OneReview = ({ review }) => {
           <CommentForm
             _id={review._id}
             setOpenedCommentSection={setOpenedCommentSection}
+            addComment={addComment}
           />
         ) : null}
       </div>
@@ -165,6 +195,11 @@ const OneReview = ({ review }) => {
 }
 
 const ReviewProductNew = ({ article, brand, reviewsArr }) => {
+  const [currentReviews, setCurrentReviews] = useState(reviewsArr)
+
+  const addReviewToCurrent = createdReview => {
+    setCurrentReviews(prev => [...prev, createdReview])
+  }
   return (
     <>
       <span className={styles.detail_title}>
@@ -181,9 +216,9 @@ const ReviewProductNew = ({ article, brand, reviewsArr }) => {
             : 'відгуків'}
         </div>
       </span>
-      {reviewsArr.length > 0 ? (
+      {currentReviews.length > 0 ? (
         <div className={styles.reviews_container}>
-          {reviewsArr.map(review => (
+          {currentReviews.map(review => (
             <OneReview key={review._id} review={review} />
           ))}
         </div>
@@ -192,6 +227,11 @@ const ReviewProductNew = ({ article, brand, reviewsArr }) => {
           Ще немає вігуків. Станьте першими!
         </span>
       )}
+      <LeaveReviewBox
+        article={article}
+        brand={brand}
+        addReviewToCurrent={addReviewToCurrent}
+      />
     </>
   )
 }

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from '../../styles/Review.module.css'
 import { notFilledStar } from '../SVGs/SVGs'
 
-const LeaveReviewBox = ({ article, brand }) => {
+const LeaveReviewBox = ({ article, brand, addReviewToCurrent }) => {
   const [openLeaveReview, setOpenLeaveReview] = useState(false)
   const [star, setStar] = useState(null)
   const [name, setName] = useState('')
@@ -42,6 +42,24 @@ const LeaveReviewBox = ({ article, brand }) => {
           setSuccess(true)
           setName('')
           setMessage('')
+          const date = new Date()
+          const year = date.getFullYear()
+          let month = date.getMonth() + 1
+          if (month < 10) {
+            month = `0${month}`
+          }
+          let day = date.getDate()
+          if (day < 10) {
+            day = `0${day}`
+          }
+          const finalDate = `${day}.${month}.${year}`
+          addReviewToCurrent({
+            person: name,
+            message: message,
+            stars: star,
+            date: finalDate,
+            comments: [],
+          })
         } else {
           setSuccess('error')
         }

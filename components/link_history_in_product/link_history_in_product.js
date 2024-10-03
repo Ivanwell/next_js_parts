@@ -14,8 +14,6 @@ const LinkHistory = ({ data }) => {
     return s[0].toUpperCase() + s.slice(1).toLowerCase()
   }
 
-  const text = capitalize(data.ukr)
-
   return (
     <li>
       <Link href={link}>

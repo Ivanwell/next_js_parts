@@ -9,8 +9,8 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import DesctopProdcutCont from '@/components/product_comp/product_descop_cont'
 import Head from 'next/head'
-import Script from 'next/script'
 import Product_in_mobile from '@/components/product_comp/product_mobile_cont'
+import Related_articles from '@/components/related_articles/related_articles'
 
 const NewProduct = ({ item, cat, broadList, dataPage }) => {
   const [fitsLocal, setFitsLocal] = useState('false')
@@ -127,7 +127,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
                   brand={item.brandName}
                   reviewsArr={item.reviews}
                 />
-                <LeaveReviewBox article={item.article} brand={item.brandName} />
+                {/* <LeaveReviewBox article={item.article} brand={item.brandName} /> */}
               </div>
               <div className={styles.details_cont_right}>
                 <RequestCompatibilityFrom
@@ -137,6 +137,9 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
               </div>
             </div>
           </div>
+          {cat.relatedArticles.length > 0 ? (
+            <Related_articles relatedArt={cat.relatedArticles} />
+          ) : null}
         </div>
       ) : (
         <div className={styles.mobile_page_container}>
@@ -162,9 +165,12 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
                 brand={item.brandName}
                 reviewsArr={item.reviews}
               />
-              <LeaveReviewBox article={item.article} brand={item.brandName} />
+              {/* <LeaveReviewBox article={item.article} brand={item.brandName} /> */}
             </div>
           </div>
+          {cat.relatedArticles.length > 0 ? (
+            <Related_articles relatedArt={cat.relatedArticles} />
+          ) : null}
         </div>
       )}
     </>
