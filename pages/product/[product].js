@@ -137,7 +137,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
               </div>
             </div>
           </div>
-          {cat.relatedArticles.length > 0 ? (
+          {cat && cat.relatedArticles && cat.relatedArticles.length > 0 ? (
             <Related_articles relatedArt={cat.relatedArticles} />
           ) : null}
         </div>
@@ -168,7 +168,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
               {/* <LeaveReviewBox article={item.article} brand={item.brandName} /> */}
             </div>
           </div>
-          {cat.relatedArticles.length > 0 ? (
+          {cat && cat.relatedArticles && cat.relatedArticles.length > 0 ? (
             <Related_articles relatedArt={cat.relatedArticles} />
           ) : null}
         </div>
