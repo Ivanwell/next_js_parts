@@ -100,11 +100,15 @@
   color: #0068d7;
   border: #eee 2px solid;
   border-radius: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .link_pod_category span {
   width: 90%;
   text-align: center;
+  overflow: hidden;
+  max-height: 100%;
 }
 
 .history_container {
@@ -175,5 +179,13 @@
   .links svg {
     width: 8px;
     height: 8px;
+  }
+
+  .history_container {
+    width: 98%;
+  }
+
+  .links_and_history_cont {
+    width: 98%;
   }
 }

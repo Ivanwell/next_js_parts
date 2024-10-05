@@ -65,7 +65,7 @@ const NewMainPage = () => {
     }
   }, [pageReview])
 
-  let titleMeta = 'BayrakParts || Запчастини для авто з гарантією'
+  let titleMeta = 'BayrakParts || ⚙️ Запчастини дешево та якісно'
   if (router.query.brand && router.query.model && router.query.engine) {
     titleMeta = `Запчастини до ${router.query.brand} ${router.query.model} ${router.query.engine} - BayrakParts`
   }
@@ -75,30 +75,29 @@ const NewMainPage = () => {
         <title>{titleMeta}</title>
         <meta
           name="description"
-          content="Купити запчастини дешево з гарантією Львів Hyundai/KIA, Хюндай , Toyota/Lexus, Тойота/Лексус, Nissan, Ніссан, Mazda, Мазда, Honda, Хонда, Subaru, Субару, BMW, БМВ,  Volkswagen, Фольксваген. "
+          content="Купити запчастини дешево Львів Hyundai/KIA, Хюндай , Toyota/Lexus, Тойота/Лексус, Nissan, Ніссан, Mazda, Мазда, Honda, Хонда, Subaru, Субару, BMW, БМВ,  Volkswagen, Фольксваген. "
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f37c2e"></meta>
         <link rel="icon" href="/favicon.ico" />
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'http://schema.org',
+              '@type': 'Organization',
+              name: 'BayrakParts',
+              telephone: '+380937289485',
+              url: 'https://bayrakparts.com',
+              description: 'Дешеві та якісні автозапчастини з уього світу',
+            }),
+          }}
+        />
       </Head>
-      <Script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'http://schema.org',
-            '@type': 'Organization',
-            name: 'BayrakParts',
-            telephone: '+380937289485',
-            url: 'https://bayrakparts.com',
-            description: 'Якісні автозапчастини з уього світу',
-          }),
-        }}
-      />
-
       <div className={styles.container_for_brands}>
         <h1>Автозапчастини до Вашого авто</h1>
         <CategoryInMain />
-        <div className={styles.categories_in_mobile_only}>
+        <section className={styles.categories_in_mobile_only}>
           <h2>Інші категорії</h2>
           <div className={styles.category_link_cont}>
             <Link
@@ -162,10 +161,10 @@ const NewMainPage = () => {
               Аксесуари
             </Link>
           </div>
-        </div>
+        </section>
 
         <h2 className={styles.why_we}>Питання - відповідь</h2>
-        <div className={styles.new_container_for_question}>
+        <section className={styles.new_container_for_question}>
           <div className={styles.cont_for_col_questions}>
             <div
               className={styles.cont_for_question}
@@ -267,14 +266,14 @@ const NewMainPage = () => {
               </div>
             ) : null}
           </div>
-        </div>
+        </section>
         <h2 className={styles.why_we}>Відгуки наших покупців</h2>
-        <div className={styles.our_descr_for_reviews}>
+        <section className={styles.our_descr_for_reviews}>
           {reviews.map(review => (
             <Review key={review.message} details={review} />
           ))}
-        </div>
-        <div className={styles.bottom_of_reviews}>
+        </section>
+        <section className={styles.bottom_of_reviews}>
           <Link href="/leave_review" className={styles.leave_review_btn}>
             Залишити відгук
           </Link>
@@ -284,9 +283,9 @@ const NewMainPage = () => {
           >
             Переглянути ще...
           </button>
-        </div>
+        </section>
         <h2 className={styles.why_we}>Вітаємо у світі автозапчастин</h2>
-        <div className={styles.text_about_company}>
+        <section className={styles.text_about_company}>
           Ласкаво просимо до BayrakParts – вашого вірного постачальника
           автозапчастин. Ми - ваш надійний партнер у світі автозапчастин,
           пропонуючи широкий асортимент якісних деталей для автомобілів різних
@@ -294,9 +293,9 @@ const NewMainPage = () => {
           якістю продукції та неперевершеним обслуговуванням. Ми ретельно
           відбираємо кожну запчастину, щоб ви могли бути впевнені в її
           надійності та довговічності.
-        </div>
+        </section>
         <h2 className={styles.why_we}>Корисні статті та поради</h2>
-        <div className={styles.blog_container}>
+        <section className={styles.blog_container}>
           <Link href="articles/yak-pidgotuvaty-avto-do-lita">
             Як підготувати авто до літа
           </Link>
@@ -307,9 +306,9 @@ const NewMainPage = () => {
             Як визначити поломку в машині
           </Link>
           <Link href="articles">Усі наші статті</Link>
-        </div>
+        </section>
         <h2 className={styles.why_we}>Чому запчастини саме у нас</h2>
-        <div className={styles.text_about_company}>
+        <section className={styles.text_about_company}>
           <div>
             <h3>Широкий асортимент товарів</h3>
             BayrakParts пропонує великий вибір автозапчастин для різних марок і
@@ -345,7 +344,7 @@ const NewMainPage = () => {
             стосунки з нашими клієнтами і завжди раді відповісти на ваші
             запитання або врахувати ваші побажання.
           </div>
-        </div>
+        </section>
       </div>
     </div>
   )

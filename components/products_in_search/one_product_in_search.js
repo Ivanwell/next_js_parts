@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import styles from '../../styles/Product_list.module.css'
 import Link from 'next/link'
 import SuitabilityContainer from '../suitability_container/suitability_container'
-import { showFullImage } from '@/global_state/features/cart_redux'
 import {
   heartIcon,
   fitsIndicator,
@@ -25,7 +24,9 @@ const One_product_in_search = ({ product, fits, linkQuery }) => {
         ) : null}
         <img
           src={
-            product.image.includes('cdn.bm.parts')
+            product.image === '-'
+              ? 'https://as2.ftcdn.net/v2/jpg/04/70/29/97/1000_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg'
+              : product.image.includes('cdn.bm.parts')
               ? product.image.slice(0, 26) +
                 's/320x320/' +
                 product.image.slice(26)

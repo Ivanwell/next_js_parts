@@ -3,7 +3,6 @@ import LinksHistory from '@/components/link_history_in_product/link_history_in_p
 import { useDispatch } from 'react-redux'
 import { changeLinkPath } from '@/global_state/features/cardata_redux'
 import ReviewProductNew from '@/components/review_in_product_new/review_in_product'
-import LeaveReviewBox from '@/components/review_in_product_new/leave_review_box'
 import RequestCompatibilityFrom from '@/components/request_compatibility_form/request_comp_form'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -77,9 +76,7 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
   return (
     <>
       <Head>
-        <title>
-          {item.unicTitle ? item.unicTitle : item.title + ` - BAYRAKPARTS`}
-        </title>
+        <title>{item.metaTitle + ` - BAYRAKPARTS`}</title>
         <meta name="description" content={item.discription} />
         <meta property="og:type" content="website"></meta>
         <meta property="og:title" content={item.title}></meta>
@@ -119,7 +116,9 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
             />
           </div>
           <div className={styles.product_details_cont}>
-            <div className={styles.description}>{item.discription}</div>
+            <div className={styles.description}>
+              {item.article} {item.brandName} - {item.discription}
+            </div>
             <div className={styles.container_for_details_and_compatibility}>
               <div className={styles.details_cont_left}>
                 <ReviewProductNew
@@ -127,7 +126,6 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
                   brand={item.brandName}
                   reviewsArr={item.reviews}
                 />
-                {/* <LeaveReviewBox article={item.article} brand={item.brandName} /> */}
               </div>
               <div className={styles.details_cont_right}>
                 <RequestCompatibilityFrom
@@ -165,7 +163,6 @@ const NewProduct = ({ item, cat, broadList, dataPage }) => {
                 brand={item.brandName}
                 reviewsArr={item.reviews}
               />
-              {/* <LeaveReviewBox article={item.article} brand={item.brandName} /> */}
             </div>
           </div>
           {cat && cat.relatedArticles && cat.relatedArticles.length > 0 ? (
@@ -203,6 +200,11 @@ export const getServerSideProps = async ({ req, params }) => {
 
   const item = {
     title: `${body.product.article} ${body.product.brand} ${body.product.title}`,
+    metaTitle: `${body.product.article} ${body.product.brand} - ${
+      body.product.supliers[0]?.price
+        ? `💵 ціна ${body.product.supliers[0]?.price} грн`
+        : '🚗'
+    } ${body.product.title}`,
     price: body.product.supliers[0]?.price || null,
     img:
       body.product.image === '-'

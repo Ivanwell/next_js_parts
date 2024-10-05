@@ -51,7 +51,7 @@ const DesctopProdcutCont = ({ fitsLocal, fullPath, item }) => {
         {price ? (
           <div className={styles.price}>{price},00 грн</div>
         ) : (
-          <div className={styles.price}>Ціну уточнюйте</div>
+          <div className={styles.price}>-----</div>
         )}
         <div className={styles.btn_and_stock}>
           {lvivStock ? (
