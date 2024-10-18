@@ -202,8 +202,8 @@ export const getServerSideProps = async ({ req, params }) => {
     title: `${body.product.article} ${body.product.brand} ${body.product.title}`,
     metaTitle: `${body.product.article} ${body.product.brand} - ${
       body.product.supliers[0]?.price
-        ? `💵 ціна ${body.product.supliers[0]?.price} грн`
-        : '🚗'
+        ? `ціна ${body.product.supliers[0]?.price} грн`
+        : 'купити'
     } ${body.product.title}`,
     price: body.product.supliers[0]?.price || null,
     img:
